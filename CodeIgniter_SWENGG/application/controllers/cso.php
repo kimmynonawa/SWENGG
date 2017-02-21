@@ -1,21 +1,9 @@
 <?php
-	class cso extends CI_Controller {
+	class Cso extends CI_Controller {
 		public function __construct() {
 			parent::__construct();
 			$this->load->helper("url");
+			$this->load->library('form_validation');
 		}
-		
-		public function homepage() {
-			$this->load->view('CSO_Home');
-		}
-		
-		public function addNewOrganization(){
-			
-		}
-		
-		public function calendar (){
-			
-		}
-	
 	}
 ?>

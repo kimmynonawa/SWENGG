@@ -31,13 +31,14 @@
         <div class="animate form login_form">
           <section align ="center" class="login_content">
 			<div style="text-align:center;">
-				<form method="post" action="cso">
+				<form method="post" action="login">
 				  <h1>Login</h1>
+				  <?php echo validation_errors(); ?>
 				  <div>
-					<input type="text" class="form-control" placeholder="Username" required="" />
+					<input name="Username" type="text" class="form-control" placeholder="Username" required="" />
 				  </div>
 				  <div>
-					<input type="password" class="form-control" placeholder="Password" required="" />
+					<input name="Password" type="password" class="form-control" placeholder="Password" required="" />
 				  </div>
 				  <div>
 					<input type="submit" value="Log in">

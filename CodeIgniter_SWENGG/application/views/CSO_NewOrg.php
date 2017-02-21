@@ -8,26 +8,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>LSCS</title>
-     <script src= "js/jquery.js"> </script>
+    <script src= " <?php echo base_url();?>js/jquery.js"> </script>
 
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href=" <?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href=" <?php echo base_url();?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href=" <?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href=" <?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 	
     <!-- bootstrap-progressbar -->
-    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href=" <?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href=" <?php echo base_url();?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href=" <?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href=" <?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -40,7 +40,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src=" <?php echo base_url();?>images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -167,7 +167,7 @@
         </div>
         <!-- /top navigation -->
 
-<div class="right_col" role="main">
+		<div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
@@ -181,22 +181,13 @@
                 <div class="x_panel">
                   <div class="x_content">
 
-
-                   <script type="text/javascript">
-                   $(document).ready(function() {
-
-                          $('#nextbt').click(function() {
-                              window.location.href = "ORG_PreAct_FoodEntryPermit2.html";
-
-                        });
-
-                     });
-                     </script>
-
-                    <form class="form-horizontal form-label-left" novalidate>
+                    <form action="add" method="Post"class="form-horizontal form-label-left" novalidate>
                       <span class="section">General Information</span>
-
-                      <div class= "row">
+					  
+					  <?php echo validation_errors(); ?>
+                      
+					  
+					  <div class= "row">
                         <div class="col-md-3 col-sm-3 col-xs-12 form-group">
                           <input id="name" class="form-control has-feedback-left" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Enter Organization name" required="required" type="text">
                           <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
@@ -205,14 +196,14 @@
 
                       <div class= "row">
                         <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                         <input id="name" class="form-control has-feedback-left" data-validate-length-range="6" data-validate-words="2" name="idnum"  required="required" type="text" placeholder="Enter username">
+                         <input id="name" class="form-control has-feedback-left" data-validate-length-range="6" data-validate-words="2" name="username"  required="required" type="text" placeholder="Enter username">
                           <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                         </div>
                       </div>
 
                       <div class= "row">
                         <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                              <input id="name" class="form-control has-feedback-left" data-validate-length-range="6" data-validate-words="2" name="position" required="required" type="password" placeholder="Enter password">
+                              <input id="name" class="form-control has-feedback-left" data-validate-length-range="6" data-validate-words="2" name="password" required="required" type="password" placeholder="Enter password">
                           <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
                         </div>
                       </div>
@@ -220,7 +211,7 @@
 
                       <div class= "row">
                         <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                              <input id="name" class="form-control has-feedback-left" data-validate-length-range="6" data-validate-words="2" name="position" required="required" type="password" placeholder="Confirm password">
+                              <input id="name" class="form-control has-feedback-left" data-validate-length-range="6" data-validate-words="2" name="confirmPassword" required="required" type="password" placeholder="Confirm password">
                           <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
                         </div>
                       </div>
@@ -231,16 +222,16 @@
                             <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                         </div>
                       </div>
-
+					  <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-12 col-md-offset-11">
+                          <input value="Submit"id="nextbt" type="submit" class="btn btn-success align: right">
+                        </div>
+                      </div>
                     </form>
 
 
-                      <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-12 col-md-offset-11">
-                          <button id="nextbt" type="submit" class="btn btn-success align: right">Next</button>
-                        </div>
-                      </div>
+                      
                   </div>
                 </div>
               </div>
@@ -251,45 +242,45 @@
         <!-- /page content -->
 
     <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <script src=" <?php echo base_url();?>vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src=" <?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <script src=" <?php echo base_url();?>vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
+    <script src=" <?php echo base_url();?>vendors/nprogress/nprogress.js"></script>
     <!-- Chart.js -->
-    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src=" <?php echo base_url();?>vendors/Chart.js/dist/Chart.min.js"></script>
     <!-- gauge.js -->
-    <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+    <script src=" <?php echo base_url();?>vendors/gauge.js/dist/gauge.min.js"></script>
     <!-- bootstrap-progressbar -->
-    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src=" <?php echo base_url();?>vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <script src=" <?php echo base_url();?>vendors/iCheck/icheck.min.js"></script>
     <!-- Skycons -->
-    <script src="../vendors/skycons/skycons.js"></script>
+    <script src=" <?php echo base_url();?>vendors/skycons/skycons.js"></script>
     <!-- Flot -->
-    <script src="../vendors/Flot/jquery.flot.js"></script>
-    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="../vendors/Flot/jquery.flot.time.js"></script>
-    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <script src=" <?php echo base_url();?>vendors/Flot/jquery.flot.js"></script>
+    <script src=" <?php echo base_url();?>vendors/Flot/jquery.flot.pie.js"></script>
+    <script src=" <?php echo base_url();?>vendors/Flot/jquery.flot.time.js"></script>
+    <script src=" <?php echo base_url();?>vendors/Flot/jquery.flot.stack.js"></script>
+    <script src=" <?php echo base_url();?>vendors/Flot/jquery.flot.resize.js"></script>
     <!-- Flot plugins -->
-    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+    <script src=" <?php echo base_url();?>vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src=" <?php echo base_url();?>vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src=" <?php echo base_url();?>vendors/flot.curvedlines/curvedLines.js"></script>
     <!-- DateJS -->
-    <script src="../vendors/DateJS/build/date.js"></script>
+    <script src=" <?php echo base_url();?>vendors/DateJS/build/date.js"></script>
     <!-- JQVMap -->
-    <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src=" <?php echo base_url();?>vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src=" <?php echo base_url();?>vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src=" <?php echo base_url();?>vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src=" <?php echo base_url();?>vendors/moment/min/moment.min.js"></script>
+    <script src=" <?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+    <script src=" <?php echo base_url();?>build/js/custom.min.js"></script>
 	
   </body>
 </html>
