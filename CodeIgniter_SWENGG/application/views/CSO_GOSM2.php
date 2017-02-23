@@ -195,59 +195,54 @@
 							</ul>
 							<div class="clearfix"></div>
 						  </div>
+						  
+						  <?php var_dump($sample);?>
 						  <div class="x_content">
 							<span class="section">Activity Information</span>
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Name: </label>
-									<p>Leadership Seminar</p>
+									<p> <?php echo $sample[0]['title'];?></p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Goals: </label>
-									<p>To hone the officers' and Young Officers' skills in terms of leadership and public speaking</p>
+									<p><?php echo $sample[0]['goals'];?></p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Brief Description: </label>
-									<p>This is a leadership training for all the Young Officers and Officers of YES. This workshop</p>
+									<p><?php echo $sample[0]['description'];?></p>
 								</div>
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
-									<p>aims to give YES' Officers insights on public speaking and leadership skills so that they can</p> 
-								</div>
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12"></label> 
-									<p>apply it to their daily lives as an officer and as a person as well.</p>
-								</div>
+								
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Measures: </label>
-									<p>Attendance</p>
+									<p><?php echo $sample[0]['measures'];?></p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">GOSM Target Date: </label>
-									<p>November 04, 2016</p>
+									<p><?php echo $sample[0]['fromdate'];?> - <?php echo $sample[0]['todate'];?></p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Time: </label>
-									<p>9:00am-11am</p>
+									<p><?php echo $sample[0]['fromtime'];?> -  <?php echo $sample[0]['totime'];?></p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Venue: </label>
-									<p>Y507</p>
+									<p><?php echo $sample[0]['venue'];?></p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Nature: </label>
-									<p>Academic</p>
+									<p><?php echo $sample[0]['activitynature'];?></p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Type: </label>
-									<p>Seminar/Workshops</p>
+									<p><?php echo $sample[0]['activitytype'];?></p>
 								</div>
 
 								<div class="item form-group">
@@ -257,7 +252,7 @@
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Budget Breakdown: </label>
-									<p>P1000.00</p>
+									<p><?php echo $sample[0]['budget'];?></p>
 								</div>
 								
 							

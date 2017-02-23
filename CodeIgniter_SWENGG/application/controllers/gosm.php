@@ -4,6 +4,7 @@
 			parent::__construct();
 			$this->load->helper("url");
 			$this->load->library('form_validation');
+			$this->load->model('Gosm_model');
 		}
 		
 		public function loadAddGosm1(){
@@ -55,16 +56,14 @@
 			
 		}
 		
-		public function loadSelectViewGosm(){
-			
-		}
-		
 		public function selectViewGosm(){
-			$this->load->view('CSO_GOSM2');
+			$this->load->view('CSO_GOSM');
 		}
 		
 		public function viewGosm(){
-			
+			$res = $this->Gosm_model->getGosmDetails(1);
+			$data = array("sample" => $res);
+			$this->load->view('CSO_GOSM2', $data);
 		}
 		
 	}
