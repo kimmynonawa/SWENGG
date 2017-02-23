@@ -41,8 +41,8 @@
 					<input name="Password" type="password" class="form-control" placeholder="Password" required="" />
 				  </div>
 				  <div>
-					<input type="submit" value="Log in">
-				  </div>
+					<input type="submit" class="btn btn-default submit" value="Log in">
+				   </div>
 				  <div class="clearfix"></div>
 				</form>
 			</div>

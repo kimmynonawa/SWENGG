@@ -10,23 +10,23 @@
     <title>LSCS</title>
 
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 	
     <!-- bootstrap-progressbar -->
-    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="<?php echo base_url();?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -39,7 +39,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="<?php echo base_url();?>images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -49,8 +49,7 @@
             <!-- /menu profile quick info -->
 
             <br />
-
-            <!-- sidebar menu -->
+        <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -184,12 +183,12 @@
 
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-					<form action= "ORG_Home.html" method="submit">
+					<form action= "ORG_Home.html" method="post">
 						<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel">
 						  <div class="x_title">
-							<h2>List of Activities</h2>
+							<h2>ORGANIZATION NAME </h2> 
 							<ul class="nav navbar-right panel_toolbox">
 							  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 							  </li>
@@ -197,96 +196,207 @@
 							<div class="clearfix"></div>
 						  </div>
 						  <div class="x_content">
-							<table id="datatable" class="table table-striped table-bordered">
-							  <thead>
-								<tr>
-								  <th>Activity Name</th>
-								  <th>Brief Description</th>
-								  <th>Measures</th>
-								  <th>GOSM Target Date</th>
-								  <th>Time</th>
-								  <th>Venue</th>
-								  <th>Activity Nature</th>
-								  <th>Activity Type</th>
-								</tr>
-							  </thead>
+							<span class="section">Activity Information</span>
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Name: </label>
+									<p>Leadership Seminar</p>
+								</div>
 
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Goals: </label>
+									<p>To hone the officers' and Young Officers' skills in terms of leadership and public speaking</p>
+								</div>
 
-							  <tbody>
-								<tr>
-								  <td>Announcement</td>
-								  <td>This is an online announcement of events or class suspensions, departmental concerns, and awards among others that are relayed from higher offices such as the Decision Sciences and Innovation Department and the DLSU Administration.</td>
-								  <td>Reach of publicity materials</td>
-								  <td>Year Long</td>
-								  <td>   </td>
-								  <td>   </td>
-								  <td>Community Development</td>
-								  <td>Publicity/ Awareness Campaign</td>
-								</tr>
-								<tr>
-								  <td>Green Card Alliance: Membership Card Distribution</td>
-								  <td>There will ba a distribution of cards for the students who availed the membership with Young Entrepreneurs' Society during the annual recruitment week.</td>
-								  <td>Reach of publicity</td>
-								  <td>Year Long</td>
-								  <td>   </td>
-								  <td>   </td>
-								  <td>Organizational Development</td>
-								  <td>Distribution/td>
-								</tr>
-							  </tbody>
-							</table>
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Brief Description: </label>
+									<p>This is a leadership training for all the Young Officers and Officers of YES. This workshop</p>
+								</div>
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+									<p>aims to give YES' Officers insights on public speaking and leadership skills so that they can</p> 
+								</div>
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12"></label> 
+									<p>apply it to their daily lives as an officer and as a person as well.</p>
+								</div>
+
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Measures: </label>
+									<p>Attendance</p>
+								</div>
+
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">GOSM Target Date: </label>
+									<p>November 04, 2016</p>
+								</div>
+
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Time: </label>
+									<p>9:00am-11am</p>
+								</div>
+
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Venue: </label>
+									<p>Y507</p>
+								</div>
+
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Nature: </label>
+									<p>Academic</p>
+								</div>
+
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Type: </label>
+									<p>Seminar/Workshops</p>
+								</div>
+
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Related to: </label>
+									<p>R - 1</p>
+								</div>
+
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Budget Breakdown: </label>
+									<p>P1000.00</p>
+								</div>
+								
+							
+							<span class="section">The Central Committee</span>
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Project Head/s: </label>
+									<p>Aldrich Opiniano (VP Human Resources), and Allene Quintana (AVP Training and Development)</p>
+								</div>
+								
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Young Executives: </label>
+									<p>"Young Executives"</p>
+								</div>
+								
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Internal Affairs Head/s: </label>
+									<p>"Internal Affairs"</p>
+								</div>
+								
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">External Affairs  Head/s: </label>
+									<p>"External Affairs"</p> 
+								</div>
+
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Human Resources Head/s: </label> 
+									<p>"Human Resources"</p>
+								</div>
+
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Communications Head/s: </label>
+									<p>"Communications"</p>
+								</div>
+
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Promotions Head/s: </label>
+									<p>"Promotions"</p>
+								</div>
+
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Finance Head/s: </label>
+									<p>Ryan King</p>
+								</div>
+
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Documentations Head/s: </label>
+									<p>Alex Espiritu</p>
+								</div>
+						
+								
+							<span class="section">Others</span>
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Photographers: </label>
+									<p>"Photographers"</p>
+								</div>
+
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Videographers: </label>
+									<p>"Videographers"</p>
+								</div>
+
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Host/s: </label>
+									<p>"Hosts"</p> 
+								</div>
+
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Speaker/s: </label> 
+									<p>"Speakers"</p>
+								</div>
+
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Sponsor/s: </label>
+									<p>"Sponsors"</p>
+								</div>
+
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Equipment Needed: </label>
+									<p>"Equipments"</p>
+								</div>
+								<br />
+								<br />
 						  </div>
-						</div>
-					  </div>
+						</div> <!-- end of xpanel inner -->
+					  </div> <!-- end of inner col-md-12 col-sm-12 col-xs-12"-->
+								
 						
 						<button type="submit" class="btn btn-success col-md-offset-11" id="submit">NEXT</button>
-      
-              </div>
-            </div>
-          </div>
-        </div>
+        
+              </div> <!-- END OF -ROW- DIV -->
+              </form>
+            </div> <!-- END OF X PANEL -->
+          </div> <!-- END OF col-md-12 col-sm-12 col-xs-12 -->
+        </div> <!-- END OF ROW FINAL!!!!!!!! -->
+
+        <!-- HI KIM IF YOU'RE READING THIS YUNG BUTTON TYPE TO INPUT TYPE YUNG INIBA DI KO NA BINAGO YUNG ALIGNMENT TY!!!-->
+						
         <!-- /page content -->
 
     <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <script src="<?php echo base_url();?>vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
+    <script src="<?php echo base_url();?>vendors/nprogress/nprogress.js"></script>
     <!-- Chart.js -->
-    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/Chart.js/dist/Chart.min.js"></script>
     <!-- gauge.js -->
-    <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/gauge.js/dist/gauge.min.js"></script>
     <!-- bootstrap-progressbar -->
-    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/iCheck/icheck.min.js"></script>
     <!-- Skycons -->
-    <script src="../vendors/skycons/skycons.js"></script>
+    <script src="<?php echo base_url();?>vendors/skycons/skycons.js"></script>
     <!-- Flot -->
-    <script src="../vendors/Flot/jquery.flot.js"></script>
-    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="../vendors/Flot/jquery.flot.time.js"></script>
-    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.time.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.resize.js"></script>
     <!-- Flot plugins -->
-    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot.curvedlines/curvedLines.js"></script>
     <!-- DateJS -->
-    <script src="../vendors/DateJS/build/date.js"></script>
+    <script src="<?php echo base_url();?>vendors/DateJS/build/date.js"></script>
     <!-- JQVMap -->
-    <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="<?php echo base_url();?>vendors/moment/min/moment.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+    <script src="<?php echo base_url();?>build/js/custom.min.js"></script>
 	
   </body>
 </html>

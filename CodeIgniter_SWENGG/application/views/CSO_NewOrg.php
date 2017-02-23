@@ -40,7 +40,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src=" <?php echo base_url();?>images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="<?php echo base_url();?>images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -166,8 +166,8 @@
           </div>
         </div>
         <!-- /top navigation -->
-
-		<div class="right_col" role="main">
+   <!-- page content -->
+        <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
@@ -180,67 +180,80 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
+                    <form class="form-horizontal form-label-left" novalidate id="csoneworg" action="add" method="Post">
+                     <span class="section"></span>
+							
+						<?php echo validation_errors(); ?>
+						
+						<?php if (isset($success)): ?>
+							<h4>Successfully Added!</h4>
+						<?php endif; ?>
+							
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Organization Name</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input id="orgname" class="form-control has-feedback-left" name="orgname" placeholder="ex: Juan Organization" type="text">
+                              <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                            </div>        
+                        </div>
+                      </div> 
 
-                    <form action="add" method="Post"class="form-horizontal form-label-left" novalidate>
-                      <span class="section">General Information</span>
-					  
-					  <?php echo validation_errors(); ?>
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Username</h4> </label>
+                            <div class= "form-group col-md-6">
+                             <input id="orgun" class="form-control has-feedback-left" name="orgun" type="text" placeholder="ex: JuanOrg">
+                              <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                            </div>        
+                        </div>
+                      </div>  
                       
-					  
-					  <div class= "row">
-                        <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                          <input id="name" class="form-control has-feedback-left" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Enter Organization name" required="required" type="text">
-                          <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Password</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input id="orgpw" class="form-control has-feedback-left" name="orgpw" type="password" placeholder="ex: OrgJuan!">
+                              <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
+                            </div>        
                         </div>
-                      </div>
+                      </div>  
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>ConfirmPassword</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input id="orgcpw" class="form-control has-feedback-left"  name="orgcpw" type="password" placeholder="ex: OrgJuan!">
+                              <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
+                            </div>        
+                        </div>
+                      </div>  
 
                       <div class= "row">
-                        <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                         <input id="name" class="form-control has-feedback-left" data-validate-length-range="6" data-validate-words="2" name="username"  required="required" type="text" placeholder="Enter username">
-                          <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Email Address</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input id="orgemail" class="form-control has-feedback-left" name="orgemail" placeholder="juan_org@dlsu.edu.ph" type="email">
+                              <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                            </div>        
                         </div>
-                      </div>
+                      </div>  
 
-                      <div class= "row">
-                        <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                              <input id="name" class="form-control has-feedback-left" data-validate-length-range="6" data-validate-words="2" name="password" required="required" type="password" placeholder="Enter password">
-                          <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
-                        </div>
-                      </div>
-
-
-                      <div class= "row">
-                        <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                              <input id="name" class="form-control has-feedback-left" data-validate-length-range="6" data-validate-words="2" name="confirmPassword" required="required" type="password" placeholder="Confirm password">
-                          <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
-                        </div>
-                      </div>
-
-                      <div class= "row">
-                        <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                            <input id="name" class="form-control has-feedback-left" data-validate-length-range="6" data-validate-words="2" name="email" placeholder="OrgName@dlsu.edu.ph" required="required" type="text">
-                            <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
-                        </div>
-                      </div>
-					  <div class="ln_solid"></div>
+                      <div class="ln_solid"></div> 
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-11">
-                          <input value="Submit"id="nextbt" type="submit" class="btn btn-success align: right">
+                          <input id="nextbcson" type="submit" class="btn btn-success align: right" value ="Next">
                         </div>
                       </div>
                     </form>
-
-
-                      
-                  </div>
-                </div>
-              </div>
-            </div>
-
+                  </div><!-- xcontent -->
+                </div> <!-- xpanel -->              
+              </div> <!-- row -->
+            </div> 
           </div>
         </div>
-        <!-- /page content -->
-
+    <script src= "<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
+    <script src= "<?php echo base_url();?>js/validation.js"></script>
     <!-- jQuery -->
     <script src=" <?php echo base_url();?>vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -281,6 +294,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src=" <?php echo base_url();?>build/js/custom.min.js"></script>
-	
+  
   </body>
 </html>

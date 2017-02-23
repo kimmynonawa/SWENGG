@@ -49,8 +49,7 @@
             <!-- /menu profile quick info -->
 
             <br />
-
-            <!-- sidebar menu -->
+          <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -169,193 +168,138 @@
         </div>
         <!-- /top navigation -->
 
-     <!-- page content -->
+<!-- page content -->
         <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Organization Chart Details</h3>
-              </div>
-
+                <h3>Trademark Use Application </h3>
               </div>
             </div>
             <div class="clearfix"></div>
 
             <div class="row">
-
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-					<form action= "ORG_Home.html" method="submit">
-						<div class="row">
-						<div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="x_panel">
-						  <div class="x_title">
-							<h2>Activity Information</h2>
-							<ul class="nav navbar-right panel_toolbox">
-							  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-							  </li>
-							</ul>
-							<div class="clearfix"></div>
-						  </div>
-						  <div class="x_content">
-							<span class="section">Information</span>
-								<div class="item form-group">
-								<label class="control-label col-md-2 col-sm-2 col-xs-12">Activity Name: </label>
-									<p>Leadership Seminar</p>
-								</div>
+                  <div class="x_content">
+                    <form method="post" id = "formTrademark2" autocomplete="off">
+                     <span class="section"></span>
 
-								<div class="item form-group">
-								<label class="control-label col-md-2 col-sm-2 col-xs-12">Goals: </label>
-									<p>To hone the officers' and Young Officers' skills in terms of leadership and public speaking</p>
-								</div>
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Trademark To Use:</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <select class="select2_group form-control" name ="tmChoice">
+                                <optgroup label="Logos / Design">
+                                  <option value="delasalleuniversitylogo">De La Salle University Logo</option>
+                                  <option value="starscholarsdesign">Star Scholars Design</option>
+                                </optgroup>
+                                <optgroup label="DLSU labels">
+                                  <option value="delasalleuniversity">De La Salle University</option>
+                                  <option value="dlsum">DLSU-M</option>
+                                  <option value="lasallegreenarchers">La Salle Green Archers</option>
+                                  <option value="lasalle">La Salle</option>
+                                  <option value="dlsu">DLSU</option>
+                                  <option value="ls">LS</option>
+                                  <option value="greenarcher">Green Archer</option>
+                                  <option value="delasalleathletics">De La Salle Athletics</option>
+                                </optgroup>
+                                <optgroup label="DLSU taglines">
+                                  <option value="animolasalle">Animo La Salle</option>
+                                  <option value="thefuturebeginshere">The Future Begins Here</option>
+                                  <option value="wemeanbusiness">We Mean Business</option>
+                                  <option value="creatingthenextgreatidea">Creating the Next Great Idea</option>
+                                  <option value="bepartofthebusinessclass">Be Part of the Business Class</option>
+                                  <option value="keeplearning">Keep Learning</option>
+                                  <option value="hiptobehere">Hip to Be Here</option>
+                                  <option value="beyondhigherlearning">Beyond Higher Learning</option>
+                                  <option value="nevershallwefail">Never Shall We Fail</option>
+                                  <option value="greenwhitefights">Green White Fights</option>
+                                </optgroup>
+                              </select>
+                            </div>        
+                        </div>
+                      </div> 
 
-								<div class="item form-group">
-								<label class="control-label col-md-2 col-sm-2 col-xs-12">Brief Description: </label>
-									<p>This is a leadership training for all the Young Officers and Officers of YES. This workshop</p>
-								</div>
-								<div class="item form-group">
-								<label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-									<p>aims to give YES' Officers insights on public speaking and leadership skills so that they can</p> 
-								</div>
-								<div class="item form-group">
-								<label class="control-label col-md-2 col-sm-2 col-xs-12"></label> 
-									<p>apply it to their daily lives as an officer and as a person as well.</p>
-								</div>
 
-								<div class="item form-group">
-								<label class="control-label col-md-2 col-sm-2 col-xs-12">Measures: </label>
-									<p>Attendance</p>
-								</div>
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Type of Item/Material To Produce</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input type="text" list ="matToProduce" class="form-control col-md-7 col-xs-12" placeholder = "ex: Merchandise">
+                                  <datalist id="matToProduce">
+                                    <option> Merchandise</option>
+                                    <option> Multimedia/Web</option>
+                                    <option> Video</option>
+                                    <option> Poster/Flyer/Invite/Banner</option>
+                                    <option> Brochure/Publication</option>                 
+                                  </datalist>
+                            </div>        
+                        </div>
+                      </div>  
 
-								<div class="item form-group">
-								<label class="control-label col-md-2 col-sm-2 col-xs-12">GOSM Target Date: </label>
-									<p>November 04, 2016</p>
-								</div>
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Purpose Of Use</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <textarea name= "trademarkUse" rows="2" class="form-control" placeholder="ex: Banner for the winners of a contest"></textarea> 
+                            </div>        
+                        </div>
+                      </div>  
 
-								<div class="item form-group">
-								<label class="control-label col-md-2 col-sm-2 col-xs-12">Time: </label>
-									<p>9:00am-11am</p>
-								</div>
 
-								<div class="item form-group">
-								<label class="control-label col-md-2 col-sm-2 col-xs-12">Venue: </label>
-									<p>Y507</p>
-								</div>
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Proposed Start Time</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <input type="time" name= "startTime" id="startTime" class="form-control"/>
+                          </div>
+                          <label class= "col-md-5"> <h4>Proposed End Time</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <input type="time" name= "endTime" id="endTime"  class="form-control"/>
+                          </div>          
+                        </div>
+                      </div>  
 
-								<div class="item form-group">
-								<label class="control-label col-md-2 col-sm-2 col-xs-12">Activity Nature: </label>
-									<p>Academic</p>
-								</div>
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Activity Where Trademark Will Be Used</h4> </label>
+                            <div class= "form-group col-md-6">
+                            <input type="text" list ="actType" class="form-control col-md-7 col-xs-12" placeholder = "ex: Contest">
+                            <datalist id="actType">
+                                <option> Contest</option>
+                                <option> General Assembly</option>             
+                            </datalist>
+                          </div>    
+                        </div>
+                      </div> 
 
-								<div class="item form-group">
-								<label class="control-label col-md-2 col-sm-2 col-xs-12">Activity Type: </label>
-									<p>Seminar/Workshops</p>
-								</div>
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Venue</h4> </label>
+                            <div class= "form-group col-md-6">
+                            <input type="text" list ="venueList" class="form-control col-md-7 col-xs-12" placeholder = "ex: Marian Quadrangle">
+                            <datalist id="venueList">
+                                <option> TYA</option>
+                                <option> Marian Quadrangle</option>             
+                            </datalist>
+                          </div>    
+                        </div>
+                      </div> 
 
-								<div class="item form-group">
-								<label class="control-label col-md-2 col-sm-2 col-xs-12">Related to: </label>
-									<p>R - 1</p>
-								</div>
-
-								<div class="item form-group">
-								<label class="control-label col-md-2 col-sm-2 col-xs-12">Budget Breakdown: </label>
-									<p>P1000.00</p>
-								</div>
-								<br />
-								<br />
-							
-							<span class="section">The Central Committee</span>
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Project Head/s: </label>
-									<p>Aldrich Opiniano (VP Human Resources), and Allene Quintana (AVP Training and Development)</p>
-								</div>
-								
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Young Executives: </label>
-									<p>"Young Executives"</p>
-								</div>
-								
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Internal Affairs Head/s: </label>
-									<p>"Internal Affairs"</p>
-								</div>
-								
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">External Affairs  Head/s: </label>
-									<p>"External Affairs"</p> 
-								</div>
-
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Human Resources Head/s: </label> 
-									<p>"Human Resources"</p>
-								</div>
-
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Communications Head/s: </label>
-									<p>"Communications"</p>
-								</div>
-
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Promotions Head/s: </label>
-									<p>"Promotions"</p>
-								</div>
-
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Finance Head/s: </label>
-									<p>Ryan King</p>
-								</div>
-
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Documentations Head/s: </label>
-									<p>Alex Espiritu</p>
-								</div>
-								<br />
-								<br />
-								
-							<span class="section">Others</span>
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Photographers: </label>
-									<p>"Photographers"</p>
-								</div>
-
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Videographers: </label>
-									<p>"Videographers"</p>
-								</div>
-
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Host/s: </label>
-									<p>"Hosts"</p> 
-								</div>
-
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Speaker/s: </label> 
-									<p>"Speakers"</p>
-								</div>
-
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Sponsor/s: </label>
-									<p>"Sponsors"</p>
-								</div>
-
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Equipment Needed: </label>
-									<p>"Equipments"</p>
-								</div>
-								<br />
-								<br />
-						  </div>
-						</div>
-					  </div>
-								
-						
-						<button type="submit" class="btn btn-success col-md-offset-11" id="submit">NEXT</button>
-      
-              </div>
-            </div>
+                      <div class="ln_solid"></div> 
+                      <div class="form-group">
+                        <div class="col-md-12 col-md-offset-11">
+                          <input id="nextTrademark2" type="submit" class="btn btn-success align: right" value ="Next">
+                        </div>
+                      </div>
+                    </form>
+                  </div><!-- xcontent -->
+                </div> <!-- xpanel -->              
+              </div> <!-- row -->
+            </div> 
           </div>
         </div>
-        <!-- /page content -->
 
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>

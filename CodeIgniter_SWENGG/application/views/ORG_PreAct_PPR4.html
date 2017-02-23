@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>LSCS</title>
-     <script src= "js/jquery.js"> </script>
 
+    <script src= "js/jquery.js"> </script>
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
@@ -50,7 +50,8 @@
             <!-- /menu profile quick info -->
 
             <br />
-          <!-- sidebar menu -->
+
+                      <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -169,89 +170,120 @@
         </div>
         <!-- /top navigation -->
 
-      <div class="right_col" role="main">
-                <div class="">
-                  <div class="page-title">
-                    <div class="title_left">
-                      <h3>Food Entry Permit</h3>
-                    </div>
+<div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Project Proposal</h3>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_content">
+
+
+                  <form class="form-inline form-label-left" novalidate id= "pprform41" method="post">
+                      <span class="section">Source of Funds</span>
+
+                        <div class="table-responsive">          
+                          <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th>Source/s of Funds</th>
+                                <th>Amount</th>
+                              </tr>
+                            </thead>
+                            <tbody id= "tr">
+                              <tr>
+                                <td><h4>Organizational Funds</h4></td>
+                                <td> <input type="Number" name="of41" class="form-control" id="of" placeholder="Enter Amount"/></td>
+                              </tr>
+
+                              <tr>
+                                <td><h4>Participants Fee</h4></td>
+                                <td> <input type="Number" name="pf41" class="form-control" id="pf" placeholder="Enter Amount"/></td>
+                              </tr>
+
+                              <tr>
+                                <td> <input type="text"   name= "os41" class="form-control" id="sname" placeholder="Other Source"/></td>
+                                <td> <input type="Number" name="oam41" class="form-control" id="oaf" placeholder="Enter Amount"/></td>
+                              </tr>
+
+                            </tbody>
+                          </table>
+                          </div>
+
+                           <div class= "row">
+                            <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                               <button id="addc4" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                <button id="remc4" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                            </div>
+                          </div>
+                         
+                      <div class="ln_solid"></div>
+                      <span class="section">Organizational Funds</span>
+
+                        <div class="table-responsive">          
+                          <table class="table table-bordered">
+
+                            <tbody>
+                              <tr>
+                                <td><h4>Operational Funds</h4></td>
+                                <td> <input type="Number" name="amt4"class="form-control" id="opf" placeholder="Enter Amount"/></td>
+                              </tr>
+                              <tr>
+                                <td><h4>Depository Funds as of</h4></td>
+                                <td><input type="date" name="dpf4" class="form-control" id="dpf"/> <input type="Number" name= "dpfam" class="form-control" id="dpfam" placeholder="Enter Amount"/></td>
+                              </tr>
+                              <tr>
+                                <td><h4>Participants Fee/Donation/Sponsorships</h4></td>
+                                <td><input type="Number" name= "pf4" class="form-control" id="dpam" placeholder="Enter Amount"/></td>
+                              </tr>
+
+                              <tr>
+                                <td style= "background-color:#D3D3D3"><h4>Total Cash for Disbursement:</h4></td>
+                                <td style= "background-color:#D3D3D3"><h4> 315,869.00</h4></td>
+                              </tr>
+
+                              <tr>
+                                <td><h4>Less: Total Projected Expenses: </h4></td>
+                                 <td><h4>5,000.00</h4></td>
+                              </tr>
+
+                              <tr>
+                                <td style="background-color:#D3D3D3"><h4>Remaining Balance: </h4></td>
+                                <td style="background-color:#D3D3D3"><h4>310,869.00</h4></td>
+                              </tr>
+
+                            </tbody>
+                          </table>
+                          </div>
+
+                        <div class="ln_solid"></div>
+                          <div class="form-group">
+                            <div class="col-md-12 col-md-offset-11">
+                              <input id="nextbppr4" type="submit" class="btn btn-success align: right" value="Next">
+                            </div>
+                          </div>
+                      </form>
+
                   </div>
-                  <div class="clearfix"></div>
-
-                  <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                      <div class="x_panel">
-                        <div class="x_content">
-
-                          <form id="feform" class="form-horizontal form-label-left">
-                            <span class="section">General Information</span>
-
-                            <div class= "row">
-                              <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                                <input id="sname"  name="sname" class="form-control has-feedback-left" placeholder="Enter full name" type="text">
-                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-                              </div>
-                            </div>
-
-                            <div class= "row">
-                              <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                               <input id="idnum"  name="idnum"  class="form-control has-feedback-left" type="text" placeholder="Enter ID number">
-                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-                              </div>
-                            </div>
-
-                            <div class= "row">
-                              <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                                    <input id="posi"  name="posi"  class="form-control has-feedback-left" type="text" placeholder="Enter Position in Organization">
-                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-                              </div>
-                            </div>
-
-                            <div class= "row">
-                              <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                                  <input id="email"  name="email"  class="form-control has-feedback-left" placeholder="john_delacruz@dlsu.edu.ph" type="email">
-                                  <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
-                              </div>
-                            </div>
-
-
-                            <div class= "row">
-                              <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                                  <input id="cpnum"  name="cpnum"  class="form-control has-feedback-left" type="text" value="(63)">
-                                  <span class="fa fa-phone   form-control-feedback left" aria-hidden="true"></span>
-                              </div>
-                            </div>
-
-
-                            <div class= "row">
-                              <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                                    <input id="localnum"  name="localnum"  class="form-control has-feedback-left"  type="text" placeholder="Enter local number">
-                                  <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
-                              </div>
-                            </div>
-
-                            <div class="form-group">
-                              <div class="col-md-12 col-md-offset-11">
-                                <button id="nextbt" type="submit" class="btn btn-success align: right">Next</button>
-                              </div>
-                            </div>
-
-                          </form>
-
-
-                            <div class="ln_solid"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
                 </div>
+              </div>
+            </div>
+          </div>
 
-      </div>
+
+          </div>
+        </div>
         <!-- /page content -->
 
     <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+   <script src="js/jquery.min.js"></script>
     <script src= "js/jquery.validate.min.js"> </script>
     <script src= js/validation.js></script>
     <!-- Bootstrap -->

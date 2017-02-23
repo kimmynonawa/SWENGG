@@ -49,8 +49,8 @@
             <!-- /menu profile quick info -->
 
             <br />
-            
-            <!-- sidebar menu -->
+
+        <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -169,120 +169,91 @@
         </div>
         <!-- /top navigation -->
 
-     <!-- page content -->
+   <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h1>Contest Mechanics</h1>
-              </div>
-
+                <h3>Trademark Use Application </h3>
               </div>
             </div>
-          
+            <div class="clearfix"></div>
 
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                  <div class="x_panel">
-                  
-                      <form id ="mechanicsForm" class="form-horizontal form-label-left">
+                <div class="x_panel">
+                  <div class="x_content">
+                    <form method="post" id = "formTrademark1" autocomplete="off">
+                     <span class="section"></span>
 
-                      <div class="form-group">
-                        <label class="control-label col-sm-2 col-sm-3 col-xs-12">General Guidelines</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                            <textarea class="form-control" rows="3" placeholder='Enter Guidelines' id = "guidelines"></textarea>
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Name:</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input type="text" name= "Name" class="form-control" placeholder="ex: Juan Dela Cruz" />
+                            </div>        
                         </div>
-                      </div>
-                       <!-- mechanics -->
-                       <label class="control-label col-sm-2 col-sm-3 col-xs-12">Mechanics </label>
-                      <div class="form-group main" id="main">
-                        <div class="col-md-9 col-sm-9 col-xs-12" id="details">
-                            <label class="control-label col-sm-2 col-sm-3 col-xs-12"></label>
-                           <input class="form-control" id="mechanics" placeholder ="Enter rules of the contest" /> 
-                        </div>
-                      </div>
-                      <div id= "addMech">
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-sm-2 col-sm-3 col-xs-12"></label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                             <div class = "buttons">
-                          <button id="add" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                          <button id="delete" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                       </div>
-                              
-                        </div>
-                      </div>
-                      <!-- end of lmechanics -->
+                      </div> 
 
-                     <div class="form-group">
-                        <label class="control-label col-sm-2 col-sm-3 col-xs-12">Criteria for Judging </label>
-                        <table>
-                          <tbody id="criteria" class="col-md-9 col-sm-9 col-xs-12">
-                            <tr id= "criteria" class = "criteriaDetails">
-                              <td> <input class="form-control" placeholder ="Enter Criteria" id="criteria" style ="width:625px"/> </td><td>  <input class="form-control" placeholder ="Enter Percentage" style ="width:150px" /></td>
-                            </tr>
-                          </tbody>
-                         
-                        </table>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-sm-2 col-sm-3 col-xs-12"></label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                             <div class = "buttons">
-                          <button id="add" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                          <button id="delete" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                       </div>
-                              
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Position:</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input type="text" name= "Position" class="form-control" placeholder="ex: Executive Vice President" />
+                            </div>        
                         </div>
-                      </div>
-                      <!-- list of judges -->
-                      <div class="form-group">
-                        <label class="control-label col-sm-2 col-sm-3 col-xs-12">List of Judges</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                           <input class="form-control" placeholder ="Enter Name" id="judges"/>
-                              
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-sm-2 col-sm-3 col-xs-12"></label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                             <div class = "buttons">
-                          <button id="add" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                          <button id="delete" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                       </div>
-                              
-                        </div>
-                      </div>
-                      <!-- end of list of judges -->
+                      </div>  
 
-                      <!-- questions -->
-                      <div class="form-group">
-                        <label class="control-label col-sm-2 col-sm-3 col-xs-12">Questions for Academic Contests</label> <!--hi devs!!! this will appear lang sana if the user chose academic contest -->
-                        <div class="col-md-9 col-sm-9 col-xs-12"> 
-                           <input class="form-control" placeholder ="Enter Questions" id="questions"/>
-                              
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>ID Number</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input type="text" name= "IDNum" class="form-control" placeholder="ex: 11344444" />
+                            </div>        
                         </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-sm-2 col-sm-3 col-xs-12"></label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                             <div class = "buttons">
-                          <button id="add" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                          <button id="delete" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                       </div>
-                              
-                        </div>
-                      </div>
-                      <!-- end of  questions-->
+                      </div>  
 
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Email Address</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input type="text" name= "Email" class="form-control" placeholder="ex: juan_delacruz@dlsu.edu.ph" />
+                            </div>        
+                        </div>
+                      </div>  
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Telephone Number</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input type="text" name= "TelNo" class="form-control" placeholder="ex: 6341111" />
+                            </div>        
+                        </div>
+                      </div>  
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Cellphone Number</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input type="text" name= "CPNo" class="form-control" placeholder="ex: 09179999999" />
+                            </div>        
+                        </div>
+                      </div>  
+
+                      <div class="ln_solid"></div> 
+                      <div class="form-group">
+                        <div class="col-md-12 col-md-offset-11">
+                          <input id="nextTrademark" type="submit" class="btn btn-success align: right" value ="Next">
+                        </div>
+                      </div>
                     </form>
-                    <br>
-              </div>
-            </div>
+                  </div><!-- xcontent -->
+                </div> <!-- xpanel -->              
+              </div> <!-- row -->
+            </div> 
           </div>
         </div>
-        <!-- /page content -->
+
 
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
@@ -325,82 +296,5 @@
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
 	
-  <script>
-        $(document).ready(function () {
-            $("#add").click(function () {
-                var det = document.getElementById('details'); 
-                var cln = det.cloneNode(true);
-                
-                var ig = document.getElementById('main');
-
-                ig.appendChild(cln);        
-                console.log("yo!!!!");
-                //var ctr = document.getElementsByClassName("details").length;
-            })
-            $("#delete").click(function () {
-                var count = document.getElementsByClassName("details").length;
-                var last = document.getElementsByClassName("details").item(count-1);
-                if(count >1){
-                    last.remove();
-                }
-                console.log(count);
-            })
-
-             $("#mechanicsForm").validate({
-              rules:{
-                guidelines: {
-                  required: true,
-                  maxlength: 200
-
-                },
-                mechanics: {
-                  required: true,
-                  maxlength: 200
-
-                },
-                criteria: {
-                  required: true,
-                  maxlength: 200
-
-                },
-                judges: {
-                  required: true,
-                  maxlength: 100
-
-                },
-                questions: {
-                  required: true,
-                  maxlength: 100
-
-                },
-              success: removeError,
-              messages: {
-                guidelines: {
-                  required: "Please enter the contest guidelines",
-                  maxlength: "Input is too long."
-                },
-                mechanics: {
-                  required: "Please enter the mechanics",
-                  maxlength: "Input is too long."
-                },
-                criteria: {
-                  required: "Please enter the criteria for judging",
-                  maxlength: "Input is too long."
-                },
-                lN
-                judges: {
-                  required: "Please enter the name of the judge",
-                  maxlength: "Input is too long."
-                },
-                lN
-                questions: {
-                  required: "Please enter a question",
-                  maxlength: "Input is too long."
-                },
-               }
-              }
-            });
-        })
-    </script>
   </body>
 </html>

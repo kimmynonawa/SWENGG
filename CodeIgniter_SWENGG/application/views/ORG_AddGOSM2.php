@@ -9,24 +9,27 @@
 
     <title>LSCS</title>
 
+
+    <!-- jQuery -->
+    <script src= "<?php echo base_url();?>js/jquery.js"> </script>
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
+    <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+  
     <!-- bootstrap-progressbar -->
-    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="<?php echo base_url();?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -49,7 +52,7 @@
             <!-- /menu profile quick info -->
 
             <br />
-            <!-- sidebar menu -->
+          <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -168,420 +171,171 @@
         </div>
         <!-- /top navigation -->
 
-     <!-- page content -->
         <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
+          
+          <div class="page-title">
               <div class="title_left">
-                <h3>Fill Out GOSM</h3>
+                  <h3>Fill Out GOSM</h3>
               </div>
-
-              </div>
-            </div>
-            <div class="clearfix"></div>
+          </div>
+          
+          <div class="clearfix"></div>
 
             <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_content">
+                          <form class="form-horizontal form-label-left" id= "gosmform2">
 
-				<div class="col-md-12 col-sm-9 col-xs-12">
-                <div class="x_panel">
-				<form action= "ORG_GOSM3.html" method="submit">
-				<div class="x_content">
+                              <div class="row" id="gnph" >
+                                  <span class="section">Central Committee</span>
+                                  <label> <h3> Project Head/s </h3> </label>
+                              </div>
 
-                    <!-- start form for validation -->
-                    <form id="demo-form" data-parsley-validate>
-					<span class="section">The Central Committee</span>
-						<b><label>PROJECT HEADS</label></b>
-						<table class="table table-striped">
-						  <thead>
-							<tr>
-							  <th>Project Head/s Name/s:</th>
-							</tr>
-						  </thead>
-						  <tbody id="projectheads">
-							  <tr id ="phdetails" class="phdetails">
-								<td>  <input class="form-control" placeholder ="Enter the Name/s of Project Head/s" required/></td>
-							  </tr>
-						  </tbody>
-						</table>
-						<br>
-                        <div class = "buttons">
-                          <button id="add1" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                          <button id="delete1" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                       </div>
-						
-						<br />
-						<br />
-						<b><label>YOUNG EXECUTIVES</label></b>
-						<table class="table table-striped">
-						  <thead>
-							<tr>
-							  <th>Young Executive Head/s Name/s:</th>
-							</tr>
-						  </thead>
-						  <tbody id="youngexecutives">
-							  <tr id ="yedetails" class="yedetails">
-								<td>  <input class="form-control" placeholder ="Enter the Name/s of Young Executive Head/s" required/></td>
-							  </tr>
-						  </tbody>
-						</table>
-						<br>
-                        <div class = "buttons">
-                          <button id="add2" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                          <button id="delete2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                       </div>
-						
-						<br />
-						<br />
-						<b><label>INTERNAL AFFAIRS</label></b>
-						<table class="table table-striped">
-						  <thead>
-							<tr>
-							  <th>Internal Affairs Head/s Name/s:</th>
-							</tr>
-						  </thead>
-						  <tbody id="internalaffairs">
-							  <tr id ="iadetails" class="iadetails">
-								<td>  <input class="form-control" placeholder ="Enter the Name/s of Internal Affairs Head/s" required/></td>
-							  </tr>
-						  </tbody>
-						</table>
-						<br>
-                        <div class = "buttons">
-                          <button id="add3" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                          <button id="delete3" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                       </div>
-						
-						<br />
-						<br />
-						<b><label>EXTERNAL AFFAIRS</label></b>
-						<table class="table table-striped">
-						  <thead>
-							<tr>
-							  <th>External Head/s Name/s:</th>
-							</tr>
-						  </thead>
-						  <tbody id="externalaffairs">
-							  <tr id ="eadetails" class="eadetails">
-								<td>  <input class="form-control" placeholder ="Enter the Name/s of External Affairs Head/s" required/></td>
-							  </tr>
-						  </tbody>
-						</table>
-						<br>
-                        <div class = "buttons">
-                          <button id="add4" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                          <button id="delete4" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                       </div>
-						
-						<br />
-						<br />
-						<b><label>HUMAN RESOURCES</label></b>
-						<table class="table table-striped">
-						  <thead>
-							<tr>
-							  <th>Human Resources Head/s Name/s:</th>
-							</tr>
-						  </thead>
-						  <tbody id="humanresources">
-							  <tr id ="hrdetails" class="hrdetails">
-								<td>  <input class="form-control" placeholder ="Enter the Name/s of Human Resources Head/s" required/></td>
-							  </tr>
-						  </tbody>
-						</table>
-						<br>
-                        <div class = "buttons">
-                          <button id="add5" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                          <button id="delete5" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                       </div>
-						
-						<br />
-						<br />
-						<b><label>PROMOTIONS</label></b>
-						<table class="table table-striped">
-						  <thead>
-							<tr>
-							  <th>Promotions Head/s Name/s:</th>
-							  <th>Promotions Head/s Status:</th>
-							</tr>
-						  </thead>
-						  <tbody id="promotions">
-							  <tr id ="pdetails" class="pdetails">
-								<td>  <input class="form-control" placeholder ="Enter the Name/s of Promotions Head/s" required/></td>
-								<td>  <input class="form-control" placeholder ="Enter the Status of Promotions Head/s" required/></td>
-							  </tr>
-						  </tbody>
-						</table>
-						<br>
-                        <div class = "buttons">
-                          <button id="add6" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                          <button id="delete6" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                       </div>
-					   
-						<br />
-						<br />
-						<b><label>FINANCE</label></b>
-						<table class="table table-striped">
-						  <thead>
-							<tr>
-							  <th>Finance Head/s Name/s:</th>
-							  <th>Finance Head/s Status:</th>
-							</tr>
-						  </thead>
-						  <tbody id="finance">
-							  <tr id ="fdetails" class="fdetails">
-								<td>  <input class="form-control" placeholder ="Enter the Name/s of Finance Head/s" required/></td>
-								<td>  <input class="form-control" placeholder ="Enter the Status of Finance Head/s" required/></td>
-							  </tr>
-						  </tbody>
-						</table>
-						<br>
-                        <div class = "buttons">
-                          <button id="add7" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                          <button id="delete7" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                       </div>
-					   
-						<br />
-						<br />
-						<b><label>DOCUMENTATIONS</label></b>
-						<table class="table table-striped">
-						  <thead>
-							<tr>
-							  <th>Documentations Head/s Name/s:</th>
-							  <th>Documentations Head/s Status:</th>
-							</tr>
-						  </thead>
-						  <tbody id="documentations">
-							  <tr id ="ddetails" class="ddetails">
-								<td>  <input class="form-control" placeholder ="Enter the Name/s of Documentations Head/s" required/></td>
-								<td>  <input class="form-control" placeholder ="Enter the Status of Documentations Head/s" required/></td>
-							  </tr>
-						  </tbody>
-						</table>
-						<br>
-                        <div class = "buttons">
-                          <button id="add8" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                          <button id="delete8" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                       </div>
-						
-						<br />
-						<br />
-						<br />
-						<br />
-						<div class="form-group">
-						<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-11">
-						  <button type="submit" class="btn btn-success" id="submit">NEXT</button>
-						</div>
-						</div>
-						<br />
-						<br />
-      
-              </div>
+                            <div class= "row">
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                 <button id="addcgosm2" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                 <button id="remcgosm2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                               </div>
+                            </div>
+
+
+                            <div class="row" id="gnye" >
+                                  <label> <h3> Young Executive/s </h3> </label>
+                              </div>
+
+                            <div class= "row">
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                 <button id="addyegosm2" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                 <button id="remyegosm2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                               </div>
+                            </div>
+
+                            <div class="row" id="gnia" >
+                               <label> <h3> Internal Affairs Head/s </h3> </label>
+                            </div>
+
+                            <div class= "row">
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                 <button id="addiagosm2" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                 <button id="remiagosm2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                               </div>
+                            </div>
+
+                            <div class="row" id="gnea" >
+                               <label> <h3> External Affairs Head/s </h3> </label>
+                            </div>
+
+                            <div class= "row">
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                 <button id="addeagosm2" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                 <button id="remeagosm2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                               </div>
+                            </div>
+
+
+                            <div class="row" id="gnhr" >
+                               <label> <h3> Human Resources Head/s </h3> </label>
+                            </div>
+
+                            <div class= "row">
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                 <button id="addhrgosm2" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                 <button id="remhrgosm2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                               </div>
+                            </div>
+
+                            <div class="row" id="gnprm" >
+                               <label> <h3> Promotions Head/s </h3> </label>
+                            </div>
+
+                            <div class= "row">
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                 <button id="addprmgosm2" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                 <button id="remprmgosm2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                               </div>
+                               </div>
+
+                            <div class="row" id="gnfn">
+                               <label> <h3> Finance Head/s </h3> </label>
+                            </div>
+
+                            <div class= "row">
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                 <button id="addfngosm2" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                 <button id="remfngosm2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                               </div>
+                               </div>
+
+                          <div class="row" id="gndoc">
+                               <label> <h3> Documentation Head/s </h3> </label>
+                            </div>
+
+                            <div class= "row">
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                 <button id="adddocgosm2" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                 <button id="remdocgosm2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                               </div>
+                               </div>
+
+
+                             <div class="ln_solid"></div> 
+                                <div class="form-group">
+                                  <div class="col-md-12 col-md-offset-11">
+                                    <button id="nextbppr" type="submit" class="btn btn-success align: right">Next</button>
+                                  </div>
+                                </div>
+                          </form>  
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
+
+         </div>
         <!-- /page content -->
 
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+       <!-- jQuery -->
+    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
+    <script src="<?php echo base_url();?>js/validation.js"></script>
     <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <script src="<?php echo base_url();?>vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
+    <script src="<?php echo base_url();?>vendors/nprogress/nprogress.js"></script>
     <!-- Chart.js -->
-    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/Chart.js/dist/Chart.min.js"></script>
     <!-- gauge.js -->
-    <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/gauge.js/dist/gauge.min.js"></script>
     <!-- bootstrap-progressbar -->
-    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/iCheck/icheck.min.js"></script>
     <!-- Skycons -->
-    <script src="../vendors/skycons/skycons.js"></script>
+    <script src="<?php echo base_url();?>vendors/skycons/skycons.js"></script>
     <!-- Flot -->
-    <script src="../vendors/Flot/jquery.flot.js"></script>
-    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="../vendors/Flot/jquery.flot.time.js"></script>
-    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.time.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.resize.js"></script>
     <!-- Flot plugins -->
-    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot.curvedlines/curvedLines.js"></script>
     <!-- DateJS -->
-    <script src="../vendors/DateJS/build/date.js"></script>
+    <script src="<?php echo base_url();?>vendors/DateJS/build/date.js"></script>
     <!-- JQVMap -->
-    <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="<?php echo base_url();?>vendors/moment/min/moment.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
-	
+    <script src="<?php echo base_url();?>build/js/custom.min.js"></script>
+
   </body>
-  <script>
-        $(document).ready(function () {
-            $("#add1").click(function () {
-                var det = document.getElementById('phdetails'); 
-                var cln = det.cloneNode(true);
-                
-                var ig = document.getElementById('projectheads');
-
-                ig.appendChild(cln);        
-                console.log("yo!!!!");
-                //var ctr = document.getElementsByClassName("details").length;
-            })
-            $("#delete1").click(function () {
-                var count = document.getElementsByClassName("phetails").length;
-                var last = document.getElementsByClassName("phdetails").item(count-1);
-                if(count >1){
-                    last.remove();
-                }
-                console.log(count);
-            })
-        })
-		$(document).ready(function () {
-            $("#add2").click(function () {
-                var det = document.getElementById('yedetails'); 
-                var cln = det.cloneNode(true);
-                
-                var ig = document.getElementById('youngexecutives');
-
-                ig.appendChild(cln);        
-                console.log("yo!!!!");
-                //var ctr = document.getElementsByClassName("details").length;
-            })
-            $("#delete2").click(function () {
-                var count = document.getElementsByClassName("yedetails").length;
-                var last = document.getElementsByClassName("yedetails").item(count-1);
-                if(count >1){
-                    last.remove();
-                }
-                console.log(count);
-            })
-        })
-		$(document).ready(function () {
-            $("#add3").click(function () {
-                var det = document.getElementById('iadetails'); 
-                var cln = det.cloneNode(true);
-                
-                var ig = document.getElementById('internalaffairs');
-
-                ig.appendChild(cln);        
-                console.log("yo!!!!");
-                //var ctr = document.getElementsByClassName("details").length;
-            })
-            $("#delete3").click(function () {
-                var count = document.getElementsByClassName("iadetails").length;
-                var last = document.getElementsByClassName("iadetails").item(count-1);
-                if(count >1){
-                    last.remove();
-                }
-                console.log(count);
-            })
-        })
-		$(document).ready(function () {
-            $("#add4").click(function () {
-                var det = document.getElementById('eadetails'); 
-                var cln = det.cloneNode(true);
-                
-                var ig = document.getElementById('externalaffairs');
-
-                ig.appendChild(cln);        
-                console.log("yo!!!!");
-                //var ctr = document.getElementsByClassName("details").length;
-            })
-            $("#delete4").click(function () {
-                var count = document.getElementsByClassName("eadetails").length;
-                var last = document.getElementsByClassName("eadetails").item(count-1);
-                if(count >1){
-                    last.remove();
-                }
-                console.log(count);
-            })
-        })
-		$(document).ready(function () {
-            $("#add5").click(function () {
-                var det = document.getElementById('hrdetails'); 
-                var cln = det.cloneNode(true);
-                
-                var ig = document.getElementById('humanresources');
-
-                ig.appendChild(cln);        
-                console.log("yo!!!!");
-                //var ctr = document.getElementsByClassName("details").length;
-            })
-            $("#delete5").click(function () {
-                var count = document.getElementsByClassName("hrdetails").length;
-                var last = document.getElementsByClassName("hrdetails").item(count-1);
-                if(count >1){
-                    last.remove();
-                }
-                console.log(count);
-            })
-        })
-		$(document).ready(function () {
-            $("#add6").click(function () {
-                var det = document.getElementById('pdetails'); 
-                var cln = det.cloneNode(true);
-                
-                var ig = document.getElementById('promotions');
-
-                ig.appendChild(cln);        
-                console.log("yo!!!!");
-                //var ctr = document.getElementsByClassName("details").length;
-            })
-            $("#delete6").click(function () {
-                var count = document.getElementsByClassName("pdetails").length;
-                var last = document.getElementsByClassName("pdetails").item(count-1);
-                if(count >1){
-                    last.remove();
-                }
-                console.log(count);
-            })
-        })
-		$(document).ready(function () {
-            $("#add7").click(function () {
-                var det = document.getElementById('fdetails'); 
-                var cln = det.cloneNode(true);
-                
-                var ig = document.getElementById('finance');
-
-                ig.appendChild(cln);        
-                console.log("yo!!!!");
-                //var ctr = document.getElementsByClassName("details").length;
-            })
-            $("#delete7").click(function () {
-                var count = document.getElementsByClassName("fdetails").length;
-                var last = document.getElementsByClassName("fdetails").item(count-1);
-                if(count >1){
-                    last.remove();
-                }
-                console.log(count);
-            })
-        })
-		$(document).ready(function () {
-            $("#add8").click(function () {
-                var det = document.getElementById('ddetails'); 
-                var cln = det.cloneNode(true);
-                
-                var ig = document.getElementById('documentations');
-
-                ig.appendChild(cln);        
-                console.log("yo!!!!");
-                //var ctr = document.getElementsByClassName("details").length;
-            })
-            $("#delete8").click(function () {
-                var count = document.getElementsByClassName("ddetails").length;
-                var last = document.getElementsByClassName("ddetails").item(count-1);
-                if(count >1){
-                    last.remove();
-                }
-                console.log(count);
-            })
-        })
-    </script>
 </html>

@@ -9,11 +9,8 @@
 
     <title>LSCS</title>
 
-
-    <!-- jQuery -->
-    <script src= "js/jquery.js"> </script>
     <!-- Bootstrap -->
-     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
@@ -52,7 +49,8 @@
             <!-- /menu profile quick info -->
 
             <br />
-            <!-- sidebar menu -->
+
+               <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -171,78 +169,67 @@
         </div>
         <!-- /top navigation -->
 
+
+<!-- page content -->
         <div class="right_col" role="main">
-          
-          <div class="page-title">
+          <div class="">
+            <div class="page-title">
               <div class="title_left">
-                  <h3>Project Proposal</h3>
+                <h3>Equipment Entry Permit </h3>
               </div>
-          </div>
-          
-          <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
 
             <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                        <div class="x_content">
-                          <form class="form-horizontal form-label-left" id= "pprform1">
-
-                              <div class="row" id="ph" >
-                                  <span class="section">General Information</span>
-                                  <p><label> <h3> Project Head/s </h3> </label></p>
-                              </div>
-
-                            <div class= "row">
-                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                                 <button id="addc" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
-                                 <button id="remc" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                               </div>
-                            </div>
-
-                          <div class= "row">
-                           <p><label> <h3> Objectives</h3> </label></p>
-                                <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                  <input type="text" name="obje1" class="form-control" id="obj1" placeholder="1st Objective">
-                                  <p></p>
-                                  <input type="text" name="obje2" class="form-control" id="obj2" placeholder="2nd Objective">
-                                  <p></p>
-                                  <input type="text" name="obje3" class="form-control" id="obj3" placeholder="3rd Objective">
-                                </div>
-                            </div>
-                
-                            <div class= "row">
-                                 <p><label> <h3> Brief Description of Activity </h3> </label></p>
-                                  <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                    <p class="text-success">/*Guidelines per paragraph are shown here.*/</p>
-                                     <textarea name="desc1" class="form-control"></textarea> 
-
-                                    <p class="text-success">/*Guidelines per paragraph are shown here.*/</p>
-                                     <textarea  name="desc2" class="form-control"></textarea>
-
-                                    <p class="text-success">/*Guidelines per paragraph are shown here.*/</p>
-                                     <textarea  name="desc3" class="form-control"></textarea>
-                                  </div>
-                            </div>
-
-                             <div class="ln_solid"></div> 
-                                <div class="form-group">
-                                  <div class="col-md-12 col-md-offset-11">
-                                    <button id="nextbppr" type="submit" class="btn btn-success align: right">Next</button>
-                                  </div>
-                                </div>
-                          </form>  
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_content">
+                    <form method="post" id = "formEquipment" autocomplete="off">
+                     <span class="section"></span>
+                     
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Name</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input type="text" name= "Name" class="form-control" placeholder="ex: Juan Dela Cruz" />
+                            </div>        
                         </div>
-                    </div>
-                </div>
-            </div>
+                      </div> 
 
-         </div>
-        <!-- /page content -->
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Position</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input type="text" name= "Position" class="form-control" placeholder="ex: Executive Vice President" />
+                            </div>        
+                        </div>
+                      </div>
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Reason For Request</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <textarea name= "reasonRequest" rows="3" class="form-control" placeholder="ex: Concert in Henry Grounds"></textarea> 
+                            </div>        
+                        </div>
+                      </div>  
+
+                      <div class="ln_solid"></div> 
+                      <div class="form-group">
+                        <div class="col-md-12 col-md-offset-11">
+                          <input id="nextEquipment" type="submit" class="btn btn-success align: right" value ="Next">
+                        </div>
+                      </div>
+                    </form>
+                  </div><!-- xcontent -->
+                </div> <!-- xpanel -->              
+              </div> <!-- row -->
+            </div> 
+          </div>
+        </div>
 
     <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
-    <script src= "js/jquery.validate.min.js"> </script>
-    <script src= js/validation.js>
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -279,10 +266,8 @@
     <script src="../vendors/moment/min/moment.min.js"></script>
     <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
-    <script src="/js/dist/jquery.validate.js"></script>
-
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-
+	
   </body>
 </html>

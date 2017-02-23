@@ -49,8 +49,7 @@
             <!-- /menu profile quick info -->
 
             <br />
-
-        <!-- sidebar menu -->
+         <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -169,86 +168,87 @@
         </div>
         <!-- /top navigation -->
 
-     <!-- page content -->
+<!-- page content -->
         <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Trademark Use Application </h3>
-              </div>
-
+                <h3>Approval in Changes of Activity Details </h3>
               </div>
             </div>
             <div class="clearfix"></div>
 
             <div class="row">
-
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-					<form action= "ORG_PreAct_ApprovalUseTrademark2.html" method="submit">
-					<span class="section">General Information</span>
-						<div class="item form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="name">Name: </label>
-							<input type="text" id="name" class="col-md-4 col-sm-4 col-xs-9" placeholder="Enter Name of the Requesting Party" name="name" required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="position">Position: </label>
-							<input type="text" id="position" class="col-md-4 col-sm-4 col-xs-9" placeholder="Enter Position of the Requesting Party" name="position" required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="ouo">Office / Unit / Organization: </label>
-							<input type="text" id="ouo" class="col-md-4 col-sm-4 col-xs-9" placeholder="Enter Office / Unit / Organization" name="ouo" required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="idnum">ID Number: </label>
-							<input type="text" id="idnum" class="col-md-4 col-sm-4 col-xs-9" placeholder="Enter ID Number of the Requesting Party" name="idnum" required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="email">Email Address: </label>
-							<input type="email" id="email" class="col-md-4 col-sm-4 col-xs-9" placeholder="Enter Email Address of the Requesting Party" name="email" required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="telnum">Telephone Number: </label>
-							<input type="text" id="telnum" class="col-md-4 col-sm-4 col-xs-9" placeholder="Enter Telephone Number of the Requesting Party" name="telnum" required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="mobnum">Mobile Number: </label>
-							<input type="text" id="mobnum" class="col-md-4 col-sm-4 col-xs-9" placeholder="Enter Mobile Number of the Requesting Party" name="mobnum" required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="form-group">
-                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-11">
-                          <button type="submit" class="btn btn-success" id="submit">NEXT</button>
+                  <div class="x_content">
+                    <form method="post" id = "approvalChanges" autocomplete="off">
+                     <span class="section"></span>
+  
+                      <div class= "row">
+                          <div class="col-md-8">   
+                            <label class= "col-md-5"> <h4>Type of Activity</h4> </label>
+                              <div class= "form-group col-md-6">
+                                <input type="text" list ="CSOactType" class="form-control col-md-7 col-xs-12" placeholder = "ex: Spiritual Growth ">
+                                  <datalist id="CSOactType">
+                                    <option> Academic</option>
+                                    <option> Special Interest</option>
+                                    <option> Departmental Initiative</option>
+                                    <option> Fundraising</option>
+                                    <option> Community Development</option>
+                                    <option> Organization Development</option>
+                                    <option>Issue Advocacy</option>
+                                    <option>Lasallian Formation/Spiritual Growth</option>
+                                    <option>Outreach</option>                   
+                                  </datalist>
+                              </div>    
+                          </div>
+                        </div>  
+                      
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Changes</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input type="checkbox" name= "venue" class="form-control flat"/> Venue <p></p>
+                               <input type="checkbox" name= "venue" class="form-control flat"/> Date and Time <p></p>
+                                <input type="checkbox" name= "venue" class="form-control flat"/> Program Design <p></p>
+                                 <input type="checkbox" name= "venue" class="form-control flat"/> Cancellation<p></p>
+                            </div>  
                         </div>
-						</div>
-						<br />
-						<br />
-					</form>
-              </div>
-            </div>
+                      </div>  
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Justification/Reason </h4> </label>
+                            <div class= "form-group col-md-6">
+                              <textarea name= "reason" rows="4" class="form-control" placeholder="The facilitator of the recollection is not available."></textarea> 
+                            </div>        
+                        </div>
+                      </div>  
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Requested By:</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input type="text" name= "requestName" class="form-control" placeholder="Juan Dela Cruz" />
+                            </div>        
+                        </div>
+                      </div>  
+
+                      <div class="ln_solid"></div> 
+                      <div class="form-group">
+                        <div class="col-md-12 col-md-offset-11">
+                          <input id="nextApproveChanges" type="submit" class="btn btn-success align: right" value ="Next">
+                        </div>
+                      </div>
+                    </form>
+                  </div><!-- xcontent -->
+                </div> <!-- xpanel -->              
+              </div> <!-- row -->
+            </div> 
           </div>
         </div>
-        <!-- /page content -->
+    
 
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>

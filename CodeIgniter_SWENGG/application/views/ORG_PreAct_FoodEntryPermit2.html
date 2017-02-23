@@ -9,8 +9,10 @@
 
     <title>LSCS</title>
 
+    <script src= "js/jquery.js"> </script>
+
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
@@ -50,20 +52,20 @@
 
             <br />
 
-             <!-- sidebar menu -->
+            <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="ORG_Home.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
+                  <li><a href="ORG_Home.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a> </li>
                   <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu"> 
-                      <li><a href="ORG_AddGOSM.html">Add New GOSM</li>
+                      <li><a href="ORG_GOSM.html">GOSM</a></li>
                       <li><a href="ORG_PreAct.html">Pre-Activity Form</a></li>
                     </ul>
                   </li>
                   <li><a href="ORG_Calendar.html"><i class="fa fa-table"></i> Calendar <span class="fa fa-chevron-down"></span></a>
-                  <li><a href="ORG_GOSM.html"><i class="fa fa-list-alt"></i> GOSM <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="ORG_Charts.html"><i class="fa fa-bar-chart-o"></i> Charts <span class="fa fa-chevron-down"></span></a>
                   </li>
                 </ul>
               </div>
@@ -169,119 +171,61 @@
         </div>
         <!-- /top navigation -->
 
-     <!-- page content -->
-        <div class="right_col" role="main">
+<div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Special Permit for Campus Access</h3>
-              </div>
-
+                <h3>Food Entry Permit</h3>
               </div>
             </div>
             <div class="clearfix"></div>
 
             <div class="row">
-
-              <div class="col-md-12 col-sm-9 col-xs-12">
+              <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-				<form action= "ORG_PreAct_SpecialPermitCampusAccess3.html" method="submit">
-				<div class="x_content">
+                  <div class="x_content">
 
-                    <!-- start form for validation -->
-                    <form id="demo-form" data-parsley-validate>
-						<span class="section">Request Details</span>
-						<div class="item form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="activity">Activity: </label>
-							<select id="activity" required class="col-md-4 col-sm-4 col-xs-9">
-                            <option value="">Select Activity</option>
-                            <option value="officertraining">Officer Training</option>
-                            <option value="generalassembly">General Assembly</option>
-                            <option value="medicalmission">Medical Mission</option>
-							</select>
-						</div>
-						
-						<br />
-						<br />
-						<br />
-						<b><label>REQUESTS</label></b>
-						<table class="table table-striped">
-						  <thead>
-							<tr>
-							  <th>Start Date:</th>
-							  <th>Start Time:</th>
-							  <th>End Date:</th>
-							  <th>End Time:</th>
-							  <th>Venue</th>
-							</tr>
-						  </thead>
-						  <tbody id="requests">
-							  <tr id ="details" class="details">
-								<td>  <input class="form-control" placeholder ="Enter Start Date" required/></td>
-								<td>  <input class="form-control" placeholder ="Enter Start Time" required/></td>
-								<td>  <input class="form-control" placeholder ="Enter End Date" required/></td>
-								<td>  <input class="form-control" placeholder ="Enter End Time" required/></td>
-								<td>  <input class="form-control" placeholder ="Enter Venue" required/></td>
-							  </tr>
-						  </tbody>
-						</table>
-						<br>
-                        <div class = "buttons">
-                          <button id="add" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                          <button id="delete" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                       </div>
-					
-						<br />
-						<br />
-						<div class="item form-group">
-							<label class="control-label col-md-2 col-sm-2 col-xs-12" for="TENP">Total Expected Number of Participants: </label>
-							<input type="number" id="TENP" class="col-md-4 col-sm-4 col-xs-9" name="TENP" placeholder="Enter Total Expected Number of Participants" required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-							<label class="control-label col-md-2 col-sm-2 col-xs-12" for="TENMP">Total Expected Number of Members to Participate: </label>
-							<input type="number" id="TENP" class="col-md-4 col-sm-4 col-xs-9" name="TENMP" placeholder="Enter Total Expected Number of Members to Participate" required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-							<label class="control-label col-md-2 col-sm-2 col-xs-12" for="outsiders">With Outsiders?: </label>
-							<p style="padding: 5px;" class="col-md-4 col-sm-4 col-xs-9">
-							<input type="radio" name="outsiders" id="yes" value="yes" required class="flat"/> Yes
-							<br />
+                    <form class="form-inline form-label-left" id="foodlistform" method="post">
+                      <span class="section">Food Items</span>
 
-							<input type="radio" name="outsiders" id="no" value="no" class="flat"/> No
-							<br />		
-							</p>
-						</div>
-						
-						<br />
-						<br />
-						<br />
-						<div class="item form-group">
-							<label class="control-label col-md-2 col-sm-2 col-xs-12" for="faculty">Faculty In-Charge: </label>
-							<input type="text" id="faculty" class="col-md-4 col-sm-4 col-xs-9" name="faculty" placeholder="Enter Name of Faculty In-Charge" required />
-						</div>
-					
-						<br />
-						<br />
-						<div class="form-group">
-							<label class="control-label col-md-2 col-sm-2 col-xs-12" for="typeofcampusaccess">Type of Campus Access: </label>
-								<select id="typeofcampusaccess" required class="col-md-4 col-sm-4 col-xs-9">
-								<option value="default">Select Type of Campus Access</option>
-								<option value="ca1">[CA-1]Pre-registration of Visitor1/(May enter any gate)</option>
-								<option value="ca2">[CA-2]Extended Stay 2/(10:00pmto 01:00am)</option>
-								<option value="ca3">[CA-3]Overnight2/(01:00am to 06:00am)</option>
-								<option value="ca4">[CA-4]Sunday / Holiday2/(08:00am to 06:00pmonly)</option>
-								<option value="ca5">[CA-5]Exemption from RESTRICTED campus access2</option>
-							</select>
-						</div>
-						
-						<button type="submit" class="btn btn-success col-md-offset-11" id="submit">NEXT</button>
-				</form>
+                        <div class="table-responsive">          
+                          <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th>Quantity</th>
+                                <th>Unit</th>
+                                <th>Description</th>
+                                <th>Estimated Cost</th>
+                              </tr>
+                            </thead>
+                            <tbody id="tr">
+                              <tr>
+                                <td align= "center"><input type="number" name= "fqty" class="form-control" id="fqty"/></td>
+                                <td align= "center"><input type="number" name= "funit" class="form-control" id="funit"/></td>
+                                <td align= "center"><input type="text"   name= "fdes" class="form-control" id="fdes" placeholder="Description"/></td>
+                                <td align= "center"><input type="number" name= "fecost" class="form-control" id="fecost"/></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          </div>
+
+                           <div class= "row">
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                 <button id="addcf" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                 <button id="remcf" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                               </div>
+                            </div>
+
+                    <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-12 col-md-offset-11">
+                          <input id="nextbff2" type="submit" class="btn btn-success align: right" value="Next">
+                        </div>
+                      </div>
+                         
+                      </form>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -289,7 +233,9 @@
         <!-- /page content -->
 
     <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src= "js/jquery.validate.min.js"> </script>
+    <script src= js/validation.js></script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -330,26 +276,4 @@
     <script src="../build/js/custom.min.js"></script>
 	
   </body>
-	<script>
-        $(document).ready(function () {
-            $("#add").click(function () {
-                var det = document.getElementById('details'); 
-                var cln = det.cloneNode(true);
-                
-                var ig = document.getElementById('requests');
-
-                ig.appendChild(cln);        
-                console.log("yo!!!!");
-                //var ctr = document.getElementsByClassName("details").length;
-            })
-            $("#delete").click(function () {
-                var count = document.getElementsByClassName("details").length;
-                var last = document.getElementsByClassName("details").item(count-1);
-                if(count >1){
-                    last.remove();
-                }
-                console.log(count);
-            })
-        })
-    </script>
 </html>

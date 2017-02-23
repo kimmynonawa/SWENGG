@@ -9,8 +9,12 @@
 
     <title>LSCS</title>
 
+    <script src= "js/jquery.js"> </script>
+
+
+
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
@@ -50,7 +54,7 @@
 
             <br />
 
-                     <!-- sidebar menu -->
+               <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -169,97 +173,123 @@
         </div>
         <!-- /top navigation -->
 
-     <!-- page content -->
-        <div class="right_col" role="main">
+<div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Activity Approval Form</h3>
-              </div>
-
+                <h3>Minor Publication Proposal</h3>
               </div>
             </div>
             <div class="clearfix"></div>
 
             <div class="row">
-
-              <div class="col-md-12 col-sm-9 col-xs-12">
+              <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-				<form action= "ORG_Home.html" method="submit">
-				<div class="x_content">
+                  <div class="x_content">
 
-                    <!-- start form for validation -->
-                    <form id="demo-form" data-parsley-validate>
-					<span class="section">Activity Details</span>
-						<div class="item form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="date">Date: </label>
-							<input type="date" id="date" class="col-md-3 col-sm-3 col-xs-9" placeholder="Enter the date of the activity" name="date" required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="fromtime">From time: </label>
-							<input type="time" id="fromtime" class="col-md-2 col-sm-2 col-xs-9" placeholder="Enter the starting time of the activity" name="fromtime"  required />
-                        <div>
-						<div class="item form-group">
-						<label class="control-label col-md-2 col-sm-2 col-xs-12 col-md-offset-1" for="totime">To time: </label>
-							<input type="time" id="totime" class="col-md-2 col-sm-2 col-xs-9" placeholder="Enter the ending time of the activity" name="totime"  required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="venue">Venue: </label>
-							<input type="text" id="venue" class="col-md-3 col-sm-3 col-xs-9" placeholder="Enter the venue of the activity" name="venue" required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="TENMP">Total Expected Number of Members to Participate: </label>
-							<br />
-							<input type="number" id="TENMP" class="col-md-3 col-sm-3 col-xs-9" placeholder="Enter the total expected number of members to participate in the activity" name="TENMP" required />
-						</div>
-						
-						<br />
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="TENP">Total Expected Number of Participants: </label>
-							<input type="number" id="TENP" class="col-md-3 col-sm-3 col-xs-9" placeholder="Enter the total expected number of participants in the activity" name="TENP" required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="reachofactivity">Reach of Activity: </label>
-							<select id="reachofactivity" required class="col-md-3 col-sm-3 col-xs-9">
-								<option value="default">Select Reach of Activity</option>
-								<option value="college">College Wide</option>
-								<option value="university">University Wide</option>
-								<option value="organization">Organization Wide</option>
-								<option value="batch">Batch Wide</option>
-							</select>
-						</div>
-						
-						<br/>
-                        <div class="form-group">
-                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-8">
-						  <button type="submit" class="btn btn-success" id="submit">FINISH</button>
+                    <form id="pubform" class="form-horizontal form-label-left">
+                      <span class="section">General Information</span>
+
+                      <div class= "row">
+                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                          <p><input type="text" class="form-control has-feedback-left" id="pubname" name="pubname" placeholder="Name of Publication"/></p>
+                          <span class="fa fa-file form-control-feedback left" aria-hidden="true"></span>
+                          <select class="form-control" name= "pubtypedropdown"> 
+                          <option selected="selected" disabled="disabled">Select Publication Type</option> 
+                          <option>Big Pub</option> 
+                          </select>
+                        </div>    
+                      </div>  
+
+
+                      <div class="row">
+                        <div class=" form-group col-md-3 col-sm-3">         
+                                   <p> <input type="Number" class="form-control" id="pubfreq" name="pubfreq" placeholder="Frequency"/></p>  
                         </div>
-						</div>
-						<br />
-						<br />
-					</form>
+                        <div class=" form-group col-md-3 col-sm-3">          
+                                  <input type="Number" class="form-control" id="pubcost" name="pubcost" placeholder="Estimated Cost"/>       
+                        </div>
+                      </div>  <!-- row -->
+
+                      <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">   
+                                <label class= "col-md-2"> <h4>Target Date:</h4> </label>
+                                <div class= "form-group col-md-10">
+                                    <input type="date" name= "tdate" class="form-control" name="pubdate" id="pubdate"/>
+                                </div>        
+                        </div>
+                      </div> <!-- row -->
+                      
+                      <div class="ln_solid"></div> 
+                      
+                       <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">      
+                               
+                                <label class= "col-md-2"> <h4> Objectives</h4> </label>
+                                <div class="form-group col-md-10 col-sm-10 col-xs-10">
+                                  <input type="text" class="form-control" id="obj1" name="obj1" placeholder="1st Objective" />
+                                  <p></p>
+                                  <input type="text" class="form-control" id="obj2" name="obj2" placeholder="2nd Objective" />
+                                  <p></p>
+                                  <input type="text" class="form-control" id="obj3" name="obj3" placeholder="3rd Objective" />
+                                </div>      
+                        </div>
+                      </div> <!-- row -->
+
+                      <div class="ln_solid"></div> 
+                      
+                       <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">        
+                           <label class= "col-md-2"> <h4> Proposed Content</h4> </label>
+                                <div class="form-group col-md-10 col-sm-10 col-xs-10">
+                                  <input type="text" class="form-control" id="cont1" name="cont1" placeholder="Publication Content" />
+                                  <p></p>
+                                  <input type="text" class="form-control" id="cont2" name="cont2" placeholder="Publication Content" />
+                                  <p></p>
+                                  <input type="text" class="form-control" id="cont3" name="cont3" placeholder="Publication Content" />
+                                </div>      
+                          </div>
+                        </div> <!-- row -->
+
+                        <div class="ln_solid"></div> 
+
+                        <div class="row">
+                          <div class="col-md-6 col-sm-6 col-xs-12">                           
+                                <label class= "col-md-2"> <h4> Target Readers</h4> </label>
+                                <div class="form-group col-md-10 col-sm-10 col-xs-10">
+                                  <input type="text" class="form-control" id="tread1" name="tread1" placeholder="Target Audience" />
+                                  <p></p>
+                                  <input type="text" class="form-control" id="tread2" name="tread2" placeholder="Target Audience" />
+                                  <p></p>
+                                  <input type="text" class="form-control" id="tread3" name="tread3" placeholder="Target Audience" />
+                                </div>      
+                         </div>
+
+                        <div class="form-group">
+                          <div class="col-md-12 col-md-offset-11">
+                            <input id="nextpub" type="submit" class="btn btn-success align: right" value ="Next">
+                          </div>
+                        </div>
+
+                       </form>            
+                         
+                      </div> <!-- row -->
+                        </div> 
+                      </div>
+                  </div>
+                </div> 
               </div>
             </div>
+
           </div>
         </div>
         <!-- /page content -->
 
     <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+       <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <script src= "js/jquery.validate.min.js"> </script>
+    <script src= js/validation.js>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -300,7 +330,4 @@
     <script src="../build/js/custom.min.js"></script>
 	
   </body>
-  <script>
-  
-  </script>
 </html>

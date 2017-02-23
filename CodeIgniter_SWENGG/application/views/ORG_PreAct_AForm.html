@@ -18,14 +18,13 @@
     <!-- iCheck -->
     <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 	
-    <!-- bootstrap-progressbar  -->
+    <!-- bootstrap-progressbar -->
     <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
     <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-     <!-- Switchery -->
-    <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
   </head>
@@ -175,102 +174,147 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-              
-              </div>
-
+                <h3>Activity Approval Form</h3>
               </div>
             </div>
             <div class="clearfix"></div>
 
             <div class="row">
-
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-                      <div class="form-group" >
-                        <center>   <h3>LIST OF PARTICIPANTS</h3></center>
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> 
-                        </label>
-                                    <div class="x_content">
-
-                    <table class="table table-striped">
-                      <form id ="LPForm">
-                      <thead>
-                        <tr>
-                          <th>ID Number</th>
-                          <th>Last Name</th>
-                          <th>First Name</th>
-                          <th>Middle Initial</th>
-                          <th>Age</th>
-                          <th>Waiver</th>
-                        </tr>
-                      </thead>
-                      <tbody id="student">
-                          <tr id ="details" class="details">
-                            <td>  <input class="form-control" name ="id" placeholder ="Enter ID Number" /></td>
-                            <td>  <input class="form-control" name ="lName" placeholder ="Enter Last Name" /></td>
-                            <td>  <input class="form-control" name = "fName" placeholder ="Enter First Name" /></td>
-                            <td>  <input class="form-control" name ="mName" placeholder ="Enter Middle Initial" /></td>
-                            <td>  <input class="form-control" name = "age" placeholder ="Enter Age" style ="width:120px" required/></td>
-                            <td>  <input type="checkbox" class="js-switch" name="choice" /></td>
-                          </tr>
-                      </tbody>
-                    </table>
-
-                  </div>
-                        <!--
-                        <div id="student" class = "form-inline">
-                            <table>
-                                <th> ID NUMBER </th>
-                                <th> LAST NAME </th>
-                                <th> FIRST NAME</th>
-                                <th> MIDDLE INITIAL </th>
-                                <th> AGE </th>
-                                <th> WAIVER </th>
-                              <tbody>
-                                <tr>
-                                  <td>  <input class="form-control" placeholder ="Enter ID Number" required/></td>
-                                  <td>  <input class="form-control" placeholder ="Enter Last Name" required/></td>
-                                  <td>  <input class="form-control" placeholder ="Enter First Name" required/></td>
-                                  <td>  <input class="form-control" placeholder ="Enter Middle Initial" required/></td>
-                                  <td>  <input class="form-control" placeholder ="Enter Age" style="width:110px" required/></td>
-                                  <td>  <h4>&nbsp&nbsp  WAIVER: <input type="checkbox" class="js-switch" checked /></h4></td>
-                                </tr>
-                              </tbody>
-                            </table>    
-
-                            
-                            <div id = "details" class="form-group details">
-                              <br>
-                              <input class="form-control" placeholder ="ID Number" required/>
-                              <input class="form-control" placeholder ="Last Name" required/>
-                              <input class="form-control" placeholder ="First Name" required/>
-                              <input class="form-control" placeholder ="Middle Initial" required/>
-                              <input class="form-control" placeholder ="Age" style="width:150px" required/>
-                              <label> WAIVER:
-                                <input type="checkbox" class="js-switch" checked />
-                              </label> 
-
-                           
-                                
-                                 
-                                                
-                                              
-                            </div>        -->                 
+                  <div class="x_content">
+                    <form id="aform1" method="post" autocomplete="off">
+                      <span class="section">General Information</span>
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Part of GOSM:</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <input type="radio"  id="gosmoption" name= "gosmoption" class="flat"/> <label> Yes</label>
+                            <input type="radio"  id="gosmoption" name= "gosmoption" class="flat"/> <label>No </label>
+                          </div>        
                         </div>
-                        <br>
-                        <div class = "buttons">
-                          <button id="add" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                          <button id="delete" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                       </div>
-                      </div>
-                     
-              </div>
-            </div>
+                      </div>  
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Activity Name:</h4> </label>
+                          <div class= "form-group col-md-6">
+                              <input type="text" name= "actName" class="form-control" placeholder="ex:  General Assembly"/>
+                          </div>        
+                        </div>
+                      </div>  
+
+                    <p> </p>
+                    <span class="section">Nature of Activity</span>
+                    <div class= "row">
+                      <div class="col-md-8">   
+                        <label class= "col-md-5"> <h4>CSO and Special Groups</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <input type="text" name="CSOactOptions" list ="CSOactOptions"  class="form-control col-md-7 col-xs-12" placeholder = "ex: Special Interest">
+                              <datalist id="CSOactOptions">
+                                <option> Academic</option>
+                                <option> Special Interest</option>
+                                <option> Departmental Initiative</option>
+                                <option> Fundraising</option>
+                                <option> Community Development</option>
+                                <option> Organization Development</option>
+                                <option>Issue Advocacy</option>
+                                <option>Lasallian Formation/Spiritual Growth</option>
+                                <option>Outreach</option>                   
+                              </datalist>
+                          </div>
+                          <label class= "col-md-5"> <h4>USG</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <input type="text" list ="USGactOptions"  name="USGactOptions" class="form-control col-md-7 col-xs-12" placeholder = "ex: Issue Advocacy">
+                              <datalist id="USGactOptions">
+                                <option> Student Services</option>
+                                <option> Student Rights and Welfare</option>
+                                <option> Rules and Policies</option>
+                                <option> Fundraising</option>
+                                <option> Community Development</option>
+                                <option> Organization Development</option>
+                                <option> Issue Advocacy</option>
+                                <option> Lasallian Formation/Spiritual Growth</option>
+                                <option>Outreach</option>                   
+                              </datalist>
+                          </div>                
+                        </div>
+                      </div>  
+          
+                      <p> </p>
+                      <span class="section">Type of Activity</span>
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Through CSO or DAAM</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <input type="text" list ="CSOactType" class="form-control col-md-7 col-xs-12" name="CSOactType"  placeholder = "ex: Special Interest">
+                              <datalist id="CSOactType">
+                                <option> Academic</option>
+                                <option> Special Interest</option>
+                                <option> Departmental Initiative</option>
+                                <option> Fundraising</option>
+                                <option> Community Development</option>
+                                <option> Organization Development</option>
+                                <option>Issue Advocacy</option>
+                                <option>Lasallian Formation/Spiritual Growth</option>
+                                <option>Outreach</option>                   
+                              </datalist>
+                          </div>
+                          <label class= "col-md-5"> <h4>Through SLIFE</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <input type="text" list ="USGactType" name="USGactType" class="form-control col-md-7 col-xs-12" placeholder = "ex: Outreach">
+                              <datalist id="USGactType">
+                                <option> Academic</option>
+                                <option> Special Interest</option>
+                                <option> Departmental Initiative</option>
+                                <option> Fundraising</option>
+                                <option> Community Development</option>
+                                <option> Organization Development</option>
+                                <option>Issue Advocacy</option>
+                                <option>Lasallian Formation/Spiritual Growth</option>
+                                <option>Outreach</option>                   
+                              </datalist>
+                          </div>                
+                        </div>
+                      </div>  
+                      <p> </p>
+                      <span class="section">Reach of Activity</span>
+                      <div class= "row">
+                        <div class="col-md-8">   
+                        <label class= "col-md-5"> <h4>Through CSO or DAAM</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <input type="text" list ="reachType" name="reachType" class="form-control col-md-7 col-xs-12" placeholder = "ex: College Wide">
+                              <datalist id="reachType">
+                                <option> College Wide</option>
+                                <option> University Wide</option>
+                                <option> Organization Wide</option>
+                                <option> Batch Wide</option>               
+                              </datalist>
+                            </div>      
+                        </div>
+                      </div> 
+
+                      <div class="ln_solid"></div> 
+                      <div class="form-group">
+                        <div class="col-md-12 col-md-offset-11">
+                          <input id="nextaform" type="submit" class="btn btn-success align: right" Value="Next">
+                        </div>
+                      </div>    
+                    </form>
+                  </div><!-- xcontent -->
+                </div> <!-- xpanel -->              
+              </div> <!-- row -->
+            </div> 
           </div>
         </div>
-        <!-- /page content -->
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+
+    <!-- IMPORTANT IMPORTS -->
+    <script src="js/jquery.min.js"></script>
+    <script src= "js/jquery.validate.min.js"> </script>
+    <script src= js/validation.js></script>
+    <script src= "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js" </script>
+    <!-- IMPORTANT IMPORTS -->
+    
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -309,63 +353,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-	 <script src="../vendors/switchery/dist/switchery.min.js"></script>
-
-
-    <script>
-        $(document).ready(function () {
-            $("#add").click(function () {
-                var det = document.getElementById('details'); 
-                var cln = det.cloneNode(true);
-                
-                var ig = document.getElementById('student');
-
-                ig.appendChild(cln);        
-                console.log("yo!!!!");
-                //var ctr = document.getElementsByClassName("details").length;
-            });
-            $("#delete").click(function () {
-                var count = document.getElementsByClassName("details").length;
-                var last = document.getElementsByClassName("details").item(count-1);
-                if(count >1){
-                    last.remove();
-                }
-                console.log(count);
-            });
-
-            $("#LPForm").validate({
-              rules:{
-                id: {
-                  required: true,
-                  maxlength: 8
-
-                },
-                lName: "required",
-                fName: "required",
-                mName: "required",
-                age: "required",
-                choice: "checked"
-              },
-              success: removeError,
-              messages: {
-                id: {
-                  required: "Please enter the ID Number",
-                  maxlength: "Invalid ID"
-                },
-                lName: "Please enter the last name",
-                fName: "Please enter the first name",
-                mName: "Please enter the middle name",
-                age: "Please enter the age",
-                choice: "Please choose an option"
-              }
-            });
-
-        })
-    </script>
-
+	
   </body>
 </html>
-
-
-
- 

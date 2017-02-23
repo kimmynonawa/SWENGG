@@ -49,8 +49,7 @@
             <!-- /menu profile quick info -->
 
             <br />
-
-              <!-- sidebar menu -->
+            <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -174,87 +173,52 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Special Approval Slip</h3>
-              </div>
-
-              </div>
-            </div>
-            <div class="clearfix"></div>
-
-            <div class="row">
-
-				<div class="col-md-12 col-sm-9 col-xs-12">
-                <div class="x_panel">
-				<form action= "ORG_Home.html" method="submit">
-				<div class="x_content">
-
-                    <!-- start form for validation -->
-                    <form id="demo-form" data-parsley-validate>
-					<span class="section">General Information</span>
-						<div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="activity">Activity: </label>
-							<select id="activity" required class="col-md-4 col-sm-4 col-xs-9">
-                            <option value="">Select Activity</option>
-                            <option value="officertraining">Officer Training</option>
-                            <option value="generalassembly">General Assembly</option>
-                            <option value="medicalmission">Medical Mission</option>
-							</select>
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="submission">Type of Submission: </label>
-							<select id="submission" required class="col-md-4 col-sm-4 col-xs-9">
-                            <option value="default">Select Type of Submission</option>
-							<option value="latesubmission">Late Submission</option>
-							<option value="incaseofchange">In Case of Change</option>
-							<option value="cancellationofactivity">Cancellation of Activity</option>
-							<option value="activitynotingosm">Activity Not in GOSM</option>
-							<option value="withouttermendreq">w/o Term-End Requirements</option>
-							<option value="lostaform">Lost A-Form</option>
-							</select>
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="reason">Justification(Reason): </label>
-							<textarea id="reason" required="required" name="reason" class="col-md-4 col-sm-4 col-xs-9" placeholder="Enter reason/s for the special approval slip" data-parsley-trigger="keyup" data-parsley-validation-threshold="10"></textarea>
-						</div>
-						
-						<br />
-						<br />
-						<br />
-						<br />
-						<div class="item form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="submittedby">Submitted by: </label>
-							<input type="text" id="submittedby" class="col-md-4 col-sm-4 col-xs-9" placeholder="Enter Name" name="submittedby" required />
-						</div>
-							
-						<br />
-						<br />
-						<div class="item form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="president">Org / College / USG President: </label>
-							<input type="text" id="president" class="col-md-4 col-sm-4 col-xs-9" placeholder="Enter the name of the org/college/USG president" name="president" required />
-						</div>
-						
-						<br/>
-						<br />
-						<div class="form-group">
-						<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-11">
-						  <button type="submit" class="btn btn-success" id="submit">NEXT</button>
-						</div>
-						</div>
-						<br />
-						<br />
-					</form>
-				</div>
-				</div>
-				</div>
+                <h3>Fill out Pre-Activity Form</h3>
               </div>
             </div>
           </div>
+          <div class="clearfix"></div>
+            
+          <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_content">
+                    <form id="preActForm" class="form-horizontal form-label-left">
+                      <span class="section"> </span>
+                      
+
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-3"> <h4>Select Activity Type</h4> </label>
+                            <div class= "form-group col-md-7">
+                              <input type="text" list ="actOptions" id="preActType" class="form-control col-md-7 col-xs-12" placeholder="ex: General Assembly">
+                              <datalist id="actOptions">
+                                <option value="General Assembly">
+                                <option value="Outreach">
+                                <option value="Contest">
+                                <option value="Concert">
+                              </datalist>
+                            </div>        
+                        </div>
+                      </div>
+
+                      
+             
+                      
+                      <div class="ln_solid"></div> 
+  
+                      <div class="form-group">
+                        <div class="col-md-12 col-md-offset-10">
+                          <input type="submit" class="btn btn-danger" value="Cancel" id="returnHome">
+                          <input  type="submit" class="btn btn-success align: right" value="Next" id="nextPreAct">
+                        </div>
+                      </div>
+                    </form>                     
+                  </div> 
+                </div> 
+              </div>
+          </div> <!-- end of row -->
         </div>
         <!-- /page content -->
 
@@ -295,9 +259,19 @@
     <!-- bootstrap-daterangepicker -->
     <script src="../vendors/moment/min/moment.min.js"></script>
     <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-
+      <!-- Switchery -->
+    <script src="../vendors/switchery/dist/switchery.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
+    
 	
+
+      <script>
+        $(document).ready(function () {
+            $("#submit").click(function () {
+              window.location.href = "ORG_PreAct_AForm.html";
+            })
+        })
+    </script>
   </body>
 </html>

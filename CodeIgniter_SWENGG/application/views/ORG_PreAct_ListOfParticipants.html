@@ -18,13 +18,14 @@
     <!-- iCheck -->
     <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 	
-    <!-- bootstrap-progressbar -->
+    <!-- bootstrap-progressbar  -->
     <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
     <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
+     <!-- Switchery -->
+    <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
   </head>
@@ -50,7 +51,7 @@
 
             <br />
 
-               <!-- sidebar menu -->
+            <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -174,53 +175,65 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Special Permit for Campus Access</h3>
-              </div>
-
               </div>
             </div>
-            <div class="clearfix"></div>
+          </div>
+          <div class="clearfix"></div>
 
-            <div class="row">
+          <div class="row">
 
-				<div class="col-md-12 col-sm-9 col-xs-12">
-                <div class="x_panel">
-				<form action= "ORG_PreAct_SpecialPermitCampusAccess2.html" method="submit">
-				<div class="x_content">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="form-group" >
+                  <center>   <h3>List of Participants</h3></center>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12"> 
+                        </label>
+                    <div class="x_content">
 
-                    <!-- start form for validation -->
-                    <form id="demo-form" data-parsley-validate>
-					<span class="section">Important Things to Remember</span>
-					
-						<div class="form-group">
-						(1)This form is used ONLY for requesting permission for ACCESS OF PERSONSinto the campus.
-						</div>
-						<div class="form-group">
-						(2)This form will be accepted only within office hours (Mon to Fri: 8:00am to12:00pm and 1:30pm to 5:00pm)
-						</div>
-						<div class="form-group">
-						(3)This form must be submittedat the Security Office (J108)no later than two (2) working daysbefore the requested date ofcampus access.(Saturday is not counted as a working day for this purpose)
-						</div>
-						<div class="form-group">
-						(4)This form is considered an application only unless a final decision is made and indicated on this form.
-						</div>
-						<div class="form-group">
-						(5)Clinics in campus are open only from 06:00am to 10:00pm, Mondays to Saturdays.
-						</div>
-						<div class="form-group">
-						<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-11">
-						  <button type="submit" class="btn btn-success" id="submit">NEXT</button>
-						</div>
-						</div>
-						<br />
-						<br />
-				</form>
+                    <table class="table table-striped">
+                      <form id ="LPForm" method ="post">
+                      <thead>
+                        <tr>
+                          <th>ID Number</th>
+                          <th>Last Name</th>
+                          <th>First Name</th>
+                          <th>Middle Initial</th>
+                          <th>Age</th>
+                          <th>Waiver</th>
+                        </tr>
+                      </thead>
+                      <tbody id="student">
+                          <tr id ="details" class="details">
+                            <td>  <input class="form-control" name ="id" placeholder ="Enter ID Number" /></td>
+                            <td>  <input class="form-control" name ="lName" placeholder ="Enter Last Name" /></td>
+                            <td>  <input class="form-control" name = "fName" placeholder ="Enter First Name" /></td>
+                            <td>  <input class="form-control" name ="mName" placeholder ="Enter Middle Initial" /></td>
+                            <td>  <input class="form-control" name = "age" placeholder ="Enter Age" style ="width:120px" required/></td>
+                            <td>  <input type="checkbox" class="js-switch" name="choice" /></td>
+                          </tr>
+                      </tbody>
+                    </table>
+
+                  </div>
+
+                  <div class = "buttons">
+                    <button id="add" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
+                    <button id="delete" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                  </div>
+
+
+                  <div class="ln_solid"></div> 
+                    <div class="form-group">
+                      <div class="col-md-12 col-md-offset-11">
+                        <input id="nextTrademark2" type="submit" class="btn btn-success align: right" value ="Next"> <p></p>
+                      </div>
+                    </div>
+                  </div>    
               </div>
             </div>
           </div>
         </div>
         <!-- /page content -->
-
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -261,6 +274,63 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-	
+	 <script src="../vendors/switchery/dist/switchery.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#add").click(function () {
+                var det = document.getElementById('details'); 
+                var cln = det.cloneNode(true);
+                
+                var ig = document.getElementById('student');
+
+                ig.appendChild(cln);        
+                console.log("yo!!!!");
+                //var ctr = document.getElementsByClassName("details").length;
+            });
+            $("#delete").click(function () {
+                var count = document.getElementsByClassName("details").length;
+                var last = document.getElementsByClassName("details").item(count-1);
+                if(count >1){
+                    last.remove();
+                }
+                console.log(count);
+            });
+
+            $("#LPForm").validate({
+              rules:{
+                id: {
+                  required: true,
+                  maxlength: 8
+
+                },
+                lName: "required",
+                fName: "required",
+                mName: "required",
+                age: "required",
+                choice: "checked"
+              },
+              success: removeError,
+              messages: {
+                id: {
+                  required: "Please enter the ID Number",
+                  maxlength: "Invalid ID"
+                },
+                lName: "Please enter the last name",
+                fName: "Please enter the first name",
+                mName: "Please enter the middle name",
+                age: "Please enter the age",
+                choice: "Please choose an option"
+              }
+            });
+
+        })
+    </script>
+
   </body>
 </html>
+
+
+
+ 

@@ -8,9 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>LSCS</title>
+        <script src= "js/jquery.js"> </script>
+
 
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
@@ -49,20 +51,21 @@
             <!-- /menu profile quick info -->
 
             <br />
-          <!-- sidebar menu -->
+
+            <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="ORG_Home.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
+                  <li><a href="ORG_Home.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a> </li>
                   <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu"> 
-                      <li><a href="ORG_AddGOSM.html">Add New GOSM</li>
+                      <li><a href="ORG_GOSM.html">GOSM</a></li>
                       <li><a href="ORG_PreAct.html">Pre-Activity Form</a></li>
                     </ul>
                   </li>
                   <li><a href="ORG_Calendar.html"><i class="fa fa-table"></i> Calendar <span class="fa fa-chevron-down"></span></a>
-                  <li><a href="ORG_GOSM.html"><i class="fa fa-list-alt"></i> GOSM <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="ORG_Charts.html"><i class="fa fa-bar-chart-o"></i> Charts <span class="fa fa-chevron-down"></span></a>
                   </li>
                 </ul>
               </div>
@@ -168,97 +171,69 @@
         </div>
         <!-- /top navigation -->
 
-     <!-- page content -->
-        <div class="right_col" role="main">
+<div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Trademark Use Application</h3>
-              </div>
-
+                <h3>Project Proposal</h3>
               </div>
             </div>
             <div class="clearfix"></div>
 
             <div class="row">
-
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-					<form action= "ORG_Home.html" method="submit">
-					<span class="section">General Information</span>
-						<div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Trademark to use: </label>
-                        <div class="col-md-4 col-sm-4 col-xs-9">
-                          <select class="select2_group form-control">
-							<optgroup label="Logos / Design">
-                              <option value="delasalleuniversitylogo">De La Salle University Logo</option>
-                              <option value="starscholarsdesign">Star Scholars Design</option>
-                            </optgroup>
-                            <optgroup label="DLSU labels">
-                              <option value="delasalleuniversity">De La Salle University</option>
-                              <option value="dlsum">DLSU-M</option>
-							  <option value="lasallegreenarchers">La Salle Green Archers</option>
-                              <option value="lasalle">La Salle</option>
-							  <option value="dlsu">DLSU</option>
-							  <option value="ls">LS</option>
-                              <option value="greenarcher">Green Archer</option>
-							  <option value="delasalleathletics">De La Salle Athletics</option>
-                            </optgroup>
-                            <optgroup label="DLSU taglines">
-                              <option value="animolasalle">Animo La Salle</option>
-                              <option value="thefuturebeginshere">The Future Begins Here</option>
-                              <option value="wemeanbusiness">We Mean Business</option>
-                              <option value="creatingthenextgreatidea">Creating the Next Great Idea</option>
-							  <option value="bepartofthebusinessclass">Be Part of the Business Class</option>
-                              <option value="keeplearning">Keep Learning</option>
-							  <option value="hiptobehere">Hip to Be Here</option>
-                              <option value="beyondhigherlearning">Beyond Higher Learning</option>
-							  <option value="nevershallwefail">Never Shall We Fail</option>
-							  <option value="greenwhitefights">Green White Fights</option>
-                            </optgroup>
-                          </select>
+                  <div class="x_content">
+
+
+
+                    <form class="form-inline form-label-left" novalidate id="pprform3">
+                      <span class="section">Breakdown of Expenses</span>
+
+                        <div class="table-responsive">          
+                          <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th>Material</th>
+                                <th>Quantity</th>
+                                <th>Unit Cost</th>
+                                <th>Sub-total</th>
+                              </tr>
+                            </thead>
+                            <tbody id= "trr">
+                              <tr>
+                                <td align= "center"><input type="text"   name= "mat3" class="form-control" id="mat3" placeholder="Material name"/></td>
+                                <td align= "center"><input type="number" name="qty3" class="form-control" id="qty3" placeholder="Quantity"/></td>
+                                <td align= "center"><input type="number" name= "ucost3" class="form-control" id="ucost3" placeholder="Unit Cost"/></td>
+                                <td align="center" style= "background-color:#D3D3D3"><h4> P750.00</h4></td>
+                              </tr>
+                            </tbody>
+                               <tr>
+                                <td align= "center"></td>
+                                <td align= "center"></td>
+                                <td align= "center"></td>
+                                <td align= "left"><h4>Total:</h4></td>
+                              </tr>
+                          </table>
+                          </div>
+
+                          <div class= "row">
+                            <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                               <button id="addc3" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                <button id="remc3" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                            </div>
+                          </div>
+
+                     <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-12 col-md-offset-11">
+                          <input id="nextbppr3" type="submit" class="btn btn-success align: right" value="Next">
                         </div>
-						</div>
-						
-						<br />
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="purpose">Purpose of Use: </label>
-							<input type="text" id="purpose" class="col-md-4 col-sm-4 col-xs-9" placeholder="Enter the purpose of using the selected trademark" name="purpose" required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="activity">Activity / Event Where the Trademark Will Be Used: </label>
-							<input type="text" id="activity" class="col-md-4 col-sm-4 col-xs-9" placeholder="Enter the activity/event where the trademark will be used" name="activity" required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="duration">Proposed time of duration: </label>
-							<input type="text" id="duration" class="col-md-4 col-sm-4 col-xs-9" placeholder="Enter the proposed time of duration" name="duration" required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="venue">Venue of Activity / Event: </label>
-							<input type="text" id="venue" class="col-md-4 col-sm-4 col-xs-9" placeholder="Enter the venue of activity/event" name="venue" required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="form-group">
-                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-11">
-                          <button type="submit" class="btn btn-success" id="submit">NEXT</button>
-                        </div>
-						</div>
-						<br />
-						<br />
-					</form>
+                      </div>
+                         
+                      </form>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -266,7 +241,9 @@
         <!-- /page content -->
 
     <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src= "js/jquery.validate.min.js"> </script>
+    <script src= js/validation.js></script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

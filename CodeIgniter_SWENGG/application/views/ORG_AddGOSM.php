@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,24 +10,27 @@
 
     <title>LSCS</title>
 
+
+    <!-- jQuery -->
+    <script src= "<?php echo base_url();?>js/jquery.js"> </script>
     <!-- Bootstrap -->
-    <link href=" <?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href=" <?php echo base_url();?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href=" <?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href=" <?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
+    <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+  
     <!-- bootstrap-progressbar -->
-    <link href=" <?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href=" <?php echo base_url();?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="<?php echo base_url();?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href=" <?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href=" <?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -39,7 +43,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="<?php echo base_url();?>images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -49,20 +53,21 @@
             <!-- /menu profile quick info -->
 
             <br />
+
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="ORG_Home.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
+                  <li><a href="ORG_Home.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a> </li>
                   <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu"> 
-                      <li><a href="ORG_AddGOSM.html">Add New GOSM</li>
+                      <li><a href="ORG_GOSM.html">GOSM</a></li>
                       <li><a href="ORG_PreAct.html">Pre-Activity Form</a></li>
                     </ul>
                   </li>
                   <li><a href="ORG_Calendar.html"><i class="fa fa-table"></i> Calendar <span class="fa fa-chevron-down"></span></a>
-                  <li><a href="ORG_GOSM.html"><i class="fa fa-list-alt"></i> GOSM <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="ORG_Charts.html"><i class="fa fa-bar-chart-o"></i> Charts <span class="fa fa-chevron-down"></span></a>
                   </li>
                 </ul>
               </div>
@@ -168,226 +173,207 @@
         </div>
         <!-- /top navigation -->
 
-     <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
+              <div class="right_col" role="main">
+          
+          <div class="page-title">
               <div class="title_left">
-                <h3>Fill Out GOSM</h3>
+                  <h3>Fill Out GOSM</h3>
               </div>
-
-              </div>
-            </div>
-            <div class="clearfix"></div>
+          </div>
+          
+          <div class="clearfix"></div>
 
             <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_content">
+                          <form class="form-horizontal form-label-left" id= "gosmform1" action="addGosm1" method="post">
 
-				<div class="col-md-12 col-sm-9 col-xs-12">
-                <div class="x_panel">
-				<form action= "ORG_GOSM2.html" method="submit">
-				<div class="x_content">
+                          <div class="row" id="gi" >
+                             <span class="section">General Information</span>
+                          </div>
 
-                    <!-- start form for validation -->
-                    <form id="demo-form" data-parsley-validate>
-					<span class="section">General Information</span>
-						<div class="item form-group">
-							<label class="control-label col-md-2 col-sm-2 col-xs-12" for="reason">Goals: </label>
-							<textarea id="goals" name="goals" placeholder="Enter the goals of the organization for the activity" class="col-md-4 col-sm-4 col-xs-9" data-parsley-trigger="keyup" data-parsley-validation-threshold="10"></textarea>
-						</div>
-						
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<div class="item form-group">
-							<label class="control-label col-md-2 col-sm-2 col-xs-12" for="reason">Objectives: </label>
-							<textarea id="objectives" name="objectives" placeholder="Enter the objectives of the organization for the activity" class="col-md-4 col-sm-4 col-xs-9" data-parsley-trigger="keyup" data-parsley-validation-threshold="10"></textarea>
-						</div>
-						
-						<br />
-						<br />
-						<br />
-						<br />
-						<div class="item form-group">
-							<label class="control-label col-md-2 col-sm-2 col-xs-12" for="reason">Brief Description: </label>
-							<textarea id="description" required="required" name="description" placeholder="Enter the brief description of the activity"class="col-md-4 col-sm-4 col-xs-9" data-parsley-trigger="keyup" data-parsley-validation-threshold="10"></textarea>
-						</div>
-						
-						<br />
-						<br />
-						<br />
-						<br />
-						<div class="item form-group">
-							<label class="control-label col-md-2 col-sm-2 col-xs-12" for="submittedby">Measures: </label>
-							<input type="text" id="measures" class="col-md-4 col-sm-4 col-xs-9" placeholder="Enter the measures of the activity" name="measures" required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-							<label class="control-label col-md-2 col-sm-2 col-xs-12" for="targetdate">GOSM Target Date: </label>
-							<p style="padding: 5px;" class="col-md-4 col-sm-4 col-xs-9">
-							<input type="radio" name="targetdate" id="td1" value="Venue" required class="flat"/> Year Long
-							<br />
+                            <div class= "row">
+                              <div class="col-md-1 col-sm-1 form-group">
+                                <label> <h3> Goals</h3> </label>
+                              </div>
 
-							<input type="radio" name="targetdate" id="td2" value="dateandtime" class="flat"/> Term Long
-							<br />
+                              <div class="col-md-4 col-sm-4 form-group">
+                                <textarea name="gosmgoals" rows="4" class="form-control"></textarea> 
+                              </div>
+                            </div>
 
-							<input type="radio" name="targetdate" id="td4" value="cancellation" class="flat" /> Days
-							<br />
-							</p>
-								
-						</div>
-						
-						<br />
-						<br />
-						<br />
-						<br />
-						<div class="item form-group">
-							<label class="control-label col-md-1 col-sm-1 col-xs-12 col-md-offset-2" for="fromdate"> Start Date: </label>
-							<input type="date" id="fromdate" class="col-md-2 col-sm-2 col-xs-9" placeholder="Enter the start date of the activity" name="fromdate" required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-							<label class="control-label col-md-1 col-sm-1 col-xs-12 col-md-offset-2" for="todate">End Date: </label>
-							<input type="date" id="todate" class="col-md-2 col-sm-2 col-xs-9" placeholder="Enter the end date of the activity" name="todate" required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-							<label class="control-label col-md-2 col-sm-2 col-xs-12" for="time">Time: </label>
-							<input type="time" id="time" class="col-md-4 col-sm-4 col-xs-9" placeholder="Enter the time of the activity" name="time" required />
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-							<label class="control-label col-md-2 col-sm-2 col-xs-12" for="submittedby">Venue: </label>
-							<input type="text" id="venue" class="col-md-4 col-sm-4 col-xs-9" placeholder="Enter the venue of the activity" name="venue" required />
-						</div>
-						
-						<br />
-						<br />
-						<b>Nature of Activity</b>
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="csoandspecialgroups">CSO and Special Groups: </label>
-							<select id="csoandspecialgroups" required class="col-md-4 col-sm-4 col-xs-9">
-								<option value="default">Select Nature Of Activity</option>
-								<option value="academic">Academic</option>
-								<option value="specialinterest">Special Interest</option>
-								<option value="departmentalinitiative">Departmental Initiative</option>
-								<option value="fundraising">Fundraising</option>
-								<option value="communitydevelopment">Community Development</option>
-								<option value="organizationdevelopment">Organization Development</option>
-								<option value="issueadvocacy">Issue Advocacy</option>
-								<option value="LFSG">Lasallian Formation/Spiritual Growth</option>
-								<option value="outreach">Outreach</option>
-							</select>
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="usg">USG: </label>
-							<select id="usg" required class="col-md-4 col-sm-4 col-xs-9">
-								<option value="default">Select Nature Of Activity</option>
-								<option value="studentservice">Student Service</option>
-								<option value="SRW">Student's Rights and Welfare</option>
-								<option value="rulesandpolicies">Rules and Policies</option>
-								<option value="fundraising">Fundraising</option>
-								<option value="communitydevelopment">Community Development</option>
-								<option value="organizationdevelopment">Organization Development</option>
-								<option value="issueadvocacy">Issue Advocacy</option>
-								<option value="LFSG">Lasallian Formation/Spiritual Growth</option>
-								<option value="outreach">Outreach</option>
-							</select>
-						</div>
-						
-						<br />
-						<br />
-						<b>Type of Activity</b>
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="throughcsodaam">Through CSO / DAAM: </label>
-							<select id="throughcsodaam" required class="col-md-4 col-sm-4 col-xs-9">
-								<option value="default">Select Type Of Activity</option>
-								<option value="academic">Academic Contest</option>
-								<option value="material">Distribution</option>
-								<option value="equipment">General Assembly</option>
-								<option value="material">Seminar/Workshops</option>
-								<option value="equipment">Publicity/Awareness Campaign</option>
-								<option value="material">Meetings</option>
-								<option value="equipment">Spiritual Activity</option>
-								<option value="material">Recruitment/Audition</option>
-								<option value="equipment">Recreation</option>
-							</select>
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="throughslife">Through Slife: </label>
-							<select id="throughslife" required class="col-md-4 col-sm-4 col-xs-9">
-								<option value="default">Select Type Of Activity</option>
-								<option value="academic">Alliance with Outside Organizations</option>
-								<option value="material">Off-Campus Activities</option>
-								<option value="equipment">Seminar with Distinguished Speakers</option>
-								<option value="material">Conference Involving Outside Participants</option>
-								<option value="equipment">Solicitations</option>
-								<option value="material">Fundraising</option>
-								<option value="equipment">Donation Drive</option>
-							</select>
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-							<label class="control-label col-md-2 col-sm-2 col-xs-12" for="submittedby">Related to: </label
-							<div class="item form-group">
-								<label class="control-label col-md-1 col-sm-1 col-xs-12" for="r">R: </label>
-								<input type="number" id="r" class="col-md-1 col-sm-1 col-xs-9" name="r" required />
-							</div>
-							<br />
-							<div class="item form-group">
-								<label class="control-label col-md-1 col-sm-1 col-xs-12 col-md-offset-2" for="n">N: </label>
-								<input type="number" id="n" class="col-md-1 col-sm-1 col-xs-9" name="n" required />
-							</div>
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-							<label class="control-label col-md-2 col-sm-2 col-xs-12" for="budget">Budget: </label>
-							<input type="number" id="budget" class="col-md-4 col-sm-4 col-xs-9" placeholder="Enter the breakdown of expenses of the activity" name="budget" required />
-						</div>
-						
-						<br />
-						<br />
-						<br />
-						<br />
-						<div class="form-group">
-						<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-11">
-						  <button type="submit" class="btn btn-success" id="submit">NEXT</button>
-						</div>
-						</div>
-						<br />
-						<br />
-      
-              </div>
+                            <div class= "row">
+                              <div class="col-md-1 col-sm-1 form-group">
+                                <label> <h3> Objectives</h3> </label>
+                              </div>
+                              <div class="col-md-4 col-sm-4 form-group">
+                                <textarea name="gosmobj" rows="4" class="form-control"></textarea> 
+                              </div>
+                            </div>
+
+                            <div class= "row">
+                              <div class="col-md-1 col-sm-1 form-group">
+                                <label> <h3> Description</h3> </label>
+                              </div>
+                              <div class="col-md-4 col-sm-4 form-group">
+                                <textarea name="gosmdes" rows="4" class="form-control"></textarea> 
+                              </div>
+                            </div>
+
+                            <div class= "row">
+                              <div class="col-md-1 col-sm-1 form-group">
+                                <label> <h3> Measures</h3> </label>
+                              </div>
+                              <div class="col-md-4 col-sm-4 form-group">
+                                 <input type="text" name="gosmmeas" class="form-control" id="gosmmeas">
+                              </div>
+                            </div>
+                            
+
+                            <div class="ln_solid"></div> 
+
+                            <div class="row" id="sd" >
+                             <span class="section">Specific Details</span>
+                          </div>
+
+                          <div class= "row">
+                              <div class="col-md-1 col-sm-1 form-group">
+                                <label> <h3>Duration</h3> </label>
+                              </div>
+
+                              <div class="col-md-1 col-sm-1 form-group">
+                               <p style="padding: 5px;">
+                                <input type="radio" name="gosmdr" id="gosmdr" class= "flat" value="Year Long"> Year Long
+                               </p>
+                              </div>
+
+                              <div class="col-md-1 col-sm-1 form-group">
+                                <p style="padding: 5px;">
+                                  <input type="radio" name="gosmdr" id="gosmdr" class= "flat"/> Term Long
+                                </p>
+                              </div>
+
+                             <div class="col-md-1 col-sm-1 form-group">
+                              <p style="padding: 5px;">
+                                <input type="radio" name="gosmdr" id="gosmdr" class= "flat"/> Days
+                              </p>
+                             </div>
+                          </div>
+
+                            <div class= "row">
+                              <div class="col-md-1 col-sm-1 form-group">
+                                <label> <h3> Date</h3> </label>
+                              </div>
+                              <div class="col-md-2 col-sm-2 form-group">
+                                 <input type="date" name="gosmsfromdate" class="form-control" id="gosmsdate">
+                              </div>
+
+                              <div class="col-md-2 col-sm-2 form-group">
+                                 <input type="date" name="gosmetodate" class="form-control" id="gosmedate">
+                              </div>
+                            </div>
+
+                            <div class= "row">
+                              <div class="col-md-1 col-sm-1 form-group">
+                                <label> <h3> Time</h3> </label>
+                              </div>
+                              <div class="col-md-2 col-sm-2 form-group">
+                                 <input type="time" name="gosmfromtime" class="form-control" id="gosmstime">
+                              </div>
+
+                              <div class="col-md-2 col-sm-2 form-group">
+                                 <input type="time" name="gosmtotime" class="form-control" id="gosmetime">
+                              </div>
+                            </div>
+
+
+                            <div class= "row">
+                              <div class="col-md-1 col-sm-1 form-group">
+                                <label> <h3> Venue </h3> </label>
+                              </div>
+                              <div class="col-md-4 col-sm-4 form-group">
+                                 <input type="text" name="gosmvenue" class="form-control" id="gosmvenu" placeholder="e.g. Y605">
+                              </div>
+                            </div>
+
+                            <div class= "row">
+                              <div class="col-md-1 col-sm-1 form-group">
+                                <label> <h3> Budget </h3> </label>
+                              </div>
+                              <div class="col-md-4 col-sm-4 form-group">
+                                 <input type="text" name="gosmbug" class="form-control" id="gosmbug" placeholder="Budget">
+                              </div>
+                            </div>
+
+                           <div class="ln_solid"></div> 
+                           <div class="row" id="gi" >
+                             <span class="section">Activity Details</span>
+                          </div>
+
+                         
+                          <label> <h3> Nature of Activity</h3> </label>
+                          <div class= "row">
+                                <div class="form-group col-md-5 col-sm-5 col-xs-12">
+                                  <select name="gosmnat1" class="form-control" id="gosmnat">
+                                      <option value="default">CSO and Special Groups</option>
+                                  </select>
+                                  <p></p>
+                                  <select name="gosmnat2" class="form-control" id="gosmnat">
+                                      <option value="default">University Student Government</option>
+                                  </select>
+                            </div>
+                           </div>
+
+                          <label> <h3> Type of Activity</h3> </label>
+                          <div class= "row">
+                                <div class="form-group col-md-5 col-sm-5 col-xs-12">
+                                  <select name="gosmtype1" class="form-control" id="gosmtype">
+                                      <option value="default">Through CSO/ DAAM</option>
+                                  </select>
+                                  <p></p>
+                                  <select name="gosmtype2" class="form-control" id="gosmtype">
+                                      <option value="default">University Student Government</option>
+                                  </select>
+                            </div>
+                           </div>
+
+                          <div class= "row">
+                           <div class="col-md-1 col-sm-1 form-group">    
+                              <label> <h3>Related to</h3> </label>
+                          </div>
+                          <div class="form-group col-md-1 col-sm-1">
+                              <p style="padding: 10px;">
+                                  <input type="checkbox" name="reton" id="reton" class="flat"> Related
+                              </p>
+                          </div>
+
+                              <div class="form-group col-md-1 col-sm-1">
+                                <p style="padding: 10px;">
+                                    <input type="checkbox" placeholder="N" name="retor" id="retor" class="flat"> Not related
+                                </p>
+                              </div> 
+                            </div>
+
+                             <div class="ln_solid"></div> 
+                                <div class="form-group">
+                                  <div class="col-md-12 col-md-offset-11">
+                                    <input id="nextbgosm2" type="submit" class="btn btn-success align: right" value="Next"></button>
+                                  </div>
+                                </div>
+                          </form>  
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
+
+         </div>
         <!-- /page content -->
 
     <!-- jQuery -->
-    <script src="<?php echo base_url();?>vendors/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
+    <script src="<?php echo base_url();?>js/validation.js"></script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -401,31 +387,31 @@
     <!-- bootstrap-progressbar -->
     <script src="<?php echo base_url();?>vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/iCheck/icheck.min.js"></script>
     <!-- Skycons -->
-    <script src="../vendors/skycons/skycons.js"></script>
+    <script src="<?php echo base_url();?>vendors/skycons/skycons.js"></script>
     <!-- Flot -->
-    <script src="../vendors/Flot/jquery.flot.js"></script>
-    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="../vendors/Flot/jquery.flot.time.js"></script>
-    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.time.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.resize.js"></script>
     <!-- Flot plugins -->
-    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot.curvedlines/curvedLines.js"></script>
     <!-- DateJS -->
-    <script src="../vendors/DateJS/build/date.js"></script>
+    <script src="<?php echo base_url();?>vendors/DateJS/build/date.js"></script>
     <!-- JQVMap -->
-    <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="<?php echo base_url();?>vendors/moment/min/moment.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
-	
+    <script src="<?php echo base_url();?>build/js/custom.min.js"></script>
+
   </body>
 </html>

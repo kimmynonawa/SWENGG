@@ -1,0 +1,9 @@
+<!-- IMPORTANT IMPORTS -->
+    <script src="js/jquery.min.js"></script>
+    <script src= "js/jquery.validate.min.js"> </script>
+    <script src= js/validation.js></script>
+    <script src= "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js" </script>
+<!-- IMPORTANT IMPORTS -->
+
+INSERT ABOVE <!-- Bootstrap --> 
+NOTE: All(?) of the forms have this na pero pa double check na din. hehe

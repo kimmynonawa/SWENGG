@@ -4,16 +4,25 @@ $(function(){
 
 	// FOOD ENTRY PERMIT 1
 	var foodform= $('#feform');
+
+	jQuery.validator.addMethod("lettersonly", function(value, element) {
+	return this.optional(element) || /^[a-z\s]+$/i.test(value);
+	})
 	foodform.validate({
 		rules: {
-			sname: "required",
+			sname: {
+				required:true,
+				lettersonly: true
+			},
 			idnum:{
 				required: true,
 				minlength: 8
 
 			},
-			posi: "required",
-
+			posi: {
+				required: true,
+				lettersonly: true
+			},
 			email:{
 				required: true,
 				email: true
@@ -32,7 +41,8 @@ $(function(){
 
 		messages: {
 			sname:{
-				required: 'Enter your full name'
+				required: 'Enter your full name',
+				lettersonly: 'Alphabetic characters only'
 			},
 
 			idnum:{
@@ -41,12 +51,13 @@ $(function(){
 			},
 
 			posi: {
-				required:'Enter your position.'
+				required:'Enter your position',
+				lettersonly: 'Invalid position'
 			},
 
 			email: {
-				required: 'Enter your DLSU e-mail.',
-				email: 'Invalid DLSU e-mail.'
+				required: 'Enter your DLSU e-mail',
+				email: 'Invalid DLSU e-mail'
 			},
 
 			cpnum: {
@@ -59,15 +70,13 @@ $(function(){
 			}
 		}
 	});
-
-	        $('#nextbt').click(function() {
-            if (foodform.valid()){
-              window.location.href = "ORG_PreAct_FoodEntryPermit2.html";
-            }
-            return false;
-        });
+	$('#nextbt').click(function() {
+    	if (foodform.valid()){
+        	window.location.href = "ORG_PreAct_FoodEntryPermit2.html";
+        }
+        return false;
+   	});
 	// FOOD ENTRY PERMIT 1
-
 
 	//FOOD ENTRY PERMIT 2
 	var foodform2= $('#foodlistform');
@@ -118,24 +127,22 @@ $(function(){
 
 		}
 	});
-
-	    $('#nextbff2').click(function() {
-	    	if(foodform2.valid()){
-             window.location.href = "ORG_PreAct_PPR4.html";
-	    	}
-        });
-
-        $("#addc").click(function() {
-          $("#tr").append(' <tr id= "newtr"><td align= "center" ><input type="number" name= "foqty" class="form-control" id="foqty"/></td><td align= "center"><input type="number" name= "founit" class="form-control" id="founit"/></td><td align= "center"><input type="text" name= "fodes" class="form-control" id="fodes" placeholder="Description"/></td><td align= "center"><input type="number" name= "foecost" class="form-control" id="foecost"/></td></tr>');   
-        });
+	$('#nextbff2').click(function() {
+	   if(foodform2.valid()){
+          window.location.href = "ORG_PreAct_PPR4.html";
+	   	}
+    });
+    $("#addcf").click(function() {
+       $("#tr").append(' <tr id= "newtr"><td align= "center" ><input type="number" name= "foqty" class="form-control" id="foqty"/></td><td align= "center"><input type="number" name= "founit" class="form-control" id="founit"/></td><td align= "center"><input type="text" name= "fodes" class="form-control" id="fodes" placeholder="Description"/></td><td align= "center"><input type="number" name= "foecost" class="form-control" id="foecost"/></td></tr>');   
+     });
         
-          $("#remc").click(function() {
+          $("#remcf").click(function() {
             var v= document.getElementById("newtr");
             v.remove();
           });
 	// FOOD ENTRY PERMIT 2
 
-	// MIN PUB PROPOSAL 1
+	//MINOR PUBLICATION PROPOSAL 1
 	var pubform= $('#pubform');
 	pubform.validate({
 		rules: {
@@ -240,18 +247,16 @@ $(function(){
 
 		}
 	});
+	$('#nextpub').click(function() {
+      if (pubform.valid()){
+         window.location.href = "ORG_PreAct_MinPubProposal2.html";
+       }
+       return false;
+     });
+	//MINOR PUBLICATION PROPOSAL 1
 
-	        $('#nextpub').click(function() {
-            if (pubform.valid()){
-               window.location.href = "ORG_MinPP2.html";
-            }
-            return false;
-        });
-	// MIN PUB PROPOSAL 1
-
-	// MIN PUB PROPOSAL 2
-     var pubform2= $('#pubform2');
-
+	//MINOR PUBLICATION PROPOSAL 2
+    var pubform2= $('#pubform2');
 	pubform2.validate({
 		rules: {
 			npages: {
@@ -280,11 +285,27 @@ $(function(){
 
 			pcont: "required",
 
-			bm1: "required",
-			bm2: "required",
-			bm3: "required",
-			bm4: "required",
-			bm5: "required"
+			bm1: {
+				required:true,
+				lettersonly:true
+			},
+			bm2:{ 
+				required:true,
+				lettersonly:true
+			},
+			bm3: {
+				required:true,
+				lettersonly:true
+			},
+			bm4: {
+				required:true,
+				lettersonly:true
+			},
+			bm5: {
+				required:true,
+				lettersonly:true
+			}
+
 			
 		},
 
@@ -315,40 +336,52 @@ $(function(){
 
 			pcont:{
 				required: 'Enter publication content'
+
 			},
 
 			bm1:{
-				required: 'Enter full name'
+				required: 'Enter full name',
+				lettersonly: 'Alphabetic characters only'
 			},
 
 			bm2:{
-				required: 'Enter full name'
+				required: 'Enter full name',
+				lettersonly: 'Alphabetic characters only'
 			},
 
 			bm3:{
-				required: 'Enter full name'
+				required: 'Enter full name',
+				lettersonly: 'Alphabetic characters only'
 			},
 
 			bm4:{
-				required: 'Enter full name'
+				required: 'Enter full name',
+				lettersonly: 'Alphabetic characters only'
 			},
 
 			bm5:{
-				required: 'Enter full name'
+				required: 'Enter full name',
+				lettersonly: 'Alphabetic characters only'
 			}
 		}
 	});     
-	// MIN PUB PROPOSAL 2
+	//MINOR PUBLICATION PROPOSAL 2
 
-	// PPR 1 
+	//PROJECT PROPOSAL 1 
 	var pprform1= $('#pprform1');
 	pprform1.validate({
 		rules: {
-			phname:"required",
+			phname:{
+				required:true,
+				lettersonly: true
+			},
 			
 			phnum: "required",
 
-			prname:"required",
+			prname:{
+				required:true,
+				lettersonly:true
+			},
 			
 			prnum: "required",
 
@@ -368,7 +401,8 @@ $(function(){
 
 		messages: {
 			phname: {
-				required: 'Enter project head name'
+				required: 'Enter project head name',
+				lettersonly:'Alphabetic characters only'
 			},
 
 			phnum:{
@@ -376,7 +410,8 @@ $(function(){
 			},
 
 			prname:{
-				required: 'Enter project head contact name'
+				required: 'Enter project head contact name',
+				lettersonly:'Alphabetic characters only'
 			},
 
 
@@ -410,29 +445,26 @@ $(function(){
 		}
 	});
 
+	$("#ph").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="phname" class="form-control has-feedback-left" id="name" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="phnum" class="form-control" id="contact" placeholder="Contact Number"><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div></div></div>');
 
-          $("#ph").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="phname" class="form-control has-feedback-left" id="name" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="phnum" class="form-control" id="contact" placeholder="Contact Number"><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div></div></div>');
-
-          $("#addc").click(function() {
-            $("#ph").append(' <div class="col-md-12 col-sm-12 col-xs-12" id="newp"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="prname" class="form-control has-feedback-left" id="name" placeholder="Name"><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="prnum" class="form-control" id="contact" placeholder="Contact Number"><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div></div></div>');   
-          });
-
-          $("#remc").click(function() {
-            var v= document.getElementById("newp");
-            v.remove();
-          });
-	   
-	    $('#nextbppr').click(function() {
-            if (pprform1.valid()){
-               window.location.href = "ORG_PreAct_PPR2.html";
-            }
-            return false;
+   	 $("#addc").click(function(){
+          $("#ph").append(' <div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="prname" class="form-control has-feedback-left" id="name" placeholder="Name"><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="prnum" class="form-control" id="contact" placeholder="Contact Number"><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div></div></div>');   
      });
-    //PPR 1
+
+    $("#remc").click(function(){
+        var v= document.getElementById("newph");
+        v.remove();
+    });  
+	$('#nextbppr').click(function(){
+      if (pprform1.valid()){
+         window.location.href = "ORG_PreAct_PPR2.html";
+       }
+       return false;
+     });
+    //PROJECT PROPOSAL 1
 
 
-    // PPR 2
-
+    //PROJECT PROPOSAL 2
     var pprform2= $('#pprform2');
 	pprform2.validate({
 		rules: {
@@ -463,32 +495,27 @@ $(function(){
 			}
 		}
 	});
+     
+    $("#addc2").click(function(){
+        $("#tr").append('<tr id="newtr"><td align= "center"> <input type= "time" name="stime"> - <input type= "time" name="stime"> </td> <td align= "center"> <input type="text" class="form-control" name="aname" id="act" placeholder="Activity name"/></td> <td align= "center"> <input type="text" name="ades" class="form-control" id="des" placeholder="Description of Activity"/> </td> <td align= "center"> <input type="text" class="form-control" id="icharge" name= "apic" placeholder="Person in-charge"/> </td></tr>');   
+     });
+    
+    $("#remc2").click(function(){
+       var v= document.getElementById("newtr");
+       v.remove(); 
+    });
 
+	$('#nextbppr2').click(function() {
+         if (pprform2.valid()){
+           window.location.href = "ORG_PreAct_PPR3.html";
+         }
+        return false  
+     });
+    //PROJECT PROPOSAL 2
 
-		$("#tr").append('<tr id="newtr"><td align= "center"> <input type= "time" name="time"> - <input type= "time" name="stime"> </td> <td align= "center"> <input type="text" class="form-control" name="aname" id="act" placeholder="Activity name"/></td> <td align= "center"> <input type="text" name="ades" class="form-control" id="des" placeholder="Description of Activity"/> </td> <td align= "center"> <input type="text" class="form-control" id="icharge" name= "apic" placeholder="Person in-charge"/> </td></tr>');   
-        $("#addc2").click(function() {
-          $("#tr").append('<tr id="newtr"><td align= "center"> <input type= "time" name="time"> - <input type= "time" name="stime"> </td> <td align= "center"> <input type="text" class="form-control" name="aname" id="act" placeholder="Activity name"/></td> <td align= "center"> <input type="text" name="ades" class="form-control" id="des" placeholder="Description of Activity"/> </td> <td align= "center"> <input type="text" class="form-control" id="icharge" name= "apic" placeholder="Person in-charge"/> </td></tr>');   
-           });
-
-          
-          $("#remc2").click(function() {
-            var v= document.getElementById("newtr");
-            v.remove();
-          });
-
-	   	  $('#nextbppr2').click(function() {
-            if (pprform2.valid()){
-               window.location.href = "ORG_PreAct_PPR3.html";
-            }
-            return false;
-     	  });
-
-    // PPR 2
-
-    //PPR 3
-
-       var pprform3= $('#pprform3');
-		pprform3.validate({
+    //PROJECT PROPOSAL 3
+    var pprform3= $('#pprform3');
+	pprform3.validate({
 		rules: {
 			mat3:"required",
 			qty3: "required",
@@ -510,28 +537,24 @@ $(function(){
 		}
 	});
 
+    $("#addc3").click(function() {
+      $("#trr").append('<tr id="newtr"><td align= "center"><input type="text" class="form-control" id="act" placeholder="Material name"/></td> <td align= "center"><input type="number" class="form-control" id="act" placeholder="Quantity"/></td>                                <td align= "center"><input type="number" class="form-control" id="des" placeholder="Unit Cost"/></td> <td align="center" style= "background-color:#D3D3D3"><h4> P750.00</h4></td></tr>');   
+     });
+ 
+    $("#remc3").click(function() {
+      var v= document.getElementById("newtr");
+      v.remove();
+    });
+	
+	$('#nextbppr3').click(function() {
+      if (pprform3.valid()){
+          window.location.href = "ORG_PreAct_PPR4.html";
+      }
+       return false;
+    });
+    //PROJECT PROPOSAL 3
 
-        $("#addc3").click(function() {
-          $("#trr").append('<tr id="newtr"><td align= "center"><input type="text" class="form-control" id="act" placeholder="Material name"/></td> <td align= "center"><input type="number" class="form-control" id="act" placeholder="Quantity"/></td>                                <td align= "center"><input type="number" class="form-control" id="des" placeholder="Unit Cost"/></td> <td align="center" style= "background-color:#D3D3D3"><h4> P750.00</h4></td></tr>');   
-           });
-
-          
-          $("#remc3").click(function() {
-            var v= document.getElementById("newtr");
-            v.remove();
-          });
-
-	   	  $('#nextbppr3').click(function() {
-            if (pprform3.valid()){
-               window.location.href = "ORG_PreAct_PPR4.html";
-            }
-            return false;
-     	  });
-
-    // PPR 3
-
-    //PPR 4 1
-
+    //PROJECT PROPOSAL 4.1
     var pprform41= $('#pprform41');
 	pprform41.validate({
 		rules: {
@@ -583,26 +606,658 @@ $(function(){
 			}
 		}
 	});
+    
+    $("#addc4").click(function(){
+       $("#tr").append('<tr id="newtr"> <td><input type="text" class="form-control" id="sname" name="sname" placeholder="Other Source"/></td> <td> <input type="Number" name="samt" class="form-control" id="of" placeholder="Enter Amount"/></td></tr>');   
+     });
+    $("#remc4").click(function(){
+       var v= document.getElementById("newtr");
+       v.remove();
+    });
+	$('#nextbppr4').click(function(){
+     if (pprform41.valid()){
+       window.location.href = ""; // next page
+      }
+      return false;
+    });
+    //PROJECT PROPOSAL 4.1
 
-          $("#addc4").click(function() {
-             $("#tr").append('<tr id="newtr"> <td><input type="text" class="form-control" id="sname" name="sname" placeholder="Other Source"/></td> <td> <input type="Number" name="samt" class="form-control" id="of" placeholder="Enter Amount"/></td></tr>');   
+    //GOSM 1
+    var gosmform1= $('#gosmform1');
+	gosmform1.validate({
+		rules: {
+			gosmgoals:"required",
+			gosmobj: "required",
+			gosmdes:"required",
+			gosmmeas:"required",
+
+			gosmdr: "required",
+
+			gosmsdate:"required",
+			gosmedate: "required",
+
+			gosmstime:"required",
+			gosmetime: "required",
+			gosmvenu:"required",
+
+			gosmbug: {
+				required: true,
+				minlength: 2,
+				maxlength: 6
+			},
+			gosmnat:"required",
+			gosmtype:"required",
+			reton: "required",
+			retor: "required"
+
+
+		},
+
+		messages: {
+			gosmgoals:{
+				required: 'Enter the goals of the activity'
+			},
+			gosmobj: {
+				required: 'Enter the objectives of the activity'
+			},
+			gosmdes:{
+				required: 'Enter the description of the activity'
+			},
+			gosmmeas:{
+				required: 'Enter the measures of the activity'
+			},
+
+			gosmdr:{
+				required: 'Pick a duration of the activity'
+			},
+
+			gosmsdate: {
+				required: 'Pick a start date for the activity'
+			},
+			gosmedate: {
+				required: 'Pick an end date for the activity'
+			},
+
+			gosmstime: { 
+				required: 'Pick a start time for the activity'
+			},
+			gosmetime: {
+				required: 'Pick an end time for the activity'
+			},
+			gosmvenu: {
+				required: 'Enter preferred venue for the activity'
+			},
+
+			gosmbug: {
+				required: 'Enter budget',
+				minlength: 'Minimum amount is 10.00',
+				maxlength: 'Maximum amount exceeded'
+			},
+			gosmnat: {
+				required: 'Pick nature of activity'
+				
+			},
+			gosmtype: {
+				required: 'Pick tpe of activity'
+			},
+			reton:{ 
+				required: "Enter a relation"
+			},
+			retor: { 
+				required: "required"
+			}	
+		}
+	});
+    // GOSM 1
+
+    // GOSM 2
+    var gosmform2= $('#gosmform2');
+	gosmform2.validate({
+		rules: {
+			phname:{
+				required: true,
+				lettersonly: true
+			},
+			yename: {
+				required: true,
+				lettersonly: true
+			},
+			ianame:{
+				required: true,
+				lettersonly: true
+			},
+			eaname:{
+				required: true,
+				lettersonly: true
+			},
+			hrname:{
+				required: true,
+				lettersonly: true
+			},
+			prmname:{
+				required: true,
+				lettersonly: true
+			},
+			prmstatus:"required",
+			fnname:{
+				required: true,
+				lettersonly: true
+			},
+			fnstatus:"required",
+			docname:{
+				required: true,
+				lettersonly: true
+			},
+			docstatus:"required"
+
+		},
+
+		messages: {
+
+			phname:{
+				required: 'Enter name',
+				lettersonly: 'Alphabetic characters only'
+			},
+			yename: { 
+				required: 'Enter name',
+				lettersonly: 'Alphabetic characters only'
+			},
+			ianame: {
+				required: 'Enter name',
+				lettersonly: 'Alphabetic characters only'
+			},
+			eaname: {
+				required: 'Enter name',
+				lettersonly: 'Alphabetic characters only'
+			},
+			hrname: {
+				required: 'Enter name',
+				lettersonly: 'Alphabetic characters only'
+			},
+			prmname: {
+				required: 'Enter name',
+				lettersonly: 'Alphabetic characters only'
+			},
+			prmstatus: { 
+				required: 'Enter status'
+			},
+			fnname: {
+				required: 'Enter name',
+				lettersonly: 'Alphabetic characters only'
+			},
+			fnstatus: { 
+				required: 'Enter status'
+			},
+			docname: {
+				required: 'Enter name',
+				lettersonly: 'Alphabetic characters only'
+			},
+			docstatus: {
+				required: 'Enter status'
+			}
+			
+		}
+	});
+
+   	$("#gnph").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="phname" class="form-control has-feedback-left" id="phname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
+
+    $("#addcgosm2").click(function() {
+            $("#gnph").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="phname" class="form-control has-feedback-left" id="phname" placeholder="Name"><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> </div></div>');   
+         });
+
+     $("#remcgosm2").click(function() {
+            var v= document.getElementById("newph");
+            v.remove();
+      });
+
+
+     $("#gnye").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="yename" class="form-control has-feedback-left" id="yename" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
+
+    $("#addyegosm2").click(function() {
+            $("#gnye").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="yename" class="form-control has-feedback-left" id="ye name" placeholder="Name"><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> </div></div>');   
           });
 
-           $("#remc4").click(function() {
-              	var v= document.getElementById("newtr");
-                 v.remove();
-            });
+     $("#remyegosm2").click(function() {
+            var v= document.getElementById("newph");
+            v.remove();
+      });
+
+     $("#gnia").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="ianame" class="form-control has-feedback-left" id="ianame" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
+
+     $("#addiagosm2").click(function() {
+            $("#gnia").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="ianame" class="form-control has-feedback-left" id="ia name" placeholder="Name"><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> </div></div>');   
+          });
+
+     $("#remiagosm2").click(function() {
+            var v= document.getElementById("newph");
+            v.remove();
+      });
+
+     $("#gnea").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="eaname" class="form-control has-feedback-left" id="eaname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
+
+     $("#addeagosm2").click(function() {
+            $("#gnea").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="eaname" class="form-control has-feedback-left" id="ea name" placeholder="Name"><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> </div></div>');   
+          });
+
+     $("#remeagosm2").click(function() {
+            var v= document.getElementById("newph");
+            v.remove();
+      });
+
+     $("#gnhr").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="hrname" class="form-control has-feedback-left" id="hrname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
+
+     $("#addhrgosm2").click(function() {
+            $("#gnhr").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="hrname" class="form-control has-feedback-left" id="hr name" placeholder="Name"><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> </div></div>');   
+          });
+
+     $("#remhrgosm2").click(function() {
+            var v= document.getElementById("newph");
+            v.remove();
+      });
 
 
-	   	  $('#nextbppr4').click(function() {
-            if (pprform41.valid()){
-               window.location.href = ""; // next page
-            }
-            return false;
-     	  });
 
-  
-    //PPR 42
+     $("#gnprm").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="prmname" class="form-control has-feedback-left" id="prmname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="prmstatus" class="form-control" id="prmstatus" placeholder="Status"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div></div></div>');
+
+     $("#addprmgosm2").click(function() {
+            $("#gnprm").append(' <div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="prmname" class="form-control has-feedback-left" id="prmname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="prmstatus" class="form-control" id="prmstatus" placeholder="Status"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div></div></div>');   
+         });
+
+     $("#remprmgosm2").click(function() {
+            var v= document.getElementById("newph");
+            v.remove();
+          });
+
+
+
+     $("#gnfn").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="fnname" class="form-control has-feedback-left" id="fnname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="fnstatus" class="form-control" id="fnstatus" placeholder="Status"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div></div></div>');
+
+     $("#addfngosm2").click(function() {
+            $("#gnfn").append(' <div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="fnname" class="form-control has-feedback-left" id="fnname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="fntatus" class="form-control" id="fnstatus" placeholder="Status"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div></div></div>');   
+          });
+
+     $("#remfngosm2").click(function() {
+            var v= document.getElementById("newph");
+            v.remove();
+          });
+
+
+     $("#gndoc").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="docname" class="form-control has-feedback-left" id="docname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="docstatus" class="form-control" id="docstatus" placeholder="Status"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div></div></div>');
+
+     $("#adddocgosm2").click(function() {
+            $("#gndoc").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="docname" class="form-control has-feedback-left" id="docname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="docstatus" class="form-control" id="docstatus" placeholder="Status"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div></div></div>');   
+          });
+
+     $("#remdocgosm2").click(function() {
+            var v= document.getElementById("newph");
+            v.remove();
+          });
+    // GOSM2 
+
+   // GOSM 3
+    var gosmform3= $('#gosmform3');
+	gosmform3.validate({
+		rules: {
+
+			ptgname:{
+				required:true,
+				lettersonly:true
+			},
+			vdgname:{
+				required:true,
+				lettersonly:true
+			},
+			hstname:{
+				required:true,
+				lettersonly:true
+			},
+			eqpname:{
+				required:true,
+				lettersonly:true
+			},
+			spkname:{
+				required:true,
+				lettersonly:true
+			},
+			spkstatus:"required",
+			spkmail:{
+				required:true,
+				email: true
+			},
+			spnname:{
+				required:true,
+				lettersonly:true
+			},
+			spnstatus:"required",
+			spnmail:{
+				required:true,
+				email: true
+			}
+
+		},
+
+		messages: {
+
+			ptgname:{
+				required: 'Enter name',
+				lettersonly: 'Alphabetic characters only'
+			},
+			vdgname: { 
+				required: 'Enter name',
+				lettersonly: 'Alphabetic characters only'
+			},
+			hstname: {
+				required: 'Enter name',
+				lettersonly: 'Alphabetic characters only'
+			},
+			eqpname: {
+				required: 'Enter equipment',
+				lettersonly: 'Alphabetic characters only'
+			},
+			spkname: {
+				required: 'Enter name',
+				lettersonly: 'Alphabetic characters only'
+			},
+			spkstatus: {
+				required: 'Enter status'
+			},
+			spnstatus: { 
+				required: 'Enter status'
+			},
+			spnname: {
+				required: 'Enter name',
+				lettersonly: 'Alphabetic characters only'
+			},
+			spkmail: { 
+				required: 'Enter e-mail',
+				email: 'Invalid e-mail'
+			},
+			spnmail: {
+				required: 'Enter e-mail',
+				email: 'Invalid e-mail'
+			}
+		}
+	});
+
+
+   	$("#gnptg").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="ptgname" class="form-control has-feedback-left" id="ptgname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
+
+     $("#addptggosm3").click(function() {
+            $("#gnptg").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="ptgname" class="form-control has-feedback-left" id="ptgname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');   
+          });
+
+     $("#remptggosm3").click(function() {
+            var v= document.getElementById("newph");
+            v.remove();
+      });
+
+
+   	 $("#gnvdg").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="vdgname" class="form-control has-feedback-left" id="vdgname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
+
+     $("#addvdggosm3").click(function() {
+            $("#gnvdg").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="vdgname" class="form-control has-feedback-left" id="vdgname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');   
+         });
+
+     $("#remvdggosm3").click(function() {
+            var v= document.getElementById("newph");
+            v.remove();
+      });
+
+    
+     $("#gnhst").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="hstname" class="form-control has-feedback-left" id="hstname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
+
+     $("#addhstgosm3").click(function() {
+            $("#gnhst").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="hstname" class="form-control has-feedback-left" id="hstname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');   
+          });
+
+     $("#remhstgosm3").click(function() {
+            var v= document.getElementById("newph");
+            v.remove();
+      });
+
+     $("#gneqp").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="eqpname" class="form-control has-feedback-left" id="eqpname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
+
+     $("#addeqpgosm3").click(function() {
+            $("#gneqp").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="eqpname" class="form-control has-feedback-left" id="eqpname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');   
+          });
+
+     $("#remeqpgosm3").click(function() {
+            var v= document.getElementById("newph");
+            v.remove();
+      });
+
+     $("#gnspk").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="spkname" class="form-control has-feedback-left" id="spkname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="spkstatus" class="form-control" id="spkstatus" placeholder="Status"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div><div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="email" name="spkmail" class="form-control" id="spkmail" placeholder="juan_delacruz@dlsu.edu.ph"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div></div></div>');
+
+     $("#addspkgosm3").click(function() {
+            $("#gnspk").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="spkname" class="form-control has-feedback-left" id="spkname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="spkstatus" class="form-control" id="spkstatus" placeholder="Status"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div><div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="email" name="spkmail" class="form-control" id="spkmail" placeholder="juan_delacruz@dlsu.edu.ph"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div></div></div>');   
+          });
+
+	 $("#remspkgosm3").click(function() {
+            var v= document.getElementById("newph");
+            v.remove();
+          });
+
+     $("#gnspn").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="spnname" class="form-control has-feedback-left" id="spnname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="spnstatus" class="form-control" id="spnstatus" placeholder="Status"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div><div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="email" name="spnmail" class="form-control" id="spnmail" placeholder="juan_delacruz@dlsu.edu.ph"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div></div></div>');
+
+     $("#addspngosm3").click(function() {
+            $("#gnspn").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="spnname" class="form-control has-feedback-left" id="spnname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="spnstatus" class="form-control" id="spnstatus" placeholder="Status"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div><div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="email" name="spnmail" class="form-control" id="spnmail" placeholder="juan_delacruz@dlsu.edu.ph"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div></div></div>');   
+          });
+
+	 $("#remspngosm3").click(function() {
+            var v= document.getElementById("newph");
+            v.remove();
+          });
+    // GOSM3
+
+    // ADD NEW ORG CSO
+   	var csoneworg= $('#csoneworg');
+	csoneworg.validate({
+		rules: {
+			orgname:{
+				required: true
+			},
+			orgun:{
+				required: true
+			},
+			orgpw: {
+				required: true,
+				minlength: 6
+			},
+			orgcpw:{
+				required: true,
+				equalTo: "#orgpw"
+			},
+			orgemail:{
+				email: true,
+				required: true
+			}
+		},
+
+		messages:{
+			orgname:{
+				required: 'Enter Name'
+			},
+
+			orgun:{
+				required: 'Enter username'
+			},
+
+			orgpw:{
+				minlength: 'Minimum length is 6 characters',
+				required: 'Enter password'	
+			}, 
+			orgcpw:{
+				required:' Re-enter password',
+				equalTo:  'Passwords do not match'
+			},
+			orgemail:{
+				email: 'Invalid e-mail',
+				required: 'Enter dlsu e-mail'
+			}
+			
+		}
+	});
+	$('#nextbcson').click(function() {
+    	if (csoneworg.valid()){
+        	window.location.href = "";
+        }
+        return false;
+   	});
+    // ADD NEW ORG CSO
+
+    // ORG_GOSM 
+   	var gosmorg= $('#gosmorg');
+	gosmorg.validate({
+		rules: {
+			gosmactivityorg: {
+				required:true
+			}
+		},
+
+		messages:{
+			gosmactivityorg: 'Please pick an Activity'		
+		}
+	});
+	$('#nextorggosm').click(function() {
+    	if (gosmorg.valid()){
+        	window.location.href = "";
+        }
+        return false;
+   	});
+    // ORG_GOSM 
+
+    // CSO_GOSM
+    var gosmcso= $('#gosmcso');
+	gosmcso.validate({
+		rules: {
+			gosmcsoorg: {
+				required:true
+			},
+			gosmcsoact: {
+				required:true
+			}
+
+		},
+
+		messages:{
+			gosmcsoorg: 'Please pick an organization',
+			gosmcsoact: 'Please pick an activity'		
+		}
+	});
+	$('#nextorggosm').click(function() {
+    	if (gosmcso.valid()){
+        	window.location.href = "";
+        }
+        return false;
+   	});
+
+    // CSO_GOSM
+
+    //A_FORM 
+    var aform1= $('#aform1');
+	aform1.validate({
+		rules: {
+			actName: {
+				required:true
+			},
+			CSOactOptions: {
+				required:true
+			},
+			USGactOptions: {
+				required:true
+			},
+			CSOactType: {
+				required:true
+			},
+			USGactType: {
+				required:true
+			},
+			reachType: {
+				required:true
+			}
+		},
+
+		messages:{
+			actName: {
+				required: 'Enter activity name'
+			},
+			CSOactOptions: {
+				required: 'Pick nature of activity'
+			},
+			USGactOptions: {
+				required: 'Pick nature of activity'
+			},
+			CSOactType: {
+				required: 'Pick type of activity'
+			},
+			USGactType: {
+				required: 'Pick type of activity'
+			},
+			reachType: {
+				required: 'Pick reach of activity'
+			}	
+		}
+	});
+	$('#nextaform').click(function() {
+    	if (aform1.valid()){
+        	window.location.href = "ORG_PreAct_AForm2.html";
+        }
+        return false;
+   	});
+   	//A_FORM
+
+   	//A_FORM2
+   	var aform2= $('#aform2');
+	aform2.validate({
+		rules: {
+			actDate: {
+				required:true
+			},
+			startTime: {
+				required:true
+			},
+			endTime: {
+				required:true
+			},
+			enmp: {
+				required:true,
+				maxlength: 6
+			},
+			enp: {
+				required:true,
+				maxlength: 6
+			}
+		},
+
+		messages:{
+			actDate: {
+				required:  'Enter activity date'
+			},
+			startTime: {
+				required:  'Enter start time'
+			},
+			endTime: {
+				required:  'Enter end time'
+			},
+			enmp: {
+				required:  'Enter expected number of members',
+				maxlength: 'Maximum number of participants exceeded'
+			},
+			enp: {
+				required: 'Enter expect number of participants',
+				maxlength: 'Maximum number of participants exceeded'
+			}
+		}
+	});
+	$('#nextaform2').click(function() {
+    	if (aform2.valid()){
+        	window.location.href = "";
+        }
+        return false;
+   	});
+   	//A_FORM2
+
+
 
 });
 

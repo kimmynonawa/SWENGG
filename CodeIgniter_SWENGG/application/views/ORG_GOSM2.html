@@ -9,9 +9,8 @@
 
     <title>LSCS</title>
 
-
     <!-- Bootstrap -->
-     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
@@ -170,123 +169,197 @@
         </div>
         <!-- /top navigation -->
 
-<div class="right_col" role="main">
+     <!-- page content -->
+        <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Minor Publication Proposal</h3>
+                <h3>CSO Chart Details</h3>
+              </div>
+
               </div>
             </div>
             <div class="clearfix"></div>
 
             <div class="row">
+
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-                  <div class="x_content">
-
-                    <form id="pubform2" class="form-horizontal form-label-left">
-                      <div class="row">
-                          <span class="section">Publication Specifications</span>
-                          <div class="col-md-4 col-sm-6 col-xs-12">
-                                <div class="form-group col-md-4 col-sm-6 col-xs-12"> 
-                                   <p> <input type="Number" name= "npages" class="form-control" id="nump" placeholder="Number of Pages"/></p>
-                                </div>   
-                                <!-- fix alignment -->
-                                <div class="form-group col-md-8 col-sm-6 col-xs-12"> 
-                                    <input type="text" name="bm1" class="form-control" id="nbmember" placeholder="Board member-In-Charge"/>
-                                </div>         
-                          </div>
-                        </div> <!-- row -->
-                    
-
-                      <div class="row">
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                                <div class="form-group col-md-4 col-sm-6 col-xs-12"> 
-                                   <p> <input type="Number" name="ssize" class="form-control" id="spreadsize" placeholder="Spread Size"/></p>
-                                </div>   
-                                <!-- fix alignment -->
-                                <div class="form-group col-md-8 col-sm-6 col-xs-12"> 
-                                    <input type="text" name="bm2" class="form-control" id="spbmember" placeholder="Board member-In-Charge"/>
-                                </div>     
-                        </div>
-                      
-                      </div> <!-- row -->
-                      
-                       <div class="row">
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                                <div class="form-group col-md-4 col-sm-6 col-xs-12"> 
-                                   <p> <input type="text" name="ptype" class="form-control" id="papertype" placeholder="Type of Paper"/></p>
-                                </div>   
-                                <!-- fix alignment -->
-                                <div class="form-group col-md-8 col-sm-6 col-xs-12"> 
-                                 <input type="text" name= "bm3" class="form-control" id="ptbmember" placeholder="Board member-In-Charge"/>
-                                </div>     
-                        </div>
-                      </div> <!-- row -->
-
-                         <div class="row">
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                                <div class="form-group col-md-4 col-sm-6 col-xs-12"> 
-                                   <p> <input type="Number" name="ncolor" class="form-control" id="numcolor" placeholder="Number of Color"/></p>
-                                </div>   
-                                <!-- fix alignment -->
-                                <div class="form-group col-md-8 col-sm-6 col-xs-12"> 
-                                    <input type="text" name="bm4" class="form-control" id="ncbmember" placeholder="Board member-In-Charge"/>
-                                </div>     
-                        </div>
-                      </div> <!-- row -->
-
-                       <div class="row">
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-
-                                <div class="form-group col-md-4 col-sm-6 col-xs-12"> 
-                                   <p> <input type="Number" name="ncopies" class="form-control" id="numcopies" placeholder="Number of copies"/></p>
-                                </div>   
-                                <!-- fix alignment -->
-                                <div class="form-group col-md-8 col-sm-6 col-xs-12"> 
-                                    <input type="text" name="bm5" class="form-control" id="ncpbmember" placeholder="Board member-In-Charge"/>
-                                </div>     
-                        </div>
-                      </div> <!-- row -->
-
-                        <div class="ln_solid"></div> 
-                      
-                       <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-12">                                  
-                                <label class= "col-md-6"> <h4>Publication Content</h4> </label>
-                                <div class="form-group col-md-10 col-sm-10 col-xs-10">
-                                    <textarea name=pcont class="form-control" rows="6"></textarea>
-                                </div>      
-                        </div>     
-                      </div> <!-- row -->
-
-    
-                        
-                        <div class="form-group">
-                                  <div class="col-md-12 col-md-offset-11">
-                                    <button id="send" type="submit" class="btn btn-success align: right">Next</button>
-                                  </div>
-                        </div>
-
-                        </form>
-                      
-                      </div> <!-- row -->
-                     </div>
-                    <div class="ln_solid"></div> 
-                   </div>
-                  </div>
-                </div> 
+          <form action= "ORG_Home.html" method="post">
+            <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+              <div class="x_title">
+              <h2>ORGANIZATION NAME </h2> 
+              <ul class="nav navbar-right panel_toolbox">
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+              </ul>
+              <div class="clearfix"></div>
               </div>
-            </div>
+              <div class="x_content">
+              <span class="section">Activity Information</span>
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Name: </label>
+                  <p>Leadership Seminar</p>
+                </div>
 
-          </div>
-        </div>
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Goals: </label>
+                  <p>To hone the officers' and Young Officers' skills in terms of leadership and public speaking</p>
+                </div>
+
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Brief Description: </label>
+                  <p>This is a leadership training for all the Young Officers and Officers of YES. This workshop</p>
+                </div>
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+                  <p>aims to give YES' Officers insights on public speaking and leadership skills so that they can</p> 
+                </div>
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12"></label> 
+                  <p>apply it to their daily lives as an officer and as a person as well.</p>
+                </div>
+
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Measures: </label>
+                  <p>Attendance</p>
+                </div>
+
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">GOSM Target Date: </label>
+                  <p>November 04, 2016</p>
+                </div>
+
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Time: </label>
+                  <p>9:00am-11am</p>
+                </div>
+
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Venue: </label>
+                  <p>Y507</p>
+                </div>
+
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Nature: </label>
+                  <p>Academic</p>
+                </div>
+
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Type: </label>
+                  <p>Seminar/Workshops</p>
+                </div>
+
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Related to: </label>
+                  <p>R - 1</p>
+                </div>
+
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Budget Breakdown: </label>
+                  <p>P1000.00</p>
+                </div>
+                
+              
+              <span class="section">The Central Committee</span>
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Project Head/s: </label>
+                  <p>Aldrich Opiniano (VP Human Resources), and Allene Quintana (AVP Training and Development)</p>
+                </div>
+                
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Young Executives: </label>
+                  <p>"Young Executives"</p>
+                </div>
+                
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Internal Affairs Head/s: </label>
+                  <p>"Internal Affairs"</p>
+                </div>
+                
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">External Affairs  Head/s: </label>
+                  <p>"External Affairs"</p> 
+                </div>
+
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Human Resources Head/s: </label> 
+                  <p>"Human Resources"</p>
+                </div>
+
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Communications Head/s: </label>
+                  <p>"Communications"</p>
+                </div>
+
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Promotions Head/s: </label>
+                  <p>"Promotions"</p>
+                </div>
+
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Finance Head/s: </label>
+                  <p>Ryan King</p>
+                </div>
+
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Documentations Head/s: </label>
+                  <p>Alex Espiritu</p>
+                </div>
+            
+                
+              <span class="section">Others</span>
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Photographers: </label>
+                  <p>"Photographers"</p>
+                </div>
+
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Videographers: </label>
+                  <p>"Videographers"</p>
+                </div>
+
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Host/s: </label>
+                  <p>"Hosts"</p> 
+                </div>
+
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Speaker/s: </label> 
+                  <p>"Speakers"</p>
+                </div>
+
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Sponsor/s: </label>
+                  <p>"Sponsors"</p>
+                </div>
+
+                <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Equipment Needed: </label>
+                  <p>"Equipments"</p>
+                </div>
+                <br />
+                <br />
+              </div>
+            </div> <!-- end of xpanel inner -->
+            </div> <!-- end of inner col-md-12 col-sm-12 col-xs-12"-->
+                
+            
+            <button type="submit" class="btn btn-success col-md-offset-11" id="submit">NEXT</button>
+        
+              </div> <!-- END OF -ROW- DIV -->
+              </form>
+            </div> <!-- END OF X PANEL -->
+          </div> <!-- END OF col-md-12 col-sm-12 col-xs-12 -->
+        </div> <!-- END OF ROW FINAL!!!!!!!! -->
+
+        <!-- HI KIM IF YOU'RE READING THIS YUNG BUTTON TYPE TO INPUT TYPE YUNG INIBA DI KO NA BINAGO YUNG ALIGNMENT TY!!!-->
+            
         <!-- /page content -->
-
     <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
-    <script src= "js/jquery.validate.min.js"> </script>
-    <script src= js/validation.js>
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

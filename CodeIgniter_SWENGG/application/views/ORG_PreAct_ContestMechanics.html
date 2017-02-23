@@ -49,8 +49,7 @@
             <!-- /menu profile quick info -->
 
             <br />
-
-     
+            
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
@@ -169,127 +168,122 @@
           </div>
         </div>
         <!-- /top navigation -->
-
-     <!-- page content -->
+<!-- page content -->
         <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Activity Approval Form</h3>
-              </div>
-
+                <h3>Contest Mechanics </h3>
               </div>
             </div>
             <div class="clearfix"></div>
 
             <div class="row">
-
-              <div class="col-md-12 col-sm-9 col-xs-12">
+              <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-				<form action= "ORG_PreAct_AForm2.html" method="submit">
-				<div class="x_content">
+                  <div class="x_content">
+                    <form method="post" id = "mechanicsForm" autocomplete="off">
+                     <span class="section"></span>
 
-                    <!-- start form for validation -->
-                    <form id="demo-form" data-parsley-validate>
-					<span class="section">General Information</span>
-						<div class="item form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="title">Title of Activity: </label>
-							<input type="text" id="title" class="col-md-3 col-sm-3 col-xs-9" placeholder="Enter the title of the activity" name="title" required />
-						</div>
-						<br />
-						<br />
-						<div class="item form-group">
-						<label class="control-label col-md-2 col-sm-2 col-xs-12" for="gosm[]">Part of GOSM: </label>
-                        <input type="radio" name="gosm[]" id="op1" value="Venue" required class="flat"/> Yes
-                        <br />
-                        <input type="radio" name="gosm[]" id="op2" value="dateandtime" class="flat"/> No
-
-					<br />
-					<br />					
-					<span class="section">Nature of Activity</span>
-						<div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="csoandspecialgroups">CSO and Special Groups: </label>
-							<select id="csoandspecialgroups" required class="col-md-4 col-sm-4 col-xs-9">
-								<option value="default">Select Nature Of Activity</option>
-								<option value="academic">Academic</option>
-								<option value="specialinterest">Special Interest</option>
-								<option value="departmentalinitiative">Departmental Initiative</option>
-								<option value="fundraising">Fundraising</option>
-								<option value="communitydevelopment">Community Development</option>
-								<option value="organizationdevelopment">Organization Development</option>
-								<option value="issueadvocacy">Issue Advocacy</option>
-								<option value="LFSG">Lasallian Formation/Spiritual Growth</option>
-								<option value="outreach">Outreach</option>
-							</select>
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="usg">USG: </label>
-							<select id="usg" required class="col-md-4 col-sm-4 col-xs-9">
-								<option value="default">Select Nature Of Activity</option>
-								<option value="studentservice">Student Service</option>
-								<option value="SRW">Student's Rights and Welfare</option>
-								<option value="rulesandpolicies">Rules and Policies</option>
-								<option value="fundraising">Fundraising</option>
-								<option value="communitydevelopment">Community Development</option>
-								<option value="organizationdevelopment">Organization Development</option>
-								<option value="issueadvocacy">Issue Advocacy</option>
-								<option value="LFSG">Lasallian Formation/Spiritual Growth</option>
-								<option value="outreach">Outreach</option>
-							</select>
-						</div>
-						<br />
-						<br />
-						
-					<span class="section">Type of Activity</span>	
-						<div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="throughcsodaam">Through CSO / DAAM: </label>
-							<select id="throughcsodaam" required class="col-md-4 col-sm-4 col-xs-9">
-								<option value="default">Select Type Of Activity</option>
-								<option value="academic">Academic Contest</option>
-								<option value="material">Distribution</option>
-								<option value="equipment">General Assembly</option>
-								<option value="material">Seminar/Workshops</option>
-								<option value="equipment">Publicity/Awareness Campaign</option>
-								<option value="material">Meetings</option>
-								<option value="equipment">Spiritual Activity</option>
-								<option value="material">Recruitment/Audition</option>
-								<option value="equipment">Recreation</option>
-							</select>
-						</div>
-						
-						<br />
-						<br />
-						<div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="throughslife">Through Slife: </label>
-							<select id="throughslife" required class="col-md-4 col-sm-4 col-xs-9">
-								<option value="default">Select Type Of Activity</option>
-								<option value="academic">Alliance with Outside Organizations</option>
-								<option value="material">Off-Campus Activities</option>
-								<option value="equipment">Seminar with Distinguished Speakers</option>
-								<option value="material">Conference Involving Outside Participants</option>
-								<option value="equipment">Solicitations</option>
-								<option value="material">Fundraising</option>
-								<option value="equipment">Donation Drive</option>
-							</select>
-						</div>
-						
-						<br/>
-                        <div class="form-group">
-                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-11">
-                          <button type="submit" class="btn btn-success" id="submit">NEXT</button>
+                  
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4> General Guidelines</h4> </label>
+                            <div class= "form-group col-md-7">
+                              <textarea name= "guidelines" rows="4" class="form-control" placeholder="ex: All of the participants must not have their cellphones with them."></textarea> 
+                            </div>        
                         </div>
-						</div>
-						<br />
-						<br />
-					</form>
-              </div>
-            </div>
+                      </div>  
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Mechanics</h4> </label>
+                            <div class= "form-group col-md-7">
+                              <input type="text" name= "mechanics[]" class="form-control" placeholder="ex: Sing and dance with your blockmates"/>
+                            </div>
+                            <div class="form-group">
+
+                            <label class="control-label col-md-4"></label>
+                            <div class="col-md-7">
+                              <div class = "buttons">
+                                <button id="add" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
+                                <button id="delete" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                              </div>     
+                            </div>
+                          </div>    
+                        </div>
+                      </div>
+                      <p></p>
+                       <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Criteria For Judging</h4> </label>
+                            <div class= "form-group col-md-7">
+                              <input type="text" name= "criteria[]" class="form-control" placeholder="ex:  100 pts for costume"/>
+                            </div>
+                            <div class="form-group">
+                            
+                            <label class="control-label col-md-4"></label>
+                            <div class="col-md-7">
+                              <div class = "buttons">
+                                <button id="add" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
+                                <button id="delete" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                              </div>     
+                            </div>
+                          </div>    
+                        </div>
+                      </div> 
+                      <p></p>
+                       <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>List of Judges</h4> </label>
+                            <div class= "form-group col-md-7">
+                              <input type="text" name= "judges[]" class="form-control" placeholder="ex: Juan Dela Cruz "/>
+                            </div>
+                            <div class="form-group">
+                            
+                            <label class="control-label col-md-4"></label>
+                            <div class="col-md-7">
+                              <div class = "buttons">
+                                <button id="add" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
+                                <button id="delete" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                              </div>     
+                            </div>
+                          </div>    
+                        </div>
+                      </div> 
+                      <p></p>
+                       <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Questions for Academic Contests</h4> </label>
+                            <div class= "form-group col-md-7">
+                              <input type="text" name= "questions[]" class="form-control" placeholder="ex: Do you really want to stay in IT?"/>
+                            </div>
+                            <div class="form-group">
+                            
+                            <label class="control-label col-md-4"></label>
+                            <div class="col-md-7">
+                              <div class = "buttons">
+                                <button id="add" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
+                                <button id="delete" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                              </div>     
+                            </div>
+                          </div>    
+                        </div>
+                      </div> 
+                      <div class="ln_solid"></div> 
+                      <div class="form-group">
+                        <div class="col-md-12 col-md-offset-11">
+                          <input id="nextTrademark2" type="submit" class="btn btn-success align: right" value ="Next">
+                        </div>
+                      </div>
+                    </form>
+                  </div><!-- xcontent -->
+                </div> <!-- xpanel -->              
+              </div> <!-- row -->
+            </div> 
           </div>
         </div>
-        <!-- /page content -->
+
 
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
@@ -332,5 +326,82 @@
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
 	
+  <script>
+        $(document).ready(function () {
+            $("#add").click(function () {
+                var det = document.getElementById('details'); 
+                var cln = det.cloneNode(true);
+                
+                var ig = document.getElementById('main');
+
+                ig.appendChild(cln);        
+                console.log("yo!!!!");
+                //var ctr = document.getElementsByClassName("details").length;
+            })
+            $("#delete").click(function () {
+                var count = document.getElementsByClassName("details").length;
+                var last = document.getElementsByClassName("details").item(count-1);
+                if(count >1){
+                    last.remove();
+                }
+                console.log(count);
+            })
+
+             $("#mechanicsForm").validate({
+              rules:{
+                guidelines: {
+                  required: true,
+                  maxlength: 200
+
+                },
+                mechanics: {
+                  required: true,
+                  maxlength: 200
+
+                },
+                criteria: {
+                  required: true,
+                  maxlength: 200
+
+                },
+                judges: {
+                  required: true,
+                  maxlength: 100
+
+                },
+                questions: {
+                  required: true,
+                  maxlength: 100
+
+                },
+              success: removeError,
+              messages: {
+                guidelines: {
+                  required: "Please enter the contest guidelines",
+                  maxlength: "Input is too long."
+                },
+                mechanics: {
+                  required: "Please enter the mechanics",
+                  maxlength: "Input is too long."
+                },
+                criteria: {
+                  required: "Please enter the criteria for judging",
+                  maxlength: "Input is too long."
+                },
+                lN
+                judges: {
+                  required: "Please enter the name of the judge",
+                  maxlength: "Input is too long."
+                },
+                lN
+                questions: {
+                  required: "Please enter a question",
+                  maxlength: "Input is too long."
+                },
+               }
+              }
+            });
+        })
+    </script>
   </body>
 </html>

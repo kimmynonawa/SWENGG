@@ -9,10 +9,8 @@
 
     <title>LSCS</title>
 
-    <script src= "js/jquery.js"> </script>
-
     <!-- Bootstrap -->
-     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
@@ -170,12 +168,12 @@
           </div>
         </div>
         <!-- /top navigation -->
-
-<div class="right_col" role="main">
+  <!-- page content -->
+        <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Project Proposal</h3>
+                <h3>Special Permit For Campus Access </h3>
               </div>
             </div>
             <div class="clearfix"></div>
@@ -184,58 +182,106 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
+                    <form id="specialPermit1" method="post" autocomplete="off">
+                      <span class="section"></span>
+                    
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Type of Activity</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <input type="text" list ="actType" class="form-control col-md-7 col-xs-12" name="CSOactType"  placeholder = "ex: General Assembly">
+                              <datalist id="actType">
+                                <option> General Assembly</option>
+                                <option> Outreach</option>
+                                <option> Medical Mission</option>
+                              </datalist>
+                          </div>       
+                        </div>
+                      </div> 
 
-                    <form class="form-inline form-label-left" id="pprform2">
-                      <span class="section">Comprehensive Program Design</span>
-
-                        <div class="table-responsive">          
-                          <table class="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th>Time</th>
-                                <th>Activity</th>
-                                <th>Description</th>
-                                <th>Person In-Charge</th>
-                              </tr>
-                            </thead>
-                            <tbody id="tr">
-                              <tr>
-                                <td align= "center"> <input type="time" name="time"> - <input type= "time" name="stime"> </td>
-                                <td align= "center"> <input type="text" name="aname" class="form-control" id="act" placeholder="Activity name"/></td>
-                                <td align= "center"> <input type="text" name="ades"  class="form-control" id="des" placeholder="Description of Activity"/></td>
-                                <td align= "center"> <input type="text" name="apic"  class="form-control" id="icharge" placeholder="Person in-charge"/></td>
-                              </tr>
-                            </tbody>
-                           </table>
+                      <div class= "row">
+                        <div class="col-md-12">   
+                          <label class= "col-md-3"> <h4>Requests</h4> </label>
+                          <div class= "form-group col-md-12">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr> </tr>
+                              </thead>
+                              <tbody id="requests">
+                                <tr id ="details" class="details">
+                                <td>  <input class="form-control" placeholder ="Enter Start Date" /></td>
+                                <td>  <input class="form-control" placeholder ="Enter Start Time" /></td>
+                                <td>  <input class="form-control" placeholder ="Enter End Date" /></td>
+                                <td>  <input class="form-control" placeholder ="Enter End Time" /></td>
+                                <td>  <input class="form-control" placeholder ="Enter Venue"/></td>
+                                </tr>
+                              </tbody>
+                            </table>
                           </div>
+                        </div>
 
-                           <div class= "row">
-                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                                 <button id="addc2" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
-                                 <button id="remc2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                               </div>
-                            </div>
+                        <div class = "buttons col-md-12">
+                          <div class="col-md-3">
+                            <button id="add" type ="button" class ="btn btn-default">  <span class="glyphicon glyphicon-plus-sign"></span> </button>
+                            <button id="delete" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                          </div>    
+                        </div>
+                      </div> 
 
-                       <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-12 col-md-offset-11">
-                          <button id="nextbppr2" type="submit" class="btn btn-success align: right">Next</button>
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Expected Number of Members to Participate (ENMP) </h4> </label>
+                          <div class= "form-group col-md-6">
+                            <input type="Number" name= "enmp" id="enmp" class="form-control" placeholder="ex: 80" />
+                          </div>       
+                        </div>
+                      </div>  
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Expected Number of Participants (ENP) </h4> </label>
+                          <div class= "form-group col-md-6">
+                            <input type="Number" name= "enp" id= "enp" class="form-control" placeholder="ex: 100"/>
+                          </div>       
                         </div>
                       </div>
-                         
-                      </form>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>With Outsiders</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <input type="radio"  id="gosmoption" name= "outsidersOption" class="flat"/> <label> Yes</label>
+                            <input type="radio"  id="gosmoption" name= "outsidersOption" class="flat"/> <label>No </label>
+                          </div>        
+                        </div>
+                      </div>  
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Faculty In-Charge:</h4> </label>
+                          <div class= "form-group col-md-6">
+                              <input type="text" name= "Faculty" class="form-control" placeholder="ex: Mr. Juan Dela Cruz"/>
+                          </div>        
+                        </div>
+                      </div>  
+  
+                      <div class="ln_solid"></div> 
+                      <div class="form-group">
+                        <div class="col-md-12 col-md-offset-11">
+                          <input id="nextSpecialPermit2" type="submit" class="btn btn-success align: right" Value="Next">
+                        </div>
+                      </div>    
+                    </form>
+                  </div><!-- xcontent -->
+                </div> <!-- xpanel -->              
+              </div> <!-- row -->
+            </div> 
           </div>
         </div>
-        <!-- /page content -->
+
 
     <!-- jQuery -->
-      <script src="js/jquery.min.js"></script>
-    <script src= "js/jquery.validate.min.js"> </script>
-    <script src= js/validation.js>
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -276,4 +322,26 @@
     <script src="../build/js/custom.min.js"></script>
 	
   </body>
+	<script>
+        $(document).ready(function () {
+            $("#add").click(function () {
+                var det = document.getElementById('details'); 
+                var cln = det.cloneNode(true);
+                
+                var ig = document.getElementById('requests');
+
+                ig.appendChild(cln);        
+                console.log("yo!!!!");
+                //var ctr = document.getElementsByClassName("details").length;
+            })
+            $("#delete").click(function () {
+                var count = document.getElementsByClassName("details").length;
+                var last = document.getElementsByClassName("details").item(count-1);
+                if(count >1){
+                    last.remove();
+                }
+                console.log(count);
+            })
+        })
+    </script>
 </html>

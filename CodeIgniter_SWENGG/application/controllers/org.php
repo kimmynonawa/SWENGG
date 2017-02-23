@@ -23,7 +23,7 @@
 			
 			//START of form validation
 			$this->form_validation->set_rules(
-				'name', 'Name of Organization', 
+				'orgname', 'Name of Organization', 
 				'required',
 				array(
 					'required'      => 'You have not provided %s.',
@@ -31,7 +31,7 @@
 			);
 			
 			$this->form_validation->set_rules(
-				'username', 'Username', 
+				'orgun', 'Username', 
 				'required',
 				array(
 					'required'      => 'You have not provided %s.',
@@ -39,7 +39,7 @@
 			);
 			
 			$this->form_validation->set_rules(
-				'password', 'Password', 
+				'orgpw', 'Password', 
 				'required',
 				array(
 					'required'      => 'You have not provided %s.'
@@ -47,8 +47,8 @@
 			);
 			
 			$this->form_validation->set_rules(
-				'confirmPassword', 'Password Confirmation', 
-				'required|matches[password]',
+				'orgcpw', 'Password Confirmation', 
+				'required|matches[orgpw]',
 				array(
 					'required'      => 'You have not provided %s.',
 					//'matches'	=> 'The password and password confirmation did not match'
@@ -56,7 +56,7 @@
 			);
 			
 			$this->form_validation->set_rules(
-				'email', 'Email', 
+				'orgemail', 'Email', 
 				'required|valid_email',
 				array(
 					'required'      => 'You have not provided %s.',
@@ -69,8 +69,8 @@
 				$this->load->view('CSO_NewOrg');
 			}
 			else  {
-				$encrypted = $this->encrypt->encode($this->input->post("password"));
-				$this->Org_model->addOrg($this->input->post("name"),$this->input->post("username"),$encrypted,$this->input->post("email"));
+				$encrypted = $this->encrypt->encode($this->input->post("orgpw"));
+				$this->Org_model->addOrg($this->input->post("orgname"),$this->input->post("orgun"),$encrypted,$this->input->post("orgemail"));
 				$data = array ("success" => "true");
 				$this->load->view('CSO_NewOrg', $data);
 			}

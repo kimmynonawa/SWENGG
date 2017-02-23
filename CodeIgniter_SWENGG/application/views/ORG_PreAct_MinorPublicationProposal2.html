@@ -9,7 +9,7 @@
 
     <title>LSCS</title>
 
-    <script src= "js/jquery.js"> </script>
+
     <!-- Bootstrap -->
      <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -50,7 +50,9 @@
             <!-- /menu profile quick info -->
 
             <br />
-            <!-- sidebar menu -->
+
+       
+               <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -173,7 +175,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Project Proposal</h3>
+                <h3>Minor Publication Proposal</h3>
               </div>
             </div>
             <div class="clearfix"></div>
@@ -183,108 +185,109 @@
                 <div class="x_panel">
                   <div class="x_content">
 
-
-                  <form class="form-inline form-label-left" novalidate id= "pprform41">
-                      <span class="section">Source of Funds</span>
-
-                        <div class="table-responsive">          
-                          <table class="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th>Source/s of Funds</th>
-                                <th>Amount</th>
-                              </tr>
-                            </thead>
-                            <tbody id= "tr">
-                              <tr>
-                                <td><h4>Organizational Funds</h4></td>
-                                <td> <input type="Number" name="of41" class="form-control" id="of" placeholder="Enter Amount"/></td>
-                              </tr>
-
-                              <tr>
-                                <td><h4>Participants Fee</h4></td>
-                                <td> <input type="Number" name="pf41" class="form-control" id="pf" placeholder="Enter Amount"/></td>
-                              </tr>
-
-                              <tr>
-                                <td> <input type="text"   name= "os41" class="form-control" id="sname" placeholder="Other Source"/></td>
-                                <td> <input type="Number" name="oam41" class="form-control" id="oaf" placeholder="Enter Amount"/></td>
-                              </tr>
-
-                            </tbody>
-                          </table>
+                    <form id="pubform2" class="form-horizontal form-label-left">
+                      <div class="row">
+                          <span class="section">Publication Specifications</span>
+                          <div class="col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group col-md-4 col-sm-6 col-xs-12"> 
+                                   <p> <input type="Number" name= "npages" class="form-control" id="nump" placeholder="Number of Pages"/></p>
+                                </div>   
+                                <!-- fix alignment -->
+                                <div class="form-group col-md-8 col-sm-6 col-xs-12"> 
+                                    <input type="text" name="bm1" class="form-control" id="nbmember" placeholder="Board member-In-Charge"/>
+                                </div>         
                           </div>
+                        </div> <!-- row -->
+                    
 
-                           <div class= "row">
-                            <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                               <button id="addc4" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
-                                <button id="remc4" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                            </div>
-                          </div>
-                         
-                      <div class="ln_solid"></div>
-                      <span class="section">Organizational Funds</span>
+                      <div class="row">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group col-md-4 col-sm-6 col-xs-12"> 
+                                   <p> <input type="Number" name="ssize" class="form-control" id="spreadsize" placeholder="Spread Size"/></p>
+                                </div>   
+                                <!-- fix alignment -->
+                                <div class="form-group col-md-8 col-sm-6 col-xs-12"> 
+                                    <input type="text" name="bm2" class="form-control" id="spbmember" placeholder="Board member-In-Charge"/>
+                                </div>     
+                        </div>
+                      
+                      </div> <!-- row -->
+                      
+                       <div class="row">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group col-md-4 col-sm-6 col-xs-12"> 
+                                   <p> <input type="text" name="ptype" class="form-control" id="papertype" placeholder="Type of Paper"/></p>
+                                </div>   
+                                <!-- fix alignment -->
+                                <div class="form-group col-md-8 col-sm-6 col-xs-12"> 
+                                 <input type="text" name= "bm3" class="form-control" id="ptbmember" placeholder="Board member-In-Charge"/>
+                                </div>     
+                        </div>
+                      </div> <!-- row -->
 
-                        <div class="table-responsive">          
-                          <table class="table table-bordered">
+                         <div class="row">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group col-md-4 col-sm-6 col-xs-12"> 
+                                   <p> <input type="Number" name="ncolor" class="form-control" id="numcolor" placeholder="Number of Color"/></p>
+                                </div>   
+                                <!-- fix alignment -->
+                                <div class="form-group col-md-8 col-sm-6 col-xs-12"> 
+                                    <input type="text" name="bm4" class="form-control" id="ncbmember" placeholder="Board member-In-Charge"/>
+                                </div>     
+                        </div>
+                      </div> <!-- row -->
 
-                            <tbody>
-                              <tr>
-                                <td><h4>Operational Funds</h4></td>
-                                <td> <input type="Number" name="amt4"class="form-control" id="opf" placeholder="Enter Amount"/></td>
-                              </tr>
-                              <tr>
-                                <td><h4>Depository Funds as of</h4></td>
-                                <td><input type="date" name="dpf4" class="form-control" id="dpf"/> <input type="Number" name= "dpfam" class="form-control" id="dpfam" placeholder="Enter Amount"/></td>
-                              </tr>
-                              <tr>
-                                <td><h4>Participants Fee/Donation/Sponsorships</h4></td>
-                                <td><input type="Number" name= "pf4" class="form-control" id="dpam" placeholder="Enter Amount"/></td>
-                              </tr>
+                       <div class="row">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
 
-                              <tr>
-                                <td style= "background-color:#D3D3D3"><h4>Total Cash for Disbursement:</h4></td>
-                                <td style= "background-color:#D3D3D3"><h4> 315,869.00</h4></td>
-                              </tr>
+                                <div class="form-group col-md-4 col-sm-6 col-xs-12"> 
+                                   <p> <input type="Number" name="ncopies" class="form-control" id="numcopies" placeholder="Number of copies"/></p>
+                                </div>   
+                                <!-- fix alignment -->
+                                <div class="form-group col-md-8 col-sm-6 col-xs-12"> 
+                                    <input type="text" name="bm5" class="form-control" id="ncpbmember" placeholder="Board member-In-Charge"/>
+                                </div>     
+                        </div>
+                      </div> <!-- row -->
 
-                              <tr>
-                                <td><h4>Less: Total Projected Expenses: </h4></td>
-                                 <td><h4>5,000.00</h4></td>
-                              </tr>
+                        <div class="ln_solid"></div> 
+                      
+                       <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">                                  
+                                <label class= "col-md-6"> <h4>Publication Content</h4> </label>
+                                <div class="form-group col-md-10 col-sm-10 col-xs-10">
+                                    <textarea name=pcont class="form-control" rows="6"></textarea>
+                                </div>      
+                        </div>     
+                      </div> <!-- row -->
 
-                              <tr>
-                                <td style="background-color:#D3D3D3"><h4>Remaining Balance: </h4></td>
-                                <td style="background-color:#D3D3D3"><h4>310,869.00</h4></td>
-                              </tr>
+    
+                        
+                        <div class="form-group">
+                                  <div class="col-md-12 col-md-offset-11">
+                                    <input id="send" type="submit" class="btn btn-success align: right" value="Next">
+                                  </div>
+                        </div>
 
-                            </tbody>
-                          </table>
-                          </div>
-
-                        <div class="ln_solid"></div>
-                          <div class="form-group">
-                            <div class="col-md-12 col-md-offset-11">
-                              <button id="nextbppr4" type="submit" class="btn btn-success align: right">Next</button>
-                            </div>
-                          </div>
-                      </form>
-
+                        </form>
+                      
+                      </div> <!-- row -->
+                     </div>
+                    <div class="ln_solid"></div> 
+                   </div>
                   </div>
-                </div>
+                </div> 
               </div>
             </div>
-          </div>
-
 
           </div>
         </div>
         <!-- /page content -->
 
     <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
-   <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src= "js/jquery.validate.min.js"> </script>
-    <script src= js/validation.js></script>
+    <script src= js/validation.js>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -323,7 +326,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-
 	
   </body>
 </html>
