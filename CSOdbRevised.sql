@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `mydb` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `mydb`;
--- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
 -- Host: localhost    Database: mydb
 -- ------------------------------------------------------
--- Server version	5.7.17-log
+-- Server version	5.7.12-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -1199,7 +1197,7 @@ CREATE TABLE `ref_activitynature` (
   PRIMARY KEY (`idREF_ACTIVITYNATURE`),
   KEY `fk_REF_ACTIVITYNATURE_REF_ACTIVITYOFFICE1_idx` (`activityoffice`),
   CONSTRAINT `fk_REF_ACTIVITYNATURE_REF_ACTIVITYOFFICE1` FOREIGN KEY (`activityoffice`) REFERENCES `ref_activityoffice` (`idREF_ACTIVITYOFFICE`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1208,6 +1206,7 @@ CREATE TABLE `ref_activitynature` (
 
 LOCK TABLES `ref_activitynature` WRITE;
 /*!40000 ALTER TABLE `ref_activitynature` DISABLE KEYS */;
+INSERT INTO `ref_activitynature` VALUES (1,'Academic',2),(2,'Special Interest',2),(3,'Departmental Initiative',2),(4,'Fundraising',2),(5,'Community Development',2),(6,'Lasallian Formation/ Spiritual Growth',2),(7,'Outreach',2),(8,'Organizational Development',2),(9,'Student Service',1),(10,'Student\'s Rights & Welfare',1),(11,'Rules and Policies',1),(12,'Fundraising',1),(13,'Community Development',1),(14,'Organizational Development',1),(15,'Issue Advocacy',1),(16,'Lasallian Formation/Spiritual Growth',1),(17,'Outreach',1);
 /*!40000 ALTER TABLE `ref_activitynature` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1222,7 +1221,7 @@ CREATE TABLE `ref_activityoffice` (
   `idREF_ACTIVITYOFFICE` int(11) NOT NULL AUTO_INCREMENT,
   `activityoffice` varchar(45) NOT NULL,
   PRIMARY KEY (`idREF_ACTIVITYOFFICE`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1231,6 +1230,7 @@ CREATE TABLE `ref_activityoffice` (
 
 LOCK TABLES `ref_activityoffice` WRITE;
 /*!40000 ALTER TABLE `ref_activityoffice` DISABLE KEYS */;
+INSERT INTO `ref_activityoffice` VALUES (1,'USG'),(2,'CSO & Special Groups');
 /*!40000 ALTER TABLE `ref_activityoffice` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1271,7 +1271,7 @@ CREATE TABLE `ref_activitytype` (
   PRIMARY KEY (`idREF_ACTIVITYTYPE`),
   KEY `fk_REF_ACTIVITYTYPE_REF_PROCESSINGOFFICE1_idx` (`processingoffice`),
   CONSTRAINT `fk_REF_ACTIVITYTYPE_REF_PROCESSINGOFFICE1` FOREIGN KEY (`processingoffice`) REFERENCES `ref_processingoffice` (`idREF_PROCESSINGOFFICE`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1280,6 +1280,7 @@ CREATE TABLE `ref_activitytype` (
 
 LOCK TABLES `ref_activitytype` WRITE;
 /*!40000 ALTER TABLE `ref_activitytype` DISABLE KEYS */;
+INSERT INTO `ref_activitytype` VALUES (1,'Academic Contest',1),(2,'Distribution',1),(3,'General Assembly',1),(4,'Seminar/ Workshops',1),(5,'Publicity/ Awareness Campaign',1),(6,'Meetings',1),(7,'Spiritual Activity',1),(8,'Recruitment/ Audition',1),(9,'Recreation',1),(10,'Others',1),(11,'Alliance with Outside Organizations',2),(12,'Off- Campus Activities',2),(13,'Seminar with Distinguished Speakers',2),(14,'Conference Involving Outside Particpants ',2),(15,'Solicitations',2),(16,'Fundraising',2),(17,'Donation Drive',2),(18,'Others',2);
 /*!40000 ALTER TABLE `ref_activitytype` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1326,6 +1327,7 @@ CREATE TABLE `ref_processingoffice` (
 
 LOCK TABLES `ref_processingoffice` WRITE;
 /*!40000 ALTER TABLE `ref_processingoffice` DISABLE KEYS */;
+INSERT INTO `ref_processingoffice` VALUES (1,'CSO/DAAM'),(2,'SLIFE');
 /*!40000 ALTER TABLE `ref_processingoffice` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1340,7 +1342,7 @@ CREATE TABLE `ref_sastype` (
   `idREF_SASTYPE` int(11) NOT NULL AUTO_INCREMENT,
   `SAStype` varchar(45) NOT NULL,
   PRIMARY KEY (`idREF_SASTYPE`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1349,6 +1351,7 @@ CREATE TABLE `ref_sastype` (
 
 LOCK TABLES `ref_sastype` WRITE;
 /*!40000 ALTER TABLE `ref_sastype` DISABLE KEYS */;
+INSERT INTO `ref_sastype` VALUES (1,'Late Submission'),(2,'In Case of Change'),(3,'Cancellation of Activity'),(4,'Activity Not in GOSM'),(5,'w/o term - end requirements'),(6,'Lost A- Form');
 /*!40000 ALTER TABLE `ref_sastype` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1390,7 +1393,7 @@ CREATE TABLE `ref_users` (
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1399,6 +1402,7 @@ CREATE TABLE `ref_users` (
 
 LOCK TABLES `ref_users` WRITE;
 /*!40000 ALTER TABLE `ref_users` DISABLE KEYS */;
+INSERT INTO `ref_users` VALUES (1,'Young Enterepreneurs\' Society','yes_dlsu.edu.ph','yes','yes123');
 /*!40000 ALTER TABLE `ref_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1622,6 +1626,14 @@ LOCK TABLES `trademarkuse` WRITE;
 /*!40000 ALTER TABLE `trademarkuse` DISABLE KEYS */;
 /*!40000 ALTER TABLE `trademarkuse` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'mydb'
+--
+
+--
+-- Dumping routines for database 'mydb'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -1632,4 +1644,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-19 19:21:06
+-- Dump completed on 2017-02-23 23:05:37
