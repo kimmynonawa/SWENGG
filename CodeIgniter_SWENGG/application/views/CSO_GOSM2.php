@@ -196,53 +196,80 @@
 							<div class="clearfix"></div>
 						  </div>
 						  
-						  <?php var_dump($sample);?>
+						  <?php var_dump($activity);?>
+						  <br></br>
+						  <?php var_dump($cencommcomm);?>
+						  <br></br>
+						  <?php var_dump($cencommdocu);?>
+						  <br></br>
+						  <?php var_dump($cencommexte);?>
+						  <br></br>
+						  <?php var_dump($cencommfina);?>
+						  <br></br>
+						  <?php var_dump($cencommhr);?>
+						  <br></br>
+						  <?php var_dump($cencomminte);?>
+						  <br></br>
+						  <?php var_dump($cencommprom);?>
+						  <br></br>
+						  <?php var_dump($othersequi);?>
+						  <br></br>
+						  <?php var_dump($othershost);?>
+						  <br></br>
+						  <?php var_dump($othersphot);?>
+						  <br></br>
+						  <?php var_dump($othersspea);?>
+						  <br></br>
+						  <?php var_dump($othersspon);?>
+						  <br></br>
+						  <?php var_dump($othersvide);?>
+						  <br></br>
 						  <div class="x_content">
 							<span class="section">Activity Information</span>
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Name: </label>
-									<p> <?php echo $sample[0]['title'];?></p>
+									<p> <?php echo $activity[0]['title'];?></p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Goals: </label>
-									<p><?php echo $sample[0]['goals'];?></p>
+									<p><?php echo $activity[0]['goals'];?></p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Brief Description: </label>
-									<p><?php echo $sample[0]['description'];?></p>
+									<p><?php echo $activity[0]['description'];?></p>
 								</div>
 								
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Measures: </label>
-									<p><?php echo $sample[0]['measures'];?></p>
+									<p><?php echo $activity[0]['measures'];?></p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">GOSM Target Date: </label>
-									<p><?php echo $sample[0]['fromdate'];?> - <?php echo $sample[0]['todate'];?></p>
+									<p><?php echo $activity[0]['fromdate'];?> - <?php echo $activity[0]['todate'];?></p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Time: </label>
-									<p><?php echo $sample[0]['fromtime'];?> -  <?php echo $sample[0]['totime'];?></p>
+									<p><?php echo $activity[0]['fromtime'];?> -  <?php echo $activity[0]['totime'];?></p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Venue: </label>
-									<p><?php echo $sample[0]['venue'];?></p>
+									<p><?php echo $activity[0]['venue'];?></p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Nature: </label>
-									<p><?php echo $sample[0]['activitynature'];?></p>
+									<p><?php echo $activity[0]['activitynature'];?></p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Type: </label>
-									<p><?php echo $sample[0]['activitytype'];?></p>
+									<p><?php echo $activity[0]['activitytype'];?></p>
 								</div>
 
 								<div class="item form-group">
@@ -252,7 +279,7 @@
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Budget Breakdown: </label>
-									<p><?php echo $sample[0]['budget'];?></p>
+									<p><?php echo $activity[0]['budget'];?></p>
 								</div>
 								
 							
@@ -269,69 +296,160 @@
 								
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Internal Affairs Head/s: </label>
-									<p>"Internal Affairs"</p>
+									<p>
+									<?php 
+									for ($i=0; $i<count($cencomminte); $i++){
+										echo ($cencomminte[$i]['name']);
+										echo '<br>';
+									}
+									?>
+									</p>
 								</div>
 								
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">External Affairs  Head/s: </label>
-									<p>"External Affairs"</p> 
+									<p>
+									<?php 
+									for ($i=0; $i<count($cencommexte); $i++){
+										echo ($cencommexte[$i]['name']);
+										echo '<br>';
+									}
+									?>
+									</p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Human Resources Head/s: </label> 
-									<p>"Human Resources"</p>
+									<p>
+									<?php 
+									for ($i=0; $i<count($cencommhr); $i++){
+										echo ($cencommhr[$i]['name']);
+										echo '<br>';
+									}
+									?>
+									</p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Communications Head/s: </label>
-									<p>"Communications"</p>
+									<p>
+									<?php 
+									for ($i=0; $i<count($cencommcomm); $i++){
+										echo ($cencommcomm[$i]['name']);
+										echo '<br>';
+									}
+									?>
+									</p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Promotions Head/s: </label>
-									<p>"Promotions"</p>
+									<p>
+									<?php 
+									for ($i=0; $i<count($cencommprom); $i++){
+										echo ($cencommprom[$i]['name']);
+										echo '<br>';
+									}
+									?>
+									</p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Finance Head/s: </label>
-									<p>Ryan King</p>
+									<p>
+									<?php 
+									for ($i=0; $i<count($cencommfina); $i++){
+										echo ($cencommfina[$i]['name']);
+										echo '<br>';
+									}
+									?>
+									</p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Documentations Head/s: </label>
-									<p>Alex Espiritu</p>
+									<p>
+									<?php 
+									for ($i=0; $i<count($cencommdocu); $i++){
+										echo ($cencommdocu[$i]['name']);
+										echo '<br>';
+									}
+									?>
+									</p>
 								</div>
 						
 								
 							<span class="section">Others</span>
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Photographers: </label>
-									<p>"Photographers"</p>
+									<p>
+									<?php 
+									for ($i=0; $i<count($othersphot); $i++){
+										echo ($othersphot[$i]['name']);
+										echo '<br>';
+									}
+									?>
+									</p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Videographers: </label>
-									<p>"Videographers"</p>
+									<p>
+									<?php 
+									for ($i=0; $i<count($othersvide); $i++){
+										echo ($othersvide[$i]['name']);
+										echo '<br>';
+									}
+									?>
+									</p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Host/s: </label>
-									<p>"Hosts"</p> 
+									<p>
+									<?php 
+									for ($i=0; $i<count($othershost); $i++){
+										echo ($othershost[$i]['name']);
+										echo '<br>';
+									}
+									?>
+									</p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Speaker/s: </label> 
-									<p>"Speakers"</p>
+									<p>
+									<?php 
+									for ($i=0; $i<count($othersspea); $i++){
+										echo ($othersspea[$i]['name']);
+										echo '<br>';
+									}
+									?>
+									</p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Sponsor/s: </label>
-									<p>"Sponsors"</p>
+									<p>
+									<?php 
+									for ($i=0; $i<count($othersspon); $i++){
+										echo ($othersspon[$i]['name']);
+										echo '<br>';
+									}
+									?>
+									</p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Equipment Needed: </label>
-									<p>"Equipments"</p>
+									<p>
+									<?php 
+									for ($i=0; $i<count($othersequi); $i++){
+										echo ($othersequi[$i]['name']);
+										echo '<br>';
+									}
+									?>
+									</p>
 								</div>
 								<br />
 								<br />

@@ -61,9 +61,32 @@
 		}
 		
 		public function viewGosm(){
-			$res = $this->Gosm_model->getGosmDetails(1);
-			$data = array("sample" => $res);
+			$gosmdetails = $this->Gosm_model->getGosmDetails(1);
+			
+			$cencommcomm = $this->Gosm_model->getCenCommCommunications(1);
+			$cencommdocu = $this->Gosm_model->getCenCommDocumentations(1);
+			$cencommexte = $this->Gosm_model->getCenCommExternals(1);
+			$cencommfina = $this->Gosm_model->getCenCommFinance(1);
+			$cencommhr   = $this->Gosm_model->getCenCommHR(1);
+			$cencomminte = $this->Gosm_model->getCenCommInternals(1);
+			$cencommprom = $this->Gosm_model->getCenCommPromotions(1);
+			
+			$othersequi = $this->Gosm_model->getOthersEquipments(1);
+			$othershost = $this->Gosm_model->getOthersHosts(1);
+			$othersphot = $this->Gosm_model->getOthersPhotographers(1);
+			$othersspea = $this->Gosm_model->getOthersSpeakers(1);
+			$othersspon = $this->Gosm_model->getOthersSponsors(1);
+			$othersvide = $this->Gosm_model->getOthersVideographers(1);
+			$data = 
+			array(
+				"activity" => $gosmdetails, "cencommcomm" => $cencommcomm, "cencommdocu" => $cencommdocu, 
+				"cencommexte" => $cencommexte, "cencommfina" => $cencommfina, "cencommhr" => $cencommhr,
+				"cencomminte" => $cencomminte, "cencommprom" => $cencommprom,
+				"othersequi" => $othersequi, "othershost" => $othershost, "othersphot" => $othersphot,
+				"othersspea" => $othersspea, "othersspon" => $othersspon, "othersvide" => $othersvide
+				);
 			$this->load->view('CSO_GOSM2', $data);
+			
 		}
 		
 	}
