@@ -4,6 +4,7 @@
 			parent::__construct();
 			$this->load->helper("url");
 			$this->load->library('form_validation');
+			$this->load->model("Account_model");
 		}
 		
 		public function loadLogin(){
@@ -33,26 +34,32 @@
 			}
 			
 			else{
-				/**
-				$type = model that will return the type
-				if ($type == 1){//if login as cso redirect to cso homepage
-					redirect("Csohomepage");
-				}
-				if ($type == 2){//if login as org redirect to org homepage
-					redirect("Orghomepage");
-				}
-				else{//wrong login
+				$type = $this->Account_model->checkLogin($this->input->post('Username'),$this->input->post('Password'));
+				if($type == null){
 					$data = array("wrong" => "true");
 					$this->load->view('login', $data);
 				}
-				**/
-				redirect("Cso/homepage");
+				else if ($type[0]['type'] == "1"){//if login as cso redirect to cso homepage
+					redirect('account/cso');
+				}
+				else if ($type[0]['type'] == "2"){//if login as org redirect to org homepage
+					redirect('account/org');
+				}
+				else{
+					var_dump($type);
+					echo("error");
+				}
+				
 			}
 			
 		}
 		
 		public function cso(){
 			$this->load->view('CSO_Home');
+		}
+		
+		public function org(){
+			$this->load->view('ORG_Home');
 		}
 		
 	}

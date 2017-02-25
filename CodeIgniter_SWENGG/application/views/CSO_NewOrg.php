@@ -198,6 +198,16 @@
                             </div>        
                         </div>
                       </div> 
+					  
+					  <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Organization Acronym</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input id="orgacro" class="form-control has-feedback-left" name="orgacro" placeholder="ex: JO" type="text">
+                              <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                            </div>        
+                        </div>
+                      </div> 
 
                       <div class= "row">
                         <div class="col-md-8">   

@@ -33,7 +33,9 @@
 			<div style="text-align:center;">
 				<form method="post" action="login">
 				  <h1>Login</h1>
-				  <?php echo validation_errors(); ?>
+				  <?php if (isset($wrong)): ?>
+						<p>Invalid Login</p>
+				  <?php endif; ?>
 				  <div>
 					<input name="Username" type="text" class="form-control" placeholder="Username" required="" />
 				  </div>
