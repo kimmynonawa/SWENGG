@@ -251,7 +251,7 @@
                       <div class="ln_solid"></div> 
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-11">
-                          <input id="nextbcson" type="submit" class="btn btn-success align: right" value ="Next">
+                          <input id="nextbcson" type="submit" class="btn btn-success align: right" value ="Add">
                         </div>
                       </div>
                     </form>
@@ -261,6 +261,9 @@
             </div> 
           </div>
         </div>
+		
+	
+	
     <script src= "<?php echo base_url();?>js/jquery.min.js"></script>
     <script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
     <script src= "<?php echo base_url();?>js/validation.js"></script>

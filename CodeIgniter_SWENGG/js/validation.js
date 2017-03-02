@@ -3,74 +3,76 @@
 $(function(){
 
 	// FOOD ENTRY PERMIT 1
-	var foodform= $('#feform');
+	var foodform= $('#formFoodEntry');
 
 	jQuery.validator.addMethod("lettersonly", function(value, element) {
 	return this.optional(element) || /^[a-z\s]+$/i.test(value);
 	})
 	foodform.validate({
 		rules: {
-			sname: {
+			Name: {
 				required:true,
 				lettersonly: true
 			},
-			idnum:{
+			IDNum:{
 				required: true,
 				minlength: 8
 
 			},
-			posi: {
+			Position: {
 				required: true,
 				lettersonly: true
 			},
-			email:{
+			Email:{
 				required: true,
 				email: true
 			},
 
-			cpnum:{
+			CPNo:{
 				required: true,
-				maxlength: 14	
+				maxlength: 11,
+				minlength: 11
 			},
 
-			localnum:{
+			TelNo:{
 				maxlength: 7
 			}
 
 		},
 
 		messages: {
-			sname:{
+			Name:{
 				required: 'Enter your full name',
 				lettersonly: 'Alphabetic characters only'
 			},
 
-			idnum:{
+			IDNum:{
 				required: 'Enter your ID number',
 				minlength: 'Invalid ID number'
 			},
 
-			posi: {
+			Position: {
 				required:'Enter your position',
 				lettersonly: 'Invalid position'
 			},
 
-			email: {
+			Email: {
 				required: 'Enter your DLSU e-mail',
 				email: 'Invalid DLSU e-mail'
 			},
 
-			cpnum: {
+			CPNo: {
 				required: 'Enter mobile number.',
-				maxlength: 'Invalid mobile number'
+				maxlength: 'Invalid mobile number',
+				minlength: 'Invalid mobile number'
 			},
 
-			localnum:{
+			TelNo:{
 				maxlength: 'Enter a valid local number'
 			}
 		}
 	});
-	$('#nextbt').click(function() {
+	$('#nextFood').click(function() {
     	if (foodform.valid()){
         	window.location.href = "ORG_PreAct_FoodEntryPermit2.html";
         }
@@ -249,7 +251,7 @@ $(function(){
 	});
 	$('#nextpub').click(function() {
       if (pubform.valid()){
-         window.location.href = "ORG_PreAct_MinPubProposal2.html";
+         window.location.href = "ORG_PreAct_MinorPublicationProposal2.html";
        }
        return false;
      });
@@ -376,7 +378,11 @@ $(function(){
 				lettersonly: true
 			},
 			
-			phnum: "required",
+			phnum: {
+				required: true,
+				maxlength: 11,
+				minlength: 11
+			},
 
 			prname:{
 				required:true,
@@ -406,7 +412,9 @@ $(function(){
 			},
 
 			phnum:{
-				required: 'Enter project head contact number'
+				required: 'Enter project head contact number',
+				maxlength: 'Invalid contact number',
+				minlength: 'Invalid contact number'
 			},
 
 			prname:{
@@ -630,9 +638,6 @@ $(function(){
 			gosmobj: "required",
 			gosmdes:"required",
 			gosmmeas:"required",
-
-			gosmdr: "required",
-
 			gosmsdate:"required",
 			gosmedate: "required",
 
@@ -646,9 +651,7 @@ $(function(){
 				maxlength: 6
 			},
 			gosmnat:"required",
-			gosmtype:"required",
-			reton: "required",
-			retor: "required"
+			gosmtype:"required"
 
 
 		},
@@ -666,11 +669,6 @@ $(function(){
 			gosmmeas:{
 				required: 'Enter the measures of the activity'
 			},
-
-			gosmdr:{
-				required: 'Pick a duration of the activity'
-			},
-
 			gosmsdate: {
 				required: 'Pick a start date for the activity'
 			},
@@ -699,12 +697,6 @@ $(function(){
 			},
 			gosmtype: {
 				required: 'Pick tpe of activity'
-			},
-			reton:{ 
-				required: "Enter a relation"
-			},
-			retor: { 
-				required: "required"
 			}	
 		}
 	});
@@ -1144,9 +1136,9 @@ $(function(){
 			gosmcsoact: 'Please pick an activity'		
 		}
 	});
-	$('#nextorggosm').click(function() {
+	$('#nextcsogosm').click(function() {
     	if (gosmcso.valid()){
-        	window.location.href = "";
+        	window.location.href = "CSO_GOSM2.html";
         }
         return false;
    	});
@@ -1257,6 +1249,670 @@ $(function(){
    	});
    	//A_FORM2
 
+   	// O_ EQUIPMENT ENTRY
+   	var formEquipment= $('#formEquipment');
+	formEquipment.validate({
+		rules: {
+			Name: {
+				required:true,
+				lettersonly: true
+			},
+			Position: {
+				required:true
+			},
+			reasonRequest: {
+				required:true
+			}
+		},
+
+		messages:{
+			Name: {
+				required: 'Enter name',
+				lettersonly: 'Alphabetic characters only'
+			},
+			Position: {
+				required: 'Enter position'
+			},
+			reasonRequest: {
+				required: 'Enter reason for request'
+			}
+		}
+	});
+	$('#nextEquipment').click(function() {
+    	if (formEquipment.valid()){
+        	window.location.href = "";
+        }
+        return false;
+   	});
+
+   	// O_ EQUIPMENT ENTRY
+
+
+   	//mechanicsForm
+   	var mechanicsForm= $('#mechanicsForm');
+	mechanicsForm.validate({
+		rules: {
+			guidelines: {
+				required:true
+			},
+			mechanics: {
+				required:true
+			},
+			criteria: {
+				required:true
+			},
+			judges: {
+				required:true,
+				lettersonly: true
+			
+			},
+			questions: {
+				required:true
+			}
+		},
+
+		messages:{
+			guidelines: {
+				required: 'Enter guidelines'
+			},
+			mechanics: {
+				required: 'Enter mechanics'
+			},
+			criteria: {
+				required: 'Enter criteria'
+			},
+			judges: {
+				required: 'Enter name',
+				lettersonly: 'Alphabetic characters only'
+			
+			},
+			questions: {
+				required: 'Enter question'
+			}
+		}
+	});
+	$('#nextmech').click(function() {
+    	if (mechanicsForm.valid()){
+        	window.location.href = "";
+        }
+        return false;
+   	});
+   	//mechanicsForm
+
+   	//Approval change act details
+   	var approvalChanges= $('#approvalChanges');
+	approvalChanges.validate({
+		rules: {
+			CSOactType: {
+				required:true
+			},
+			reason: {
+				required:true
+			},
+			requestName: {
+				required:true,
+				lettersonly: true
+			
+			}
+		},
+
+		messages:{
+			CSOactType: {
+				required: ' Pick activity type'
+			},
+			reason: {
+				required: 'Enter reason of change'
+			},
+			requestName: {
+				required: 'Enter name',
+				lettersonly: 'Alphabetic characters only'
+			
+			}
+		}
+	});
+	$('#nextApproveChanges').click(function() {
+    	if (approvalChanges.valid()){
+        	window.location.href = "";
+        }
+        return false;
+   	});
+   	//Approval change act details
+
+   	//approval use trademark1
+   	var formTrademark= $('#formTrademark');
+	formTrademark.validate({
+		rules: {
+			Name: {
+				required:true,
+				lettersonly: true
+			},
+			Position: {
+				required:true
+			},
+			IDNum: {
+				required:true,
+				maxlength: 8,
+				minlength: 8
+			
+			},
+			Email: {
+				required:true,
+				email: true
+			},
+			TelNo: {
+				maxlength: 7,
+				minlength: 7
+
+			},
+			CPNo: {
+				required:true,
+				maxlength: 11,
+				minlength: 11,
+			}
+		},
+
+		messages:{
+			Name: {
+				required: 'Enter name',
+				lettersonly: 'Alphabetic characters only'
+			},
+			Position: {
+				required: 'Enter position'
+			},
+			IDNum: {
+				required: 'Enter ID number',
+				maxlength: 'Invalid ID number',
+				minlength: 'Invalid ID number'
+			
+			},
+			Email: {
+				required: 'Enter DLSU e-mail',
+				email: 'Invalid DLSU e-mail'
+			},
+			TelNo: {
+				maxlength: 'Invalid telephone number',
+				minlength: 'Invalid telephone number'
+			},
+			CPNo: {
+				required: 'Enter cellphone number',
+				minlength: 'Invalid cellphone number',
+				maxlength: 'Invalid cellphone number'
+			},
+		}
+	});
+	$('#nextTrademark').click(function() {
+    	if (formTrademark.valid()){
+        	window.location.href = "ORG_PreAct_ApprovalUseTrademark2.html";
+        }
+        return false;
+   	});
+
+   	//approval use trademark1
+
+   	//approval use trademark2
+   	var formTrademark2= $('#formTrademark2');
+	formTrademark2.validate({
+		rules: {
+			matToProduce: {
+				required:true
+			},
+			trademarkUse: {
+				required:true
+			},
+			startTime: {
+				required:true
+			},
+			endTime: {
+				required: true
+			},
+			actType: {
+				required:true,
+			},
+			venueList: {
+				required:true,
+			}
+		},
+
+		messages:{
+			matToProduce: {
+				required: 'Pick material type'
+			},
+			trademarkUse: {
+				required: 'Enter purpose'
+			},
+			startTime: {
+				required: 'Enter start time'
+			},
+			endTime: {
+				required: 'Enter end time'			
+			},
+			actType: {
+				required: 'Pick activity type'
+			},
+			venueList: {
+				required: 'Pick venue'
+			}
+		}
+	});
+	$('#nextTrademark2').click(function() {
+    	if (formTrademark1.valid()){
+        	window.location.href = "";
+        }
+        return false;
+   	});
+
+
+    $("#tmarks").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"> <div class="col-md-8"><label class= "col-md-5"> <h4>Trademark To Use:</h4> </label> <div class= "form-group col-md-6"> <select class="select2_group form-control" name="tmChoice"> <optgroup label="Logos / Design"> <option value="delasalleuniversitylogo">De La Salle University Logo</option><option value="starscholarsdesign">Star Scholars Design</option></optgroup><optgroup label="DLSU labels"><option value="delasalleuniversity">De La Salle University</option><option value="dlsum">DLSU-M</option><option value="lasallegreenarchers">La Salle Green Archers</option><option value="lasalle">La Salle</option><option value="dlsu">DLSU</option><option value="ls">LS</option><option value="greenarcher">Green Archer</option> <option value="delasalleathletics">De La Salle Athletics</option></optgroup><optgroup label="DLSU taglines"><option value="animolasalle">Animo La Salle</option><option value="thefuturebeginshere">The Future Begins Here</option><option value="wemeanbusiness">We Mean Business</option><option value="creatingthenextgreatidea">Creating the Next Great Idea</option> <option value="bepartofthebusinessclass">Be Part of the Business Class</option><option value="keeplearning">Keep Learning</option><option value="hiptobehere">Hip to Be Here</option> <option value="beyondhigherlearning">Beyond Higher Learning</option><option value="nevershallwefail">Never Shall We Fail</option><option value="greenwhitefights">Green White Fights</option></optgroup></select></div></div></div></div>')
+
+  	$("#addtm").click(function() {
+       $("#tmarks").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"> <div class="col-md-8"><label class= "col-md-5"> </label> <div class= "form-group col-md-6"> <select class="select2_group form-control" name="tmChoice"> <optgroup label="Logos / Design"> <option value="delasalleuniversitylogo">De La Salle University Logo</option><option value="starscholarsdesign">Star Scholars Design</option></optgroup><optgroup label="DLSU labels"><option value="delasalleuniversity">De La Salle University</option><option value="dlsum">DLSU-M</option><option value="lasallegreenarchers">La Salle Green Archers</option><option value="lasalle">La Salle</option><option value="dlsu">DLSU</option><option value="ls">LS</option><option value="greenarcher">Green Archer</option> <option value="delasalleathletics">De La Salle Athletics</option></optgroup><optgroup label="DLSU taglines"><option value="animolasalle">Animo La Salle</option><option value="thefuturebeginshere">The Future Begins Here</option><option value="wemeanbusiness">We Mean Business</option><option value="creatingthenextgreatidea">Creating the Next Great Idea</option> <option value="bepartofthebusinessclass">Be Part of the Business Class</option><option value="keeplearning">Keep Learning</option><option value="hiptobehere">Hip to Be Here</option> <option value="beyondhigherlearning">Beyond Higher Learning</option><option value="nevershallwefail">Never Shall We Fail</option><option value="greenwhitefights">Green White Fights</option></optgroup></select></div></div></div></div>');   
+	});
+
+     $("#deletetm").click(function() {
+            var v= document.getElementById("newph");
+            v.remove();
+      });
+
+
+   	//approval use trademark2
+
+   	//special approval slip
+   	var sas= $('#specialappslip');
+	sas.validate({
+		rules: {
+			actType: {
+				required:true
+			},
+			submissionType: {
+				required:true
+			},
+			reason: {
+				required:true
+			},
+			name: {
+				required: true,
+				lettersonly: true
+			}
+		},
+
+		messages:{
+			actType: {
+				required: 'Pick activity type'
+			},
+			submissionType: {
+				required: 'Pick submission type'
+			},
+			reason: {
+				required: 'Enter reason/justification'
+			},
+			name: {
+				required: 'Enter name',
+				lettersonly: 'Alphabetic characters only'
+				
+			}		
+		}
+	});
+	$('#nextSas').click(function() {
+    	if (sas.valid()){
+        	window.location.href = "";
+        }
+        return false;
+   	});
+   	//special approval slip
+
+   	//spca
+   	var spca1= $('#specialPermit1');
+	spca1.validate({
+		rules: {
+			actType: {
+				required:true
+			},
+			enmp: {
+				required:true,
+				maxlength: 5
+			},
+			enp: {
+				required:true,
+				maxlength: 5
+			},
+			Faculty: {
+				required: true
+			},
+			sdate: {
+				required: true
+			},
+			stime: {
+				required: true
+			},
+			edate: {
+				required: true
+			},
+			etime: {
+				required: true
+			},
+			venue: {
+				required: true
+			}
+		},
+
+		messages:{
+			actType: {
+				required: 'Pick activity type'
+			},
+			enmp: {
+				required: 'Enter ENMP',
+				maxlength: 'Maximum ENMP exceeded'
+			},
+			enp: {
+				required:'ENTER ENP',
+				maxlength: 'Maximum ENP exceeded'
+			},
+			Faculty: {
+				required: 'Enter faculty name'
+			},
+			sdate: {
+				required: 'Enter start date'
+			},
+			stime: {
+				required: 'Enter start time'
+			},
+			edate: {
+				required: 'Enter end date'
+			},
+			etime: {
+				required: 'Enter end time'
+			},
+			venue: {
+				required: 'Enter venue'
+			}	
+		}
+	});
+	$('#nextSpecialPermit1').click(function() {
+    	if (spca1.valid()){
+        	window.location.href = "ORG_PreAct_SpecialPermitCampusAccess2.html";
+        }
+        return false;
+   	});
+
+   	//spca
+
+   	//spca2
+   	var spca2= $('#specialPermit2');
+	spca2.validate({
+		rules: {
+			Name: {
+				required:true
+			},
+			IDNum: {
+				required:true,
+				maxlength: 8,
+				minlength: 8
+			},
+			officeLoc: {
+				required:true
+			},
+			CPNo: {
+				required: true,
+				maxlength: 11,
+				minlength: 11
+			},
+			TelNo: {
+				required: true,
+				maxlength: 7,
+				minlength: 7
+			},
+			Email: {
+				required: true,
+				email: true
+			}
+		},
+
+		messages:{
+			Name: {
+				required: 'Enter name'
+			},
+			IDNum: {
+				required:'Enter ID number',
+				maxlength: 'Invalid ID number',
+				minlength: 'Invalid ID number'
+			},
+			officeLoc: {
+				required: 'Enter office location'
+			},
+			CPNo: {
+				required: 'Enter cellphone number',
+				maxlength: 'Invalid cellphone number',
+				minlength: 'Invalid cellphone number'
+			},
+			TelNo: {
+				required: 'Enter telephone number',
+				maxlength: 'Invalid telephone number',
+				minlength: 'Invalid telephone number'
+			},
+			Email: {
+				required: 'Enter DLSU e-mail',
+				email: 'Invalid DLSU e-mail'
+			}		
+		}
+	});
+	$('#nextSpecialPermit2').click(function() {
+    	if (spca2.valid()){
+        	window.location.href = "";
+        }
+        return false;
+   	});
+   	//spca2
+
+   	//org preact
+   	var opre= $('#preActForm');
+	opre.validate({
+		rules: {
+			preActType: {
+				required:true
+			}
+		},
+
+		messages:{
+			preActType: {
+				required: 'Pick activity type'
+			}	
+		}
+	});
+	$('#nextPreAct').click(function() {
+    	if (opre.valid()){
+        	window.location.href = "";
+        }
+        return false;
+   	});
+
+   $('#returnHome').click(function() {
+        	window.location.href = "Org_Home.html";
+   	});
+   	//org preact
+
+
+   	//list of participants
+   	var lop= $('#LPForm');
+	lop.validate({
+		rules: {
+			id:{
+				required: true,
+				maxlength: 8,
+				minlength: 8
+			},
+			lName:{
+				required:true,
+				lettersonly: true
+			},
+			fName:{
+				required:true,
+				lettersonly: true
+			},
+			mName:{
+				required: true,
+				lettersonly: true
+			},
+			age:{
+				required: true,
+				maxlength: 2,
+				min: 5
+			}
+		},
+
+		messages:{
+			id:{
+				required: 'Enter ID number',
+				maxlength: 'Invalid ID number',
+				minlength: 'Invalid ID number'
+			},
+			lName:{
+				required: 'Enter last name',
+				lettersonly: 'Alphabetic characters only'
+			},
+			fName:{
+				required: 'Enter first name',
+				lettersonly: 'Alphabetic characters only'
+			},
+			mName:{
+				required: 'Enter middle initial',
+				lettersonly: 'Alphabetic characters only'
+			},
+			age:{
+				required: 'Enter age',
+				maxlength: 'Invalid age',
+				min: 'Invalid age'
+			}
+		}
+	});
+	$('#nextLP').click(function() {
+    	if (lop.valid()){
+        	window.location.href = "";
+        }
+        return false;
+   	});
+
+		$("#add").click(function () {
+                var det = document.getElementById('details'); 
+                var cln = det.cloneNode(true);
+                var ig = document.getElementById('student');
+                ig.appendChild(cln);    
+                //var ctr = document.getElementsByClassName("details").length;
+            });
+            $("#delete").click(function () {
+                var count = document.getElementsByClassName("details").length;
+                var last = document.getElementsByClassName("details").item(count-1);
+                if(count >1){
+                    last.remove();
+                }
+                console.log(count);
+            });
+   	// list of participants
+
+
+
+   	//spca
+
+   	$("#addspca").click(function() {
+      $("#requests").append('<tr id ="detailss" class="details"> <td><input class="form-control" name="sdate" placeholder ="Enter Start Date" /></td><td>  <input class="form-control" name="stime" placeholder ="Enter Start Time" /></td><td>  <input class="form-control" name="edate" placeholder ="Enter End Date" /></td><td>  <input class="form-control" name="etime" placeholder ="Enter End Time" /></td><td>  <input class="form-control" name="venue" placeholder ="Enter Venue"/></td></tr>');   
+     });
+
+   	 
+    $("#deletespca").click(function() {
+      var v= document.getElementById("detailss");
+      	v.remove();
+    });
+
+    //
+   	// contest mechanics 
+   	var conmech= $('#conmech');
+	conmech.validate({
+		rules: {
+			guidelines:{
+				required:true
+			},
+			mechanics:{
+				required: true
+			},
+			cri:{
+				required: true
+			},
+			judge:{
+				required:true,
+				lettersonly: true
+			},
+			question:{
+				required: true
+			}
+		},
+
+		messages:{
+			guidelines:{
+				required: 'Enter guideline'
+			},
+			mechanics:{
+				required: 'Enter mechanic'
+			},
+			cri:{
+				required: 'Enter criteria'
+			},
+			judge:{
+				required: 'Enter name',
+				lettersonly: 'Alphabetic characters only'
+			},
+			question:{
+				required: 'Enter question'
+			}
+		}
+	});
+
+
+
+   	$("#mech").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"><div class="col-md-8"><label class= "col-md-2"> <h4>Mechanics</h4> </label><div class= "form-group col-md-6"><input type="text" name= "mechanics" class="form-control" placeholder="ex: Sing and dance with your blockmates"/></div></div></div>')
+
+   	$("#addmech").click(function() {
+            $("#mech").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-8"><label class= "col-md-2"></label><div class= "form-group col-md-6"><input type="text" name= "mechanics" class="form-control" placeholder="ex: Sing and dance with your blockmates"/></div></div></div></div>');   
+	});
+
+     $("#deletemech").click(function() {
+            var v= document.getElementById("newph");
+            v.remove();
+      });
+
+
+   	$("#criteria").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"><div class="col-md-8"><label class= "col-md-2"> <h4>Criteria</h4> </label><div class= "form-group col-md-6"><input type="text" name= "cri" class="form-control" placeholder="100 points for Costume"/></div></div></div>')
+
+   	$("#addcrit").click(function() {
+            $("#criteria").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-8"><label class= "col-md-2"></label><div class= "form-group col-md-6"><input type="text" name= "cri" class="form-control" placeholder="100 points for costume"/></div></div></div>');   
+	});
+
+     $("#deletecrit").click(function() {
+            var v= document.getElementById("newph");
+            v.remove();
+      });
+
+     $("#listjudge").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"><div class="col-md-8"><label class= "col-md-2"> <h4>Judges</h4> </label><div class= "form-group col-md-6"><input type="text" name= "judge" class="form-control" placeholder="ex: Juan Dela Cruz"/></div></div></div>')
+
+   	$("#addjudge").click(function() {
+            $("#listjudge").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-8"><label class= "col-md-2"></label><div class= "form-group col-md-6"><input type="text" name= "judge" class="form-control" placeholder="ex: Juan Dela Cruz"/></div></div></div>');   
+	});
+
+     $("#deletejudge").click(function() {
+            var v= document.getElementById("newph");
+            v.remove();
+      });
+
+    $("#listquestions").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"><div class="col-md-8"><label class= "col-md-2"> <h4>Questions </h4> </label><div class= "form-group col-md-6"><input type="text" name= "question" class="form-control" placeholder="ex: What is your advocacy?"/></div></div></div>')
+
+  	$("#addquestion").click(function() {
+            $("#listquestions").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-8"><label class= "col-md-2"></label><div class= "form-group col-md-6"><input type="text" name= "question" class="form-control" placeholder="ex: What is your advocacy?"/></div></div></div>');   
+	});
+
+     $("#deletequestion").click(function() {
+            var v= document.getElementById("newph");
+            v.remove();
+      });
+
+   	// contest mechanics
 
 
 });

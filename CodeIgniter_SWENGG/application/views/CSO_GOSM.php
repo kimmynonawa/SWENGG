@@ -27,6 +27,11 @@
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
+	
+	<!-- jQuery -->
+    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.validate.min.js"></script>
+    <script src="<?php echo base_url();?>js/validation.js"></script>
   </head>
 
   <body class="nav-md">
@@ -39,7 +44,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="<?php echo base_url();?>images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -106,7 +111,7 @@
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="<?php echo base_url();?>images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -118,7 +123,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="<?php echo base_url();?>images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -130,7 +135,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="<?php echo base_url();?>images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -142,7 +147,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="<?php echo base_url();?>images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -186,20 +191,42 @@
                 <div class="x_content">
                   <form id="gosmcso" class="form-horizontal form-label-left" method ="post" autocomplete="off">
                     <span class="section"> Select the Necessary Fields</span>
-
+					<?php var_dump($orgs);?>
+						  <br></br>
                     <div class= "row">
                         <div class="col-md-8">   
                           <label class= "col-md-3"> <h4>Organization Name</h4> </label>
                             <div class= "form-group col-md-7">
-                              <input type="text" list ="OrgOptions" class="form-control col-md-7 col-xs-12" placeholder = "ex: Juan Organization" name="gosmcsoorg">
+                              <input id="orgopt" type="text" list ="OrgOptions" class="form-control col-md-7 col-xs-12" placeholder = "ex: Juan Organization" name="gosmcsoorg">
                                 <datalist id="OrgOptions">
-                                  <option value="LSCS">La Salle Computer Society</option>
-                                  <option value="YES">Young Entrepreneur Society</option>
-                                  <option value="MES">Mechanical Engineering Society </option>
-                                  <option value="JPIA">Junior Philippines Institute of Accountants</option>
-                                  <option value="BMS">Business Mangament Society</option>
+								  <?php
+									for ($i=0; $i<count($orgs);$i++){
+										echo"<option value={$orgs[$i][acronym]}>{$orgs[$i][name]}</option>";
+									}
+								  ?>
                                 </datalist>
-                              
+								
+								<script>
+									$('#orgopt').on('change',function(){
+										var org = $('#orgopt').val();
+										$.ajax({
+											url: "selectViewGosm2",
+											method: "POST",
+											data:{
+												'org':org
+											},
+											success: function(data){
+												$('#actOptions').empty ();
+												for (i = 0; i < data.length; i++){
+													console.log(data[i].title);
+													$('#actOptions').append('<option value="'+ data[i].activityID +'">'+ data[i].title +'<option>');
+												}
+											}
+										});
+									});
+									
+								</script>
+								
                             </div>        
                         </div>
                       </div>
@@ -207,13 +234,9 @@
                         <div class="col-md-8">   
                           <label class= "col-md-3"> <h4>Activity Name</h4> </label>
                             <div class= "form-group col-md-7">
-                              <input type="text" list ="actOptions" class="form-control col-md-7 col-xs-12" placeholder = "ex: General Assembly" name="gosmcsoact">
-                                <datalist id="actOptions">
-                                  <option>Leadership Seminar</option>
-                                  <option>General Assembly</option>
-                                  <option>Team building</option>
-                                  <option>Distribution of Cards</option> 
-                                </datalist>
+                               <select id="actOptions">
+                                  
+                               </select>
                             </div>        
                         </div>
                       </div>
@@ -234,10 +257,7 @@
         </div>
         <!-- /page content -->
 
-    <!-- jQuery -->
-    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src="<?php echo base_url();?>js/jquery.validate.min.js"></script>
-    <script src="<?php echo base_url();?>js/validation.js"></script>
+    
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

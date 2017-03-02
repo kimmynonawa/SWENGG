@@ -5,6 +5,8 @@
 			$this->load->helper("url");
 			$this->load->library('form_validation');
 			$this->load->model('Gosm_model');
+			$this->load->model('Org_model');
+			$this->load->model('Activity_model');
 		}
 		
 		public function loadAddGosm1(){
@@ -20,8 +22,6 @@
 		}
 		
 		public function addGosm1(){
-			
-			
 			$this->input->post("gosmgoals");
 			$this->input->post("gosmobj");
 			$this->input->post("gosmdes");
@@ -57,26 +57,35 @@
 		}
 		
 		public function selectViewGosm(){
-			$this->load->view('CSO_GOSM');
+			$res = $this->Org_model->getOrg();
+			$data = (array("orgs" => $res));
+			$this->load->view('CSO_GOSM', $data);
+		}
+		
+		public function selectViewGosm2(){
+			header("Content-type: application/json");
+			$res = $this->Activity_model->getAct($this->input->post('org'));
+			echo json_encode($res);
+			
 		}
 		
 		public function viewGosm(){
 			$gosmdetails = $this->Gosm_model->getGosmDetails(1);
 			
-			$cencommcomm = $this->Gosm_model->getCenCommCommunications(1);
-			$cencommdocu = $this->Gosm_model->getCenCommDocumentations(1);
-			$cencommexte = $this->Gosm_model->getCenCommExternals(1);
-			$cencommfina = $this->Gosm_model->getCenCommFinance(1);
-			$cencommhr   = $this->Gosm_model->getCenCommHR(1);
-			$cencomminte = $this->Gosm_model->getCenCommInternals(1);
-			$cencommprom = $this->Gosm_model->getCenCommPromotions(1);
+			$cencommcomm = $this->Gosm_model->getCenComm(1, 1);
+			$cencommdocu = $this->Gosm_model->getCenComm(1, 2);
+			$cencommexte = $this->Gosm_model->getCenComm(1, 3);
+			$cencommfina = $this->Gosm_model->getCenComm(1, 4);
+			$cencommhr   = $this->Gosm_model->getCenComm(1, 5);
+			$cencomminte = $this->Gosm_model->getCenComm(1, 6);
+			$cencommprom = $this->Gosm_model->getCenComm(1, 7);
 			
-			$othersequi = $this->Gosm_model->getOthersEquipments(1);
-			$othershost = $this->Gosm_model->getOthersHosts(1);
-			$othersphot = $this->Gosm_model->getOthersPhotographers(1);
-			$othersspea = $this->Gosm_model->getOthersSpeakers(1);
-			$othersspon = $this->Gosm_model->getOthersSponsors(1);
-			$othersvide = $this->Gosm_model->getOthersVideographers(1);
+			$othersequi = $this->Gosm_model->getOthers(1, 1);
+			$othershost = $this->Gosm_model->getOthers(1, 2);
+			$othersphot = $this->Gosm_model->getOthers(1, 3);
+			$othersspea = $this->Gosm_model->getOthers(1, 4);
+			$othersspon = $this->Gosm_model->getOthers(1, 5);
+			$othersvide = $this->Gosm_model->getOthers(1, 6);
 			$data = 
 			array(
 				"activity" => $gosmdetails, "cencommcomm" => $cencommcomm, "cencommdocu" => $cencommdocu, 

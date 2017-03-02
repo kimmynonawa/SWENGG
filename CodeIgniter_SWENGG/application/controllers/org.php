@@ -6,8 +6,10 @@
 			$this->load->helper("url");
 			$this->load->library('form_validation');
 			$this->load->library('encrypt');
-			$this->load->model("org_model");
+			$this->load->model("Org_model");
 		}
+		
+		
 		
 		public function loadAdd(){
 			$this->load->view('CSO_NewOrg');
