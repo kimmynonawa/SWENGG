@@ -17,7 +17,7 @@
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
+  
     <!-- bootstrap-progressbar -->
     <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -172,11 +172,24 @@
      <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>Activity Approval Form</h3>
+            <div class= "x_panel">
+              <div class= "row">
+                <div class="title col-md-5">
+                  <h3>Activity Approval Form</h3>
+                </div>
+                <div align="right">
+                  <ul class="nav navbar-right panel_toolbox"> 
+                    <li>
+                      <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li> 
+                  </ul>
+                </div>
+              </div>
+              <div class= "x_content bg-success">
+                <h4><p class="text-success"> Lorem ipsum dolor sit amet, vel pretium architecto, semper semper eu elit sed, lacus cras quis, pede velit. Pretium convallis suscipit, vestibulum rutrum, eu integer montes erat ut tincidunt, facilisis dolor. Et fermentum nulla, litora leo in, nunc aliquam aperiam, rutrum elementum, dictum malesuada morbi amet nisl. sociis odio laoreet dolor mauris. </p></h4>
               </div>
             </div>
+                
             <div class="clearfix"></div>
 
             <div class="row">
@@ -210,33 +223,33 @@
                       <div class="col-md-8">   
                         <label class= "col-md-5"> <h4>CSO and Special Groups</h4> </label>
                           <div class= "form-group col-md-6">
-                            <input type="text" name="CSOactOptions" list ="CSOactOptions"  class="form-control col-md-7 col-xs-12" placeholder = "ex: Special Interest">
-                              <datalist id="CSOactOptions">
-                                <option> Academic</option>
-                                <option> Special Interest</option>
-                                <option> Departmental Initiative</option>
-                                <option> Fundraising</option>
-                                <option> Community Development</option>
-                                <option> Organization Development</option>
-                                <option>Issue Advocacy</option>
-                                <option>Lasallian Formation/Spiritual Growth</option>
-                                <option>Outreach</option>                   
-                              </datalist>
+                            <select id="CSOactOptions" class="form-control col-md-7 col-xs-12" name="CSOactOptions">
+                              <option disabled selected>Select Nature Of Activity</option>
+                              <option> Academic</option>
+                              <option> Special Interest</option>
+                              <option> Departmental Initiative</option>
+                              <option> Fundraising</option>
+                              <option> Community Development</option>
+                              <option> Organization Development</option>
+                              <option>Issue Advocacy</option>
+                              <option>Lasallian Formation/Spiritual Growth</option>
+                              <option>Outreach</option>                   
+                            </select>
                           </div>
                           <label class= "col-md-5"> <h4>USG</h4> </label>
                           <div class= "form-group col-md-6">
-                            <input type="text" list ="USGactOptions"  name="USGactOptions" class="form-control col-md-7 col-xs-12" placeholder = "ex: Issue Advocacy">
-                              <datalist id="USGactOptions">
-                                <option> Student Services</option>
-                                <option> Student Rights and Welfare</option>
-                                <option> Rules and Policies</option>
-                                <option> Fundraising</option>
-                                <option> Community Development</option>
-                                <option> Organization Development</option>
-                                <option> Issue Advocacy</option>
-                                <option> Lasallian Formation/Spiritual Growth</option>
-                                <option>Outreach</option>                   
-                              </datalist>
+                            <select id="USGactOptions" class="form-control col-md-7 col-xs-12" name="USGactOptions">
+                              <option disabled selected>Select Nature Of Activity</option>
+                              <option> Student Services</option>
+                              <option> Student Rights and Welfare</option>
+                              <option> Rules and Policies</option>
+                              <option> Fundraising</option>
+                              <option> Community Development</option>
+                              <option> Organization Development</option>
+                              <option> Issue Advocacy</option>
+                              <option> Lasallian Formation/Spiritual Growth</option>
+                              <option>Outreach</option>                   
+                            </select>
                           </div>                
                         </div>
                       </div>  
@@ -247,33 +260,33 @@
                         <div class="col-md-8">   
                           <label class= "col-md-5"> <h4>Through CSO or DAAM</h4> </label>
                           <div class= "form-group col-md-6">
-                            <input type="text" list ="CSOactType" class="form-control col-md-7 col-xs-12" name="CSOactType"  placeholder = "ex: Special Interest">
-                              <datalist id="CSOactType">
-                                <option> Academic</option>
-                                <option> Special Interest</option>
-                                <option> Departmental Initiative</option>
-                                <option> Fundraising</option>
-                                <option> Community Development</option>
-                                <option> Organization Development</option>
-                                <option>Issue Advocacy</option>
-                                <option>Lasallian Formation/Spiritual Growth</option>
-                                <option>Outreach</option>                   
-                              </datalist>
+                            <select id="CSOactType" class="form-control col-md-7 col-xs-12" name="CSOactType">
+                              <option disabled selected>Select Type Of Activity</option>
+                              <option> Academic</option>
+                              <option> Special Interest</option>
+                              <option> Departmental Initiative</option>
+                              <option> Fundraising</option>
+                              <option> Community Development</option>
+                              <option> Organization Development</option>
+                              <option>Issue Advocacy</option>
+                              <option>Lasallian Formation/Spiritual Growth</option>
+                              <option>Outreach</option>                   
+                            </select>
                           </div>
                           <label class= "col-md-5"> <h4>Through SLIFE</h4> </label>
-                          <div class= "form-group col-md-6">
-                            <input type="text" list ="USGactType" name="USGactType" class="form-control col-md-7 col-xs-12" placeholder = "ex: Outreach">
-                              <datalist id="USGactType">
-                                <option> Academic</option>
-                                <option> Special Interest</option>
-                                <option> Departmental Initiative</option>
-                                <option> Fundraising</option>
-                                <option> Community Development</option>
-                                <option> Organization Development</option>
-                                <option>Issue Advocacy</option>
-                                <option>Lasallian Formation/Spiritual Growth</option>
-                                <option>Outreach</option>                   
-                              </datalist>
+                          <div class= "form-group col-md-6">  
+                            <select id="USGactType" name="USGactType" class="form-control col-md-7 col-xs-12" >
+                              <option disabled selected>Select Type Of Activity</option>
+                              <option> Academic</option>
+                              <option> Special Interest</option>
+                              <option> Departmental Initiative</option>
+                              <option> Fundraising</option>
+                              <option> Community Development</option>
+                              <option> Organization Development</option>
+                              <option>Issue Advocacy</option>
+                              <option>Lasallian Formation/Spiritual Growth</option>
+                              <option>Outreach</option>                   
+                            </select>
                           </div>                
                         </div>
                       </div>  
@@ -283,14 +296,14 @@
                         <div class="col-md-8">   
                         <label class= "col-md-5"> <h4>Through CSO or DAAM</h4> </label>
                           <div class= "form-group col-md-6">
-                            <input type="text" list ="reachType" name="reachType" class="form-control col-md-7 col-xs-12" placeholder = "ex: College Wide">
-                              <datalist id="reachType">
-                                <option> College Wide</option>
-                                <option> University Wide</option>
-                                <option> Organization Wide</option>
-                                <option> Batch Wide</option>               
-                              </datalist>
-                            </div>      
+                            <select id="reachType"  name="reachType" class="form-control col-md-7 col-xs-12">
+                              <option disabled selected>Select Reach Of Activity</option>
+                              <option> College Wide</option>
+                              <option> University Wide</option>
+                              <option> Organization Wide</option>
+                              <option> Batch Wide</option>               
+                            </select>
+                          </div>      
                         </div>
                       </div> 
 
@@ -353,6 +366,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-	
+  
   </body>
 </html>

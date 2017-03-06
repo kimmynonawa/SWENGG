@@ -1879,10 +1879,10 @@ $(function(){
       });
 
 
-   	$("#criteria").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"><div class="col-md-8"><label class= "col-md-2"> <h4>Criteria</h4> </label><div class= "form-group col-md-6"><input type="text" name= "cri" class="form-control" placeholder="100 points for Costume"/></div></div></div>')
+   	$("#criteria").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"><div class="col-md-8"><label class= "col-md-2"> <h4>Criteria</h4> </label><div class= "form-group col-md-6"><input type="text" name= "cri" class="form-control" placeholder="ex: 100 points for costume"/></div></div></div>')
 
    	$("#addcrit").click(function() {
-            $("#criteria").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-8"><label class= "col-md-2"></label><div class= "form-group col-md-6"><input type="text" name= "cri" class="form-control" placeholder="100 points for costume"/></div></div></div>');   
+            $("#criteria").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-8"><label class= "col-md-2"></label><div class= "form-group col-md-6"><input type="text" name= "cri" class="form-control" placeholder="ex: 100 points for costume"/></div></div></div>');   
 	});
 
      $("#deletecrit").click(function() {

@@ -9,6 +9,8 @@
 
     <title>LSCS</title>
 
+
+    <!-- jQuery -->
     <script src= "js/jquery.js"> </script>
     <!-- Bootstrap -->
      <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -50,8 +52,7 @@
             <!-- /menu profile quick info -->
 
             <br />
-
-              <!-- sidebar menu -->
+          <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -169,109 +170,135 @@
           </div>
         </div>
         <!-- /top navigation -->
-  <!-- page content -->
-          <div class="right_col" role="main">
-          <div class="">
-            <div class= "x_panel">
-              <div class= "row">
-                <div class="title col-md-5">
-                  <h3>Special Permit For Campus Access</h3>
-                </div>
-                <div align="right">
-                  <ul class="nav navbar-right panel_toolbox"> 
-                    <li>
-                      <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li> 
-                  </ul>
-                </div>
+
+        <div class="right_col" role="main">
+          
+          <div class="page-title">
+              <div class="title_left">
+                  <h3>Fill Out GOSM</h3>
               </div>
-              <div class= "x_content bg-success">
-                <h4><p class="text-success"> Lorem ipsum dolor sit amet, vel pretium architecto, semper semper eu elit sed, lacus cras quis, pede velit. Pretium convallis suscipit, vestibulum rutrum, eu integer montes erat ut tincidunt, facilisis dolor. Et fermentum nulla, litora leo in, nunc aliquam aperiam, rutrum elementum, dictum malesuada morbi amet nisl. sociis odio laoreet dolor mauris. </p></h4>
-              </div>
-            </div>
-                
-            <div class="clearfix"></div>
+          </div>
+          
+          <div class="clearfix"></div>
 
             <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_content">
-                    <form method="post" id = "specialPermit2" autocomplete="off">
-                     <span class="section"></span>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_content">
+                          <form class="form-horizontal form-label-left" id= "gosmform2">
 
-                      <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Name:</h4> </label>
-                            <div class= "form-group col-md-6">
-                              <input type="text" name= "Name" class="form-control" placeholder="ex: Juan Dela Cruz" />
-                            </div>        
-                        </div>
-                      </div> 
+                              <div class="row" id="gnph" >
+                                  <span class="section">Central Committee</span>
+                                  <label> <h3> Project Head/s </h3> </label>
+                              </div>
 
-                      <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>ID Number</h4> </label>
-                            <div class= "form-group col-md-6">
-                              <input type="text" name= "IDNum" class="form-control" placeholder="ex: 11344444" />
-                            </div>        
-                        </div>
-                      </div>  
+                            <div class= "row">
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                 <button id="addcgosm2" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                 <button id="remcgosm2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                               </div>
+                            </div>
 
-                      <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Office Location:</h4> </label>
-                            <div class= "form-group col-md-6">
-                              <input type="text" name= "officeLoc" class="form-control" placeholder="ex: Ayala Avenue Makati City" />
-                            </div>        
-                        </div>
-                      </div>
 
-                      <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Cellphone Number</h4> </label>
-                            <div class= "form-group col-md-6">
-                              <input type="text" name= "CPNo" class="form-control" placeholder="ex: 09179999999" />
-                            </div>        
-                        </div>
-                      </div>  
+                            <div class="row" id="gnye" >
+                                  <label> <h3> Young Executive/s </h3> </label>
+                              </div>
 
-                       <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Telephone Number</h4> </label>
-                            <div class= "form-group col-md-6">
-                              <input type="text" name= "TelNo" class="form-control" placeholder="ex: 6341111" />
-                            </div>        
-                        </div>
-                      </div> 
+                            <div class= "row">
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                 <button id="addyegosm2" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                 <button id="remyegosm2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                               </div>
+                            </div>
 
-                      <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Email Address</h4> </label>
-                            <div class= "form-group col-md-6">
-                              <input type="text" name= "Email" class="form-control" placeholder="ex: juan_delacruz@dlsu.edu.ph" />
-                            </div>        
-                        </div>
-                      </div> 
+                            <div class="row" id="gnia" >
+                               <label> <h3> Internal Affairs Head/s </h3> </label>
+                            </div>
 
-                      <div class="ln_solid"></div> 
-                      <div class="form-group">
-                        <div class="col-md-12 col-md-offset-11">
-                          <input id="nextSpecialPermit2" type="submit" class="btn btn-success align: right" value ="Next">
+                            <div class= "row">
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                 <button id="addiagosm2" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                 <button id="remiagosm2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                               </div>
+                            </div>
+
+                            <div class="row" id="gnea" >
+                               <label> <h3> External Affairs Head/s </h3> </label>
+                            </div>
+
+                            <div class= "row">
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                 <button id="addeagosm2" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                 <button id="remeagosm2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                               </div>
+                            </div>
+
+
+                            <div class="row" id="gnhr" >
+                               <label> <h3> Human Resources Head/s </h3> </label>
+                            </div>
+
+                            <div class= "row">
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                 <button id="addhrgosm2" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                 <button id="remhrgosm2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                               </div>
+                            </div>
+
+                            <div class="row" id="gnprm" >
+                               <label> <h3> Promotions Head/s </h3> </label>
+                            </div>
+
+                            <div class= "row">
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                 <button id="addprmgosm2" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                 <button id="remprmgosm2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                               </div>
+                               </div>
+
+                            <div class="row" id="gnfn">
+                               <label> <h3> Finance Head/s </h3> </label>
+                            </div>
+
+                            <div class= "row">
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                 <button id="addfngosm2" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                 <button id="remfngosm2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                               </div>
+                               </div>
+
+                          <div class="row" id="gndoc">
+                               <label> <h3> Documentation Head/s </h3> </label>
+                            </div>
+
+                            <div class= "row">
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                 <button id="adddocgosm2" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                 <button id="remdocgosm2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                               </div>
+                               </div>
+
+
+                             <div class="ln_solid"></div> 
+                                <div class="form-group">
+                                  <div class="col-md-12 col-md-offset-11">
+                                    <button id="nextbppr" type="submit" class="btn btn-success align: right">Next</button>
+                                  </div>
+                                </div>
+                          </form>  
                         </div>
-                      </div>
-                    </form>
-                  </div><!-- xcontent -->
-                </div> <!-- xpanel -->              
-              </div> <!-- row -->
-            </div> 
-          </div>
-        </div>
+                    </div>
+                </div>
+            </div>
+
+         </div>
+        <!-- /page content -->
 
     <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
-   <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src= "js/jquery.validate.min.js"> </script>
-    <script src= "js/validation.js"></script>
+    <script src= js/validation.js></script>
+        <script src= "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js" </script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -310,6 +337,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-	
+
   </body>
 </html>

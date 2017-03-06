@@ -170,32 +170,47 @@
         <!-- /top navigation -->
 
      <!-- page content -->
+      
+          
         <div class="right_col" role="main">
           <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>Special Approval Slip </h3>
+            <div class= "x_panel">
+              <div class= "row">
+                <div class="title col-md-5">
+                  <h3>Special Approval Slip</h3>
+                </div>
+                <div align="right">
+                  <ul class="nav navbar-right panel_toolbox"> 
+                    <li>
+                      <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li> 
+                  </ul>
+                </div>
+              </div>
+              <div class= "x_content bg-success">
+                <h4><p class="text-success"> Lorem ipsum dolor sit amet, vel pretium architecto, semper semper eu elit sed, lacus cras quis, pede velit. Pretium convallis suscipit, vestibulum rutrum, eu integer montes erat ut tincidunt, facilisis dolor. Et fermentum nulla, litora leo in, nunc aliquam aperiam, rutrum elementum, dictum malesuada morbi amet nisl. sociis odio laoreet dolor mauris. </p></h4>
               </div>
             </div>
+                
             <div class="clearfix"></div>
 
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-                    <form id="sas" method="post" autocomplete="off">
+                    <form id="specialappslip" method="post" autocomplete="off">
                       <span class="section"></span>
                     
                       <div class= "row">
                         <div class="col-md-8">   
                           <label class= "col-md-4"> <h4>Type of Activity</h4> </label>
                           <div class= "form-group col-md-6">
-                            <input type="text" list ="actType" class="form-control col-md-7 col-xs-12" name="CSOactType"  placeholder = "ex: General Assembly">
-                              <datalist id="actType">
-                                <option> General Assembly</option>
-                                <option> Outreach</option>
-                                <option> Medical Mission</option>
-                              </datalist>
+                            <select id="actType" name="actType" class="form-control col-md-7 col-xs-12" >
+                              <option disabled selected>Select Type Of Activity</option>
+                              <option> General Assembly</option>
+                              <option> Outreach</option>
+                              <option> Medical Mission</option>
+                            </select>
                           </div>       
                         </div>
                       </div> 
@@ -204,12 +219,12 @@
                         <div class="col-md-8">   
                           <label class= "col-md-4"> <h4>Type of Submission</h4> </label>
                           <div class= "form-group col-md-6">
-                            <input type="text" list ="submissionType" class="form-control col-md-7 col-xs-12" name="CSOactType" placeholder = "ex: Lost AForm">
-                              <datalist id="submissionType">
-                                <option> Lost AForm</option>
-                                <option> Cancellation of Activity</option>
-                                <option> Activity Not in GOSM</option>
-                              </datalist>
+                            <select id="submissionType" name="submissionType" class="form-control col-md-7 col-xs-12">
+                              <option disabled selected>Select Type Of Submission</option>
+                              <option> Lost AForm</option>
+                              <option> Cancellation of Activity</option>
+                              <option> Activity Not in GOSM</option>
+                            </select>
                           </div>       
                         </div>
                       </div> 
@@ -245,8 +260,12 @@
             </div> 
           </div>
         </div>
+
     <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src= "js/jquery.validate.min.js"> </script>
+    <script src= js/validation.js></script>
+    <script src= "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js" </script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

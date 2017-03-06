@@ -192,13 +192,13 @@
                         <div class="col-md-8">   
                           <label class= "col-md-3"> <h4>Select Activity Type</h4> </label>
                             <div class= "form-group col-md-7">
-                              <input type="text" list ="actOptions" id="preActType" class="form-control col-md-7 col-xs-12" placeholder="ex: General Assembly">
-                              <datalist id="actOptions">
-                                <option value="General Assembly">
-                                <option value="Outreach">
-                                <option value="Contest">
-                                <option value="Concert">
-                              </datalist>
+                              <select id="preActType" name="preActType" class="form-control col-md-7 col-xs-12">
+                                <option disabled selected>Select Activity Type</option>
+                                <option> General Assembly</option>
+                                <option>Outreach</option>
+                                <option>Contest</option>
+                              
+                              </select>
                             </div>        
                         </div>
                       </div>
@@ -223,7 +223,9 @@
         <!-- /page content -->
 
     <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+          <script src="js/jquery.min.js"></script>
+    <script src= "js/jquery.validate.min.js"> </script>
+    <script src= js/validation.js></script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

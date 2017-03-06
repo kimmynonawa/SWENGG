@@ -7,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>LSCS</title>
-
+    <title>CSO </title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,7 +17,7 @@
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-  
+	
     <!-- bootstrap-progressbar -->
     <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -35,6 +34,10 @@
       <div class="main_container">
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
+            <!--<div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Yo!</span></a>
+            </div> -->
+
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
@@ -44,12 +47,13 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>ORG NAME</h2>
+                <h2> CSO USER!</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
 
             <br />
+
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
@@ -70,6 +74,7 @@
             <!-- /sidebar menu -->
           </div>
         </div>
+
         <!-- top navigation -->
         <div class="top_nav">
           <div class="nav_menu">
@@ -81,7 +86,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   La Sallian Computer Society
+                   Council of Student Organization
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -166,119 +171,213 @@
           </div>
         </div>
         <!-- /top navigation -->
-   <!-- page content -->
+
+       <!-- page content -->
         <div class="right_col" role="main">
-         <div class="">
-            <div class= "x_panel">
-              <div class= "row">
-                <div class="title col-md-5">
-                  <h3>Contest Mechanics</h3>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="dashboard_graph">
+
+                <div class="row x_title">
+                  <div class="col-md-6">
+                    <h3>Top 10 Orgs with the most number of Pre-Acts</h3>
+                  </div>
+                  <div class="col-md-6">
+                    <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                      <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                      <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                    </div>
+                  </div>
                 </div>
-                <div align="right">
-                    <ul class="nav navbar-right panel_toolbox"> 
-                      <li>
-                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li> 
-                    </ul>
+
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                     <canvas id="mybarChart"></canvas>
                 </div>
-              </div>
-              <div class= "x_content bg-success">
-                <h4><p class="text-success"> Lorem ipsum dolor sit amet, vel pretium architecto, semper semper eu elit sed, lacus cras quis, pede velit. Pretium convallis suscipit, vestibulum rutrum, eu integer montes erat ut tincidunt, facilisis dolor. Et fermentum nulla, litora leo in, nunc aliquam aperiam, rutrum elementum, dictum malesuada morbi amet nisl. sociis odio laoreet dolor mauris. </p></h4>
+                <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
+                  
+
+                </div>
+
+                <div class="clearfix"></div>
               </div>
             </div>
-            
-            <div class="clearfix"></div>
 
-            <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_content">
-                    <form class="form-horizontal form-label-left" novalidate id="conmech">
+          </div>
+          <br />
 
-                      <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-2"> <h4>General Guidelines</h4> </label>
-                          <div class= "form-group col-md-6 ">
-                            <textarea name= "guidelines" rows="4" class="form-control" placeholder="ex: All of the participants must not have their cellphones with them."></textarea> 
-                          </div>        
-                        </div>
-                      </div> 
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12" style="width:550px">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Recent Activities Of Organizations</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div class="dashboard-widget-content">
 
-                      <div class= "row" id="mech"> </div>
-
-                      <div class= "row">
-                        <div class= "col-md-8">
-                          <label class="control-label col-md-2"></label>
-                          <div class="col-md-6">
-                            <div class = "buttons">
-                              <button id="addmech" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                              <button id="deletemech" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                            </div>     
+                    <ul class="list-unstyled timeline widget">
+                      <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title">
+                                <a><b>YES: </b>Pre-Acts for Officer Training</a>
+                            </h2>
+                            <div class="byline">
+                              <span>13 hours ago</span> 
+                            </div>
                           </div>
                         </div>
-                      </div>
-
-                      <div class= "row" id="criteria"> </div>
-
-                      <div class= "row">
-                        <div class= "col-md-8">
-                          <label class="control-label col-md-2"></label>
-                          <div class="col-md-8">
-                            <div class = "buttons">
-                              <button id="addcrit" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                              <button id="deletecrit" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                            </div>     
+                      </li>
+                      <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title">
+                              <a><b>MAFIA: </b>Pre-Acts for General Assembly</a>
+                            </h2>
+                            <div class="byline">
+                              <span>13 hours ago</span> 
+                            </div>
                           </div>
                         </div>
-                      </div>
-
-                      <div class= "row" id="listjudge"> </div>
-
-                      <div class= "row">
-                        <div class= "col-md-8">
-                          <label class="control-label col-md-2"></label>
-                          <div class="col-md-8">
-                            <div class = "buttons">
-                              <button id="addjudge" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                              <button id="deletejudge" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                            </div>     
+                      </li>
+                      <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title">
+                                <a><b>LSCS: </b>Pre-Acts for Medical Mission&nbsp;</a>
+                            </h2>
+                            <div class="byline">
+                              <span>2 days ago</span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-
-                      <div class= "row" id="listquestions"></div>
-
-                      <div class= "row">
-                        <div class= "col-md-8">
-                          <label class="control-label col-md-2"></label>
-                          <div class="col-md-8">
-                            <div class = "buttons">
-                              <button id="addquestion" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                              <button id="deletequestion" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                            </div>     
+                      </li>
+                      <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title">
+                                <a><b>BMS: </b>Pre-Acts for Medical Mission&nbsp;</a>
+                            </h2>
+                            <div class="byline">
+                              <span>2 days ago</span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-
-                
-                      <div class="ln_solid"></div> 
-                      <div class="form-group">
-                        <div class="col-md-12 col-md-offset-11">
-                          <input id="nextbcson" type="submit" class="btn btn-success align: right" value ="Next">
+                      </li>
+                      <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title">
+                                <a><b>YES: </b>Pre-Acts for Medical Mission&nbsp;</a>
+                            </h2>
+                            <div class="byline">
+                              <span>2 days ago</span>
+                            </div>
+                          </div>
                         </div>
+                      </li>
+                      <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title">
+                              <a><b>LSCS: </b>GOSM for Term 3 AY 2016-2017</a>
+                            </h2>
+                            <div class="byline">
+                              <span>7 days ago</span> 
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+               <!-- Start to do list -->
+                <div class="col-md-6 col-sm-6 col-xs-12" style="width:549px">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2>Upcoming Activities For the Week</h2>
+                      <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                      </ul>
+                      <div class="clearfix"></div>
+                    </div>
+
+                    <div class="x_content">
+                      <div class="">
+                        <ul class="to_do">
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> <b>YES</b> Team Building </p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> <b>MAFIA</b> General Assembly</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> <b>BMS</b> Recollection</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> <b>LSCS </b>Contest</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> <b>ENGLICOM</b> Officer Training</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> <b>YES </b>Feeding Program</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"><b> AMSTUD </b>Food Fest</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"><b> ESA </b>Sports Fest</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> <b>PHYSOC </b>Medical Mission</p>
+                          </li>
+                        </ul>
                       </div>
-                    </form>
-                  </div><!-- xcontent -->
-                </div> <!-- xpanel -->              
-              </div> <!-- row -->
-            </div> 
+                    </div>
+                  </div>
+                </div>
+                <!-- End to do list -->
+              </div>
+            </div>
           </div>
         </div>
+        <!-- /page content -->       
 
-    <script src= "js/jquery.js"> </script>
-    <script src="js/jquery.min.js"></script>
-    <script src= "js/jquery.validate.min.js"></script>
-    <script src= "js/validation.js"></script>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -317,6 +416,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-  
+	
   </body>
 </html>

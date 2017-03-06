@@ -173,69 +173,83 @@
      <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
-            <div class="page-title">
-              <div class="title_left">
+            <div class= "x_panel">
+              <div class= "row">
+                <div class="title col-md-5">
+                  <h3>List of Participants</h3>
+                </div>
+                <div align="right">
+                  <ul class="nav navbar-right panel_toolbox"> 
+                    <li>
+                      <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li> 
+                  </ul>
+                </div>
               </div>
+              <div class= "x_content bg-success">
+                <h4> <p class="text-success"> Lorem ipsum dolor sit amet, vel pretium architecto, semper semper eu elit sed, lacus cras quis, pede velit. Pretium convallis suscipit, vestibulum rutrum, eu integer montes erat ut tincidunt, facilisis dolor. Et fermentum nulla, litora leo in, nunc aliquam aperiam, rutrum elementum, dictum malesuada morbi amet nisl. sociis odio laoreet dolor mauris. </p></h4>
+                </div>
             </div>
-          </div>
-          <div class="clearfix"></div>
+            
+            <div class="clearfix"></div>
 
-          <div class="row">
-
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="x_panel">
-                <div class="form-group" >
-                  <center>   <h3>List of Participants</h3></center>
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12"> 
-                        </label>
-                    <div class="x_content">
-
-                    <table class="table table-striped">
-                      <form id ="LPForm" method ="post">
-                      <thead>
-                        <tr>
-                          <th>ID Number</th>
-                          <th>Last Name</th>
-                          <th>First Name</th>
-                          <th>Middle Initial</th>
-                          <th>Age</th>
-                          <th>Waiver</th>
-                        </tr>
-                      </thead>
-                      <tbody id="student">
-                          <tr id ="details" class="details">
-                            <td>  <input class="form-control" name ="id" placeholder ="Enter ID Number" /></td>
-                            <td>  <input class="form-control" name ="lName" placeholder ="Enter Last Name" /></td>
-                            <td>  <input class="form-control" name = "fName" placeholder ="Enter First Name" /></td>
-                            <td>  <input class="form-control" name ="mName" placeholder ="Enter Middle Initial" /></td>
-                            <td>  <input class="form-control" name = "age" placeholder ="Enter Age" style ="width:120px" required/></td>
-                            <td>  <input type="checkbox" class="js-switch" name="choice" /></td>
-                          </tr>
-                      </tbody>
-                    </table>
-
-                  </div>
-
-                  <div class = "buttons">
-                    <button id="add" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                    <button id="delete" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                  </div>
-
-
-                  <div class="ln_solid"></div> 
-                    <div class="form-group">
-                      <div class="col-md-12 col-md-offset-11">
-                        <input id="nextTrademark2" type="submit" class="btn btn-success align: right" value ="Next"> <p></p>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="form-group" >
+                    <center> <h3>List of Participants</h3></center>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12"> </label>
+                    <form id ="LPForm" method ="post">
+                      <div class="x_content">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th>ID Number</th>
+                              <th>Last Name</th>
+                              <th>First Name</th>
+                              <th>Middle Initial</th>
+                              <th>Age</th>
+                              <th>Waiver</th>
+                            </tr>
+                          </thead>
+                          <tbody id="student">
+                            <tr id ="details" class="details">
+                              <td>  <input class="form-control" name ="id" placeholder ="Enter ID Number" /></td>
+                              <td>  <input class="form-control" name ="lName" placeholder ="Enter Last Name" /></td>
+                              <td>  <input class="form-control" name = "fName" placeholder ="Enter First Name" /></td>
+                              <td>  <input class="form-control" name ="mName" placeholder ="Enter Middle Initial" /></td>
+                              <td>  <input class="form-control" name = "age" placeholder ="Enter Age" style ="width:120px"/></td>
+                              <td>  <input type="checkbox" class="js-switch" name="choice" /></td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
-                    </div>
+
+                      <div class = "buttons">
+                        <button id="add" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
+                        <button id="delete" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                      </div>
+
+
+                      <div class="ln_solid"></div> 
+                      <div class="form-group">
+                        <div class="col-md-12 col-md-offset-11">
+                          <input id="nextLP" type="submit" class="btn btn-success align: right" value ="Next"> <p></p>
+                        </div>
+                      </div>
+                    </form>
                   </div>    
+                </div>
               </div>
             </div>
           </div>
         </div>
         <!-- /page content -->
     <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+   <script src="js/jquery.min.js"></script>
+    <script src= "js/jquery.validate.min.js"> </script>
+    <script src= js/validation.js></script>
+    <script src = "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"> </script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -275,58 +289,6 @@
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
 	 <script src="../vendors/switchery/dist/switchery.min.js"></script>
-
-
-    <script>
-        $(document).ready(function () {
-            $("#add").click(function () {
-                var det = document.getElementById('details'); 
-                var cln = det.cloneNode(true);
-                
-                var ig = document.getElementById('student');
-
-                ig.appendChild(cln);        
-                console.log("yo!!!!");
-                //var ctr = document.getElementsByClassName("details").length;
-            });
-            $("#delete").click(function () {
-                var count = document.getElementsByClassName("details").length;
-                var last = document.getElementsByClassName("details").item(count-1);
-                if(count >1){
-                    last.remove();
-                }
-                console.log(count);
-            });
-
-            $("#LPForm").validate({
-              rules:{
-                id: {
-                  required: true,
-                  maxlength: 8
-
-                },
-                lName: "required",
-                fName: "required",
-                mName: "required",
-                age: "required",
-                choice: "checked"
-              },
-              success: removeError,
-              messages: {
-                id: {
-                  required: "Please enter the ID Number",
-                  maxlength: "Invalid ID"
-                },
-                lName: "Please enter the last name",
-                fName: "Please enter the first name",
-                mName: "Please enter the middle name",
-                age: "Please enter the age",
-                choice: "Please choose an option"
-              }
-            });
-
-        })
-    </script>
 
   </body>
 </html>
