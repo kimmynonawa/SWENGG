@@ -20,7 +20,7 @@
     <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-  
+	
     <!-- bootstrap-progressbar -->
     <link href="<?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -185,7 +185,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_content">
-                          <form class="form-horizontal form-label-left" id= "gosmform2">
+                          <form class="form-horizontal form-label-left" id= "gosmform2" action="creategosm2" method="post">
 
                               <div class="row" id="gnph" >
                                   <span class="section">Central Committee</span>
@@ -294,10 +294,11 @@
          </div>
         <!-- /page content -->
 
-       <!-- jQuery -->
-    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
-    <script src="<?php echo base_url();?>js/validation.js"></script>
+    <!-- jQuery -->
+    <script src= "<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src= "<?php echo base_url();?>js/jquery.validate.min.js"> </script>
+    <script src= "<?php echo base_url();?>js/validation.js"></script>
+    <script src= "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js" </script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

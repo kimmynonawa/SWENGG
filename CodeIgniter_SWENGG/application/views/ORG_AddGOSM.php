@@ -12,13 +12,13 @@
 
 
     <!-- jQuery -->
-    <script src="<?php echo base_url();?>js/jquery.js"> </script>
+    <script src= "<?php echo base_url();?>js/jquery.js"> </script>
     <!-- Bootstrap -->
      <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="<?php echo base_url();?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet"> 
     <!-- iCheck -->
     <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
   
@@ -173,8 +173,7 @@
         </div>
         <!-- /top navigation -->
 
-              <div class="right_col" role="main">
-          
+        <div class="right_col" role="main">
           <div class="page-title">
               <div class="title_left">
                   <h3>Fill Out GOSM</h3>
@@ -182,79 +181,74 @@
           </div>
           
           <div class="clearfix"></div>
-
             <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
-                        <div class="x_content">
-                          <form class="form-horizontal form-label-left" id= "gosmform1" action="addGosm1" method="post">
+                      <div class="x_content">
+                        <form class="form-horizontal form-label-left" id= "gosmform1" action="createGosm" method="post">
 
-                          <div class="row" id="gi" >
-                             <span class="section">General Information</span>
-                          </div>
-
-                            <div class= "row">
-                              <div class="col-md-1 col-sm-1 form-group">
-                                <label> <h3> Goals</h3> </label>
+                              <div class="row" id="gi" >
+                               <span class="section">General Information</span>
                               </div>
 
-                              <div class="col-md-4 col-sm-4 form-group">
-                                <textarea name="gosmgoals" rows="4" class="form-control"></textarea> 
+                              <div class= "row">
+                                <div class="col-lg-2 col-md-2 col-sm-2  form-group">
+                                  <label> <h3> Goals</h3> </label>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4  form-group">
+                                  <textarea name="gosmgoals" rows="4" class="form-control"></textarea> 
+                                </div>
+                              </div>
+
+                              <div class= "row">
+                                <div class="col-md-2 col-sm-2 form-group">
+                                  <label> <h3> Objectives</h3> </label>
+                                </div>
+                                <div class="col-md-4 col-sm-4 form-group">
+                                  <textarea name="gosmobj" rows="4" class="form-control"></textarea> 
+                                </div>
+                              </div>
+
+                              <div class= "row">
+                                <div class="col-md-2 col-sm-2 form-group">
+                                  <label> <h3> Description</h3> </label>
+                                </div>
+                                <div class="col-md-4 col-sm-4  form-group">
+                                  <textarea name="gosmdes" rows="4" class="form-control"></textarea> 
                               </div>
                             </div>
 
-                            <div class= "row">
-                              <div class="col-md-1 col-sm-1 form-group">
-                                <label> <h3> Objectives</h3> </label>
-                              </div>
-                              <div class="col-md-4 col-sm-4 form-group">
-                                <textarea name="gosmobj" rows="4" class="form-control"></textarea> 
-                              </div>
-                            </div>
-
-                            <div class= "row">
-                              <div class="col-md-1 col-sm-1 form-group">
-                                <label> <h3> Description</h3> </label>
-                              </div>
-                              <div class="col-md-4 col-sm-4 form-group">
-                                <textarea name="gosmdes" rows="4" class="form-control"></textarea> 
+                             <div class= "row">
+                                <div class="col-md-2 col-sm-2 col-xs-2 form-group">
+                                  <label> <h3> Measures</h3> </label>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-4 form-group">
+                                  <input type="text" name="gosmmeas" class="form-control" id="gosmmeas">
                               </div>
                             </div>
 
-                            <div class= "row">
-                              <div class="col-md-1 col-sm-1 form-group">
-                                <label> <h3> Measures</h3> </label>
-                              </div>
-                              <div class="col-md-4 col-sm-4 form-group">
-                                 <input type="text" name="gosmmeas" class="form-control" id="gosmmeas">
-                              </div>
-                            </div>
-                            
-
-                            <div class="ln_solid"></div> 
+                          <div class="ln_solid"></div> 
 
                             <div class="row" id="sd" >
                              <span class="section">Specific Details</span>
-                          </div>
+                            </div>
 
-                          <div class= "row">
-                              <div class="col-md-1 col-sm-1 form-group">
+                            <div class= "row">
+                              <div class="col-md-2 col-sm-2 col-xs-2 form-group">
                                 <label> <h3>Duration</h3> </label>
                               </div>
-
-                              <div class="col-md-1 col-sm-1 form-group">
+                              <div class="col-md-1 col-sm-2 col-xs-2 form-group">
                                <p style="padding: 5px;">
-                                <input type="radio" name="gosmdr" id="gosmdr" class= "flat" value="Year Long"> Year Long
+                                <input type="radio" name="gosmdr" id="gosmdr" class= "flat"/> Year Long
                                </p>
                               </div>
-
-                              <div class="col-md-1 col-sm-1 form-group">
+                              <div class="col-md-1 col-sm-2 col-xs-2 form-group">
                                 <p style="padding: 5px;">
                                   <input type="radio" name="gosmdr" id="gosmdr" class= "flat"/> Term Long
                                 </p>
                               </div>
 
-                             <div class="col-md-1 col-sm-1 form-group">
+                             <div class="col-md-1 col-sm-2 col-xs-2 form-group">
                               <p style="padding: 5px;">
                                 <input type="radio" name="gosmdr" id="gosmdr" class= "flat"/> Days
                               </p>
@@ -262,97 +256,94 @@
                           </div>
 
                             <div class= "row">
-                              <div class="col-md-1 col-sm-1 form-group">
+                              <div class="col-md-2 col-sm-2 col-xs-2 form-group">
                                 <label> <h3> Date</h3> </label>
                               </div>
-                              <div class="col-md-2 col-sm-2 form-group">
-                                 <input type="date" name="gosmsfromdate" class="form-control" id="gosmsdate">
+                              <div class="col-md-2 col-sm-2 col-xs-2 form-group">
+                                 <input type="date" name="gosmsdate" class="form-control" id="gosmsdate">
                               </div>
 
-                              <div class="col-md-2 col-sm-2 form-group">
-                                 <input type="date" name="gosmetodate" class="form-control" id="gosmedate">
+                              <div class="col-md-2 col-sm-2 col-xs-2 form-group">
+                                 <input type="date" name="gosmedate" class="form-control" id="gosmedate">
                               </div>
                             </div>
 
                             <div class= "row">
-                              <div class="col-md-1 col-sm-1 form-group">
+                              <div class="col-md-2 col-sm-2 col-xs-2 form-group">
                                 <label> <h3> Time</h3> </label>
                               </div>
-                              <div class="col-md-2 col-sm-2 form-group">
-                                 <input type="time" name="gosmfromtime" class="form-control" id="gosmstime">
+                              <div class="col-md-2 col-sm-2 col-xs-2 form-group">
+                                 <input type="time" name="gosmstime" class="form-control" id="gosmstime">
                               </div>
 
-                              <div class="col-md-2 col-sm-2 form-group">
-                                 <input type="time" name="gosmtotime" class="form-control" id="gosmetime">
+                              <div class="col-md-2 col-sm-2 col-xs-2 form-group">
+                                 <input type="time" name="gosmetime" class="form-control" id="gosmetime">
                               </div>
                             </div>
 
-
                             <div class= "row">
-                              <div class="col-md-1 col-sm-1 form-group">
+                              <div class="col-md-2 col-sm-2 col-xs-2 form-group">
                                 <label> <h3> Venue </h3> </label>
                               </div>
-                              <div class="col-md-4 col-sm-4 form-group">
-                                 <input type="text" name="gosmvenue" class="form-control" id="gosmvenu" placeholder="e.g. Y605">
+                              <div class="col-md-4 col-sm-4 col-xs-4 form-group">
+                                 <input type="text" name="gosmvenu" class="form-control" id="gosmvenu" placeholder="e.g. Y605">
                               </div>
                             </div>
 
                             <div class= "row">
-                              <div class="col-md-1 col-sm-1 form-group">
+                              <div class="col-md-2 col-sm-2 col-xs-2 form-group">
                                 <label> <h3> Budget </h3> </label>
                               </div>
-                              <div class="col-md-4 col-sm-4 form-group">
+                              <div class="col-md-4 col-sm-4 col-xs-4 form-group">
                                  <input type="text" name="gosmbug" class="form-control" id="gosmbug" placeholder="Budget">
                               </div>
                             </div>
 
-                           <div class="ln_solid"></div> 
-                           <div class="row" id="gi" >
+                          <div class="ln_solid"></div> 
+                          <div class="row" id="gi" >
                              <span class="section">Activity Details</span>
                           </div>
 
-                         
                           <label> <h3> Nature of Activity</h3> </label>
                           <div class= "row">
-                                <div class="form-group col-md-5 col-sm-5 col-xs-12">
-                                  <select name="gosmnat1" class="form-control" id="gosmnat">
+                                <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                                  <select name="gosmnat" class="form-control" id="gosmnat">
                                       <option value="default">CSO and Special Groups</option>
                                   </select>
                                   <p></p>
-                                  <select name="gosmnat2" class="form-control" id="gosmnat">
+                                  <select name="gosmnat" class="form-control" id="gosmnat">
                                       <option value="default">University Student Government</option>
                                   </select>
                             </div>
                            </div>
 
-                          <label> <h3> Type of Activity</h3> </label>
-                          <div class= "row">
-                                <div class="form-group col-md-5 col-sm-5 col-xs-12">
-                                  <select name="gosmtype1" class="form-control" id="gosmtype">
+                        <label> <h3> Type of Activity</h3> </label>
+                        <div class= "row">
+                                <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                                  <select name="gosmtype" class="form-control" id="gosmtype">
                                       <option value="default">Through CSO/ DAAM</option>
                                   </select>
                                   <p></p>
-                                  <select name="gosmtype2" class="form-control" id="gosmtype">
+                                  <select name="gosmtype" class="form-control" id="gosmtype">
                                       <option value="default">University Student Government</option>
                                   </select>
-                            </div>
+                               </div>
                            </div>
 
                           <div class= "row">
-                           <div class="col-md-1 col-sm-1 form-group">    
-                              <label> <h3>Related to</h3> </label>
-                          </div>
-                          <div class="form-group col-md-1 col-sm-1">
-                              <p style="padding: 10px;">
-                                  <input type="checkbox" name="reton" id="reton" class="flat"> Related
-                              </p>
-                          </div>
-
-                              <div class="form-group col-md-1 col-sm-1">
+                            <div class="col-md-2 col-sm-2 col-xs-2 form-group">    
+                                <label> <h3>Related to</h3> </label>
+                            </div>
+                            <div class="form-group col-md-2 col-sm-2 col-xs-2">
                                 <p style="padding: 10px;">
-                                    <input type="checkbox" placeholder="N" name="retor" id="retor" class="flat"> Not related
+                                   <input type="checkbox" name="reton" id="reton" class="flat"> Related
                                 </p>
-                              </div> 
+                            </div>
+                            <div class="form-group col-md-2 col-sm-2 col-xs-2">
+                              <p style="padding: 10px;">
+                                <input type="checkbox" placeholder="N" name="retor" id="retor" class="flat"> Not related
+                              </p>
+                            </div> 
                             </div>
 
                              <div class="ln_solid"></div> 
@@ -361,22 +352,20 @@
                                     <input id="nextbgosm2" type="submit" class="btn btn-success align: right" value="Next"></button>
                                   </div>
                                 </div>
+
                           </form>  
                         </div>
                     </div>
                 </div>
             </div>
-
          </div>
         <!-- /page content -->
 
     <!-- jQuery -->
-	
-
-	
-    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
-    <script src="<?php echo base_url();?>js/validation.js"></script>
+    <script src= "<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src= "<?php echo base_url();?>js/jquery.validate.min.js"> </script>
+    <script src= "<?php echo base_url();?>js/validation.js"></script>
+    <script src= "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js" </script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

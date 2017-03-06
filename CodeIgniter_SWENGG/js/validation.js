@@ -1,5 +1,3 @@
-
-
 $(function(){
 
 	// FOOD ENTRY PERMIT 1
@@ -453,10 +451,10 @@ $(function(){
 		}
 	});
 
-	$("#ph").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="phname" class="form-control has-feedback-left" id="name" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="phnum" class="form-control" id="contact" placeholder="Contact Number"><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div></div></div>');
+	$("#ph").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="phname[]" class="form-control has-feedback-left" id="name" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="phnum" class="form-control" id="contact" placeholder="Contact Number"><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div></div></div>');
 
    	 $("#addc").click(function(){
-          $("#ph").append(' <div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="prname" class="form-control has-feedback-left" id="name" placeholder="Name"><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="prnum" class="form-control" id="contact" placeholder="Contact Number"><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div></div></div>');   
+          $("#ph").append(' <div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="phname[]" class="form-control has-feedback-left" id="name" placeholder="Name"><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="prnum" class="form-control" id="contact" placeholder="Contact Number"><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div></div></div>');   
      });
 
     $("#remc").click(function(){
@@ -791,10 +789,10 @@ $(function(){
 		}
 	});
 
-   	$("#gnph").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="phname" class="form-control has-feedback-left" id="phname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
+   	$("#gnph").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="phname[]" class="form-control has-feedback-left" id="phname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
 
     $("#addcgosm2").click(function() {
-            $("#gnph").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="phname" class="form-control has-feedback-left" id="phname" placeholder="Name"><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> </div></div>');   
+            $("#gnph").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="phname[]" class="form-control has-feedback-left" id="phname" placeholder="Name"><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> </div></div>');   
          });
 
      $("#remcgosm2").click(function() {
@@ -972,11 +970,12 @@ $(function(){
 	});
 
 
-   	$("#gnptg").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="ptgname" class="form-control has-feedback-left" id="ptgname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
+   	$("#gnptg").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="ptgname[]" class="form-control has-feedback-left" id="ptgname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
 
      $("#addptggosm3").click(function() {
-            $("#gnptg").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="ptgname" class="form-control has-feedback-left" id="ptgname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');   
-          });
+			$("#gnptg").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="ptgname[]" class="form-control has-feedback-left" id="ptgname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');   
+			
+		  });
 
      $("#remptggosm3").click(function() {
             var v= document.getElementById("newph");

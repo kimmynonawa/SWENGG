@@ -196,19 +196,18 @@
                     <div class= "row">
                         <div class="col-md-8">   
                           <label class= "col-md-3"> <h4>Organization Name</h4> </label>
-                            <div class= "form-group col-md-7">
-                              <input id="orgopt" type="text" list ="OrgOptions" class="form-control col-md-7 col-xs-12" placeholder = "ex: Juan Organization" name="gosmcsoorg">
-                                <datalist id="OrgOptions">
-								  <?php
+                             <div class= "form-group col-md-7">
+                              <select id="OrgOptions" class="form-control col-md-7 col-xs-12" name="gosmcsoorg">
+                                 <?php
 									for ($i=0; $i<count($orgs);$i++){
 										echo"<option value={$orgs[$i][acronym]}>{$orgs[$i][name]}</option>";
 									}
 								  ?>
-                                </datalist>
+                              </select>
 								
 								<script>
-									$('#orgopt').on('change',function(){
-										var org = $('#orgopt').val();
+									$('#OrgOptions').on('change',function(){
+										var org = $('#OrgOptions').val();
 										$.ajax({
 											url: "selectViewGosm2",
 											method: "POST",
@@ -217,6 +216,7 @@
 											},
 											success: function(data){
 												$('#actOptions').empty ();
+												$('#actOptions').append('<option disabled selected>Select Activity Type</option>');
 												for (i = 0; i < data.length; i++){
 													console.log(data[i].title);
 													$('#actOptions').append('<option value="'+ data[i].activityID +'">'+ data[i].title +'<option>');
@@ -234,9 +234,9 @@
                         <div class="col-md-8">   
                           <label class= "col-md-3"> <h4>Activity Name</h4> </label>
                             <div class= "form-group col-md-7">
-                               <select id="actOptions">
-                                  
-                               </select>
+							<select id="actOptions" class="form-control col-md-7 col-xs-12" name="gosmcsoact">
+                                <option disabled selected>Select Activity Type</option>
+                            </select>
                             </div>        
                         </div>
                       </div>

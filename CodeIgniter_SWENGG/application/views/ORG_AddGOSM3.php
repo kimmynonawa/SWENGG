@@ -187,7 +187,9 @@
                     <div class="x_panel">
                         <div class="x_content">
                           <form class="form-horizontal form-label-left" id= "gosmform3">
-
+								<?php 
+								var_dump ($this->session->userdata('phname'));
+								?>
                               <div class="row" id="gnptg" >
                                   <span class="section">Others</span>
                                   <label> <h3> Photographer/s </h3> </label>
@@ -272,7 +274,7 @@
 
          </div>
         <!-- /page content -->
-
+			
       <!-- jQuery -->
     <script src="<?php echo base_url();?>js/jquery.min.js"></script>
     <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
