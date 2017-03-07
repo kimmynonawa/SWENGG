@@ -505,7 +505,7 @@ $(function(){
 	});
      
     $("#addc2").click(function(){
-        $("#tr").append('<tr id="newtr"><td align= "center"> <input type= "time" name="stime"> - <input type= "time" name="stime"> </td> <td align= "center"> <input type="text" class="form-control" name="aname" id="act" placeholder="Activity name"/></td> <td align= "center"> <input type="text" name="ades" class="form-control" id="des" placeholder="Description of Activity"/> </td> <td align= "center"> <input type="text" class="form-control" id="icharge" name= "apic" placeholder="Person in-charge"/> </td></tr>');   
+        $("#tr").append('<tr id="newtr"><td align= "center"> <input type="time" style="width:75px" class="form-control" name="time"> </td><td align= "center"><input type= "time" style="width:75px"  class="form-control" name="stime"> </td><td align= "center"> <input type="text" name="aname" class="form-control" id="act" placeholder="Activity name"/></td><td align= "center"> <input type="text" name="adur" class="form-control" id="dur" disabled="true" /></td><td align= "center"> <input type="text" name="ades"  class="form-control" id="des" placeholder="Description of Activity"/></td><td align= "center"> <input type="text" name="apic"  class="form-control" id="icharge" placeholder="Person in-charge"/></td></tr>');   
      });
     
     $("#remc2").click(function(){
@@ -634,17 +634,15 @@ $(function(){
     var gosmform1= $('#gosmform1');
 	gosmform1.validate({
 		rules: {
+			gosmtit: "required",
+			peric: "required",
 			gosmgoals:"required",
 			gosmobj: "required",
 			gosmdes:"required",
 			gosmmeas:"required",
 			gosmsdate:"required",
 			gosmedate: "required",
-
-			gosmstime:"required",
-			gosmetime: "required",
 			gosmvenu:"required",
-
 			gosmbug: {
 				required: true,
 				minlength: 2,
@@ -657,6 +655,12 @@ $(function(){
 		},
 
 		messages: {
+			gosmtit:{
+				required: 'Enter the title of activity'
+			},
+			peric:{
+				required: 'Enter person in-charge'
+			},
 			gosmgoals:{
 				required: 'Enter the goals of the activity'
 			},
@@ -675,17 +679,9 @@ $(function(){
 			gosmedate: {
 				required: 'Pick an end date for the activity'
 			},
-
-			gosmstime: { 
-				required: 'Pick a start time for the activity'
-			},
-			gosmetime: {
-				required: 'Pick an end time for the activity'
-			},
 			gosmvenu: {
 				required: 'Enter preferred venue for the activity'
 			},
-
 			gosmbug: {
 				required: 'Enter budget',
 				minlength: 'Minimum amount is 10.00',
@@ -1502,10 +1498,10 @@ $(function(){
    	});
 
 
-    $("#tmarks").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"> <div class="col-md-8"><label class= "col-md-5"> <h4>Trademark To Use:</h4> </label> <div class= "form-group col-md-6"> <select class="select2_group form-control" name="tmChoice"> <optgroup label="Logos / Design"> <option value="delasalleuniversitylogo">De La Salle University Logo</option><option value="starscholarsdesign">Star Scholars Design</option></optgroup><optgroup label="DLSU labels"><option value="delasalleuniversity">De La Salle University</option><option value="dlsum">DLSU-M</option><option value="lasallegreenarchers">La Salle Green Archers</option><option value="lasalle">La Salle</option><option value="dlsu">DLSU</option><option value="ls">LS</option><option value="greenarcher">Green Archer</option> <option value="delasalleathletics">De La Salle Athletics</option></optgroup><optgroup label="DLSU taglines"><option value="animolasalle">Animo La Salle</option><option value="thefuturebeginshere">The Future Begins Here</option><option value="wemeanbusiness">We Mean Business</option><option value="creatingthenextgreatidea">Creating the Next Great Idea</option> <option value="bepartofthebusinessclass">Be Part of the Business Class</option><option value="keeplearning">Keep Learning</option><option value="hiptobehere">Hip to Be Here</option> <option value="beyondhigherlearning">Beyond Higher Learning</option><option value="nevershallwefail">Never Shall We Fail</option><option value="greenwhitefights">Green White Fights</option></optgroup></select></div></div></div></div>')
+    $("#tmarks").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"> <div class="col-md-8"><label class= "col-md-5"> <h4>Trademark To Use:</h4> </label> <div class= "form-group col-md-6"> <select class="select2_group form-control" name="tmChoice"> <optgroup label="Logos / Design"> <option value="delasalleuniversitylogo">De La Salle University Logo</option><option value="starscholarsdesign">Star Scholars Design</option></optgroup><optgroup label="DLSU labels"><option value="delasalleuniversity">De La Salle University</option><option value="dlsum">DLSU-M</option><option value="lasallegreenarchers">La Salle Green Archers</option><option value="lasalle">La Salle</option><option value="dlsu">DLSU</option><option value="greenarcher">Green Archer</option> <option value="delasalleathletics">De La Salle Athletics</option></optgroup><optgroup label="DLSU taglines"><option value="animolasalle">Animo La Salle</option><option value="thefuturebeginshere">The Future Begins Here</option><option value="wemeanbusiness">We Mean Business</option><option value="creatingthenextgreatidea">Creating the Next Great Idea</option> <option value="bepartofthebusinessclass">Be Part of the Business Class</option><option value="keeplearning">Keep Learning</option><option value="hiptobehere">Hip to Be Here</option> <option value="beyondhigherlearning">Beyond Higher Learning</option><option value="nevershallwefail">Never Shall We Fail</option><option value="greenwhitefights">Green White Fights</option></optgroup></select></div></div></div></div>')
 
   	$("#addtm").click(function() {
-       $("#tmarks").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"> <div class="col-md-8"><label class= "col-md-5"> </label> <div class= "form-group col-md-6"> <select class="select2_group form-control" name="tmChoice"> <optgroup label="Logos / Design"> <option value="delasalleuniversitylogo">De La Salle University Logo</option><option value="starscholarsdesign">Star Scholars Design</option></optgroup><optgroup label="DLSU labels"><option value="delasalleuniversity">De La Salle University</option><option value="dlsum">DLSU-M</option><option value="lasallegreenarchers">La Salle Green Archers</option><option value="lasalle">La Salle</option><option value="dlsu">DLSU</option><option value="ls">LS</option><option value="greenarcher">Green Archer</option> <option value="delasalleathletics">De La Salle Athletics</option></optgroup><optgroup label="DLSU taglines"><option value="animolasalle">Animo La Salle</option><option value="thefuturebeginshere">The Future Begins Here</option><option value="wemeanbusiness">We Mean Business</option><option value="creatingthenextgreatidea">Creating the Next Great Idea</option> <option value="bepartofthebusinessclass">Be Part of the Business Class</option><option value="keeplearning">Keep Learning</option><option value="hiptobehere">Hip to Be Here</option> <option value="beyondhigherlearning">Beyond Higher Learning</option><option value="nevershallwefail">Never Shall We Fail</option><option value="greenwhitefights">Green White Fights</option></optgroup></select></div></div></div></div>');   
+       $("#tmarks").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"> <div class="col-md-8"><label class= "col-md-5"> </label> <div class= "form-group col-md-6"> <select class="select2_group form-control" name="tmChoice"> <optgroup label="Logos / Design"> <option value="delasalleuniversitylogo">De La Salle University Logo</option><option value="starscholarsdesign">Star Scholars Design</option></optgroup><optgroup label="DLSU labels"><option value="delasalleuniversity">De La Salle University</option><option value="dlsum">DLSU-M</option><option value="lasallegreenarchers">La Salle Green Archers</option><option value="lasalle">La Salle</option><option value="dlsu">DLSU</option><option value="greenarcher">Green Archer</option> <option value="delasalleathletics">De La Salle Athletics</option></optgroup><optgroup label="DLSU taglines"><option value="animolasalle">Animo La Salle</option><option value="thefuturebeginshere">The Future Begins Here</option><option value="wemeanbusiness">We Mean Business</option><option value="creatingthenextgreatidea">Creating the Next Great Idea</option> <option value="bepartofthebusinessclass">Be Part of the Business Class</option><option value="keeplearning">Keep Learning</option><option value="hiptobehere">Hip to Be Here</option> <option value="beyondhigherlearning">Beyond Higher Learning</option><option value="nevershallwefail">Never Shall We Fail</option><option value="greenwhitefights">Green White Fights</option></optgroup></select></div></div></div></div>');   
 	});
 
      $("#deletetm").click(function() {
@@ -1634,11 +1630,73 @@ $(function(){
         return false;
    	});
 
-   	//spca
+   	//spca1
 
-   	//spca2
+
+   	 //spca
    	var spca2= $('#specialPermit2');
 	spca2.validate({
+		rules: {
+			lName: {
+				required:true
+			},
+			fName: {
+				required:true,
+			},
+			mName: {
+				required:true,
+				maxlength: 5
+			},
+			classification: {
+				required: true
+			},
+			email: {
+				required: true,
+				email:true
+			},
+			mNum: {
+				required: true,
+				minlength:11,
+				maxlength:11
+			}
+		},
+
+		messages:{
+
+			lName: {
+				required: 'Enter Last Name'
+			},
+			fName: {
+				required: 'Enter First Name'
+			},
+			mName: {
+				required: 'Enter Middle Name'
+			},
+			classification: {
+				required: 'Enter Classification'
+			},
+			email: {
+				required: 'Enter Email address',
+				email: 'Enter correct Email Address'
+			},
+			mNum: {
+				required: 'Enter Mobile Number',
+				minlength: 'Mobile Number must be 11 digits',
+				maxlength: 'Mobile Number must be 11 digits'
+			}
+			
+		}
+	});
+	$('#nextSpecialPermit2').click(function() {
+    	if (spca2.valid()){
+        	window.location.href = "ORG_PreAct_SpecialPermitCampusAccess3.html";
+        }
+        return false;
+   	});
+
+   	//spca3
+   	var spca3= $('#specialPermit3');
+	spca3.validate({
 		rules: {
 			Name: {
 				required:true
@@ -1695,14 +1753,7 @@ $(function(){
 			}		
 		}
 	});
-	$('#nextSpecialPermit2').click(function() {
-    	if (spca2.valid()){
-        	window.location.href = "";
-        }
-        return false;
-   	});
-   	//spca2
-
+   	//spca3
    	//org preact
    	var opre= $('#preActForm');
 	opre.validate({
@@ -1813,7 +1864,7 @@ $(function(){
    	//spca
 
    	$("#addspca").click(function() {
-      $("#requests").append('<tr id ="detailss" class="details"> <td><input class="form-control" name="sdate" placeholder ="Enter Start Date" /></td><td>  <input class="form-control" name="stime" placeholder ="Enter Start Time" /></td><td>  <input class="form-control" name="edate" placeholder ="Enter End Date" /></td><td>  <input class="form-control" name="etime" placeholder ="Enter End Time" /></td><td>  <input class="form-control" name="venue" placeholder ="Enter Venue"/></td></tr>');   
+      $("#requests").append('<tr id ="detailss" class="details"> <td><input class="form-control" name="sdate" type="date" /></td><td> <input class="form-control" name="edate" placeholder ="Enter End Date" type="date"/></td><td> <input class="form-control" name="stime" type="time" placeholder ="Enter Start Time" /></td><td> <input class="form-control" name="etime" placeholder ="Enter End Time" type="time"/></td><td>  <input class="form-control" name="venue" placeholder ="Enter Venue"/></td></tr>');   
      });
 
    	 
@@ -1823,6 +1874,21 @@ $(function(){
     });
 
     //
+
+    //spca 2
+
+   	$("#addspca2").click(function() {
+      $("#names").append('<tr id ="detailss" class="details"> <<td>  <input class="form-control" name="lName" placeholder ="Enter Last Name" /></td><td>  <input class="form-control" name="fName" placeholder ="Enter First Name" /></td> <td>  <input class="form-control" name="mName" placeholder ="Enter Middle Name" /></td><td>  <input class="form-control" name="classification" placeholder ="Enter Classifcation" /></td><td>  <input class="form-control" name="email" placeholder ="Enter Email"/></td><td>  <input class="form-control" name="mNum" placeholder ="Enter Mobile Number"/></td></tr>');   
+     });
+
+   	 
+    $("#deletespca2").click(function() {
+      var v= document.getElementById("detailss");
+      	v.remove();
+    });
+
+
+    //spca2
    	// contest mechanics 
    	var conmech= $('#conmech');
 	conmech.validate({
@@ -1879,10 +1945,10 @@ $(function(){
       });
 
 
-   	$("#criteria").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"><div class="col-md-8"><label class= "col-md-2"> <h4>Criteria</h4> </label><div class= "form-group col-md-6"><input type="text" name= "cri" class="form-control" placeholder="ex: 100 points for costume"/></div></div></div>')
+   	$("#criteria").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"><div class="col-md-8"><label class= "col-md-2"> <h4>Criteria</h4> </label><div class= "form-group col-md-6"><input type="text" name= "cri" class="form-control" placeholder="ex: One hundred points for costume."/></div></div></div>')
 
    	$("#addcrit").click(function() {
-            $("#criteria").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-8"><label class= "col-md-2"></label><div class= "form-group col-md-6"><input type="text" name= "cri" class="form-control" placeholder="ex: 100 points for costume"/></div></div></div>');   
+            $("#criteria").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-8"><label class= "col-md-2"></label><div class= "form-group col-md-6"><input type="text" name= "cri" class="form-control" placeholder="ex: One hundrer points for costume."/></div></div></div>');   
 	});
 
      $("#deletecrit").click(function() {
