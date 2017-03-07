@@ -206,22 +206,26 @@
                           <table class="table table-striped">
                             <thead>
                               <tr>
-                                <th>Source/s of Funds</th>
-                                <th>Amount</th>
+                                <th align="center">Source/s of Funds</th>
+                                <th align="center">Amount</th>
                               </tr>
                             </thead>
                             <tbody id="tr">
                               <tr>
                                 <td><h4>Organizational Funds</h4></td>
-                                <td> <input type="Number" name="of41" class="form-control" id="of" placeholder="Enter Amount"/></td>
+                                <td> <input type="text" name="of41" class="form-control" id="of" placeholder="Enter Amount"/></td>
                               </tr>
                               <tr>
                                 <td><h4>Participants Fee</h4></td>
-                                <td> <input type="Number" name="pf41" class="form-control" id="pf" placeholder="Enter Amount"/></td>
+                                <td> <input type="text" name="pf41" class="form-control" id="pf" placeholder="Enter Amount"/></td>
                               </tr>
                               <tr>
                                 <td> <input type="text"   name= "os41" class="form-control" id="sname" placeholder="Other Source"/></td>
-                                <td> <input type="Number" name="oam41" class="form-control" id="oaf" placeholder="Enter Amount"/></td>
+                                <td> <input type="text" name="oam41" class="form-control" id="oaf" placeholder="Enter Amount"/></td>
+                              </tr>
+                              <tr  style= "background-color:#D3D3D3">
+                                <td></td>
+                                <td align="left" ><h4>Total:</h4></td>
                               </tr>
                             </tbody>
                            </table>
@@ -246,21 +250,33 @@
                             </thead>
                             <tbody id="tr">
                               <tr>
-                                <td><h4>Operational Funds</h4></td>
-                                <td> <input type="Number" name="amt4" class="form-control" id="opf" placeholder="Enter Amount"/></td>
+                                <td> <h4>Accumulated Operational Funds</h4> </td>
+                                <td></td>
                               </tr>
                               <tr>
-                                <td><h4>Depository Funds as of</h4></td>
+                                <td align="right"><h4>Operational Funds</h4></td>
+                                <td> <input type="text" name="amt4" class="form-control" id="opf" placeholder="Enter Amount"/></td>
+                              </tr>
+                              <tr>
+                                <td> <h4>Accumulated Depository Funds</h4> </td>
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td align="right"><h4>Depository Funds as of</h4></td>
                                 <td> 
                                 <input type="date" name="dpf4" class="form-control" id="dpf"/>
-                                <input type="Number" name= "dpfam" class="form-control" id="dpfam" placeholder="Enter Amount"/>
+                                <input type="text" name= "dpfam" class="form-control" id="dpfam" placeholder="Enter Amount"/>
                                 </td>
                               </tr>
-                              <tr>
-                                <td><h4>Participants Fee/Donation/Sponsorship</h4></td>
-                                <td><input type="Number" name= "pf4" class="form-control" id="dpam" placeholder="Enter Amount"/></td>
+                                <tr>
+                                <td> <h4>Other Sources of Funds (should match with Section 6, if applicable)</h4> </td>
+                                <td></td>
                               </tr>
-                                <td style= "background-color:#D3D3D3"><h4>Total Cash for Disbursement:</h4></td>
+                              <tr>
+                                <td align="right"><h4>Participants Fee/Donation/Sponsorship</h4></td>
+                                <td><input type="text" name= "pf4" class="form-control" id="dpam" placeholder="Enter Amount"/></td>
+                              </tr>
+                                <td align="right" style= "background-color:#D3D3D3"><h4>Total Cash for Disbursement:</h4></td>
                                 <td style= "background-color:#D3D3D3"><h4> 315,869.00</h4></td>
                               </tr>
 
@@ -270,7 +286,7 @@
                               </tr>
 
                               <tr>
-                                <td style="background-color:#D3D3D3"><h4>Remaining Balance: </h4></td>
+                                <td align="right" style="background-color:#D3D3D3"><h4>Remaining Balance: </h4></td>
                                 <td style="background-color:#D3D3D3"><h4>310,869.00</h4></td>
                               </tr>
                             </tbody>

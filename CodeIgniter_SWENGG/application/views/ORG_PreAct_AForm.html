@@ -198,24 +198,27 @@
                   <div class="x_content">
                     <form id="aform1" method="post" autocomplete="off">
                       <span class="section">General Information</span>
-                      <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-5"> <h4>Part of GOSM:</h4> </label>
-                          <div class= "form-group col-md-6">
-                            <input type="radio"  id="gosmoption" name= "gosmoption" class="flat"/> <label> Yes</label>
-                            <input type="radio"  id="gosmoption" name= "gosmoption" class="flat"/> <label>No </label>
-                          </div>        
-                        </div>
-                      </div>  
 
                       <div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-5"> <h4>Activity Name:</h4> </label>
+                          <label class= "col-md-5"> <h4>Title Of Activity:</h4> </label>
                           <div class= "form-group col-md-6">
                               <input type="text" name= "actName" class="form-control" placeholder="ex:  General Assembly"/>
                           </div>        
                         </div>
-                      </div>  
+                      </div> 
+
+                      <!--IF ITS PART OF THE GOSM USE THIS
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Title Of Activity:</h4> </label>
+                          <div class= "form-group col-md-6">
+                              <select name= "actName" class="form-control"/>
+                                <option>Annual General Assembly</option>
+                              </select>
+                          </div>        
+                        </div>
+                      </div> -->
 
                     <p> </p>
                     <span class="section">Nature of Activity</span>
