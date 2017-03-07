@@ -198,35 +198,74 @@
                   <div class="x_content">
                     <form method="post" id = "approvalChanges" autocomplete="off">
                      <span class="section"></span>
-  
+                      
                       <div class= "row">
-                          <div class="col-md-8">   
-                            <label class= "col-md-5"> <h4>Type of Activity</h4> </label>
-                              <div class= "form-group col-md-6">                  
-                                <select id="actType" name="actType" class="form-control col-md-7 col-xs-12" >
-                                  <option disabled selected>Select Type Of Activity</option>
-                                  <option> Academic</option>
-                                  <option> Special Interest</option>
-                                  <option> Departmental Initiative</option>
-                                  <option> Fundraising</option>
-                                  <option> Community Development</option>
-                                  <option> Organization Development</option>
-                                  <option>Issue Advocacy</option>
-                                  <option>Lasallian Formation/Spiritual Growth</option>
-                                  <option>Outreach</option>                   
-                                </select>
-                              </div>    
-                          </div>
-                        </div>  
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Title Of Activity</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input type="text" name= "actTitle" class="form-control" placeholder="ex: General Assembly" />
+                            </div>        
+                        </div>
+                      </div>
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Type of Activity</h4> </label>
+                          <div class= "form-group col-md-6">                  
+                            <select id="actType" name="actType" class="form-control col-md-7 col-xs-12" >
+                              <option disabled selected>Select Type Of Activity</option>
+                              <option> Academic</option>
+                              <option> Special Interest</option>
+                              <option> Departmental Initiative</option>
+                              <option> Fundraising</option>
+                              <option> Community Development</option>
+                              <option> Organization Development</option>
+                              <option>Issue Advocacy</option>
+                              <option>Lasallian Formation/Spiritual Growth</option>
+                              <option>Outreach</option>                   
+                            </select>
+                          </div>    
+                        </div>
+                      </div>
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Date</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input type="date" name= "requestName" class="form-control" />
+                            </div>        
+                        </div>
+                      </div>
+
+                      
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Time</h4> </label>
+                          <div class= "form-inline col-md-6">
+                            <input type="time" name= "startTime" id="startTime" class="form-control" style="width:154px" /> - <input type="time" name= "endTime" id="endTime"  class="form-control" style="width:154px"/>
+                          </div>    
+                        </div>
+                      </div> 
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Venue</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input type="text" name= "venue" class="form-control" placeholder="ex: Henry Sy Grounds" />
+                            </div>        
+                        </div>
+                      </div>  
                       
                       <div class= "row">
                         <div class="col-md-8">   
                           <label class= "col-md-5"> <h4>Changes</h4> </label>
-                            <div class= "form-group col-md-6">
-                              <input type="checkbox" name= "change" class="form-control flat"/> Venue <p></p>
-                               <input type="checkbox" name= "change" class="form-control flat"/> Date and Time <p></p>
-                                <input type="checkbox" name= "change" class="form-control flat"/> Program Design <p></p>
-                                 <input type="checkbox" name= "change" class="form-control flat"/> Cancellation<p></p>
+                            <div class= "form-inline col-md-6">  
+                              <input type="checkbox" name= "changeVenue" value="1" class="form-control flat checkbox"/> Venue&nbsp&nbsp
+                              <input type="text" name= "venue" class="form-control" placeholder="Enter New Venue"   style="width:248px"><p></p>      
+                              <input type="checkbox" name= "changeDate" value ="2" class="form-control flat checkbox"/> Date &nbsp&nbsp&nbsp <input type="date" name= "venue" class="form-control" placeholder="Enter New Date"   style="width:248px"><p></p>
+                              <input type="checkbox" name= "changeTime" value ="3" class="form-control flat checkbox"/> Time &nbsp&nbsp&nbsp<input type="time" name= "newStartTime" id="newStartTime" class="form-control" style="width:119px"/> - <input type="time" name= "newEndTime" id="newEndTime" class="form-control" style="width:119px"/><p></p>
+                              <input type="checkbox" value ="4" value="4" name= "programDesign" class="form-control flat checkbox"/> Program Design <p></p>
+                                 <input type="checkbox" name= "change" value="5" class="form-control flat checkbox"/> Cancellation<p></p>
                             </div>  
                         </div>
                       </div>  
@@ -253,6 +292,7 @@
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-11">
                           <input id="nextApproveChanges" type="submit" class="btn btn-success align: right" value ="Next">
+                          
                         </div>
                       </div>
                     </form>
@@ -308,6 +348,17 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-	
+	 <script>
+
+      $(document).ready(function () {
+        var checked = $('.checkbox').val();
+
+        if(checked==4){
+
+        }
+        
+
+      });
+   </script>
   </body>
 </html>

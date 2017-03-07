@@ -187,7 +187,7 @@
                 </div>
               </div>
               <div class= "x_content bg-success">
-                <h4><p class="text-success"> Lorem ipsum dolor sit amet, vel pretium architecto, semper semper eu elit sed, lacus cras quis, pede velit. Pretium convallis suscipit, vestibulum rutrum, eu integer montes erat ut tincidunt, facilisis dolor. Et fermentum nulla, litora leo in, nunc aliquam aperiam, rutrum elementum, dictum malesuada morbi amet nisl. sociis odio laoreet dolor mauris. </p></h4>
+                <h4><p class="text-success"><b> Important Reminders: </b></p> <p class="text-success"> 1. This form is used ONLY for requesting permission for ACCESS OF PERSONS into the campus.</p> <p class="text-success"> 2. This form will be accepted only within office hours (Mon to Fri: 8:00am to 12:00pm and 1:30pm to 5:00pm). </p> <p class="text-success"> 3. This form must be submitted at the Security Office (J108) no later than two (2) working days before the requested date of campus access (Saturday is not counted as a working day for this purpose). </p><p class="text-success"> 4. This form is considered an application only unless a final decision is made and indicated on this form. </p> <p class="text-success">5. Clinics in campus are open only from 06:00am to 10:00pm, Mondays to Saturdays. </p></h4>
               </div>
             </div>
                 
@@ -200,24 +200,61 @@
                     <form id="specialPermit1" method="post" autocomplete="off">
                       <span class="section"></span>
                     
-
+                      
                       <div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Expected Number of Members to Participate (ENMP) </h4> </label>
+                          <label class= "col-md-4"> <h4>Title Of Activity</h4> </label>
                           <div class= "form-group col-md-6">
-                            <input type="Number" name= "enmp" min="1" id="enmp" class="form-control" placeholder="ex: 80" />
-                          </div>       
-                        </div>
-                      </div>  
-
-                      <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Expected Number of Participants (ENP) </h4> </label>
-                          <div class= "form-group col-md-6">
-                            <input type="Number" name= "enp" min ="1" id= "enp" class="form-control" placeholder="ex: 100"/>
-                          </div>       
+                              <input type="text" name= "actTitle" class="form-control" placeholder="ex: General Assembly"/>
+                          </div>        
                         </div>
                       </div>
+
+                      <div class= "row">
+                        <div class="col-md-12">   
+                          <label class= "col-md-3"> <h4>Requests</h4> </label>
+                          <div class= "form-group col-md-12">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr> 
+                                  <th> Start Date</th> 
+                                  <th> End Date</th>
+                                  <th> Start Time</th>
+                                  <th> End Time</th>
+                                  <th> Venue</th>
+                                </tr>
+                              </thead>
+                              <tbody id="requests">
+                                <tr id ="details" class="details">
+                                <td>  <input class="form-control" name="sdate" type="date" placeholder ="Enter Start Date" /></td>
+                                <td>  <input class="form-control" name="stime" type="date" placeholder ="Enter End Date" /></td>
+                                <td>  <input class="form-control" name="edate" type="time" placeholder ="Enter Start Time" /></td>
+                                <td>  <input class="form-control" name="etime" type="time" placeholder ="Enter End Time" /></td>
+                                <td>  <input class="form-control" name="venue" placeholder ="Enter Venue"/></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+
+                        <div class = "buttons col-md-12">
+                          <div class="col-md-3">
+                            <button id="addspca" type ="button" class ="btn btn-default">  <span class="glyphicon glyphicon-plus-sign"></span> </button>
+                            <button id="deletespca" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                          </div>    
+                        </div>
+                      </div>   
+
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Total Number of Persons</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <input type="number" min="1" id="numPerons" name= "numPersons" class="form-control" /> 
+                            
+                          </div>        
+                        </div>
+                      </div>  
 
                       <div class= "row">
                         <div class="col-md-8">   
@@ -233,39 +270,10 @@
                         <div class="col-md-8">   
                           <label class= "col-md-4"> <h4>Faculty In-Charge:</h4> </label>
                           <div class= "form-group col-md-6">
-                              <input type="text" name= "Faculty" class="form-control" placeholder="ex: Mr. Juan Dela Cruz"/>
+                            <input type="text" name= "Faculty" class="form-control" placeholder="ex: Mr. Juan Dela Cruz"/>
                           </div>        
                         </div>
-                      </div>  
-
-                       <div class= "row">
-                        <div class="col-md-12">   
-                          <label class= "col-md-3"> <h4>Requests</h4> </label>
-                          <div class= "form-group col-md-12">
-                            <table class="table table-striped">
-                              <thead>
-                                <tr> </tr>
-                              </thead>
-                              <tbody id="requests">
-                                <tr id ="details" class="details">
-                                <td>  <input class="form-control" name="sdate" placeholder ="Enter Start Date" /></td>
-                                <td>  <input class="form-control" name="stime" placeholder ="Enter Start Time" /></td>
-                                <td>  <input class="form-control" name="edate" placeholder ="Enter End Date" /></td>
-                                <td>  <input class="form-control" name="etime" placeholder ="Enter End Time" /></td>
-                                <td>  <input class="form-control" name="venue" placeholder ="Enter Venue"/></td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-
-                        <div class = "buttons col-md-12">
-                          <div class="col-md-3">
-                            <button id="addspca" type ="button" class ="btn btn-default">  <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                            <button id="deletespca" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                          </div>    
-                        </div>
-                      </div> 
+                      </div>
   
                       <div class="ln_solid"></div> 
                       <div class="form-group">

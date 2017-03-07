@@ -199,24 +199,26 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-
                     <form class="form-inline form-label-left" id="pprform2">
                       <span class="section">Comprehensive Program Design</span>
-
                         <div class="table-responsive">          
                           <table class="table table-striped">
                             <thead>
                               <tr>
-                                <th>Time</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
                                 <th>Activity</th>
+                                <th>Duration</th>
                                 <th>Description</th>
                                 <th>Person In-Charge</th>
                               </tr>
                             </thead>
                             <tbody id="tr">
                               <tr>
-                                <td align= "center"> <input type="time" name="time"> - <input type= "time" name="stime"> </td>
+                                <td align= "center"> <input type="time" style="width:75px" class="form-control" name="time"> </td>
+                                <td align= "center"><input type= "time" style="width:75px"  class="form-control" name="stime"> </td>
                                 <td align= "center"> <input type="text" name="aname" class="form-control" id="act" placeholder="Activity name"/></td>
+                                 <td align= "center"> <input type="text" name="adur" class="form-control" id="dur" disabled="true" /></td>
                                 <td align= "center"> <input type="text" name="ades"  class="form-control" id="des" placeholder="Description of Activity"/></td>
                                 <td align= "center"> <input type="text" name="apic"  class="form-control" id="icharge" placeholder="Person in-charge"/></td>
                               </tr>
