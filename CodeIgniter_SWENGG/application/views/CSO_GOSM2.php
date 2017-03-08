@@ -224,7 +224,17 @@
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">GOSM Target Date: </label>
-									<p><?php echo $activity[0]['fromdate'];?> - <?php echo $activity[0]['todate'];?></p>
+									<p><?php 
+									$fromdate = $activity[0]['fromdate'];
+									$fromdatenew = strtotime($fromdate);
+									$formatted_fromdate = date('F d, Y', $fromdatenew);
+									echo $formatted_fromdate;?> 
+									- 
+									<?php 
+									$todate = $activity[0]['todate'];
+									$todatenew = strtotime($todate);
+									$formatted_todate = date('F d, Y', $todatenew);
+									echo $formatted_todate;?></p>
 								</div>
 
 								<div class="item form-group">
