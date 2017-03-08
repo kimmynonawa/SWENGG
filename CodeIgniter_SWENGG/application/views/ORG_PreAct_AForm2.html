@@ -207,7 +207,7 @@
                         <select name ="select" id ="select" class="form-control"> 
                           <option disabled selected> Select Kind Of Date </option>
                           <option value = "1"> Single Date</option>
-                          <option value = "2"> Date Range </option>
+                          <option value = "2"> Date Range with the same time slot</option>
                         </select>
                       </div>
                       <div class="col-md-2">
@@ -334,34 +334,28 @@
         var choice = document.getElementById("select").value;
         if(choice==1){
 
-            var toAppend3= '<div class= "row"><div class="col-md-8"> <div class= "col-md-5"> <label class="col-md-2"><h4>Date</h4> </label> </div><div class= "form-group col-md-6"><input type="date" name="startDate[]" class= "form-control" /></div></div></div>';
+          var toAppend='<p></p><div class="details"><div class= "row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Date</h4></label></div> <div class= "form-group col-md-4"><input type="date" name="Date[]" class= "form-control" /></div><div class="col-md-2"><button class="form-control btn btn-danger" id="rDate" name="rDate"> Remove Date</button></div></div></div> \
+              <div class= "row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Time</h4></label></div> <div class= "form-inline col-md-4"><input type="time" name= "sTime[]" id="startTime" class="form-control" style="width:129px" /> - <input type="time" name= "eTime[]" id="endTime"  class="form-control" style="width:130px"/></div></div></div> \
+              <div class="row" id ="time"> </div></div>';
+          $('#dates').append(toAppend);
 
-            var toAppend='<p></p><div class= "row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Date</h4></label></div> <div class= "form-group col-md-4"><input type="date" name="Date[]" class= "form-control" /></div><div class="col-md-2"><button class="form-control btn btn-danger" id="rDate" name="rDate"> Remove Date</button></div></div></div> \
-              <div class= "row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Time</h4></label></div> <div class= "form-inline col-md-4"><input type="time" name= "sTime[]" id="startTime" class="form-control" style="width:129px" /> - <input type="time" name= "eTime[]" id="endTime"  class="form-control" style="width:130px"/></div><div class="col-md-2"><button class="form-control btn btn-danger" id="rDate" name="rDate"> Remove Time</button></div></div></div> \
-              <div class="row" id ="time"> </div>\
-              <div class= "row"><div class="col-md-10"><div class="col-md-4"> <label class= "col-md-2"> <h4></h4></label></div> <div class= "form-inline col-md-4"><button class="form-control" id="addTime" name="addTime"> Add Another Time</button></div></div></div>';
-            $('#dates').append(toAppend);
+
+          $(document).on("click", "#rDate", function(){
+            (this).closest(".details").remove();
+          });
         }
         else if(choice==2){
-           var toAppend='<p></p><div class= "row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Time</h4></label></div> <div class= "form-inline col-md-4"><input type="date" name= "sDate[]" id="startDate" class="form-control" style="width:129px" /> - <input type="date" name= "eDate[]" id="endDate"  class="form-control" style="width:130px"/></div><div class="col-md-2"><button class="form-control btn btn-danger" id="rDate" name="rDate"> Remove Date</button></div></div></div> \
+          var toAppend='<p></p><div class="details"><div class= "row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Date</h4></label></div> <div class= "form-inline col-md-4"><input type="date" name= "sDate[]" id="startDate" class="form-control" style="width:129px" /> - <input type="date" name= "eDate[]" id="endDate" class="form-control" style="width:130px"/></div><div class="col-md-2"><button class="form-control btn btn-danger" id="rDate" name="rDate"> Remove Date</button></div></div></div> \
               <div class="row" id ="time"> </div>\
-              <div class= "row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Time</h4></label></div> <div class= "form-inline col-md-4"><input type="time" name= "sTime[]" id="startTime" class="form-control" style="width:129px" /> - <input type="time" name= "eTime[]" id="endTime"  class="form-control" style="width:130px"/></div><div class="col-md-2"><button class="form-control btn btn-danger" id="rDate" name="rDate"> Remove Time</button></div></div></div> \
-              <div class="row" id ="time"> </div>\
-              <div class= "row"><div class="col-md-10"><div class="col-md-4"> <label class= "col-md-2"> <h4></h4></label></div> <div class= "form-inline col-md-4"><button class="form-control" id="addTime" name="addTime"> Add Another Time</button></div></div></div>';
-            $('#dates').append(toAppend);
+              <div class= "row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Time</h4></label></div> <div class= "form-inline col-md-4"><input type="time" name= "sTime[]" id="startTime" class="form-control" style="width:129px" /> - <input type="time" name= "eTime[]" id="endTime"  class="form-control" style="width:130px"/></div></div>';
+          $('#dates').append(toAppend);
+
+          $(document).on("click", "#rDate", function(){
+            (this).closest(".details").remove();
+          });
         }
       });
 
-      $('#addTime').click(function(){
-        console.log("a");
-        var toAppend = '<div class="row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Time</h4></label></div> <div class= "form-inline col-md-4"><input type="time" name= "sTime[]" id="startTime" class="form-control" style="width:129px" /> - <input type="time" name= "eTime[]" id="endTime"  class="form-control" style="width:130px"/></div><div class="col-md-2"><button class="form-control btn btn-danger" id="rDate" name="rDate"> Remove Time</button></div></div></div>';
-
-          $('#dates').append(toAppend);
-      });
-
-      $('#rDate').click(function(){
-          (this).closest(".row").remove();
-      });
    });
 
   </script>
