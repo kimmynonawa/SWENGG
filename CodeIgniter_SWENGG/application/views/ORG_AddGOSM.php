@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,13 +11,13 @@
 
 
     <!-- jQuery -->
-    <script src= "<?php echo base_url();?>js/jquery.js"> </script>
+    <script src= "js/jquery.js"> </script>
     <!-- Bootstrap -->
      <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="<?php echo base_url();?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet"> 
+    <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
   
@@ -43,7 +42,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="<?php echo base_url();?>images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -111,7 +110,7 @@
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
-                        <span class="image"><img src="<?php echo base_url();?>images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -123,7 +122,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="<?php echo base_url();?>images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -135,7 +134,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="<?php echo base_url();?>images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -147,7 +146,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="<?php echo base_url();?>images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -185,17 +184,26 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                       <div class="x_content">
-                        <form class="form-horizontal form-label-left" id= "gosmform1" action="createGosm" method="post">
+                                               <form class="form-horizontal form-label-left" id= "gosmform1">
 
                               <div class="row" id="gi" >
                                <span class="section">General Information</span>
                               </div>
 
+                            <div class= "row">
+                              <div class="col-md-2 col-sm-2 col-xs-2 form-group">
+                                <label> <h3> Title </h3> </label>
+                              </div>
+                              <div class="col-md-4 col-sm-4 col-xs-4 form-group">
+                                 <input type="text" name="gosmtit" class="form-control" id="gosmtit" placeholder="ORGName Module">
+                              </div>
+                            </div>
+
                               <div class= "row">
-                                <div class="col-lg-2 col-md-2 col-sm-2  form-group">
+                                <div class="col-md-2 col-sm-2  form-group">
                                   <label> <h3> Goals</h3> </label>
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4  form-group">
+                                <div class="col-md-4 col-sm-4  form-group">
                                   <textarea name="gosmgoals" rows="4" class="form-control"></textarea> 
                                 </div>
                               </div>
@@ -235,25 +243,13 @@
 
                             <div class= "row">
                               <div class="col-md-2 col-sm-2 col-xs-2 form-group">
-                                <label> <h3>Duration</h3> </label>
+                                <label> <h3> Person In-Charge </h3> </label>
                               </div>
-                              <div class="col-md-1 col-sm-2 col-xs-2 form-group">
-                               <p style="padding: 5px;">
-                                <input type="radio" name="gosmdr" id="gosmdr" class= "flat"/> Year Long
-                               </p>
+                              <div class="col-md-4 col-sm-4 col-xs-4 form-group">
+                                 <input type="text" name="peric" class="form-control" id="gosmpic">
                               </div>
-                              <div class="col-md-1 col-sm-2 col-xs-2 form-group">
-                                <p style="padding: 5px;">
-                                  <input type="radio" name="gosmdr" id="gosmdr" class= "flat"/> Term Long
-                                </p>
-                              </div>
+                            </div>
 
-                             <div class="col-md-1 col-sm-2 col-xs-2 form-group">
-                              <p style="padding: 5px;">
-                                <input type="radio" name="gosmdr" id="gosmdr" class= "flat"/> Days
-                              </p>
-                             </div>
-                          </div>
 
                             <div class= "row">
                               <div class="col-md-2 col-sm-2 col-xs-2 form-group">
@@ -265,19 +261,6 @@
 
                               <div class="col-md-2 col-sm-2 col-xs-2 form-group">
                                  <input type="date" name="gosmedate" class="form-control" id="gosmedate">
-                              </div>
-                            </div>
-
-                            <div class= "row">
-                              <div class="col-md-2 col-sm-2 col-xs-2 form-group">
-                                <label> <h3> Time</h3> </label>
-                              </div>
-                              <div class="col-md-2 col-sm-2 col-xs-2 form-group">
-                                 <input type="time" name="gosmstime" class="form-control" id="gosmstime">
-                              </div>
-
-                              <div class="col-md-2 col-sm-2 col-xs-2 form-group">
-                                 <input type="time" name="gosmetime" class="form-control" id="gosmetime">
                               </div>
                             </div>
 
@@ -330,19 +313,13 @@
                                </div>
                            </div>
 
+                          <label><h3>Related to</h3> </label>
                           <div class= "row">
-                            <div class="col-md-2 col-sm-2 col-xs-2 form-group">    
-                                <label> <h3>Related to</h3> </label>
+                            <div class="form-group col-md-1 col-sm-2 col-xs-2">
+                                   <input type="radio" name="reto" id="reto" class="flat"> Related
                             </div>
-                            <div class="form-group col-md-2 col-sm-2 col-xs-2">
-                                <p style="padding: 10px;">
-                                   <input type="checkbox" name="reton" id="reton" class="flat"> Related
-                                </p>
-                            </div>
-                            <div class="form-group col-md-2 col-sm-2 col-xs-2">
-                              <p style="padding: 10px;">
-                                <input type="checkbox" placeholder="N" name="retor" id="retor" class="flat"> Not related
-                              </p>
+                            <div class="form-group col-md-1 col-sm-2 col-xs-2">
+                                <input type="radio" placeholder="N" name="reto" id="reto" class="flat"> Not related
                             </div> 
                             </div>
 
@@ -353,8 +330,8 @@
                                   </div>
                                 </div>
 
-                          </form>  
-                        </div>
+                          </form> 
+                          </div>
                     </div>
                 </div>
             </div>
@@ -362,9 +339,9 @@
         <!-- /page content -->
 
     <!-- jQuery -->
-    <script src= "<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src= "<?php echo base_url();?>js/jquery.validate.min.js"> </script>
-    <script src= "<?php echo base_url();?>js/validation.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src= "js/jquery.validate.min.js"> </script>
+    <script src= js/validation.js></script>
     <script src= "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js" </script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>

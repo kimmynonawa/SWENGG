@@ -69,27 +69,9 @@
 		public function viewGosm(){
 			$gosmdetails = $this->Gosm_model->getGosmDetails(1);
 			
-			$cencommcomm = $this->Gosm_model->getCenComm(1, 1);
-			$cencommdocu = $this->Gosm_model->getCenComm(1, 2);
-			$cencommexte = $this->Gosm_model->getCenComm(1, 3);
-			$cencommfina = $this->Gosm_model->getCenComm(1, 4);
-			$cencommhr   = $this->Gosm_model->getCenComm(1, 5);
-			$cencomminte = $this->Gosm_model->getCenComm(1, 6);
-			$cencommprom = $this->Gosm_model->getCenComm(1, 7);
-			
-			$othersequi = $this->Gosm_model->getOthers(1, 1);
-			$othershost = $this->Gosm_model->getOthers(1, 2);
-			$othersphot = $this->Gosm_model->getOthers(1, 3);
-			$othersspea = $this->Gosm_model->getOthers(1, 4);
-			$othersspon = $this->Gosm_model->getOthers(1, 5);
-			$othersvide = $this->Gosm_model->getOthers(1, 6);
 			$data = 
 			array(
-				"activity" => $gosmdetails, "cencommcomm" => $cencommcomm, "cencommdocu" => $cencommdocu, 
-				"cencommexte" => $cencommexte, "cencommfina" => $cencommfina, "cencommhr" => $cencommhr,
-				"cencomminte" => $cencomminte, "cencommprom" => $cencommprom,
-				"othersequi" => $othersequi, "othershost" => $othershost, "othersphot" => $othersphot,
-				"othersspea" => $othersspea, "othersspon" => $othersspon, "othersvide" => $othersvide
+				"activity" => $gosmdetails
 				);
 			$this->load->view('CSO_GOSM2', $data);
 			
