@@ -11,36 +11,48 @@
 		}
 		
 		public function loadCreateGosm(){
-			$this->load->view('ORG_AddGosm');
+			
+			$res1 = $this->Gosm_model->getActivityNature();
+			$res2 = $this->Gosm_model->getActivityType();
+			$data = array("activityNature" => $res1, "activityType" => $res2);
+			$this->load->view('ORG_AddGosm', $data);
 		}
 		
 		public function createGosm(){
 			
-				
+			if ($this->form_validation->run() == FALSE){
+				$this->load->view('ORG_AddGosm');
+			}
+			else{
 				$data = array(
+					'gosmtitle'  => $this->input->post("gosmtitle"),
 					'gosmgoals'  => $this->input->post("gosmgoals"),
 					'gosmobj'  => $this->input->post("gosmobj"),
 					'gosmdes'  => $this->input->post("gosmdes"),
 					'gosmmeas'  => $this->input->post("gosmmeas"),
-					'gosmdr'  => $this->input->post("gosmdr"),
-					'gosmsfromdate'  => $this->input->post("gosmsfromdate"),
-					'gosmetodate'  => $this->input->post("gosmetodate"),
-					'gosmfromtime'  => $this->input->post("gosmfromtime"),
-					'gosmtotime'  => $this->input->post("gosmgoals"),
-					'gosmvenue'  => $this->input->post("gosmtotime"),
+					'gosmperic'  => $this->input->post("gosmperic"),
+					'gosmfromdate'  => $this->input->post("gosmfromdate"),
+					'gosmtodate'  => $this->input->post("gosmtodate"),
+					'gosmvenue'  => $this->input->post("gosmvenue"),
 					'gosmbug'  => $this->input->post("gosmbug"),
-					'gosmnat1'  => $this->input->post("gosmgoals"),
-					'gosmnat2'  => $this->input->post("gosmnat1"),
-					'gosmtype1'  => $this->input->post("gosmtype1"),
-					'gosmtype2'  => $this->input->post("gosmtype2"),
-					'reton'  => $this->input->post("reton")
+					'gosmnat'  => $this->input->post("gosmnat"),
+					'gosmtype'  => $this->input->post("gosmtype"),
 				);
+				$org = 2;
+				$gosm = 1;
 				
-				$name = 'kim';
+				if ($this->input->post("reto") == 'yes'){
+					$reto = 1;
+				}
+				else{
+					$reto = 0;
+				}
 				
-				$this->session->set_userdata('name', $name);
-				$this->session->set_userdata('data', $data);
-				$this->load->view('ORG_AddGosm2');
+				$this->Gosm_model->insertActivity($data, $org, $gosm, $reto);
+				$this->load->view('ORG_AddGosm');
+			}
+			
+				
 		} 
 		
 		public function createGosm2(){
@@ -69,10 +81,7 @@
 		public function viewGosm(){
 			$gosmdetails = $this->Gosm_model->getGosmDetails(1);
 			
-			$data = 
-			array(
-				"activity" => $gosmdetails
-				);
+			$data = array("activity" => $gosmdetails);
 			$this->load->view('CSO_GOSM2', $data);
 			
 		}

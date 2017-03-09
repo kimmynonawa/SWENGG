@@ -1043,6 +1043,9 @@ $(function(){
 			orgname:{
 				required: true
 			},
+			orgacro:{
+				required: true
+			},
 			orgun:{
 				required: true
 			},
@@ -1063,6 +1066,10 @@ $(function(){
 		messages:{
 			orgname:{
 				required: 'Enter Name'
+			},
+			
+			orgacro:{
+				required: 'Enter Acronym'
 			},
 
 			orgun:{

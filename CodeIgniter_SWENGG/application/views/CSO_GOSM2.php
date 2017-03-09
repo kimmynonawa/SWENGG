@@ -219,27 +219,22 @@
 								
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Person In Charge: </label>
-									<p><?php echo $activity[0]['measures'];?></p>
+									<p><?php echo $activity[0]['personInCharge'];?></p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">GOSM Target Date: </label>
 									<p><?php 
-									$fromdate = $activity[0]['fromdate'];
+									$fromdate = $activity[0]['fromDate'];
 									$fromdatenew = strtotime($fromdate);
 									$formatted_fromdate = date('F d, Y', $fromdatenew);
 									echo $formatted_fromdate;?> 
 									- 
 									<?php 
-									$todate = $activity[0]['todate'];
+									$todate = $activity[0]['toDate'];
 									$todatenew = strtotime($todate);
 									$formatted_todate = date('F d, Y', $todatenew);
 									echo $formatted_todate;?></p>
-								</div>
-
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Time: </label>
-									<p><?php echo $activity[0]['fromtime'];?> -  <?php echo $activity[0]['totime'];?></p>
 								</div>
 
 								<div class="item form-group">

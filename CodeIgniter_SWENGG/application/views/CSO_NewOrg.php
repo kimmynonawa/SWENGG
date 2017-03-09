@@ -7,27 +7,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>LSCS</title>
-    <script src= " <?php echo base_url();?>js/jquery.js"> </script>
+    <title>CSO</title>
 
     <!-- Bootstrap -->
-    <link href=" <?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href=" <?php echo base_url();?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href=" <?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href=" <?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
+    <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+  
     <!-- bootstrap-progressbar -->
-    <link href=" <?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href=" <?php echo base_url();?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="<?php echo base_url();?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href=" <?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href=" <?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -44,13 +43,13 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>ORG NAME</h2>
+                <h2>CSO</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
 
             <br />
-            <!-- sidebar menu -->
+<!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -81,7 +80,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   La Sallian Computer Society
+                   Council of Students Organization
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -105,7 +104,7 @@
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="<?php echo base_url();?>images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -117,7 +116,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="<?php echo base_url();?>images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -129,7 +128,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="<?php echo base_url();?>images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -141,7 +140,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="<?php echo base_url();?>images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -182,24 +181,24 @@
                   <div class="x_content">
                     <form class="form-horizontal form-label-left" novalidate id="csoneworg" action="add" method="Post">
                      <span class="section"></span>
-							
+
+					
 						<?php echo validation_errors(); ?>
 						
 						<?php if (isset($success)): ?>
 							<h4>Successfully Added!</h4>
 						<?php endif; ?>
-							
                       <div class= "row">
                         <div class="col-md-8">   
                           <label class= "col-md-4"> <h4>Organization Name</h4> </label>
-                            <div class= "form-group col-md-6">
+                            <div class= "form-group col-md-6 ">
                               <input id="orgname" class="form-control has-feedback-left" name="orgname" placeholder="ex: Juan Organization" type="text">
                               <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                             </div>        
                         </div>
                       </div> 
 					  
-					  <div class= "row">
+					   <div class= "row">
                         <div class="col-md-8">   
                           <label class= "col-md-4"> <h4>Organization Acronym</h4> </label>
                             <div class= "form-group col-md-6">
@@ -213,7 +212,7 @@
                         <div class="col-md-8">   
                           <label class= "col-md-4"> <h4>Username</h4> </label>
                             <div class= "form-group col-md-6">
-                             <input id="orgun" class="form-control has-feedback-left" name="orgun" type="text" placeholder="ex: JuanOrg">
+                             <input id="orgun" class="form-control has-feedback-left" name="orgun" type="text" placeholder="ex: juanorg">
                               <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                             </div>        
                         </div>
@@ -223,16 +222,16 @@
                         <div class="col-md-8">   
                           <label class= "col-md-4"> <h4>Password</h4> </label>
                             <div class= "form-group col-md-6">
-                              <input id="orgpw" class="form-control has-feedback-left" name="orgpw" type="password" placeholder="ex: OrgJuan!">
+                              <input id="orgpw" class="form-control has-feedback-left" name="orgpw" type="password" placeholder="Must have at least (6) characters">
                               <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
                             </div>        
                         </div>
                       </div>  
                       <div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>ConfirmPassword</h4> </label>
+                          <label class= "col-md-4"> <h4>Confirm Password</h4> </label>
                             <div class= "form-group col-md-6">
-                              <input id="orgcpw" class="form-control has-feedback-left"  name="orgcpw" type="password" placeholder="ex: OrgJuan!">
+                              <input id="orgcpw" class="form-control has-feedback-left"  name="orgcpw" type="password" placeholder="Re-enter password">
                               <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
                             </div>        
                         </div>
@@ -251,7 +250,7 @@
                       <div class="ln_solid"></div> 
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-11">
-                          <input id="nextbcson" type="submit" class="btn btn-success align: right" value ="Add">
+                          <input id="nextbcson" type="submit" class="btn btn-success align: right" value ="Next">
                         </div>
                       </div>
                     </form>
@@ -262,51 +261,108 @@
           </div>
         </div>
 		
-	
-	
-    <script src= "<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
-    <script src= "<?php echo base_url();?>js/validation.js"></script>
-    <!-- jQuery -->
-    <script src=" <?php echo base_url();?>vendors/jquery/dist/jquery.min.js"></script>
+		<script src= "<?php echo base_url();?>js/jquery.js"> </script>
+		<script src= "<?php echo base_url();?>js/jquery.min.js"></script>
+		<script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
+		
+		<script>
+	var csoneworg= $('#csoneworg');
+	csoneworg.validate({
+		rules: {
+			orgname:{
+				required: true
+			},
+			orgacro:{
+				required: true
+			},
+			orgun:{
+				required: true
+			},
+			orgpw: {
+				required: true,
+				minlength: 6
+			},
+			orgcpw:{
+				required: true,
+				equalTo: "#orgpw"
+			},
+			orgemail:{
+				email: true,
+				required: true
+			}
+		},
+
+		messages:{
+			orgname:{
+				required: 'Enter Name'
+			},
+			
+			orgacro:{
+				required: 'Enter Acronym'
+			},
+
+			orgun:{
+				required: 'Enter username'
+			},
+
+			orgpw:{
+				minlength: 'Minimum length is 6 characters',
+				required: 'Enter password'	
+			}, 
+			orgcpw:{
+				required:' Re-enter password',
+				equalTo:  'Passwords do not match'
+			},
+			orgemail:{
+				email: 'Invalid e-mail',
+				required: 'Enter dlsu e-mail'
+			}
+			
+		}
+	});
+		
+	</script>
+
+   
+    
     <!-- Bootstrap -->
-    <script src=" <?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src=" <?php echo base_url();?>vendors/fastclick/lib/fastclick.js"></script>
+    <script src="<?php echo base_url();?>vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src=" <?php echo base_url();?>vendors/nprogress/nprogress.js"></script>
+    <script src="<?php echo base_url();?>vendors/nprogress/nprogress.js"></script>
     <!-- Chart.js -->
-    <script src=" <?php echo base_url();?>vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/Chart.js/dist/Chart.min.js"></script>
     <!-- gauge.js -->
-    <script src=" <?php echo base_url();?>vendors/gauge.js/dist/gauge.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/gauge.js/dist/gauge.min.js"></script>
     <!-- bootstrap-progressbar -->
-    <script src=" <?php echo base_url();?>vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
-    <script src=" <?php echo base_url();?>vendors/iCheck/icheck.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/iCheck/icheck.min.js"></script>
     <!-- Skycons -->
-    <script src=" <?php echo base_url();?>vendors/skycons/skycons.js"></script>
+    <script src="<?php echo base_url();?>vendors/skycons/skycons.js"></script>
     <!-- Flot -->
-    <script src=" <?php echo base_url();?>vendors/Flot/jquery.flot.js"></script>
-    <script src=" <?php echo base_url();?>vendors/Flot/jquery.flot.pie.js"></script>
-    <script src=" <?php echo base_url();?>vendors/Flot/jquery.flot.time.js"></script>
-    <script src=" <?php echo base_url();?>vendors/Flot/jquery.flot.stack.js"></script>
-    <script src=" <?php echo base_url();?>vendors/Flot/jquery.flot.resize.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.time.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.resize.js"></script>
     <!-- Flot plugins -->
-    <script src=" <?php echo base_url();?>vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src=" <?php echo base_url();?>vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src=" <?php echo base_url();?>vendors/flot.curvedlines/curvedLines.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot.curvedlines/curvedLines.js"></script>
     <!-- DateJS -->
-    <script src=" <?php echo base_url();?>vendors/DateJS/build/date.js"></script>
+    <script src="<?php echo base_url();?>vendors/DateJS/build/date.js"></script>
     <!-- JQVMap -->
-    <script src=" <?php echo base_url();?>vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src=" <?php echo base_url();?>vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src=" <?php echo base_url();?>vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src=" <?php echo base_url();?>vendors/moment/min/moment.min.js"></script>
-    <script src=" <?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="<?php echo base_url();?>vendors/moment/min/moment.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src=" <?php echo base_url();?>build/js/custom.min.js"></script>
+    <script src="<?php echo base_url();?>build/js/custom.min.js"></script>
   
   </body>
 </html>

@@ -184,18 +184,22 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                       <div class="x_content">
-                                               <form class="form-horizontal form-label-left" id= "gosmform1">
-
+						<form class="form-horizontal form-label-left" id= "gosmform1" action="createGosm" method="post">
+				
                               <div class="row" id="gi" >
                                <span class="section">General Information</span>
                               </div>
-
+								<?php echo validation_errors(); ?>
+						
+								<?php if (isset($success)): ?>
+									<h4>Successfully Added!</h4>
+								<?php endif; ?>
                             <div class= "row">
                               <div class="col-md-2 col-sm-2 col-xs-2 form-group">
                                 <label> <h3> Title </h3> </label>
                               </div>
                               <div class="col-md-4 col-sm-4 col-xs-4 form-group">
-                                 <input type="text" name="gosmtit" class="form-control" id="gosmtit" placeholder="ORGName Module">
+                                 <input type="text" name="gosmtitle" class="form-control" id="gosmtit" placeholder="ORGName Module">
                               </div>
                             </div>
 
@@ -246,7 +250,7 @@
                                 <label> <h3> Person In-Charge </h3> </label>
                               </div>
                               <div class="col-md-4 col-sm-4 col-xs-4 form-group">
-                                 <input type="text" name="peric" class="form-control" id="gosmpic">
+                                 <input type="text" name="gosmperic" class="form-control" id="gosmpic">
                               </div>
                             </div>
 
@@ -256,11 +260,11 @@
                                 <label> <h3> Date</h3> </label>
                               </div>
                               <div class="col-md-2 col-sm-2 col-xs-2 form-group">
-                                 <input type="date" name="gosmsdate" class="form-control" id="gosmsdate">
+                                 <input type="date" name="gosmfromdate" class="form-control" id="gosmsdate">
                               </div>
 
                               <div class="col-md-2 col-sm-2 col-xs-2 form-group">
-                                 <input type="date" name="gosmedate" class="form-control" id="gosmedate">
+                                 <input type="date" name="gosmtodate" class="form-control" id="gosmedate">
                               </div>
                             </div>
 
@@ -269,7 +273,7 @@
                                 <label> <h3> Venue </h3> </label>
                               </div>
                               <div class="col-md-4 col-sm-4 col-xs-4 form-group">
-                                 <input type="text" name="gosmvenu" class="form-control" id="gosmvenu" placeholder="e.g. Y605">
+                                 <input type="text" name="gosmvenue" class="form-control" id="gosmvenu" placeholder="e.g. Y605">
                               </div>
                             </div>
 
@@ -291,10 +295,14 @@
                           <div class= "row">
                                 <div class="form-group col-md-6 col-sm-6 col-xs-6">
                                   <select name="gosmnat" class="form-control" id="gosmnat">
-                                      <option value="default">CSO and Special Groups</option>
+                                      <?php
+										for ($i=0; $i<count($activityNature);$i++){
+											echo"<option value={$activityNature[$i][idREF_ACTIVITYNATURE]}>{$activityNature[$i][activitynature]}</option>";
+										}
+									  ?>
                                   </select>
                                   <p></p>
-                                  <select name="gosmnat" class="form-control" id="gosmnat">
+                                  <select name="gosmnatt" class="form-control" id="gosmnat">
                                       <option value="default">University Student Government</option>
                                   </select>
                             </div>
@@ -304,10 +312,14 @@
                         <div class= "row">
                                 <div class="form-group col-md-6 col-sm-6 col-xs-6">
                                   <select name="gosmtype" class="form-control" id="gosmtype">
-                                      <option value="default">Through CSO/ DAAM</option>
+                                      <?php
+										for ($i=0; $i<count($activityType);$i++){
+											echo"<option value={$activityType[$i][idREF_ACTIVITYTYPE]}>{$activityType[$i][activitytype]}</option>";
+										}
+									  ?>
                                   </select>
                                   <p></p>
-                                  <select name="gosmtype" class="form-control" id="gosmtype">
+                                  <select name="gosmtypee" class="form-control" id="gosmtype">
                                       <option value="default">University Student Government</option>
                                   </select>
                                </div>
@@ -316,10 +328,10 @@
                           <label><h3>Related to</h3> </label>
                           <div class= "row">
                             <div class="form-group col-md-1 col-sm-2 col-xs-2">
-                                   <input type="radio" name="reto" id="reto" class="flat"> Related
+                                   <input type="radio" name="reto" id="reto" class="flat" value="yes"> Related
                             </div>
                             <div class="form-group col-md-1 col-sm-2 col-xs-2">
-                                <input type="radio" placeholder="N" name="reto" id="reto" class="flat"> Not related
+                                   <input type="radio" name="reto" id="reto" class="flat" value="no"> Not related
                             </div> 
                             </div>
 

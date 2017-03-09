@@ -14,36 +14,41 @@
 			return $res->result_array();
 		}
 		
-		//SELECT CENCOMM
-		public function getCenComm($actno, $type){
+		public function insertActivity($data, $org, $gosm, $reto){
+			$this->db->insert('activity', 
+			array(
+			"organization" => $org,
+			"GOSMno" => $gosm,
+			"title" => $data['gosmtitle'],
+			"goals" => $data['gosmgoals'],
+			"objectives" => $data['gosmobj'],
+			"description" => $data['gosmdes'],
+			"measures" => $data['gosmmeas'],
+			"personInCharge" => $data['gosmperic'],
+			"fromDate" => $data['gosmfromdate'],
+			"toDate" => $data['gosmtodate'],
+			"venue" => $data['gosmvenue'],
+			"budget" => $data['gosmbug'],
+			"activitynature" => $data['gosmnat'],
+			"activitytype" => $data['gosmtype'],
+			"reto" => $reto
+			)
 			
-			$this->db->where(array("activityID" => $actno, "type"=> $type));
-			$this->db->from('cencomm');
+			);
+		}
+		
+		public function getActivityNature(){
+			$this->db->from('ref_activitynature');
 			$res = $this->db->get();
 			return $res->result_array();
 		}
 		
-		//SELECT OTHERS
-		public function getOthers($actno, $type){
-			
-			$this->db->where(array("activityID" => $actno, "type"=> $type));
-			$this->db->from('others');
+		public function getActivityType(){
+			$this->db->from('ref_activitytype');
 			$res = $this->db->get();
 			return $res->result_array();
 		}
 		
-		public function insertActivity($data){
-			$this->db->insert('activity', array("title" => $data['title']));
-		}
-		
-		//INSERT CENCOMM
-		public function insertCencomm($name, $activityID, $type){
-			$this->db->insert('cencomm', array("name" => $name, "activityID" => $activityID, "type" => $type));
-		}
-		
-		public function insertCencomm2($name, $activityID, $type, $status) {
-			$this->db->insert('cencomm', array("name" => $name, "activityID" => $activityID, "type" => $type, "status" => $status));
-		}
 		
 	}
 ?>

@@ -4,8 +4,8 @@
 			$this->load->database();
 		}
 		
-		public function addOrg ($name, $acronym, $username, $password, $email){
-			$this->db->insert('ref_users', array("name" => $name, "acronym" => $acronym, "username" => $username, "password" => $password, "email" => $email, "type" => 2));
+		public function addOrg ($name, $username, $password, $email){
+			$this->db->insert('ref_users', array("name" => $name, "username" => $username, "password" => $password, "email" => $email, "type" => 2));
 		}
 		
 		public function getOrg(){
