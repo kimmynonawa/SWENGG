@@ -42,7 +42,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="<?php echo base_url();?>images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -110,7 +110,7 @@
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="<?php echo base_url();?>images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -122,7 +122,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="<?php echo base_url();?>images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -134,7 +134,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="<?php echo base_url();?>images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -184,16 +184,18 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                       <div class="x_content">
-						<form class="form-horizontal form-label-left" id= "gosmform1" action="createGosm" method="post">
+						<form class="form-horizontal form-label-left" id= "gosmform1" action="add" method="post">
 				
                               <div class="row" id="gi" >
                                <span class="section">General Information</span>
                               </div>
+							  
 								<?php echo validation_errors(); ?>
 						
 								<?php if (isset($success)): ?>
 									<h4>Successfully Added!</h4>
 								<?php endif; ?>
+								
                             <div class= "row">
                               <div class="col-md-2 col-sm-2 col-xs-2 form-group">
                                 <label> <h3> Title </h3> </label>
@@ -295,6 +297,7 @@
                           <div class= "row">
                                 <div class="form-group col-md-6 col-sm-6 col-xs-6">
                                   <select name="gosmnat" class="form-control" id="gosmnat">
+									   <option disabled selected>Select Nature of Activity</option>
                                       <?php
 										for ($i=0; $i<count($activityNature);$i++){
 											echo"<option value={$activityNature[$i][idREF_ACTIVITYNATURE]}>{$activityNature[$i][activitynature]}</option>";
@@ -312,6 +315,7 @@
                         <div class= "row">
                                 <div class="form-group col-md-6 col-sm-6 col-xs-6">
                                   <select name="gosmtype" class="form-control" id="gosmtype">
+									  <option disabled selected>Select Type of Activity</option>
                                       <?php
 										for ($i=0; $i<count($activityType);$i++){
 											echo"<option value={$activityType[$i][idREF_ACTIVITYTYPE]}>{$activityType[$i][activitytype]}</option>";
@@ -353,7 +357,6 @@
     <!-- jQuery -->
     <script src="js/jquery.min.js"></script>
     <script src= "js/jquery.validate.min.js"> </script>
-    <script src= js/validation.js></script>
     <script src= "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js" </script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>

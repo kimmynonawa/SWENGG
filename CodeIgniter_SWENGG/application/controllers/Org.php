@@ -9,11 +9,7 @@
 			$this->load->model("Org_model");
 		}
 		
-		
-		public function loadAdd(){
-			$this->load->view('CSO_NewOrg');
-		}
-		
+		//ADD NEW ORG
 		public function add(){
 			
 			//START of form validation

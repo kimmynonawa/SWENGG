@@ -266,62 +266,62 @@
 		<script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
 		
 		<script>
-	var csoneworg= $('#csoneworg');
-	csoneworg.validate({
-		rules: {
-			orgname:{
-				required: true
-			},
-			orgacro:{
-				required: true
-			},
-			orgun:{
-				required: true
-			},
-			orgpw: {
-				required: true,
-				minlength: 6
-			},
-			orgcpw:{
-				required: true,
-				equalTo: "#orgpw"
-			},
-			orgemail:{
-				email: true,
-				required: true
-			}
-		},
+			var csoneworg= $('#csoneworg');
+			csoneworg.validate({
+				rules: {
+					orgname:{
+						required: true
+					},
+					orgacro:{
+						required: true
+					},
+					orgun:{
+						required: true
+					},
+					orgpw: {
+						required: true,
+						minlength: 6
+					},
+					orgcpw:{
+						required: true,
+						equalTo: "#orgpw"
+					},
+					orgemail:{
+						email: true,
+						required: true
+					}
+				},
 
-		messages:{
-			orgname:{
-				required: 'Enter Name'
-			},
-			
-			orgacro:{
-				required: 'Enter Acronym'
-			},
+				messages:{
+					orgname:{
+						required: 'Enter Name'
+					},
+					
+					orgacro:{
+						required: 'Enter Acronym'
+					},
 
-			orgun:{
-				required: 'Enter username'
-			},
+					orgun:{
+						required: 'Enter username'
+					},
 
-			orgpw:{
-				minlength: 'Minimum length is 6 characters',
-				required: 'Enter password'	
-			}, 
-			orgcpw:{
-				required:' Re-enter password',
-				equalTo:  'Passwords do not match'
-			},
-			orgemail:{
-				email: 'Invalid e-mail',
-				required: 'Enter dlsu e-mail'
-			}
-			
-		}
-	});
+					orgpw:{
+						minlength: 'Minimum length is 6 characters',
+						required: 'Enter password'	
+					}, 
+					orgcpw:{
+						required:' Re-enter password',
+						equalTo:  'Passwords do not match'
+					},
+					orgemail:{
+						email: 'Invalid e-mail',
+						required: 'Enter dlsu e-mail'
+					}
+					
+				}
+			});
 		
-	</script>
+		</script>
 
    
     

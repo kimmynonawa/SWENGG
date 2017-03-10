@@ -17,21 +17,21 @@
 		public function insertActivity($data, $org, $gosm, $reto){
 			$this->db->insert('activity', 
 			array(
-			"organization" => $org,
-			"GOSMno" => $gosm,
-			"title" => $data['gosmtitle'],
-			"goals" => $data['gosmgoals'],
-			"objectives" => $data['gosmobj'],
-			"description" => $data['gosmdes'],
-			"measures" => $data['gosmmeas'],
-			"personInCharge" => $data['gosmperic'],
-			"fromDate" => $data['gosmfromdate'],
-			"toDate" => $data['gosmtodate'],
-			"venue" => $data['gosmvenue'],
-			"budget" => $data['gosmbug'],
-			"activitynature" => $data['gosmnat'],
-			"activitytype" => $data['gosmtype'],
-			"reto" => $reto
+				"organization" => $org,
+				"GOSMno" => $gosm,
+				"title" => $data['gosmtitle'],
+				"goals" => $data['gosmgoals'],
+				"objectives" => $data['gosmobj'],
+				"description" => $data['gosmdes'],
+				"measures" => $data['gosmmeas'],
+				"personInCharge" => $data['gosmperic'],
+				"fromDate" => $data['gosmfromdate'],
+				"toDate" => $data['gosmtodate'],
+				"venue" => $data['gosmvenue'],
+				"budget" => $data['gosmbug'],
+				"activitynature" => $data['gosmnat'],
+				"activitytype" => $data['gosmtype'],
+				"reto" => $reto
 			)
 			
 			);

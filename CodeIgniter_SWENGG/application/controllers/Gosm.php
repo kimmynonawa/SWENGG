@@ -10,18 +10,125 @@
 			$this->load->model('Activity_model');
 		}
 		
-		public function loadCreateGosm(){
+		public function add(){
 			
-			$res1 = $this->Gosm_model->getActivityNature();
-			$res2 = $this->Gosm_model->getActivityType();
-			$data = array("activityNature" => $res1, "activityType" => $res2);
-			$this->load->view('ORG_AddGosm', $data);
-		}
-		
-		public function createGosm(){
+			$this->form_validation->set_rules(
+				'gosmtitle', 'Title', 
+				'required',
+				array(
+					'required'      => 'You have not provided %s.',
+				)
+			);
+			
+			$this->form_validation->set_rules(
+				'gosmgoals', 'Goals', 
+				'required',
+				array(
+					'required'      => 'You have not provided %s.',
+				)
+			);
+			
+			$this->form_validation->set_rules(
+				'gosmobj', 'Objectives', 
+				'required',
+				array(
+					'required'      => 'You have not provided %s.',
+				)
+			);
+			
+			$this->form_validation->set_rules(
+				'gosmdes', 'Description', 
+				'required',
+				array(
+					'required'      => 'You have not provided %s.',
+				)
+			);
+			
+			$this->form_validation->set_rules(
+				'gosmmeas', 'Measures', 
+				'required',
+				array(
+					'required'      => 'You have not provided %s.',
+				)
+			);
+			
+			$this->form_validation->set_rules(
+				'gosmperic', 'Person in Charge', 
+				'required',
+				array(
+					'required'      => 'You have not provided %s.',
+				)
+			);
+			
+			$this->form_validation->set_rules(
+				'gosmfromdate', 'Start Date', 
+				'required',
+				array(
+					'required'      => 'You have not provided %s.',
+				)
+			);
+			
+			$this->form_validation->set_rules(
+				'gosmtodate', 'End Date', 
+				'required',
+				array(
+					'required'      => 'You have not provided %s.',
+				)
+			);
+			
+			$this->form_validation->set_rules(
+				'gosmvenue', 'Venue', 
+				'required',
+				array(
+					'required'      => 'You have not provided %s.',
+				)
+			);
+			
+			$this->form_validation->set_rules(
+				'gosmbug', 'Budget', 
+				'required',
+				array(
+					'required'      => 'You have not provided %s.',
+				)
+			);
+			
+			$this->form_validation->set_rules(
+				'gosmnat', 'Nature of Activity', 
+				'required',
+				array(
+					'required'      => 'You have not provided %s.',
+				)
+			);
+			
+			$this->form_validation->set_rules(
+				'gosmnat', 'Nature of Activity', 
+				'required',
+				array(
+					'required'      => 'You have not provided %s.',
+				)
+			);
+			
+			$this->form_validation->set_rules(
+				'gosmtype', 'Type of Activity', 
+				'required',
+				array(
+					'required'      => 'You have not provided %s.',
+				)
+			);
+			
+			$this->form_validation->set_rules(
+				'reto', 'Related to', 
+				'required',
+				array(
+					'required'      => 'You have not provided %s.',
+				)
+			);
 			
 			if ($this->form_validation->run() == FALSE){
-				$this->load->view('ORG_AddGosm');
+				$res1 = $this->Gosm_model->getActivityNature();
+				$res2 = $this->Gosm_model->getActivityType();
+				$data = array("activityNature" => $res1, "activityType" => $res2);
+				$this->load->view('ORG_AddGosm', $data);
 			}
 			else{
 				$data = array(
@@ -55,30 +162,21 @@
 				
 		} 
 		
-		public function createGosm2(){
-			
-			$this->session->set_userdata('phname', $this->input->post('phname'));
-			$this->load->view('ORG_AddGosm3');
-		}
 		
-		public function createGosm3(){
-			
-		}
-		
-		public function selectViewGosm(){
+		public function viewCSOGosm1(){
 			$res = $this->Org_model->getOrg();
 			$data = (array("orgs" => $res));
 			$this->load->view('CSO_GOSM', $data);
 		}
 		
-		public function selectViewGosm2(){
+		public function viewCSOGosm2(){
 			header("Content-type: application/json");
 			$res = $this->Activity_model->getAct($this->input->post('org'));
 			echo json_encode($res);
 			
 		}
 		
-		public function viewGosm(){
+		public function viewCSOGosm3(){
 			$gosmdetails = $this->Gosm_model->getGosmDetails(1);
 			
 			$data = array("activity" => $gosmdetails);
