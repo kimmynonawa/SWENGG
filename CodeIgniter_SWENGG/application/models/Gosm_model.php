@@ -4,6 +4,28 @@
 			$this->load->database();
 		}
 		
+		public function add($datetime){
+			$this->db->insert('gosm', array("datecreated" => $datetime, "status" => 1));
+		}
+		
+		public function getnew(){
+			$this->db->where(array("status" => 1));
+			$this->db->from('gosm');
+			$res = $this->db->get();
+			return $res->result_array();
+		}
+		
+		public function getall(){
+			$this->db->from('gosm');
+			$res = $this->db->get();
+			return $res->result_array();
+		}
+		
+		public function setseen(){
+			$this->db->update('gosm', array("status" => 2));
+			$this->db->where(array("status" => 1));
+		}
+		
 		public function getGosmDetails($actno){
 			
 			$this->db->where(array("activityID" => $actno));

@@ -43,7 +43,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="<?php echo base_url();?>images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -101,70 +101,20 @@
                     <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
-
+				<!--NOTIF-->
                 <li role="presentation" class="dropdown">
-                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                  <a id="but" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
+                    <div id="num">
+						
+					</div>
                   </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
-                        <a>
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
+				  
+                  <ul name="notif" id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu" style="width: 300px; height: 200px; overflow: auto">
+					<!--NOTIFICATION HERE-->
+					
                   </ul>
+				  <!--NOTIF-->
                 </li>
               </ul>
             </nav>
@@ -402,7 +352,53 @@
             </div>
           </div>
         </div>
-        <!-- /page content -->       
+        <!-- /page content -->
+		
+	<script src= "<?php echo base_url();?>js/jquery.min.js"></script>
+	<script>
+		var interval = 5000;
+		get();
+		
+		$.ajax({
+			type: 'POST',
+			url: 'http://localhost/index.php/Notif/getall',					
+			success: function (data) {
+				for (i = 0; i < data.length; i++){
+					$('#menu1').prepend('<li style="background-color:#FFFFFF"></span><span>'+data[i].GOSMno+'</span><br><span class="time">'+data[i].datecreated+'</span><span></li>');
+				}
+			}
+		});
+		
+		function get() {
+			$.ajax({
+				type: 'POST',
+				url: 'http://localhost/index.php/Notif/getnew',					
+				success: function (data) {
+					
+						$('#num').empty();
+						if(data.length != 0){
+							$('#num').append('<span class="badge bg-green">'+ data.length +'</span>');
+							for (i = 0; i < data.length; i++){
+								$('#menu1').prepend('<li style="background-color:#b3ffb3"></span><span>'+data[i].GOSMno+'</span><br><span class="time">'+data[i].datecreated+'</span><span></li>');
+							}
+						}
+						
+				}
+			});
+		}
+		
+		$('#but').on('click',function(){
+			$.ajax({
+				type: 'POST',
+				url: 'http://localhost/index.php/Notif/setseen',					
+				success: function (data) {
+					$('#num').empty();
+				}
+			});
+		});
+		
+		setInterval(get, interval);
+	</script>
 
     <!-- jQuery -->
     <script src="<?php echo base_url();?>vendors/jquery/dist/jquery.min.js"></script>

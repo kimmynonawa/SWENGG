@@ -5,6 +5,7 @@
 			$this->load->helper("url");
 			$this->load->library('form_validation');
 			$this->load->model("Account_model");
+			$this->load->model("Gosm_model");
 		}
 		
 		public function loadLogin(){
@@ -61,6 +62,8 @@
 		public function org(){
 			$this->load->view('ORG_Home');
 		}
+		
+		
 		
 	}
 ?>
