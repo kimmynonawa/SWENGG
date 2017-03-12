@@ -9,24 +9,25 @@
 
     <title>LSCS</title>
 
+
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
+    <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+  
     <!-- bootstrap-progressbar -->
-    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="<?php echo base_url();?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -49,21 +50,19 @@
             <!-- /menu profile quick info -->
 
             <br />
-
-              <!-- sidebar menu -->
+            <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="ORG_Home.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
-                  <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="CSO_Home.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
+                  <li><a><i class="fa fa-edit"></i> Organizations <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu"> 
-                      <li><a href="ORG_AddGOSM.html">Add New GOSM</li>
-                      <li><a href="ORG_PreAct.html">Pre-Activity Form</a></li>
+                      <li><a href="CSO_NewOrg.html">Add New Organization</a></li>
                     </ul>
                   </li>
-                  <li><a href="ORG_Calendar.html"><i class="fa fa-table"></i> Calendar <span class="fa fa-chevron-down"></span></a>
-                  <li><a href="ORG_GOSM.html"><i class="fa fa-list-alt"></i> GOSM <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="CSO_Calendar.html"><i class="fa fa-table"></i> Calendar <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="CSO_GOSM.html"><i class="fa fa-list-alt"></i> GOSM <span class="fa fa-chevron-down"></span></a>
                   </li>
                 </ul>
               </div>
@@ -71,7 +70,6 @@
             <!-- /sidebar menu -->
           </div>
         </div>
-
         <!-- top navigation -->
         <div class="top_nav">
           <div class="nav_menu">
@@ -168,91 +166,107 @@
           </div>
         </div>
         <!-- /top navigation -->
-
-     <!-- page content -->
-      
-          
+   <!-- page content -->
         <div class="right_col" role="main">
-          <div class="">
+         <div class="">
             <div class= "x_panel">
               <div class= "row">
                 <div class="title col-md-5">
-                  <h3>Special Approval Slip</h3>
+                  <h3>Contest Mechanics</h3>
                 </div>
                 <div align="right">
-                  <ul class="nav navbar-right panel_toolbox"> 
-                    <li>
-                      <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li> 
-                  </ul>
+                    <ul class="nav navbar-right panel_toolbox"> 
+                      <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li> 
+                    </ul>
                 </div>
               </div>
               <div class= "x_content bg-success">
                 <h4><p class="text-success"> Lorem ipsum dolor sit amet, vel pretium architecto, semper semper eu elit sed, lacus cras quis, pede velit. Pretium convallis suscipit, vestibulum rutrum, eu integer montes erat ut tincidunt, facilisis dolor. Et fermentum nulla, litora leo in, nunc aliquam aperiam, rutrum elementum, dictum malesuada morbi amet nisl. sociis odio laoreet dolor mauris. </p></h4>
               </div>
             </div>
-                
+            
             <div class="clearfix"></div>
 
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-                    <form id="specialappslip" method="post" autocomplete="off">
-                      <span class="section"></span>
-                    
+                    <form class="form-horizontal form-label-left" method="post" id="conmech">
+
                       <div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Type of Activity</h4> </label>
-                          <div class= "form-group col-md-6">
-                            <select id="actType" name="actType" class="form-control col-md-7 col-xs-12" >
-                              <option disabled selected>Select Type Of Activity</option>
-                              <option> General Assembly</option>
-                              <option> Outreach</option>
-                              <option> Medical Mission</option>
-                            </select>
-                          </div>       
+                          <label class= "col-md-2"> <h4>General Guidelines</h4> </label>
+                          <div class= "form-group col-md-6 ">
+                            <textarea name= "guidelines" rows="4" class="form-control" placeholder="ex: All of the participants must not have their cellphones with them."></textarea> 
+                          </div>        
                         </div>
                       </div> 
 
-                      <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Type of Submission</h4> </label>
-                          <div class= "form-group col-md-6">
-                            <select id="submissionType" name="submissionType" class="form-control col-md-7 col-xs-12">
-                              <option disabled selected>Select Type Of Submission</option>
-                              <option> Lost AForm</option>
-                              <option> Cancellation of Activity</option>
-                              <option> Activity Not in GOSM</option>
-                            </select>
-                          </div>       
-                        </div>
-                      </div> 
+                      <div class= "row" id="mech"> </div>
 
                       <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Justification/Reason </h4> </label>
-                            <div class= "form-group col-md-6">
-                              <textarea name= "reason" rows="4" class="form-control" placeholder="The Pre-Activity Form was misplaced by the organization representative."></textarea> 
-                            </div>        
+                        <div class= "col-md-8">
+                          <label class="control-label col-md-2"></label>
+                          <div class="col-md-6">
+                            <div class = "buttons">
+                              <button id="addmech" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
+                              <button id="deletemech" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                            </div>     
+                          </div>
                         </div>
-                      </div>  
-                      
-                      <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Submitted By:</h4> </label>
-                            <div class= "form-group col-md-6">
-                              <input type="text" name= "name" class="form-control" placeholder="Juan Dela Cruz" />
-                            </div>        
-                        </div>
-                      </div>  
+                      </div>
 
+                      <div class= "row" id="criteria"> </div>
+
+                      <div class= "row">
+                        <div class= "col-md-8">
+                          <label class="control-label col-md-2"></label>
+                          <div class="col-md-8">
+                            <div class = "buttons">
+                              <button id="addcrit" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
+                              <button id="deletecrit" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                            </div>     
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class= "row" id="listjudge"> </div>
+
+                      <div class= "row">
+                        <div class= "col-md-8">
+                          <label class="control-label col-md-2"></label>
+                          <div class="col-md-8">
+                            <div class = "buttons">
+                              <button id="addjudge" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
+                              <button id="deletejudge" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                            </div>     
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class= "row" id="listquestions"></div>
+
+                      <div class= "row">
+                        <div class= "col-md-8">
+                          <label class="control-label col-md-2"></label>
+                          <div class="col-md-8">
+                            <div class = "buttons">
+                              <button id="addquestion" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
+                              <button id="deletequestion" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                            </div>     
+                          </div>
+                        </div>
+                      </div>
+
+                
                       <div class="ln_solid"></div> 
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-11">
-                          <input id="nextSas" type="submit" class="btn btn-success align: right" Value="Next">
+                          <input id="nextconmech" type="submit" class="btn btn-success align: right" value ="Next">
                         </div>
-                      </div>    
+                      </div>
                     </form>
                   </div><!-- xcontent -->
                 </div> <!-- xpanel -->              
@@ -261,49 +275,48 @@
           </div>
         </div>
 
-    <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
-    <script src= "js/jquery.validate.min.js"> </script>
-    <script src= js/validation.js></script>
-    <script src= "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js" </script>
+    <script src= "<?php echo base_url();?>js/jquery.js"> </script>
+    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
+    <script src= "<?php echo base_url();?>js/validation.js"></script>
     <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <script src="<?php echo base_url();?>vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
+    <script src="<?php echo base_url();?>vendors/nprogress/nprogress.js"></script>
     <!-- Chart.js -->
-    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/Chart.js/dist/Chart.min.js"></script>
     <!-- gauge.js -->
-    <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/gauge.js/dist/gauge.min.js"></script>
     <!-- bootstrap-progressbar -->
-    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/iCheck/icheck.min.js"></script>
     <!-- Skycons -->
-    <script src="../vendors/skycons/skycons.js"></script>
+    <script src="<?php echo base_url();?>vendors/skycons/skycons.js"></script>
     <!-- Flot -->
-    <script src="../vendors/Flot/jquery.flot.js"></script>
-    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="../vendors/Flot/jquery.flot.time.js"></script>
-    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.time.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.resize.js"></script>
     <!-- Flot plugins -->
-    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot.curvedlines/curvedLines.js"></script>
     <!-- DateJS -->
-    <script src="../vendors/DateJS/build/date.js"></script>
+    <script src="<?php echo base_url();?>vendors/DateJS/build/date.js"></script>
     <!-- JQVMap -->
-    <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="<?php echo base_url();?>vendors/moment/min/moment.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
-	
+    <script src="<?php echo base_url();?>build/js/custom.min.js"></script>
+  
   </body>
 </html>

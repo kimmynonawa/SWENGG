@@ -6,9 +6,12 @@
 			$this->load->library('form_validation');
 			$this->load->model("Account_model");
 			$this->load->model("Gosm_model");
+			$this->load->model("Preacts_model");
+			$this->load->library('session');
 		}
 		
-		public function loadLogin(){
+		public function logout(){
+			$this->session->sess_destroy();
 			$this->load->view('login');
 		}
 		
@@ -41,9 +44,13 @@
 					$this->load->view('login', $data);
 				}
 				else if ($type[0]['type'] == "1"){//if login as cso redirect to cso homepage
+					$org = $this->Account_model->getID($this->input->post('Username'),$this->input->post('Password'));
+					$this->session->set_userdata('org', $org);
 					redirect('account/cso');
 				}
 				else if ($type[0]['type'] == "2"){//if login as org redirect to org homepage
+					$org = $this->Account_model->getID($this->input->post('Username'),$this->input->post('Password'));
+					$this->session->set_userdata('org', $org);
 					redirect('account/org');
 				}
 				else{
@@ -56,7 +63,9 @@
 		}
 		
 		public function cso(){
-			$this->load->view('CSO_Home');
+			$preacts = $this->Preacts_model->get();
+			$data = (array("preacts" => $preacts));
+			$this->load->view('CSO_Home', $data);
 		}
 		
 		public function org(){

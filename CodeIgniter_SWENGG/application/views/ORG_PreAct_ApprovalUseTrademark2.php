@@ -9,25 +9,24 @@
 
     <title>LSCS</title>
 
-    <script src= "js/jquery.js"> </script>
     <!-- Bootstrap -->
-     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 	
     <!-- bootstrap-progressbar -->
-    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="<?php echo base_url();?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -50,8 +49,7 @@
             <!-- /menu profile quick info -->
 
             <br />
-
-              <!-- sidebar menu -->
+          <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -169,94 +167,141 @@
           </div>
         </div>
         <!-- /top navigation -->
-  <!-- page content -->
-          <div class="right_col" role="main">
+
+<!-- page content -->
+        <div class="right_col" role="main">
           <div class="">
             <div class= "x_panel">
               <div class= "row">
                 <div class="title col-md-5">
-                  <h3>Special Permit For Campus Access</h3>
+                  <h3>Application For Use Of Trademark</h3>
                 </div>
                 <div align="right">
-                  <ul class="nav navbar-right panel_toolbox"> 
-                    <li>
-                      <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li> 
-                  </ul>
+                    <ul class="nav navbar-right panel_toolbox"> 
+                      <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li> 
+                    </ul>
                 </div>
               </div>
               <div class= "x_content bg-success">
-                <h4><p class="text-success"><b> Important Reminders: </b></p> <p class="text-success"> 1. This form is used ONLY for requesting permission for ACCESS OF PERSONS into the campus.</p> <p class="text-success"> 2. This form will be accepted only within office hours (Mon to Fri: 8:00am to 12:00pm and 1:30pm to 5:00pm). </p> <p class="text-success"> 3. This form must be submitted at the Security Office (J108) no later than two (2) working days before the requested date of campus access (Saturday is not counted as a working day for this purpose). </p><p class="text-success"> 4. This form is considered an application only unless a final decision is made and indicated on this form. </p> <p class="text-success">5. Clinics in campus are open only from 06:00am to 10:00pm, Mondays to Saturdays. </p></h4>
+                <h4><p class="text-success"><b> Important Reminders: </b></p> <p class="text-success"> 1. Accomplish two (2) copies of this form for your office/organization and STRATCOM reference.</p> <p class="text-success"> 2. Attach a copy of the proposed design/layout of the merchandise/print material/video. </p> <p class="text-success"> 3. Allow five (5) days processing for the approval of the merchandise/print material/video. </p><p class="text-success"> 4. Strictly follow the approved duration and quantity for the use of trademark. </p> <p class="text-success">5. Check the remarks on the attachments. </p></h4>
               </div>
             </div>
-                
+            
             <div class="clearfix"></div>
 
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-                    <form method="post" id = "specialPermit3" autocomplete="off">
-                     <span class="section"></span>
+                    <form method="post" id = "formTrademark2" autocomplete="off">
+                      <div class= "row" id="tmarks">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                          <div class="row">
+                            <div class="col-md-8">
+                              <label class= "col-md-5"> <h4>Trademark To Use:</h4> </label>
+                              <div class= "form-group col-md-6">
+                                <select class="select2_group form-control" name="tmChoice[]">
+                                  <optgroup label="Logos / Design">
+                                   <!--  <?php
+                                      foreach ($trademarks as $trademark) { ?>
+                                        <option value="<?php echo $trademark->idREF_TRADEMARKS; ?>"> <?php echo $trademark->name; ?></option>
+                                    <?php }
+                                    ?>   -->    
+                                  </optgroup>
+                                  <optgroup label="DLSU Labels">
 
-                      <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Name:</h4> </label>
-                            <div class= "form-group col-md-6">
-                              <input type="text" name= "Name" class="form-control" placeholder="ex: Juan Dela Cruz" />
-                            </div>        
+                                  </optgroup>
+                                  <optgroup label="DLSU taglines">
+                                    
+                                  </optgroup>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div> 
-
                       <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>ID Number</h4> </label>
-                            <div class= "form-group col-md-6">
-                              <input type="text" name= "IDNum" class="form-control" placeholder="ex: 11344444" />
-                            </div>        
-                        </div>
-                      </div>  
-
-                      <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Office Location:</h4> </label>
-                            <div class= "form-group col-md-6">
-                              <input type="text" name= "officeLoc" class="form-control" placeholder="ex: Ayala Avenue Makati City" />
-                            </div>        
+                        <div class= "col-md-8">
+                          <label class="control-label col-md-5"></label>
+                          <div class="col-md-6">
+                            <div class = "buttons">
+                                <button id="addtm" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
+                                <button id="deletetm" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                            </div>     
+                          </div>
                         </div>
                       </div>
-
                       <div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Cellphone Number</h4> </label>
+                          <label class= "col-md-5"> <h4>Type of Item/Material To Produce</h4> </label>
                             <div class= "form-group col-md-6">
-                              <input type="text" name= "CPNo" class="form-control" placeholder="ex: 09179999999" />
+                              <select id="matToProduce" name="matToProduce" class="form-control col-md-7 col-xs-12">
+                                <option disabled selected>Select Type</option>
+                                <option> Merchandise</option>
+                                <option> Multimedia/Web</option>
+                                <option> Video</option>
+                                <option> Poster/Flyer/Invite/Banner</option>
+                                <option> Brochure/Publication</option>                 
+                              </select>
+                            </div>        
+                        </div>
+                      </div> 
+                      
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Purpose Of Use</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <textarea name= "trademarkUse" rows="2" class="form-control" placeholder="ex: Banner for the winners of a contest"></textarea> 
                             </div>        
                         </div>
                       </div>  
 
-                       <div class= "row">
+                      <div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Telephone Number</h4> </label>
+                          <label class= "col-md-5"> <h4>Proposed Start Time</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <input type="time" name= "startTime" id="startTime" class="form-control"/>
+                          </div>
+                          <label class= "col-md-5"> <h4>Proposed End Time</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <input type="time" name= "endTime" id="endTime" class="form-control"/>
+                          </div>          
+                        </div>
+                      </div>  
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Activity Where Trademark Will Be Used</h4> </label>
                             <div class= "form-group col-md-6">
-                              <input type="text" name= "TelNo" class="form-control" placeholder="ex: 6341111" />
-                            </div>        
+                              <select id="actType" name="actType" class="form-control col-md-7 col-xs-12" >
+                                <option disabled selected>Select Type Of Activity</option>
+                                <?php
+                                  foreach ($activityTypes as $activity) { ?>
+                                    <option value="<?php echo $activity->idREF_ACTIVITYTYPE; ?>"> <?php echo $activity->activityType; ?></option>
+                                <?php }
+                                ?>                
+                              </select>
+                          </div>    
                         </div>
                       </div> 
 
                       <div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Email Address</h4> </label>
+                          <label class= "col-md-5"> <h4>Venue</h4> </label>
                             <div class= "form-group col-md-6">
-                              <input type="text" name= "Email" class="form-control" placeholder="ex: juan_delacruz@dlsu.edu.ph" />
-                            </div>        
+                              <input type="text" name= "venue" class="form-control" placeholder="ex: Henry Sy Grounds" />
+                          </div>    
                         </div>
                       </div> 
+
+
 
                       <div class="ln_solid"></div> 
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-11">
-                          <!--<input id="nextSpecialPermit2" type="submit" class="btn btn-success align: right" value ="Next">-->
+                          <input id="nextTrademark2" type="submit" class="btn btn-success align: right" value ="Next">
                         </div>
                       </div>
                     </form>
@@ -268,48 +313,49 @@
         </div>
 
     <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
-   <script src="js/jquery.min.js"></script>
-    <script src= "js/jquery.validate.min.js"> </script>
-    <script src= "js/validation.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
+    <script src="<?php echo base_url();?>js/validation.js"></script>
+    <script src= "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js" </script>
+
     <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <script src="<?php echo base_url();?>vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
+    <script src="<?php echo base_url();?>vendors/nprogress/nprogress.js"></script>
     <!-- Chart.js -->
-    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/Chart.js/dist/Chart.min.js"></script>
     <!-- gauge.js -->
-    <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/gauge.js/dist/gauge.min.js"></script>
     <!-- bootstrap-progressbar -->
-    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/iCheck/icheck.min.js"></script>
     <!-- Skycons -->
-    <script src="../vendors/skycons/skycons.js"></script>
+    <script src="<?php echo base_url();?>vendors/skycons/skycons.js"></script>
     <!-- Flot -->
-    <script src="../vendors/Flot/jquery.flot.js"></script>
-    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="../vendors/Flot/jquery.flot.time.js"></script>
-    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.time.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.resize.js"></script>
     <!-- Flot plugins -->
-    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot.curvedlines/curvedLines.js"></script>
     <!-- DateJS -->
-    <script src="../vendors/DateJS/build/date.js"></script>
+    <script src="<?php echo base_url();?>vendors/DateJS/build/date.js"></script>
     <!-- JQVMap -->
-    <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="<?php echo base_url();?>vendors/moment/min/moment.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+    <script src="<?php echo base_url();?>build/js/custom.min.js"></script>
 	
   </body>
 </html>

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>CSO </title>
+    <title><?php echo ($this->session->userdata('org')[0]['acronym']);?></title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <!-- Bootstrap -->
     <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -43,11 +43,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="<?php echo base_url();?>images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="<?php echo base_url();?>images/cso2.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2> CSO USER!</h2>
+                <h2><?php echo ($this->session->userdata('org')[0]['acronym']);?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -57,18 +57,13 @@
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="CSO_Home.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
-                  <li><a><i class="fa fa-edit"></i> Organizations <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu"> 
-                      <li><a href="CSO_NewOrg.html">Add New Organization</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="CSO_Calendar.html"><i class="fa fa-table"></i> Calendar <span class="fa fa-chevron-down"></span></a>
-                  <li><a href="CSO_GOSM.html"><i class="fa fa-list-alt"></i> GOSM <span class="fa fa-chevron-down"></span></a>
-                  </li>
-                </ul>
+				  <li><a href="http://localhost/index.php/account/cso"><i class="fa fa-home"></i> Home <span ></span></a></li>
+                  <li><a href="http://localhost/index.php/org/add"><i class="fa fa-table"></i> Add New Organization <span ></span></a></li>
+				  <li><a href="#"><i class="fa fa-calendar"></i> Calendar <span ></span></a></li>
+				  <li><a href="http://localhost/index.php/gosm/viewCSOGosm1"><i class="fa fa-list-alt"></i> GOSM <span ></span></a></li>
+				  <li><a href="#"><i class="fa fa-list-alt"></i> PreActs <span ></span></a></li>				  
+				</ul>
               </div>
             </div>
             <!-- /sidebar menu -->
@@ -77,28 +72,18 @@
 
         <!-- top navigation -->
         <div class="top_nav">
+		
           <div class="nav_menu">
             <nav>
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
 
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   Council of Student Organization
+                   <?php echo ($this->session->userdata('org')[0]['name']);?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
-                    <li>
-                      <a href="javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
-                      </a>
-                    </li>
-                    <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="http://localhost/index.php/account/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 				<!--NOTIF-->
@@ -109,10 +94,8 @@
 						
 					</div>
                   </a>
-				  
                   <ul name="notif" id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu" style="width: 300px; height: 200px; overflow: auto">
 					<!--NOTIFICATION HERE-->
-					
                   </ul>
 				  <!--NOTIF-->
                 </li>
@@ -127,7 +110,7 @@
           <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="dashboard_graph">
-
+				
                 <div class="row x_title">
                   <div class="col-md-6">
                     <h3>Top 10 Orgs with the most number of Pre-Acts</h3>
@@ -135,16 +118,27 @@
                 </div>
 				
 				<canvas id="myChart" width="70" height="20"></canvas>
-		
+					
 				<script>
 				var ctx = document.getElementById("myChart");
 				var myChart = new Chart(ctx, {
 					type: 'bar',
 					data: {
-						labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange", "Orange", "Orange", "Orange", "Orange"],
+						labels: [<?php 
+									for ($i = 0; $i<count($preacts);$i++){
+										echo '"'; echo "{$preacts[$i]['name']}"; echo '",';
+									}
+										
+								?>],
 						datasets: [{
-							label: 'Pakyu',
-							data: [12, 19, 3, 5, 2, 3, 5, 5, 5, 5],
+							label: 'Number of PreActs',
+							data: [<?php 
+							
+									for ($i = 0; $i<count($preacts);$i++){
+										echo '"'; echo "{$preacts[$i]['numpreacts']}"; echo '",';
+									}
+										
+								  ?>],
 							backgroundColor: [
 								'rgba(0, 150, 0, 0.6)',
 								'rgba(0, 150, 0, 0.6)',
@@ -363,8 +357,9 @@
 			type: 'POST',
 			url: 'http://localhost/index.php/Notif/getall',					
 			success: function (data) {
+				$('#menu1').empty();
 				for (i = 0; i < data.length; i++){
-					$('#menu1').prepend('<li style="background-color:#FFFFFF"></span><span>'+data[i].GOSMno+'</span><br><span class="time">'+data[i].datecreated+'</span><span></li>');
+					$('#menu1').prepend('<li></span><span><b>'+data[i].orgname+'</b> added a new GOSM</span><br><span class="time">'+data[i].title+'<br>'+data[i].created+'</span><span></li>');
 				}
 			}
 		});
@@ -379,7 +374,7 @@
 						if(data.length != 0){
 							$('#num').append('<span class="badge bg-green">'+ data.length +'</span>');
 							for (i = 0; i < data.length; i++){
-								$('#menu1').prepend('<li style="background-color:#b3ffb3"></span><span>'+data[i].GOSMno+'</span><br><span class="time">'+data[i].datecreated+'</span><span></li>');
+								$('#menu1').prepend('<li style="background-color:#ccffcc;"></span><span><b>'+data[i].orgname+'</b> added a new GOSM</span><br><span class="time">'+data[i].title+'<br>'+data[i].created+'</span><span></li>');
 							}
 						}
 						

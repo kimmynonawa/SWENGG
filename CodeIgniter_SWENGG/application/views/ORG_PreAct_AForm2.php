@@ -10,23 +10,23 @@
     <title>LSCS</title>
 
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 	
     <!-- bootstrap-progressbar -->
-    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="<?php echo base_url();?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -244,7 +244,7 @@
                     <div class="col-md-8">   
                       <label class= "col-md-5"> <h4>Expected Number of Members to Participate (ENMP) </h4> </label>
                       <div class= "form-group col-md-6">
-                        <input type="Number" min="1" name= "enmp" id="enmp" class="form-control" placeholder="ex: 80" />
+                        <input type="Number" min="1" name= "enmp2" id="enmp" class="form-control" placeholder="ex: 80" />
                       </div>       
                     </div>
                   </div>  
@@ -253,7 +253,7 @@
                     <div class="col-md-8">   
                       <label class= "col-md-5"> <h4>Expected Number of Participants (ENP) </h4> </label>
                       <div class= "form-group col-md-6">
-                        <input type="Number" name= "enp" min="1" id= "enp" class="form-control" placeholder="Should be greater than or equal to ENMP"/>
+                        <input type="Number" name= "enp2" min="1" id= "enp" class="form-control" placeholder="Should be greater than or equal to ENMP"/>
                       </div>       
                     </div>
                   </div>  
@@ -276,54 +276,54 @@
 
     
     <!-- IMPORTANT IMPORTS -->
-    <script src="js/jquery.min.js"></script>
-    <script src= "js/jquery.validate.min.js"> </script>
-    <script src= js/validation.js></script>
-    <script src= "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js" </script>
+    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src= "<?php echo base_url();?>js/jquery.validate.min.js"> </script>
+    <script src= <?php echo base_url();?>js/validation.js></script>
+    <script src= "<?php echo base_url();?>http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js" </script>
     <!-- IMPORTANT IMPORTS -->
     
     <!-- /page content -->
 
     <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <script src="<?php echo base_url();?>vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
+    <script src="<?php echo base_url();?>vendors/nprogress/nprogress.js"></script>
     <!-- Chart.js -->
-    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/Chart.js/dist/Chart.min.js"></script>
     <!-- gauge.js -->
-    <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/gauge.js/dist/gauge.min.js"></script>
     <!-- bootstrap-progressbar -->
-    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/iCheck/icheck.min.js"></script>
     <!-- Skycons -->
-    <script src="../vendors/skycons/skycons.js"></script>
+    <script src="<?php echo base_url();?>vendors/skycons/skycons.js"></script>
     <!-- Flot -->
-    <script src="../vendors/Flot/jquery.flot.js"></script>
-    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="../vendors/Flot/jquery.flot.time.js"></script>
-    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.time.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.resize.js"></script>
     <!-- Flot plugins -->
-    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot.curvedlines/curvedLines.js"></script>
     <!-- DateJS -->
-    <script src="../vendors/DateJS/build/date.js"></script>
+    <script src="<?php echo base_url();?>vendors/DateJS/build/date.js"></script>
     <!-- JQVMap -->
-    <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="<?php echo base_url();?>vendors/moment/min/moment.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+    <script src="<?php echo base_url();?>build/js/custom.min.js"></script>
 	
   </body>
   <script>

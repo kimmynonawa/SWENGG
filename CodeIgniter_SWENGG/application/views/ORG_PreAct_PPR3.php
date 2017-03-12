@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title><?php echo ($this->session->userdata('org')[0]['acronym']);?></title>
+    <title>LSCS</title>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <!-- Bootstrap -->
     <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -43,11 +44,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="<?php echo base_url();?>images/cso2.png" alt="..." class="img-circle profile_img">
+                <img src="<?php echo base_url();?>images/user.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2><?php echo ($this->session->userdata('org')[0]['acronym']);?></h2>
+                <h2> LSCS</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -58,11 +59,11 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
-				  <li><a href="http://localhost/index.php/account/cso"><i class="fa fa-home"></i> Home <span ></span></a></li>
-                  <li><a href="http://localhost/index.php/org/add"><i class="fa fa-table"></i> Add New Organization <span ></span></a></li>
+				  <li><a href="http://localhost/index.php/account/org"><i class="fa fa-home"></i> Home <span ></span></a></li>
+                  <li><a href="http://localhost/index.php/gosm/add"><i class="fa fa-table"></i> Add New GOSM <span ></span></a></li>
+                  <li><a href="http://localhost/index.php/PreActivity/preacts"><i class="fa fa-edit"></i> Add Pre-Activity <span ></span></a></li>				  
 				  <li><a href="#"><i class="fa fa-calendar"></i> Calendar <span ></span></a></li>
-				  <li><a href="http://localhost/index.php/gosm/viewCSOGosm1"><i class="fa fa-list-alt"></i> GOSM <span ></span></a></li>
-				  <li><a href="#"><i class="fa fa-list-alt"></i> PreActs <span ></span></a></li>				  
+				  <li><a href="http://localhost/index.php/gosm/viewORGGosm1"><i class="fa fa-list-alt"></i> GOSM <span ></span></a></li>
 				</ul>
               </div>
             </div>
@@ -70,7 +71,6 @@
           </div>
         </div>
 
-        <!-- top navigation -->
         <div class="top_nav">
 		
           <div class="nav_menu">
@@ -79,26 +79,13 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   <?php echo ($this->session->userdata('org')[0]['name']);?>
+                   La Salle Computer Society
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="http://localhost/index.php/account/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
                   </ul>
                 </li>
-				<!--NOTIF-->
-                <li role="presentation" class="dropdown">
-                  <a id="but" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <div id="num">
-						
-					</div>
-                  </a>
-                  <ul name="notif" id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu" style="width: 300px; height: 200px; overflow: auto">
-					<!--NOTIFICATION HERE-->
-					
-                  </ul>
-				  <!--NOTIF-->
                 </li>
               </ul>
             </nav>
@@ -106,118 +93,76 @@
         </div>
         <!-- /top navigation -->
 
-     <!-- page content -->
-        <div class="right_col" role="main">
+		<!-- Main content -->
+		<div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>CSO Chart Details</h3>
-              </div>
-
+                <h3>Project Proposal</h3>
               </div>
             </div>
             <div class="clearfix"></div>
 
             <div class="row">
-
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-					<form action= "ORG_Home.html" method="post">
-						<div class="row">
-						<div class="col-md-12 col-sm-12 col-xs-12">
-						  <div class="x_title">
-							<h2>ORGANIZATION NAME </h2> 
-							<ul class="nav navbar-right panel_toolbox">
-							  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-							  </li>
-							</ul>
-							<div class="clearfix"></div>
-						  </div>
-						  <div class="x_content">
-							<span class="section">Activity Information</span>
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Name: </label>
-									<p> <?php echo $activity[0]['title'];?></p>
-								</div>
+                  <div class="x_content">
+                    <form class="form-inline form-label-left" method="post" id="pprform3">
+                      <span class="section">Breakdown of Expenses</span>
+                        <div class="table-responsive">          
+                          <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th>Material</th>
+                                <th>Quantity</th>
+                                <th>Unit Cost</th>
+                                <th>Sub-total</th>
+                              </tr>
+                            </thead>
+                            <tbody id= "trr">
+                              <tr>
+                                <td align= "center"><input type="text"   name= "mat3[]" class="form-control" id="mat3" placeholder="Material name"/></td>
+                                <td align= "center"><input type="number" name="qty3[]" class="form-control" id="qty3" placeholder="Quantity"/></td>
+                                <td align= "center"><input type="number" name= "ucost3[]" class="form-control" id="ucost3" placeholder="Unit Cost"/></td>
+                                <td align="center" style= "background-color:#D3D3D3"><h4> P750.00</h4></td>
+                              </tr>
+                            </tbody>
+                               <tr>
+                                <td align= "center"></td>
+                                <td align= "center"></td>
+                                <td align= "center"></td>
+                                <td align= "left"><h4>Total:</h4></td>
+                              </tr>
+                          </table>
+                          </div>
 
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Goals: </label>
-									<p><?php echo $activity[0]['goals'];?></p>
-								</div>
+                          <div class= "row">
+                            <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                               <button id="addc3" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                <button id="remc3" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                            </div>
+                          </div>
 
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Brief Description: </label>
-									<p><?php echo $activity[0]['description'];?></p>
-								</div>
-								
-
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Measures: </label>
-									<p><?php echo $activity[0]['measures'];?></p>
-								</div>
-								
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Person In Charge: </label>
-									<p><?php echo $activity[0]['personInCharge'];?></p>
-								</div>
-
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">GOSM Target Date: </label>
-									<p><?php 
-									$fromdate = $activity[0]['fromDate'];
-									$fromdatenew = strtotime($fromdate);
-									$formatted_fromdate = date('F d, Y', $fromdatenew);
-									echo $formatted_fromdate;?> 
-									- 
-									<?php 
-									$todate = $activity[0]['toDate'];
-									$todatenew = strtotime($todate);
-									$formatted_todate = date('F d, Y', $todatenew);
-									echo $formatted_todate;?></p>
-								</div>
-
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Venue: </label>
-									<p><?php echo $activity[0]['venue'];?></p>
-								</div>
-
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Nature: </label>
-									<p><?php echo $activity[0]['activitynature'];?></p>
-								</div>
-
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Type: </label>
-									<p><?php echo $activity[0]['activitytype'];?></p>
-								</div>
-
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Related to: </label>
-									<p>R - 1</p>
-								</div>
-
-								<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Budget Breakdown: </label>
-									<p><?php echo $activity[0]['budget'];?></p>
-								</div>
-						  </div>
-					  </div> <!-- end of inner col-md-12 col-sm-12 col-xs-12"-->
-								
-						
-						<button type="submit" class="btn btn-success col-md-offset-11" id="submit">NEXT</button>
-        
-              </div> <!-- END OF -ROW- DIV -->
-              </form>
-            </div> <!-- END OF X PANEL -->
-          </div> <!-- END OF col-md-12 col-sm-12 col-xs-12 -->
-        </div> <!-- END OF ROW FINAL!!!!!!!! -->
-
-        <!-- HI KIM IF YOU'RE READING THIS YUNG BUTTON TYPE TO INPUT TYPE YUNG INIBA DI KO NA BINAGO YUNG ALIGNMENT TY!!!-->
-						
+                     <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-12 col-md-offset-11">
+                          <input id="nextbppr3" type="submit" class="btn btn-success align: right" value="Next">
+                        </div>
+                      </div>
+                         
+                      </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- /page content -->
 
     <!-- jQuery -->
-    <script src="<?php echo base_url();?>vendors/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
+    <script src="<?php echo base_url();?>js/validation.js"></script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

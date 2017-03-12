@@ -10,9 +10,6 @@
     <title>LSCS</title>
 
     <script src= "js/jquery.js"> </script>
-
-
-
     <!-- Bootstrap -->
      <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -54,7 +51,7 @@
 
             <br />
 
-               <!-- sidebar menu -->
+              <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -172,13 +169,13 @@
           </div>
         </div>
         <!-- /top navigation -->
-
-        <div class="right_col" role="main">
+  <!-- page content -->
+          <div class="right_col" role="main">
           <div class="">
             <div class= "x_panel">
               <div class= "row">
                 <div class="title col-md-5">
-                  <h3>Minor Publication Proposal</h3>
+                  <h3>Special Permit For Campus Access</h3>
                 </div>
                 <div align="right">
                   <ul class="nav navbar-right panel_toolbox"> 
@@ -189,8 +186,12 @@
                 </div>
               </div>
               <div class= "x_content bg-success">
-                <h4><p class="text-success"> Lorem ipsum dolor sit amet, vel pretium architecto, semper semper eu elit sed, lacus cras quis, pede velit. Pretium convallis suscipit, vestibulum rutrum, eu integer montes erat ut tincidunt, facilisis dolor. Et fermentum nulla, litora leo in, nunc aliquam aperiam, rutrum elementum, dictum malesuada morbi amet nisl. sociis odio laoreet dolor mauris. </p></h4>
-              </div>
+                <h4><p class="text-success"><p>(1) This form is used ONLY for requesting permission for ACCESS OF PERSONS into the campus.
+											<p>(2)	This form will be accepted only within office hours (Mon to Fri: 8:00am to 12:00pm and 1:30pm to 5:00pm)
+											<p>(3)	This form must be submitted at the Security Office (J108) no later than two (2) working days before the requested date of campus access. (Saturday is not counted as a working day for this purpose)
+											<p>(4)	This form is considered an application only unless a final decision is made and indicated on this form.
+											<p>(5)	Clinics in campus are open only from 06:00am to 10:00pm, Mondays to Saturdays.</p>
+				</div>
             </div>
                 
             <div class="clearfix"></div>
@@ -199,121 +200,57 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-
-                    <form id="pubform" class="form-horizontal form-label-left">
-                      <span class="section">General Information</span>
+                    <form method="post" id = "specialPermit2" autocomplete="off">
+                     <span class="section"></span>
 
                       <div class= "row">
-                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                <label class= "col-md-2"> <h4>Publication Name:</h4> </label>
-                                <div class= "form-group col-md-10">            
-                                   <p><input type="text" class="form-control has-feedback-left" id="pubname" name="pubname" placeholder="  Name of Publication"/></p>  
-                                  <span class="fa fa-file form-control-feedback left" aria-hidden="true"></span>
-                                </div>   
-                        </div>    
-                      </div>
-                      
-                      <div class="row">
-                         <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                              <label class= "col-md-2"> <h4>Publication Type:</h4> </label>
-                                <div class= "form-group col-md-10">            
-                                   <p><input type="text" class="form-control has-feedback-left" id="pubtype" name="pubtype" placeholder="  Type of Publication"/></p>  
-                                  <span class="fa fa-file form-control-feedback left" aria-hidden="true"></span>
-                                </div>      
-                            </div>
-                         </div>  
-
-
-                      <div class="row">
-                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                          <div class=" form-group col-md-6 col-sm-6">         
-                                   <p> <input type="Number" class="form-control" id="pubfreq" name="pubfreq" placeholder="Frequency of Publication (Days)"/></p>  
+                        <div class="col-md-12">   
+                          <label class= "col-md-3"> <h4>Requests</h4> </label>
+                          <div class= "form-group col-md-12">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr> </tr>
+                              </thead>
+                              <tbody id="requests">
+                                <tr id ="details" class="details">
+                                <td>  <input class="form-control" name="sdate" placeholder ="Enter Start Date" /></td>
+                                <td>  <input class="form-control" name="stime" placeholder ="Enter Start Time" /></td>
+                                <td>  <input class="form-control" name="edate" placeholder ="Enter End Date" /></td>
+                                <td>  <input class="form-control" name="etime" placeholder ="Enter End Time" /></td>
+                                <td>  <input class="form-control" name="venue" placeholder ="Enter Venue"/></td>
+                                </tr>
+                              </tbody>
+                            </table>
                           </div>
-                        <div class=" form-group col-md-6 col-sm-6">          
-                                  <input type="Number" class="form-control" id="pubcost" name="pubcost" placeholder="Estimated Cost"/>       
                         </div>
-                        </div>
-                      </div>  <!-- row -->
 
-                      <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-12">   
-                                <label class= "col-md-2"> <h4>Projected Date of Release:</h4> </label>
-                                <div class= "form-group col-md-10">
-                                    <input type="date" name= "tdate" class="form-control" name="pubdate" id="pubdate"/>
-                                </div>        
+                        <div class = "buttons col-md-12">
+                          <div class="col-md-3">
+                            <button id="addspca" type ="button" class ="btn btn-default">  <span class="glyphicon glyphicon-plus-sign"></span> </button>
+                            <button id="deletespca" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                          </div>    
                         </div>
-                      </div> <!-- row -->
-                      
-                      <div class="ln_solid"></div> 
-                      
-                       <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-12">      
-                               
-                                <label class= "col-md-2"> <h4> Objectives</h4> </label>
-                                <div class="form-group col-md-10 col-sm-10 col-xs-10">
-                                  <input type="text" class="form-control" id="obj1" name="obj1" placeholder="1st Objective" />
-                                  <p></p>
-                                  <input type="text" class="form-control" id="obj2" name="obj2" placeholder="2nd Objective" />
-                                  <p></p>
-                                  <input type="text" class="form-control" id="obj3" name="obj3" placeholder="3rd Objective" />
-                                </div>      
-                        </div>
-                      </div> <!-- row -->
+                      </div> 
 
                       <div class="ln_solid"></div> 
-                      
-                       <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-12">        
-                           <label class= "col-md-2"> <h4> Proposed Content</h4> </label>
-                                <div class="form-group col-md-10 col-sm-10 col-xs-10">
-                                  <input type="text" class="form-control" id="cont1" name="cont1" placeholder="Publication Content" />
-                                  <p></p>
-                                  <input type="text" class="form-control" id="cont2" name="cont2" placeholder="Publication Content" />
-                                  <p></p>
-                                  <input type="text" class="form-control" id="cont3" name="cont3" placeholder="Publication Content" />
-                                </div>      
-                          </div>
-                        </div> <!-- row -->
-
-                        <div class="ln_solid"></div> 
-
-                        <div class="row">
-                          <div class="col-md-6 col-sm-6 col-xs-12">                           
-                                <label class= "col-md-2"> <h4> Target Readers</h4> </label>
-                                <div class="form-group col-md-10 col-sm-10 col-xs-10">
-                                  <input type="text" class="form-control" id="tread1" name="tread1" placeholder="Target Audience" />
-                                  <p></p>
-                                  <input type="text" class="form-control" id="tread2" name="tread2" placeholder="Target Audience" />
-                                  <p></p>
-                                  <input type="text" class="form-control" id="tread3" name="tread3" placeholder="Target Audience" />
-                                </div>      
-                         </div>
-
-                        <div class="form-group">
-                          <div class="col-md-12 col-md-offset-11">
-                            <input id="nextpub" type="submit" class="btn btn-success align: right" value ="Next">
-                          </div>
+                      <div class="form-group">
+                        <div class="col-md-12 col-md-offset-11">
+                          <input id="nextSpecialPermit2" type="submit" class="btn btn-success align: right" value ="Next">
                         </div>
-
-                       </form>            
-                         
-                      </div> <!-- row -->
-                        </div> 
                       </div>
-                  </div>
-                </div> 
-              </div>
-            </div>
-
+                    </form>
+                  </div><!-- xcontent -->
+                </div> <!-- xpanel -->              
+              </div> <!-- row -->
+            </div> 
           </div>
         </div>
-        <!-- /page content -->
 
     <!-- jQuery -->
-       <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+   <script src="js/jquery.min.js"></script>
     <script src= "js/jquery.validate.min.js"> </script>
-    <script src= js/validation.js></script>
+    <script src= "js/validation.js"></script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

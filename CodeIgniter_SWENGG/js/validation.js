@@ -6,6 +6,9 @@ $(function(){
 	jQuery.validator.addMethod("lettersonly", function(value, element) {
 	return this.optional(element) || /^[a-z\s]+$/i.test(value);
 	})
+	
+	
+	// FOOD ENTRY PERMIT 1 - CATHY
 	foodform.validate({
 		rules: {
 			Name: {
@@ -70,15 +73,10 @@ $(function(){
 			}
 		}
 	});
-	$('#nextFood').click(function() {
-    	if (foodform.valid()){
-        	window.location.href = "ORG_PreAct_FoodEntryPermit2.html";
-        }
-        return false;
-   	});
 	// FOOD ENTRY PERMIT 1
+	
 
-	//FOOD ENTRY PERMIT 2
+	//FOOD ENTRY PERMIT 2 - CATHY
 	var foodform2= $('#foodlistform');
 	foodform2.validate({
 		rules: {
@@ -127,19 +125,17 @@ $(function(){
 
 		}
 	});
-	$('#nextbff2').click(function() {
-	   if(foodform2.valid()){
-          window.location.href = "ORG_PreAct_PPR4.html";
-	   	}
-    });
+	
+	// START CATHY EDIT
     $("#addcf").click(function() {
-       $("#tr").append(' <tr id= "newtr"><td align= "center" ><input type="number" name= "foqty" class="form-control" id="foqty"/></td><td align= "center"><input type="number" name= "founit" class="form-control" id="founit"/></td><td align= "center"><input type="text" name= "fodes" class="form-control" id="fodes" placeholder="Description"/></td><td align= "center"><input type="number" name= "foecost" class="form-control" id="foecost"/></td></tr>');   
+       $("#tr").append(' <tr id= "newtr"><td align= "center" ><input type="number" name= "fqty[]" class="form-control" id="foqty"/></td><td align= "center"><input type="text" name= "funit[]" class="form-control" id="founit"/></td><td align= "center"><input type="text" name= "fdes[]" class="form-control" id="fodes" placeholder="Description"/></td><td align= "center"><input type="number" name= "fecost" class="form-control" id="foecost"/></td></tr>');   
      });
+    // END CATHY EDIT
         
-          $("#remcf").click(function() {
-            var v= document.getElementById("newtr");
-            v.remove();
-          });
+	  $("#remcf").click(function() {
+	    var v= document.getElementById("newtr");
+	    v.remove();
+	  });
 	// FOOD ENTRY PERMIT 2
 
 	//MINOR PUBLICATION PROPOSAL 1
@@ -367,27 +363,28 @@ $(function(){
 	});     
 	//MINOR PUBLICATION PROPOSAL 2
 
-	//PROJECT PROPOSAL 1 
+	//PROJECT PROPOSAL 1 - CATHY
+	// START CATHY EDIT
 	var pprform1= $('#pprform1');
 	pprform1.validate({
 		rules: {
-			phname:{
+			'phname[]':{
 				required:true,
 				lettersonly: true
 			},
 			
-			phnum: {
+			'phnum[]': {
 				required: true,
 				maxlength: 11,
 				minlength: 11
 			},
 
-			prname:{
-				required:true,
-				lettersonly:true
-			},
+			// prname:{
+			// 	required:true,
+			// 	lettersonly:true
+			// },
 			
-			prnum: "required",
+			// prnum: "required",
 
 			obje1:  "required",
 
@@ -404,26 +401,26 @@ $(function(){
 		},
 
 		messages: {
-			phname: {
+			'phname[]': {
 				required: 'Enter project head name',
 				lettersonly:'Alphabetic characters only'
 			},
 
-			phnum:{
+			'phnum[]':{
 				required: 'Enter project head contact number',
 				maxlength: 'Invalid contact number',
 				minlength: 'Invalid contact number'
 			},
 
-			prname:{
-				required: 'Enter project head contact name',
-				lettersonly:'Alphabetic characters only'
-			},
+			// prname:{
+			// 	required: 'Enter project head contact name',
+			// 	lettersonly:'Alphabetic characters only'
+			// },
 
 
-			prnum:{
-				required: 'Enter project head contact number'
-			},
+			// prnum:{
+			// 	required: 'Enter project head contact number'
+			// },
 
 			obje1: {
 				required: 'Enter objective'
@@ -451,123 +448,133 @@ $(function(){
 		}
 	});
 
-	$("#ph").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="phname[]" class="form-control has-feedback-left" id="name" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="phnum" class="form-control" id="contact" placeholder="Contact Number"><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div></div></div>');
+	$("#ph").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="phname[]" class="form-control has-feedback-left" id="name" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="phnum[]" class="form-control" id="contact" placeholder="Contact Number"><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div></div></div>');
 
    	 $("#addc").click(function(){
-          $("#ph").append(' <div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="phname[]" class="form-control has-feedback-left" id="name" placeholder="Name"><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="prnum" class="form-control" id="contact" placeholder="Contact Number"><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div></div></div>');   
+          $("#ph").append(' <div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="phname[]" class="form-control has-feedback-left" id="name" placeholder="Name"><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="phnum[]" class="form-control" id="contact" placeholder="Contact Number"><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div></div></div>');   
      });
 
     $("#remc").click(function(){
         var v= document.getElementById("newph");
         v.remove();
     });  
-	$('#nextbppr').click(function(){
-      if (pprform1.valid()){
-         window.location.href = "ORG_PreAct_PPR2.html";
-       }
-       return false;
-     });
+
+    // END CATHY EDIT
+
+	// $('#nextbppr').click(function(){
+ //      if (pprform1.valid()){
+ //         window.location.href = "ORG_PreAct_PPR2.html";
+ //       }
+ //       return false;
+ //     });
     //PROJECT PROPOSAL 1
 
 
-    //PROJECT PROPOSAL 2
+    //PROJECT PROPOSAL 2 - CATHY
+    // START CATHY EDIT
     var pprform2= $('#pprform2');
 	pprform2.validate({
 		rules: {
-			aname:"required",
+			'aname[]':"required",
 			
-			stime: "required",
+			'stime[]': "required",
 
-			ades:"required",
+			'ades[]':"required",
 			
-			apic: "required"
+			'apic[]': "required"
 		},
 
 		messages: {
-			aname: {
+			'aname[]': {
 				required: 'Enter activity name'
 			},
 
-			stime:{
+			'stime[]':{
 				required: 'Enter time'
 			},
 
-			ades:{
+			'ades[]':{
 				required: 'Enter activity description'
 			},
 
-			apic:{
+			'apic[]':{
 				required: 'Enter person-in-charge'
 			}
 		}
 	});
-     
+
     $("#addc2").click(function(){
-        $("#tr").append('<tr id="newtr"><td align= "center"> <input type="time" style="width:75px" class="form-control" name="time"> </td><td align= "center"><input type= "time" style="width:75px"  class="form-control" name="stime"> </td><td align= "center"> <input type="text" name="aname" class="form-control" id="act" placeholder="Activity name"/></td><td align= "center"> <input type="text" name="adur" class="form-control" id="dur" disabled="true" /></td><td align= "center"> <input type="text" name="ades"  class="form-control" id="des" placeholder="Description of Activity"/></td><td align= "center"> <input type="text" name="apic"  class="form-control" id="icharge" placeholder="Person in-charge"/></td></tr>');   
+        $("#tr").append('<tr id="newtr"><td align= "center"> <input type="time" style="width:75px" class="form-control" name="time[]"> </td><td align= "center"><input type= "time" style="width:75px"  class="form-control" name="stime[]"> </td><td align= "center"> <input type="text" name="aname[]" class="form-control" id="act" placeholder="Activity name"/></td><td align= "center"> <input type="text" name="adur" class="form-control" id="dur" disabled="true" /></td><td align= "center"> <input type="text" name="ades[]"  class="form-control" id="des" placeholder="Description of Activity"/></td><td align= "center"> <input type="text" name="apic[]"  class="form-control" id="icharge" placeholder="Person in-charge"/></td></tr>');   
      });
-    
+	// END CATHY EDIT
+
     $("#remc2").click(function(){
        var v= document.getElementById("newtr");
        v.remove(); 
     });
 
-	$('#nextbppr2').click(function() {
-         if (pprform2.valid()){
-           window.location.href = "ORG_PreAct_PPR3.html";
-         }
-        return false  
-     });
+    // END EDIT CATHY
+
+	// $('#nextbppr2').click(function() {
+ //         if (pprform2.valid()){
+ //           window.location.href = "ORG_PreAct_PPR3.html";
+ //         }
+ //        return false  
+ //     });
     //PROJECT PROPOSAL 2
 
-    //PROJECT PROPOSAL 3
+    //PROJECT PROPOSAL 3 - CATHY
+    // START CATHY EDIT
     var pprform3= $('#pprform3');
 	pprform3.validate({
 		rules: {
-			mat3:"required",
-			qty3: "required",
-			ucost3:"required",
+			'mat3[]':"required",
+			'qty3[]': "required",
+			'ucost3[]':"required",
 		},
 
 		messages: {
-			mat3: {
+			'mat3[]': {
 				required: 'Enter material name'
 			},
 
-			qty3:{
+			'qty3[]':{
 				required: 'Enter quantity'
 			},
 
-			ucost3:{
+			'ucost3[]':{
 				required: 'Enter unit cost'
 			},
 		}
 	});
 
     $("#addc3").click(function() {
-      $("#trr").append('<tr id="newtr"><td align= "center"><input type="text" class="form-control" id="act" placeholder="Material name"/></td> <td align= "center"><input type="number" class="form-control" id="act" placeholder="Quantity"/></td>                                <td align= "center"><input type="number" class="form-control" id="des" placeholder="Unit Cost"/></td> <td align="center" style= "background-color:#D3D3D3"><h4> P750.00</h4></td></tr>');   
+      $("#trr").append('<tr id="newtr"><td align= "center"><input type="text" class="form-control" id="act" name="mat3[]" placeholder="Material name"/></td> <td align= "center"><input type="number" class="form-control" id="act" name="qty3[]" placeholder="Quantity"/></td><td align= "center"><input type="number" class="form-control" id="des" name="ucost3[]" placeholder="Unit Cost"/></td> <td align="center" style= "background-color:#D3D3D3"><h4> P750.00</h4></td></tr>');   
      });
  
     $("#remc3").click(function() {
       var v= document.getElementById("newtr");
       v.remove();
     });
+    // END CATHY EDIT
 	
-	$('#nextbppr3').click(function() {
-      if (pprform3.valid()){
-          window.location.href = "ORG_PreAct_PPR4.html";
-      }
-       return false;
-    });
+	// $('#nextbppr3').click(function() {
+ //      if (pprform3.valid()){
+ //          window.location.href = "ORG_PreAct_PPR4.html";
+ //      }
+ //       return false;
+ //    });
     //PROJECT PROPOSAL 3
 
-    //PROJECT PROPOSAL 4.1
+    //PROJECT PROPOSAL 4.1 - CATHY
+    // START CATHY EDIT
     var pprform41= $('#pprform41');
 	pprform41.validate({
 		rules: {
 			of41:"required",
 			pf41: "required",
-			os41:"required",
-			oam41:"required",
+			'sname[]':"required",
+			'samt[]':"required",
 
 			dpfam: "required",
 
@@ -586,11 +593,11 @@ $(function(){
 				required: 'Enter amount'
 			},
 
-			os41:{
+			'sname[]':{
 				required: 'Enter source'
 			},
 
-			oam41:{
+			'samt[]':{
 				required: 'Enter amount'
 			},
 
@@ -614,19 +621,13 @@ $(function(){
 	});
     
     $("#addc4").click(function(){
-       $("#tr").append('<tr id="newtr"> <td><input type="text" class="form-control" id="sname" name="sname" placeholder="Other Source"/></td> <td> <input type="Number" name="samt" class="form-control" id="of" placeholder="Enter Amount"/></td></tr>');   
+       $("#tr").append('<tr id="newtr"> <td><input type="text" class="form-control" id="sname" name="sname[]" placeholder="Other Source"/></td> <td> <input type="Number" name="samt[]" class="form-control" id="of" placeholder="Enter Amount"/></td></tr>');   
      });
     $("#remc4").click(function(){
        var v= document.getElementById("newtr");
        v.remove();
     });
-	$('#nextbppr4').click(function(){
-     if (pprform41.valid()){
-       window.location.href = ""; // next page
-      }
-      return false;
-    });
-    //PROJECT PROPOSAL 4.1
+    // END CATHY EDIT
 
     //GOSM 1
     var gosmform1= $('#gosmform1');
@@ -1333,12 +1334,7 @@ $(function(){
 			}
 		}
 	});
-	$('#nextmech').click(function() {
-    	if (mechanicsForm.valid()){
-        	window.location.href = "";
-        }
-        return false;
-   	});
+
    	//mechanicsForm
 
    	//Approval change act details

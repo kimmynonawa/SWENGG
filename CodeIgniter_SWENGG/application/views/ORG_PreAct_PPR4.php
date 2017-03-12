@@ -9,26 +9,25 @@
 
     <title>LSCS</title>
 
-    <script src= "js/jquery.js"> </script>
-
+    <script src= "<?php echo base_url();?>js/jquery.js"> </script>
     <!-- Bootstrap -->
-     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 	
     <!-- bootstrap-progressbar -->
-    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="<?php echo base_url();?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -52,7 +51,7 @@
 
             <br />
 
-             <!-- sidebar menu -->
+                      <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -171,28 +170,13 @@
         </div>
         <!-- /top navigation -->
 
-
-          
-        <div class="right_col" role="main">
+<div class="right_col" role="main">
           <div class="">
-            <div class= "x_panel">
-              <div class= "row">
-                <div class="title col-md-5">
-                  <h3>Project Proposal</h3>
-                </div>
-                <div align="right">
-                  <ul class="nav navbar-right panel_toolbox"> 
-                    <li>
-                      <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li> 
-                  </ul>
-                </div>
-              </div>
-              <div class= "x_content bg-success">
-                <h4><p class="text-success"> Lorem ipsum dolor sit amet, vel pretium architecto, semper semper eu elit sed, lacus cras quis, pede velit. Pretium convallis suscipit, vestibulum rutrum, eu integer montes erat ut tincidunt, facilisis dolor. Et fermentum nulla, litora leo in, nunc aliquam aperiam, rutrum elementum, dictum malesuada morbi amet nisl. sociis odio laoreet dolor mauris. </p></h4>
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Project Proposal</h3>
               </div>
             </div>
-                
             <div class="clearfix"></div>
 
             <div class="row">
@@ -200,83 +184,70 @@
                 <div class="x_panel">
                   <div class="x_content">
 
-                    <form class="form-inline form-label-left" id="pprform41" method="post">
+
+                  <form class="form-inline form-label-left" id= "pprform41" method="post">
                       <span class="section">Source of Funds</span>
+
                         <div class="table-responsive">          
-                          <table class="table table-striped">
+                          <table class="table table-bordered">
                             <thead>
                               <tr>
-                                <th align="center">Source/s of Funds</th>
-                                <th align="center">Amount</th>
+                                <th>Source/s of Funds</th>
+                                <th>Amount</th>
                               </tr>
                             </thead>
-                            <tbody id="tr">
+                            <tbody id= "tr">
                               <tr>
                                 <td><h4>Organizational Funds</h4></td>
-                                <td> <input type="text" name="of41" class="form-control" id="of" placeholder="Enter Amount"/></td>
+                                <td> <input type="Number" name="of41" class="form-control" id="of" placeholder="Enter Amount"/></td>
                               </tr>
+
                               <tr>
                                 <td><h4>Participants Fee</h4></td>
-                                <td> <input type="text" name="pf41" class="form-control" id="pf" placeholder="Enter Amount"/></td>
+                                <td> <input type="Number" name="pf41" class="form-control" id="pf" placeholder="Enter Amount"/></td>
                               </tr>
+
                               <tr>
-                                <td> <input type="text"   name= "os41" class="form-control" id="sname" placeholder="Other Source"/></td>
-                                <td> <input type="text" name="oam41" class="form-control" id="oaf" placeholder="Enter Amount"/></td>
+                                <td> <input type="text"   name= "sname[]" class="form-control" id="sname" placeholder="Other Source"/></td>
+                                <td> <input type="Number" name="samt[]" class="form-control" id="oaf" placeholder="Enter Amount"/></td>
                               </tr>
-                              <tr  style= "background-color:#D3D3D3">
-                                <td></td>
-                                <td align="left" ><h4>Total:</h4></td>
-                              </tr>
+
                             </tbody>
-                           </table>
+                          </table>
                           </div>
 
-                          <div class= "row">
-                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                                   <button id="addc4" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
-                                  <button id="remc4" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                               </div>
+                           <div class= "row">
+                            <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                               <button id="addc4" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                <button id="remc4" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                            </div>
                           </div>
+                         
+                      <div class="ln_solid"></div>
+                      <span class="section">Organizational Funds</span>
 
-                          <div class="ln_solid"></div>
-                          <span class="section">Organizational Funds</span>
-                         <div class="table-responsive">          
-                          <table class="table table-striped">
-                            <thead>
+                        <div class="table-responsive">          
+                          <table class="table table-bordered">
+
+                            <tbody>
                               <tr>
-                                <th></th>
-                                <th></th>
-                              </tr>
-                            </thead>
-                            <tbody id="tr">
-                              <tr>
-                                <td> <h4>Accumulated Operational Funds</h4> </td>
-                                <td></td>
+                                <td><h4>Operational Funds</h4></td>
+                                <td> <input type="Number" name="amt4"class="form-control" id="opf" placeholder="Enter Amount"/></td>
                               </tr>
                               <tr>
-                                <td align="right"><h4>Operational Funds</h4></td>
-                                <td> <input type="text" name="amt4" class="form-control" id="opf" placeholder="Enter Amount"/></td>
-                              </tr>
-                              <tr>
-                                <td> <h4>Accumulated Depository Funds</h4> </td>
-                                <td></td>
-                              </tr>
-                              <tr>
-                                <td align="right"><h4>Depository Funds as of</h4></td>
-                                <td> 
-                                <input type="date" name="dpf4" class="form-control" id="dpf"/>
-                                <input type="text" name= "dpfam" class="form-control" id="dpfam" placeholder="Enter Amount"/>
+                                <td><h4>Depository Funds as of</h4></td>
+                                <td>
+                                  <input type="date" name="dpf4" class="form-control" id="dpf"/> 
+                                  <input type="Number" name= "dpfam" class="form-control" id="dpfam" placeholder="Enter Amount"/>
                                 </td>
                               </tr>
-                                <tr>
-                                <td> <h4>Other Sources of Funds (should match with Section 6, if applicable)</h4> </td>
-                                <td></td>
-                              </tr>
                               <tr>
-                                <td align="right"><h4>Participants Fee/Donation/Sponsorship</h4></td>
-                                <td><input type="text" name= "pf4" class="form-control" id="dpam" placeholder="Enter Amount"/></td>
+                                <td><h4>Participants Fee/Donation/Sponsorships</h4></td>
+                                <td><input type="Number" name= "pf4" class="form-control" id="dpam" placeholder="Enter Amount"/></td>
                               </tr>
-                                <td align="right" style= "background-color:#D3D3D3"><h4>Total Cash for Disbursement:</h4></td>
+
+                              <tr>
+                                <td style= "background-color:#D3D3D3"><h4>Total Cash for Disbursement:</h4></td>
                                 <td style= "background-color:#D3D3D3"><h4> 315,869.00</h4></td>
                               </tr>
 
@@ -286,72 +257,77 @@
                               </tr>
 
                               <tr>
-                                <td align="right" style="background-color:#D3D3D3"><h4>Remaining Balance: </h4></td>
+                                <td style="background-color:#D3D3D3"><h4>Remaining Balance: </h4></td>
                                 <td style="background-color:#D3D3D3"><h4>310,869.00</h4></td>
                               </tr>
+
                             </tbody>
-                           </table>
+                          </table>
                           </div>
 
+                        <div class="ln_solid"></div>
+                          <div class="form-group">
+                            <div class="col-md-12 col-md-offset-11">
+                              <input id="nextbppr4" type="submit" class="btn btn-success align: right" value="Next">
+                            </div>
+                          </div>
+                      </form>
 
-                       </form>
-
-                       <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-12 col-md-offset-11">
-                          <input id="nextbppr4" type="submit" class="btn btn-success align: right" value="Next">
-                        </div>
-                      </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+
+          </div>
         </div>
         <!-- /page content -->
 
     <!-- jQuery -->
-      <script src="js/jquery.min.js"></script>
-    <script src= "js/jquery.validate.min.js"> </script>
-    <script src= js/validation.js></script>
+    <script src="<?php echo base_url();?>vendors/jquery/dist/jquery.min.js"></script>
+   <script src="<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
+    <script src="<?php echo base_url();?>js/validation.js"></script>
     <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <script src="<?php echo base_url();?>vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
+    <script src="<?php echo base_url();?>vendors/nprogress/nprogress.js"></script>
     <!-- Chart.js -->
-    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/Chart.js/dist/Chart.min.js"></script>
     <!-- gauge.js -->
-    <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/gauge.js/dist/gauge.min.js"></script>
     <!-- bootstrap-progressbar -->
-    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/iCheck/icheck.min.js"></script>
     <!-- Skycons -->
-    <script src="../vendors/skycons/skycons.js"></script>
+    <script src="<?php echo base_url();?>vendors/skycons/skycons.js"></script>
     <!-- Flot -->
-    <script src="../vendors/Flot/jquery.flot.js"></script>
-    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="../vendors/Flot/jquery.flot.time.js"></script>
-    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.time.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.resize.js"></script>
     <!-- Flot plugins -->
-    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot.curvedlines/curvedLines.js"></script>
     <!-- DateJS -->
-    <script src="../vendors/DateJS/build/date.js"></script>
+    <script src="<?php echo base_url();?>vendors/DateJS/build/date.js"></script>
     <!-- JQVMap -->
-    <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="<?php echo base_url();?>vendors/moment/min/moment.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+    <script src="<?php echo base_url();?>build/js/custom.min.js"></script>
+
 	
   </body>
 </html>

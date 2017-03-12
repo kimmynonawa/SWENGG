@@ -12,5 +12,13 @@
 			return $res->result_array();
 		}
 		
+		public function getID($username, $password){
+			$this->db->where(array("username" => $username, "password" => $password));
+			$this->db->select('userID, name, acronym');
+			$this->db->from('ref_users');
+			$res = $this->db->get();
+			return $res->result_array();
+		}
+		
 	}
 ?>

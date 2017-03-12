@@ -9,26 +9,26 @@
 
     <title>LSCS</title>
 
-    <script src= "js/jquery.js"> </script>
+    <script src= "<?php echo base_url();?>js/jquery.js"> </script>
 
     <!-- Bootstrap -->
-     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 	
     <!-- bootstrap-progressbar -->
-    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="<?php echo base_url();?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -52,20 +52,20 @@
 
             <br />
 
-            <!-- sidebar menu -->
+             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="ORG_Home.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a> </li>
+                  <li><a href="ORG_Home.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
                   <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu"> 
-                      <li><a href="ORG_GOSM.html">GOSM</a></li>
+                      <li><a href="ORG_AddGOSM.html">Add New GOSM</li>
                       <li><a href="ORG_PreAct.html">Pre-Activity Form</a></li>
                     </ul>
                   </li>
                   <li><a href="ORG_Calendar.html"><i class="fa fa-table"></i> Calendar <span class="fa fa-chevron-down"></span></a>
-                  <li><a href="ORG_Charts.html"><i class="fa fa-bar-chart-o"></i> Charts <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="ORG_GOSM.html"><i class="fa fa-list-alt"></i> GOSM <span class="fa fa-chevron-down"></span></a>
                   </li>
                 </ul>
               </div>
@@ -199,48 +199,69 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-                    <form class="form-inline form-label-left" id="pprform2">
-                      <span class="section">Comprehensive Program Design</span>
+
+                    <form class="form-inline form-label-left" id="pprform3" method="post">
+                      <span class="section">Projected Income</span>
                         <div class="table-responsive">          
                           <table class="table table-striped">
                             <thead>
                               <tr>
-                                <th>Start Time</th>
-                                <th>End Time</th>
-                                <th>Activity</th>
-                                <th>Duration</th>
-                                <th>Description</th>
-                                <th>Person In-Charge</th>
+                                <th>Item Name</th>
+                                <th>Quantity</th>
+                                <th>Selling Price</th>
+                                <th>Amount</th>
                               </tr>
                             </thead>
-                            <tbody id="tr">
+                            <tbody id="trpi">
                               <tr>
-                                <td align= "center"> <input type="time" style="width:75px" class="form-control" name="time"> </td>
-                                <td align= "center"><input type= "time" style="width:75px"  class="form-control" name="stime"> </td>
-                                <td align= "center"> <input type="text" name="aname" class="form-control" id="act" placeholder="Activity name"/></td>
-                                 <td align= "center"> <input type="text" name="adur" class="form-control" id="dur" disabled="true" /></td>
-                                <td align= "center"> <input type="text" name="ades"  class="form-control" id="des" placeholder="Description of Activity"/></td>
-                                <td align= "center"> <input type="text" name="apic"  class="form-control" id="icharge" placeholder="Person in-charge"/></td>
+                                <td align= "center"><input type="text" name= "itm5" class="form-control" id="mat3" placeholder="Item name"/></td>
+                                <td align= "center"><input type="number" name="qty5" class="form-control" id="qty3" placeholder="Quantity"/></td>
+                                <td align= "center"><input type="text" name= "spr5" class="form-control" id="ucost3" placeholder="Selling Price"/></td>
+                                <td align="center" style= "background-color:#D3D3D3"><h4> P750.00</h4></td>
+                              </tr>
+                              <tr>
+                                <td><h4>Less: Projected Expenses</h4></td>
+                              </tr>
+                              <thead>
+                              <tr>
+                                <th>Item Name</th>
+                                <th>Quantity</th>
+                                <th>Selling Price</th>
+                                <th>Amount</th>
+                              </tr>
+                            </thead>
+                              <tr>
+                                <td align= "center"><input type="text" name= "itm5" class="form-control" id="mat3" placeholder="Item name"/></td>
+                                <td align= "center"><input type="number" name="qty5" class="form-control" id="qty3" placeholder="Quantity"/></td>
+                                <td align= "center"><input type="text" name= "spr5" class="form-control" id="ucost3" placeholder="Selling Price"/></td>
+                                <td align="center" style= "background-color:#D3D3D3"><h4> P750.00</h4></td>
                               </tr>
                             </tbody>
+                              <tr>
+                               <td align= "center"></td>
+                                <td align= "center"></td>
+                                <td align= "center"></td>
+                                <td align= "left"><h4>Total:</h4></td>                              
+                              </tr>
+
                            </table>
                           </div>
 
-                           <div class= "row">
-                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                                 <button id="addc2" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
-                                 <button id="remc2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                               </div>
-                            </div>
 
+                          <div class= "row">
+                            <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                               <button id="addc3" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                <button id="remc3" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                            </div>
+                          </div>
+
+                       </form>
                        <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-11">
-                          <button id="nextbppr2" type="submit" class="btn btn-success align: right">Next</button>
+                          <input id="nextbppr3" type="submit" class="btn btn-success align: right" value="Next">
                         </div>
                       </div>
-                         
-                      </form>
                   </div>
                 </div>
               </div>
@@ -250,47 +271,47 @@
         <!-- /page content -->
 
     <!-- jQuery -->
-      <script src="js/jquery.min.js"></script>
-    <script src= "js/jquery.validate.min.js"> </script>
-    <script src= js/validation.js>
+      <script src="<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
+    <script src="<?php echo base_url();?>js/validation.js"></script>
     <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <script src="<?php echo base_url();?>vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
+    <script src="<?php echo base_url();?>vendors/nprogress/nprogress.js"></script>
     <!-- Chart.js -->
-    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/Chart.js/dist/Chart.min.js"></script>
     <!-- gauge.js -->
-    <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/gauge.js/dist/gauge.min.js"></script>
     <!-- bootstrap-progressbar -->
-    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/iCheck/icheck.min.js"></script>
     <!-- Skycons -->
-    <script src="../vendors/skycons/skycons.js"></script>
+    <script src="<?php echo base_url();?>vendors/skycons/skycons.js"></script>
     <!-- Flot -->
-    <script src="../vendors/Flot/jquery.flot.js"></script>
-    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="../vendors/Flot/jquery.flot.time.js"></script>
-    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.time.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="<?php echo base_url();?>vendors/Flot/jquery.flot.resize.js"></script>
     <!-- Flot plugins -->
-    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/flot.curvedlines/curvedLines.js"></script>
     <!-- DateJS -->
-    <script src="../vendors/DateJS/build/date.js"></script>
+    <script src="<?php echo base_url();?>vendors/DateJS/build/date.js"></script>
     <!-- JQVMap -->
-    <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="<?php echo base_url();?>vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="<?php echo base_url();?>vendors/moment/min/moment.min.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+    <script src="<?php echo base_url();?>build/js/custom.min.js"></script>
 	
   </body>
 </html>

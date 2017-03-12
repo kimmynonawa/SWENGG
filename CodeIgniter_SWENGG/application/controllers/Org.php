@@ -7,6 +7,7 @@
 			$this->load->library('form_validation');
 			$this->load->library('encrypt');
 			$this->load->model("Org_model");
+			$this->load->library('session');
 		}
 		
 		//ADD NEW ORG
@@ -61,7 +62,7 @@
 			}
 			else  {
 				$encrypted = $this->encrypt->encode($this->input->post("orgpw"));
-				$this->Org_model->addOrg($this->input->post("orgname"),$this->input->post("orgun"),$encrypted,$this->input->post("orgemail"));
+				$this->Org_model->addOrg($this->input->post("orgname"),$this->input->post("orgacro"),$this->input->post("orgun"),$encrypted,$this->input->post("orgemail"));
 				$data = array ("success" => "true");
 				$this->load->view('CSO_NewOrg', $data);
 			}

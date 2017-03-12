@@ -10,19 +10,19 @@
 		
 		public function getnew(){
 			$this->db->where(array("status" => 1));
-			$this->db->from('gosm');
+			$this->db->from('activity');
 			$res = $this->db->get();
 			return $res->result_array();
 		}
 		
 		public function getall(){
-			$this->db->from('gosm');
+			$this->db->from('activity');
 			$res = $this->db->get();
 			return $res->result_array();
 		}
 		
 		public function setseen(){
-			$this->db->update('gosm', array("status" => 2));
+			$this->db->update('activity', array("status" => 2));
 			$this->db->where(array("status" => 1));
 		}
 		
@@ -36,10 +36,11 @@
 			return $res->result_array();
 		}
 		
-		public function insertActivity($data, $org, $gosm, $reto){
+		public function insertActivity($data, $org, $gosm, $reto, $orgname){
 			$this->db->insert('activity', 
 			array(
 				"organization" => $org,
+				"orgname" => $orgname,
 				"GOSMno" => $gosm,
 				"title" => $data['gosmtitle'],
 				"goals" => $data['gosmgoals'],
@@ -53,7 +54,9 @@
 				"budget" => $data['gosmbug'],
 				"activitynature" => $data['gosmnat'],
 				"activitytype" => $data['gosmtype'],
-				"reto" => $reto
+				"reto" => $reto,
+				"status" =>1,
+				"created" => date('Y-m-d H:i:s')
 			)
 			
 			);

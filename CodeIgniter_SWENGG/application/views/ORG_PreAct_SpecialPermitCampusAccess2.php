@@ -9,24 +9,25 @@
 
     <title>LSCS</title>
 
+    <script src= "js/jquery.js"> </script>
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="<?php echo base_url();?>/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 	
     <!-- bootstrap-progressbar -->
-    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="<?php echo base_url();?>/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>/build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -39,7 +40,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="images/img.jpg" alt="<?php echo base_url();?>." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -50,7 +51,7 @@
 
             <br />
 
-             <!-- sidebar menu -->
+              <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -113,7 +114,7 @@
                           <span class="time">3 mins ago</span>
                         </span>
                         <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                          Film festivals used to be do-or-die moments for movie makers. They were where<?php echo base_url();?>.
                         </span>
                       </a>
                     </li>
@@ -125,7 +126,7 @@
                           <span class="time">3 mins ago</span>
                         </span>
                         <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                          Film festivals used to be do-or-die moments for movie makers. They were where<?php echo base_url();?>.
                         </span>
                       </a>
                     </li>
@@ -137,7 +138,7 @@
                           <span class="time">3 mins ago</span>
                         </span>
                         <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                          Film festivals used to be do-or-die moments for movie makers. They were where<?php echo base_url();?>.
                         </span>
                       </a>
                     </li>
@@ -149,7 +150,7 @@
                           <span class="time">3 mins ago</span>
                         </span>
                         <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                          Film festivals used to be do-or-die moments for movie makers. They were where<?php echo base_url();?>.
                         </span>
                       </a>
                     </li>
@@ -169,9 +170,7 @@
         </div>
         <!-- /top navigation -->
   <!-- page content -->
-        
-          
-        <div class="right_col" role="main">
+          <div class="right_col" role="main">
           <div class="">
             <div class= "x_panel">
               <div class= "row">
@@ -187,8 +186,12 @@
                 </div>
               </div>
               <div class= "x_content bg-success">
-                <h4><p class="text-success"><b> Important Reminders: </b></p> <p class="text-success"> 1. This form is used ONLY for requesting permission for ACCESS OF PERSONS into the campus.</p> <p class="text-success"> 2. This form will be accepted only within office hours (Mon to Fri: 8:00am to 12:00pm and 1:30pm to 5:00pm). </p> <p class="text-success"> 3. This form must be submitted at the Security Office (J108) no later than two (2) working days before the requested date of campus access (Saturday is not counted as a working day for this purpose). </p><p class="text-success"> 4. This form is considered an application only unless a final decision is made and indicated on this form. </p> <p class="text-success">5. Clinics in campus are open only from 06:00am to 10:00pm, Mondays to Saturdays. </p></h4>
-              </div>
+                <h4><p class="text-success"><p>(1) This form is used ONLY for requesting permission for ACCESS OF PERSONS into the campus.
+											<p>(2)	This form will be accepted only within office hours (Mon to Fri: 8:00am to 12:00pm and 1:30pm to 5:00pm)
+											<p>(3)	This form must be submitted at the Security Office (J108) no later than two (2) working days before the requested date of campus access. (Saturday is not counted as a working day for this purpose)
+											<p>(4)	This form is considered an application only unless a final decision is made and indicated on this form.
+											<p>(5)	Clinics in campus are open only from 06:00am to 10:00pm, Mondays to Saturdays.</p>
+				</div>
             </div>
                 
             <div class="clearfix"></div>
@@ -197,26 +200,24 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-                    <form id="specialPermit2" method="post" autocomplete="off">
-                      <span class="section"></span>
-                    
+                    <form method="post" id = "specialPermit2" autocomplete="off">
+                     <span class="section"></span>
 
                       <div class= "row">
                         <div class="col-md-12">   
-                          <label class= "col-md-6"> <h4>List of Persons Covered By Special Permit</h4> </label>
+                          <label class= "col-md-3"> <h4>Requests</h4> </label>
                           <div class= "form-group col-md-12">
                             <table class="table table-striped">
                               <thead>
                                 <tr> </tr>
                               </thead>
-                              <tbody id="names">
+                              <tbody id="requests">
                                 <tr id ="details" class="details">
-                                <td>  <input class="form-control" name="lName" placeholder ="Enter Last Name" /></td>
-                                <td>  <input class="form-control" name="fName" placeholder ="Enter First Name" /></td>
-                                <td>  <input class="form-control" name="mName" placeholder ="Enter Middle Name" /></td>
-                                <td>  <input class="form-control" name="classification" placeholder ="Enter Classifcation" /></td>
-                                <td>  <input class="form-control" name="email" placeholder ="Enter Email"/></td>
-                                <td>  <input class="form-control" name="mNum" placeholder ="Enter Mobile Number"/></td>
+                                <td>  <input class="form-control" name="sdate" placeholder ="Enter Start Date" /></td>
+                                <td>  <input class="form-control" name="stime" placeholder ="Enter Start Time" /></td>
+                                <td>  <input class="form-control" name="edate" placeholder ="Enter End Date" /></td>
+                                <td>  <input class="form-control" name="etime" placeholder ="Enter End Time" /></td>
+                                <td>  <input class="form-control" name="venue" placeholder ="Enter Venue"/></td>
                                 </tr>
                               </tbody>
                             </table>
@@ -225,18 +226,18 @@
 
                         <div class = "buttons col-md-12">
                           <div class="col-md-3">
-                            <button id="addspca2" type ="button" class ="btn btn-default">  <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                            <button id="deletespca2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                            <button id="addspca" type ="button" class ="btn btn-default">  <span class="glyphicon glyphicon-plus-sign"></span> </button>
+                            <button id="deletespca" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
                           </div>    
                         </div>
-                      </div>  
-                     
+                      </div> 
+
                       <div class="ln_solid"></div> 
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-11">
-                          <input id="nextSpecialPermit2" type="submit" class="btn btn-success align: right" Value="Next">
+                          <input id="nextSpecialPermit1" type="submit" class="btn btn-success align: right" Value="Next" onclick="location.href='ORG_PreAct_SpecialPermitCampusAccess3.php';">
                         </div>
-                      </div>    
+                      </div>
                     </form>
                   </div><!-- xcontent -->
                 </div> <!-- xpanel -->              
@@ -245,51 +246,49 @@
           </div>
         </div>
 
-
     <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>/vendors/jquery/dist/jquery.min.js"></script>
+   <script src="js/jquery.min.js"></script>
     <script src= "js/jquery.validate.min.js"> </script>
-    <script src= js/validation.js></script>
-    <script src= "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js" </script>
-
+    <script src= "js/validation.js"></script>
     <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <script src="<?php echo base_url();?>/vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
+    <script src="<?php echo base_url();?>/vendors/nprogress/nprogress.js"></script>
     <!-- Chart.js -->
-    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src="<?php echo base_url();?>/vendors/Chart.js/dist/Chart.min.js"></script>
     <!-- gauge.js -->
-    <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+    <script src="<?php echo base_url();?>/vendors/gauge.js/dist/gauge.min.js"></script>
     <!-- bootstrap-progressbar -->
-    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="<?php echo base_url();?>/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <script src="<?php echo base_url();?>/vendors/iCheck/icheck.min.js"></script>
     <!-- Skycons -->
-    <script src="../vendors/skycons/skycons.js"></script>
+    <script src="<?php echo base_url();?>/vendors/skycons/skycons.js"></script>
     <!-- Flot -->
-    <script src="../vendors/Flot/jquery.flot.js"></script>
-    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="../vendors/Flot/jquery.flot.time.js"></script>
-    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <script src="<?php echo base_url();?>/vendors/Flot/jquery.flot.js"></script>
+    <script src="<?php echo base_url();?>/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="<?php echo base_url();?>/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="<?php echo base_url();?>/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="<?php echo base_url();?>/vendors/Flot/jquery.flot.resize.js"></script>
     <!-- Flot plugins -->
-    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+    <script src="<?php echo base_url();?>/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="<?php echo base_url();?>/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="<?php echo base_url();?>/vendors/flot.curvedlines/curvedLines.js"></script>
     <!-- DateJS -->
-    <script src="../vendors/DateJS/build/date.js"></script>
+    <script src="<?php echo base_url();?>/vendors/DateJS/build/date.js"></script>
     <!-- JQVMap -->
-    <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="<?php echo base_url();?>/vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="<?php echo base_url();?>/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="<?php echo base_url();?>/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="<?php echo base_url();?>/vendors/moment/min/moment.min.js"></script>
+    <script src="<?php echo base_url();?>/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+    <script src="<?php echo base_url();?>/build/js/custom.min.js"></script>
 	
   </body>
 </html>

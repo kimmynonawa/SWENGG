@@ -7,8 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title><?php echo ($this->session->userdata('org')[0]['acronym']);?></title>
+    <title>LSCS</title>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <!-- Bootstrap -->
     <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -27,11 +28,6 @@
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
-	
-	<!-- jQuery -->
-    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src="<?php echo base_url();?>js/jquery.validate.min.js"></script>
-    <script src="<?php echo base_url();?>js/validation.js"></script>
   </head>
 
   <body class="nav-md">
@@ -48,11 +44,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="<?php echo base_url();?>images/cso2.png" alt="..." class="img-circle profile_img">
+                <img src="<?php echo base_url();?>images/user.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2> <?php echo ($this->session->userdata('org')[0]['acronym']);?></h2>
+                <h2> LSCS</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -63,11 +59,11 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
-				  <li><a href="http://localhost/index.php/account/cso"><i class="fa fa-home"></i> Home <span ></span></a></li>
-                  <li><a href="http://localhost/index.php/org/add"><i class="fa fa-table"></i> Add New Organization <span ></span></a></li>
+				  <li><a href="http://localhost/index.php/account/org"><i class="fa fa-home"></i> Home <span ></span></a></li>
+                  <li><a href="http://localhost/index.php/gosm/add"><i class="fa fa-table"></i> Add New GOSM <span ></span></a></li>
+                  <li><a href="http://localhost/index.php/PreActivity/preacts"><i class="fa fa-edit"></i> Add Pre-Activity <span ></span></a></li>				  
 				  <li><a href="#"><i class="fa fa-calendar"></i> Calendar <span ></span></a></li>
-				  <li><a href="http://localhost/index.php/gosm/viewCSOGosm1"><i class="fa fa-list-alt"></i> GOSM <span ></span></a></li>
-			      <li><a href="#"><i class="fa fa-list-alt"></i> PreActs <span ></span></a></li>	
+				  <li><a href="http://localhost/index.php/gosm/viewORGGosm1"><i class="fa fa-list-alt"></i> GOSM <span ></span></a></li>
 				</ul>
               </div>
             </div>
@@ -75,7 +71,6 @@
           </div>
         </div>
 
-        <!-- top navigation -->
         <div class="top_nav">
 		
           <div class="nav_menu">
@@ -84,26 +79,13 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   <?php echo ($this->session->userdata('org')[0]['name']);?>
+                   La Salle Computer Society
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="http://localhost/index.php/account/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
                   </ul>
                 </li>
-				<!--NOTIF-->
-                <li role="presentation" class="dropdown">
-                  <a id="but" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <div id="num">
-						
-					</div>
-                  </a>
-                  <ul name="notif" id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu" style="width: 300px; height: 200px; overflow: auto">
-					<!--NOTIFICATION HERE-->
-					
-                  </ul>
-				  <!--NOTIF-->
                 </li>
               </ul>
             </nav>
@@ -111,91 +93,79 @@
         </div>
         <!-- /top navigation -->
 
-     <!-- page content -->
+		<!-- Main content -->
         <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
+          
+          <div class="page-title">
               <div class="title_left">
-                <h3>View Activities of the Organizations</h3>
+                  <h3>Project Proposal</h3>
               </div>
-            </div>
           </div>
+          
           <div class="clearfix"></div>
 
-      
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="x_panel">
-                <div class="x_content">
-                  <form id="gosmcso" class="form-horizontal form-label-left" action="viewCSOGosm3" method ="post" autocomplete="off">
-                    <span class="section"> Select the Necessary Fields</span>
-                    <div class= "row">
-						
-                        <div class="col-md-8">   
-                          <label class= "col-md-3"> <h4>Organization Name</h4> </label>
-                             <div class= "form-group col-md-7">
-                              <select id="OrgOptions" class="form-control col-md-7 col-xs-12" name="gosmcsoorg">
-								 <option disabled selected>Select Organization</option>
-                                 <?php
-									for ($i=0; $i<count($orgs);$i++){
-										echo"<option value={$orgs[$i]['userID']}>{$orgs[$i]['name']}</option>";
-									}
-								  ?>
-                              </select>
-								
-								<script>
-									$('#OrgOptions').on('change',function(){
-										var org = $('#OrgOptions').val();
-										$.ajax({
-											url: "viewCSOGosm2",
-											method: "POST",
-											data:{
-												'org':org
-											},
-											success: function(data){
-												console.log(data)
-												$('#actOptions').empty ();
-												$('#actOptions').append('<option disabled selected>Select Activity Type</option>');
-												for (i = 0; i < data.length; i++){
-													$('#actOptions').append('<option value="'+ data[i].activityID +'">'+ data[i].title +'</option>');
-												}
-											}
-										});
-									});
-									
-								</script>
-								
-                            </div>        
-                        </div>
-                      </div>
-                      <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-3"> <h4>Activity Name</h4> </label>
-                            <div class= "form-group col-md-7">
-							<select id="actOptions" class="form-control col-md-7 col-xs-12" name="gosmcsoact">
-                                <option disabled selected>Select Activity Type</option>
-                            </select>
-                            </div>        
-                        </div>
-                      </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_content">
+                          <form class="form-horizontal form-label-left" id= "pprform1" method="post">
 
-                    <div class="ln_solid"></div> 
+                              <div class="row" id="ph" >
+                                  <span class="section">General Information</span>
+                                  <p><label> <h3> Project Head </h3> </label></p>
+                              </div>
 
-                    <div class="form-group">
-                      <div class="col-md-12 col-md-offset-11">
-                        <input type ="submit" class="btn btn-success align: right" value ="Next">
-                      </div>
+                            <div class= "row">
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                 <button id="addc" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                 <button id="remc" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                               </div>
+                            </div>
+
+                          <div class= "row">
+                           <p><label> <h3> Objectives</h3> </label></p>
+                                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                  <input type="text" name="obje1" class="form-control" id="obj1" placeholder="1st Objective">
+                                  <p></p>
+                                  <input type="text" name="obje2" class="form-control" id="obj2" placeholder="2nd Objective">
+                                  <p></p>
+                                  <input type="text" name="obje3" class="form-control" id="obj3" placeholder="3rd Objective">
+                                </div>
+                            </div>
+                
+                            <div class= "row">
+                                 <p><label> <h3> Brief Description of Activity </h3> </label></p>
+                                  <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                    <p class="text-success">/*Guidelines per paragraph are shown here.*/</p>
+                                     <textarea name="desc1" class="form-control"></textarea> 
+
+                                    <p class="text-success">/*Guidelines per paragraph are shown here.*/</p>
+                                     <textarea  name="desc2" class="form-control"></textarea>
+
+                                    <p class="text-success">/*Guidelines per paragraph are shown here.*/</p>
+                                     <textarea  name="desc3" class="form-control"></textarea>
+                                  </div>
+                            </div>
+
+                             <div class="ln_solid"></div> 
+                                <div class="form-group">
+                                  <div class="col-md-12 col-md-offset-11">
+                                    <input id="nextbppr" type="submit" class="btn btn-success align: right" value="Next">
+                                  </div>
+                                </div>
+                          </form>  
+                        </div>
                     </div>
-
-                  </form>            
-                </div> <!-- row -->
-              </div> 
+                </div>
             </div>
-          </div>
-        </div>
+
+         </div>
         <!-- /page content -->
 
-    
+    <!-- jQuery -->
+    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.validate.min.js"></script>
+    <script src= "<?php echo base_url();?>js/validation.js"></script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -230,10 +200,10 @@
     <script src="<?php echo base_url();?>vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <!-- bootstrap-daterangepicker -->
     <script src="<?php echo base_url();?>vendors/moment/min/moment.min.js"></script>
-    <script src="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.js"></script>x
 
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url();?>build/js/custom.min.js"></script>
-	
+
   </body>
 </html>

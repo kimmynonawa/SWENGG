@@ -145,7 +145,8 @@
 					'gosmnat'  => $this->input->post("gosmnat"),
 					'gosmtype'  => $this->input->post("gosmtype"),
 				);
-				$org = 2;
+				$org = $this->session->userdata('org')[0]['userID'];
+				$orgname = $this->session->userdata('org')[0]['acronym'];
 				$gosm = 1;
 				
 				if ($this->input->post("reto") == 'yes'){
@@ -155,11 +156,11 @@
 					$reto = 0;
 				}
 				
-				$this->Gosm_model->insertActivity($data, $org, $gosm, $reto);
-				$this->load->view('ORG_AddGosm');
+				$this->Gosm_model->insertActivity($data, $org, $gosm, $reto, $orgname);
+				$data = array ("success" => "true");
+				$this->load->view('ORG_AddGosm', $data);
 			}
 			
-				
 		} 
 		
 		
@@ -177,10 +178,19 @@
 		}
 		
 		public function viewCSOGosm3(){
-			$gosmdetails = $this->Gosm_model->getGosmDetails(1);
-			
+			$gosmdetails = $this->Gosm_model->getGosmDetails($this->input->post('gosmcsoact'));
 			$data = array("activity" => $gosmdetails);
 			$this->load->view('CSO_GOSM2', $data);
+			
+		}
+		
+		public function viewORGGosm1(){
+			$res = $this->Activity_model->getAct($this->session->userdata('org')[0]['userID']);
+			$data = (array("acts" => $res));
+			$this->load->view('ORG_GOSM', $data);
+		}
+		
+		public function viewORGGosm2(){
 			
 		}
 		
