@@ -61,3 +61,17 @@ img#csoimg {
     max-width: 350px;
     position: relative;
 }
+
+body {
+    overflow-x: hidden;
+}
+
+
+ .error {
+    color:#b03060;
+    font-weight: normal;
+}
+
+.valid {
+    color:#318839;
+}

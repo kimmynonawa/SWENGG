@@ -1,8 +1,6 @@
+
+
 $(function(){
-
-	// FOOD ENTRY PERMIT 1
-	var foodform= $('#formFoodEntry');
-
 	jQuery.validator.addMethod("lettersonly", function(value, element) {
 	return this.optional(element) || /^[a-z\s]+$/i.test(value);
 	})
@@ -40,6 +38,10 @@ $(function(){
 			}
 
 		},
+
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
 
 		messages: {
 			Name:{
@@ -89,6 +91,10 @@ $(function(){
 			fodes: "required",
 			foecost: "required"
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
+
 
 		messages: {
 			fqty:{
@@ -144,7 +150,7 @@ $(function(){
 		rules: {
 			pubname: "required",
 			
-			pubtypedropdown: "required",
+			pubtype: "required",
 			
 			pubfreq: {
 				required: true,
@@ -181,13 +187,17 @@ $(function(){
 
 			},
 
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
+
 		messages: {
 			pubname: {
 				required: 'Enter publication name'
 			},
 
-			pubtypedropdown:{
-				required: 'Pick publication type'
+			pubtype:{
+				required: 'Enter publication type'
 			},
 
 			pubfreq: {
@@ -242,8 +252,9 @@ $(function(){
 			},
 
 		}
-	});
-	$('#nextpub').click(function() {
+
+		});
+	$('#nextpub').click(function(){
       if (pubform.valid()){
          window.location.href = "ORG_PreAct_MinorPublicationProposal2.html";
        }
@@ -304,6 +315,9 @@ $(function(){
 
 			
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
 
 		messages: {
 			npages: {
@@ -360,7 +374,7 @@ $(function(){
 				lettersonly: 'Alphabetic characters only'
 			}
 		}
-	});     
+		});     
 	//MINOR PUBLICATION PROPOSAL 2
 
 	//PROJECT PROPOSAL 1 - CATHY
@@ -399,6 +413,10 @@ $(function(){
 			desc3:  "required",
 
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
+
 
 		messages: {
 			'phname[]': {
@@ -446,7 +464,7 @@ $(function(){
 				required: 'Enter description'
 			},
 		}
-	});
+		});
 
 	$("#ph").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="phname[]" class="form-control has-feedback-left" id="name" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="phnum[]" class="form-control" id="contact" placeholder="Contact Number"><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div></div></div>');
 
@@ -483,6 +501,10 @@ $(function(){
 			
 			'apic[]': "required"
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
+
 
 		messages: {
 			'aname[]': {
@@ -532,6 +554,9 @@ $(function(){
 			'qty3[]': "required",
 			'ucost3[]':"required",
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
 
 		messages: {
 			'mat3[]': {
@@ -546,8 +571,7 @@ $(function(){
 				required: 'Enter unit cost'
 			},
 		}
-	});
-
+		});
     $("#addc3").click(function() {
       $("#trr").append('<tr id="newtr"><td align= "center"><input type="text" class="form-control" id="act" name="mat3[]" placeholder="Material name"/></td> <td align= "center"><input type="number" class="form-control" id="act" name="qty3[]" placeholder="Quantity"/></td><td align= "center"><input type="number" class="form-control" id="des" name="ucost3[]" placeholder="Unit Cost"/></td> <td align="center" style= "background-color:#D3D3D3"><h4> P750.00</h4></td></tr>');   
      });
@@ -583,6 +607,9 @@ $(function(){
 			pf4:"required"
 
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
 
 		messages: {
 			of41: {
@@ -618,8 +645,7 @@ $(function(){
 				required: 'Enter amount'
 			}
 		}
-	});
-    
+		});    
     $("#addc4").click(function(){
        $("#tr").append('<tr id="newtr"> <td><input type="text" class="form-control" id="sname" name="sname[]" placeholder="Other Source"/></td> <td> <input type="Number" name="samt[]" class="form-control" id="of" placeholder="Enter Amount"/></td></tr>');   
      });
@@ -628,6 +654,53 @@ $(function(){
        v.remove();
     });
     // END CATHY EDIT
+
+    //PROJECT PROPOSAL 5
+    var pprform5= $('#pprform5');
+	pprform5.validate({
+		rules: {
+			itm5:"required",
+			qty5: "required",
+			spr5:"required",
+			itm55:"required",
+			qty55: "required",
+			spr55:"required",
+		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
+
+
+		messages: {
+			itm5: 	{ required : 'Enter name'},
+			qty5: 	{ required : 'Enter quantity'},
+			spr5: 	{ required : 'Enter price'},
+			itm55: 	{ required : 'Enter name'},
+			qty55: 	{ required : 'Enter quantity'},
+			spr55: 	{ required : 'Enter price'},
+		}
+		});
+    $("#addc51").click(function() {
+      $("#tr51").append(' <tr id = "newtr51"><td align= "center"><input type="text" name= "itm5" class="form-control" id="itm5" placeholder="Item name"/></td><td align= "center"><input type="number" name="qty5" class="form-control" id="qty5" placeholder="Quantity"/></td><td align= "center"><input type="text" name= "spr5" class="form-control" id="spr5" placeholder="Selling Price"/></td><td align="center" style= "background-color:#D3D3D3"><h4> P750.00</h4></td></tr>');   
+     });
+    $("#remc51").click(function() {
+      var v= document.getElementById("newtr51");
+      v.remove();
+  	 });	
+    $("#addc52").click(function() {
+     $("#tr52").append('<tr id = "newtr52"><td align= "center"><input type="text" name= "itm5" class="form-control" id="itm5" placeholder="Item name"/></td><td align= "center"><input type="number" name="qty5" class="form-control" id="qty5" placeholder="Quantity"/></td><td align= "center"><input type="text" name= "spr5" class="form-control" id="spr5" placeholder="Selling Price"/></td><td align="center" style= "background-color:#D3D3D3"><h4> P750.00</h4></td></tr>');   
+     });
+    $("#remc52").click(function() {
+      var v= document.getElementById("newtr52");
+      v.remove();
+  		});	
+	$('#nextbppr5').click(function() {
+      if (pprform5.valid()){
+          window.location.href = "";
+      }
+       return false;
+    	});
+    //PROJECT PROPOSAL 5
 
     //GOSM 1
     var gosmform1= $('#gosmform1');
@@ -649,9 +722,11 @@ $(function(){
 			},
 			gosmnat:"required",
 			gosmtype:"required"
-
-
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
+
 
 		messages: {
 			gosmtit:{
@@ -694,357 +769,14 @@ $(function(){
 				required: 'Pick tpe of activity'
 			}	
 		}
-	});
+		});
     // GOSM 1
-
-    // GOSM 2
-    var gosmform2= $('#gosmform2');
-	gosmform2.validate({
-		rules: {
-			phname:{
-				required: true,
-				lettersonly: true
-			},
-			yename: {
-				required: true,
-				lettersonly: true
-			},
-			ianame:{
-				required: true,
-				lettersonly: true
-			},
-			eaname:{
-				required: true,
-				lettersonly: true
-			},
-			hrname:{
-				required: true,
-				lettersonly: true
-			},
-			prmname:{
-				required: true,
-				lettersonly: true
-			},
-			prmstatus:"required",
-			fnname:{
-				required: true,
-				lettersonly: true
-			},
-			fnstatus:"required",
-			docname:{
-				required: true,
-				lettersonly: true
-			},
-			docstatus:"required"
-
-		},
-
-		messages: {
-
-			phname:{
-				required: 'Enter name',
-				lettersonly: 'Alphabetic characters only'
-			},
-			yename: { 
-				required: 'Enter name',
-				lettersonly: 'Alphabetic characters only'
-			},
-			ianame: {
-				required: 'Enter name',
-				lettersonly: 'Alphabetic characters only'
-			},
-			eaname: {
-				required: 'Enter name',
-				lettersonly: 'Alphabetic characters only'
-			},
-			hrname: {
-				required: 'Enter name',
-				lettersonly: 'Alphabetic characters only'
-			},
-			prmname: {
-				required: 'Enter name',
-				lettersonly: 'Alphabetic characters only'
-			},
-			prmstatus: { 
-				required: 'Enter status'
-			},
-			fnname: {
-				required: 'Enter name',
-				lettersonly: 'Alphabetic characters only'
-			},
-			fnstatus: { 
-				required: 'Enter status'
-			},
-			docname: {
-				required: 'Enter name',
-				lettersonly: 'Alphabetic characters only'
-			},
-			docstatus: {
-				required: 'Enter status'
-			}
-			
-		}
-	});
-
-   	$("#gnph").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="phname[]" class="form-control has-feedback-left" id="phname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
-
-    $("#addcgosm2").click(function() {
-            $("#gnph").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="phname[]" class="form-control has-feedback-left" id="phname" placeholder="Name"><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> </div></div>');   
-         });
-
-     $("#remcgosm2").click(function() {
-            var v= document.getElementById("newph");
-            v.remove();
-      });
-
-
-     $("#gnye").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="yename" class="form-control has-feedback-left" id="yename" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
-
-    $("#addyegosm2").click(function() {
-            $("#gnye").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="yename" class="form-control has-feedback-left" id="ye name" placeholder="Name"><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> </div></div>');   
-          });
-
-     $("#remyegosm2").click(function() {
-            var v= document.getElementById("newph");
-            v.remove();
-      });
-
-     $("#gnia").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="ianame" class="form-control has-feedback-left" id="ianame" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
-
-     $("#addiagosm2").click(function() {
-            $("#gnia").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="ianame" class="form-control has-feedback-left" id="ia name" placeholder="Name"><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> </div></div>');   
-          });
-
-     $("#remiagosm2").click(function() {
-            var v= document.getElementById("newph");
-            v.remove();
-      });
-
-     $("#gnea").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="eaname" class="form-control has-feedback-left" id="eaname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
-
-     $("#addeagosm2").click(function() {
-            $("#gnea").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="eaname" class="form-control has-feedback-left" id="ea name" placeholder="Name"><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> </div></div>');   
-          });
-
-     $("#remeagosm2").click(function() {
-            var v= document.getElementById("newph");
-            v.remove();
-      });
-
-     $("#gnhr").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="hrname" class="form-control has-feedback-left" id="hrname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
-
-     $("#addhrgosm2").click(function() {
-            $("#gnhr").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="hrname" class="form-control has-feedback-left" id="hr name" placeholder="Name"><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> </div></div>');   
-          });
-
-     $("#remhrgosm2").click(function() {
-            var v= document.getElementById("newph");
-            v.remove();
-      });
-
-
-
-     $("#gnprm").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="prmname" class="form-control has-feedback-left" id="prmname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="prmstatus" class="form-control" id="prmstatus" placeholder="Status"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div></div></div>');
-
-     $("#addprmgosm2").click(function() {
-            $("#gnprm").append(' <div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="prmname" class="form-control has-feedback-left" id="prmname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="prmstatus" class="form-control" id="prmstatus" placeholder="Status"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div></div></div>');   
-         });
-
-     $("#remprmgosm2").click(function() {
-            var v= document.getElementById("newph");
-            v.remove();
-          });
-
-
-
-     $("#gnfn").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="fnname" class="form-control has-feedback-left" id="fnname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="fnstatus" class="form-control" id="fnstatus" placeholder="Status"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div></div></div>');
-
-     $("#addfngosm2").click(function() {
-            $("#gnfn").append(' <div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="fnname" class="form-control has-feedback-left" id="fnname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="fntatus" class="form-control" id="fnstatus" placeholder="Status"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div></div></div>');   
-          });
-
-     $("#remfngosm2").click(function() {
-            var v= document.getElementById("newph");
-            v.remove();
-          });
-
-
-     $("#gndoc").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="docname" class="form-control has-feedback-left" id="docname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="docstatus" class="form-control" id="docstatus" placeholder="Status"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div></div></div>');
-
-     $("#adddocgosm2").click(function() {
-            $("#gndoc").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="docname" class="form-control has-feedback-left" id="docname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="docstatus" class="form-control" id="docstatus" placeholder="Status"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div></div></div>');   
-          });
-
-     $("#remdocgosm2").click(function() {
-            var v= document.getElementById("newph");
-            v.remove();
-          });
-    // GOSM2 
-
-   // GOSM 3
-    var gosmform3= $('#gosmform3');
-	gosmform3.validate({
-		rules: {
-
-			ptgname:{
-				required:true,
-				lettersonly:true
-			},
-			vdgname:{
-				required:true,
-				lettersonly:true
-			},
-			hstname:{
-				required:true,
-				lettersonly:true
-			},
-			eqpname:{
-				required:true,
-				lettersonly:true
-			},
-			spkname:{
-				required:true,
-				lettersonly:true
-			},
-			spkstatus:"required",
-			spkmail:{
-				required:true,
-				email: true
-			},
-			spnname:{
-				required:true,
-				lettersonly:true
-			},
-			spnstatus:"required",
-			spnmail:{
-				required:true,
-				email: true
-			}
-
-		},
-
-		messages: {
-
-			ptgname:{
-				required: 'Enter name',
-				lettersonly: 'Alphabetic characters only'
-			},
-			vdgname: { 
-				required: 'Enter name',
-				lettersonly: 'Alphabetic characters only'
-			},
-			hstname: {
-				required: 'Enter name',
-				lettersonly: 'Alphabetic characters only'
-			},
-			eqpname: {
-				required: 'Enter equipment',
-				lettersonly: 'Alphabetic characters only'
-			},
-			spkname: {
-				required: 'Enter name',
-				lettersonly: 'Alphabetic characters only'
-			},
-			spkstatus: {
-				required: 'Enter status'
-			},
-			spnstatus: { 
-				required: 'Enter status'
-			},
-			spnname: {
-				required: 'Enter name',
-				lettersonly: 'Alphabetic characters only'
-			},
-			spkmail: { 
-				required: 'Enter e-mail',
-				email: 'Invalid e-mail'
-			},
-			spnmail: {
-				required: 'Enter e-mail',
-				email: 'Invalid e-mail'
-			}
-		}
-	});
-
-
-   	$("#gnptg").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="ptgname[]" class="form-control has-feedback-left" id="ptgname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
-
-     $("#addptggosm3").click(function() {
-			$("#gnptg").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="ptgname[]" class="form-control has-feedback-left" id="ptgname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');   
-			
-		  });
-
-     $("#remptggosm3").click(function() {
-            var v= document.getElementById("newph");
-            v.remove();
-      });
-
-
-   	 $("#gnvdg").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="vdgname" class="form-control has-feedback-left" id="vdgname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
-
-     $("#addvdggosm3").click(function() {
-            $("#gnvdg").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="vdgname" class="form-control has-feedback-left" id="vdgname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');   
-         });
-
-     $("#remvdggosm3").click(function() {
-            var v= document.getElementById("newph");
-            v.remove();
-      });
-
-    
-     $("#gnhst").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="hstname" class="form-control has-feedback-left" id="hstname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
-
-     $("#addhstgosm3").click(function() {
-            $("#gnhst").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="hstname" class="form-control has-feedback-left" id="hstname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');   
-          });
-
-     $("#remhstgosm3").click(function() {
-            var v= document.getElementById("newph");
-            v.remove();
-      });
-
-     $("#gneqp").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="eqpname" class="form-control has-feedback-left" id="eqpname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');
-
-     $("#addeqpgosm3").click(function() {
-            $("#gneqp").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="eqpname" class="form-control has-feedback-left" id="eqpname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div></div></div>');   
-          });
-
-     $("#remeqpgosm3").click(function() {
-            var v= document.getElementById("newph");
-            v.remove();
-      });
-
-     $("#gnspk").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="spkname" class="form-control has-feedback-left" id="spkname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="spkstatus" class="form-control" id="spkstatus" placeholder="Status"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div><div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="email" name="spkmail" class="form-control" id="spkmail" placeholder="juan_delacruz@dlsu.edu.ph"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div></div></div>');
-
-     $("#addspkgosm3").click(function() {
-            $("#gnspk").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="spkname" class="form-control has-feedback-left" id="spkname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="spkstatus" class="form-control" id="spkstatus" placeholder="Status"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div><div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="email" name="spkmail" class="form-control" id="spkmail" placeholder="juan_delacruz@dlsu.edu.ph"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div></div></div>');   
-          });
-
-	 $("#remspkgosm3").click(function() {
-            var v= document.getElementById("newph");
-            v.remove();
-          });
-
-     $("#gnspn").append('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="spnname" class="form-control has-feedback-left" id="spnname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="spnstatus" class="form-control" id="spnstatus" placeholder="Status"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div><div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="email" name="spnmail" class="form-control" id="spnmail" placeholder="juan_delacruz@dlsu.edu.ph"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div></div></div>');
-
-     $("#addspngosm3").click(function() {
-            $("#gnspn").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="spnname" class="form-control has-feedback-left" id="spnname" placeholder="Name" ><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="spnstatus" class="form-control" id="spnstatus" placeholder="Status"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div><div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="email" name="spnmail" class="form-control" id="spnmail" placeholder="juan_delacruz@dlsu.edu.ph"><span class="fa fa-user form-control-feedback right" aria-hidden="true"></span></div></div></div>');   
-          });
-
-	 $("#remspngosm3").click(function() {
-            var v= document.getElementById("newph");
-            v.remove();
-          });
-    // GOSM3
 
     // ADD NEW ORG CSO
    	var csoneworg= $('#csoneworg');
 	csoneworg.validate({
 		rules: {
 			orgname:{
-				required: true
-			},
-			orgacro:{
 				required: true
 			},
 			orgun:{
@@ -1063,14 +795,14 @@ $(function(){
 				required: true
 			}
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
+
 
 		messages:{
 			orgname:{
 				required: 'Enter Name'
-			},
-			
-			orgacro:{
-				required: 'Enter Acronym'
 			},
 
 			orgun:{
@@ -1091,13 +823,13 @@ $(function(){
 			}
 			
 		}
-	});
-	$('#nextbcson').click(function() {
+		});
+	$('#nextbcson').click(function(){
     	if (csoneworg.valid()){
         	window.location.href = "";
         }
         return false;
-   	});
+   		});
     // ADD NEW ORG CSO
 
     // ORG_GOSM 
@@ -1108,17 +840,21 @@ $(function(){
 				required:true
 			}
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
+
 
 		messages:{
 			gosmactivityorg: 'Please pick an Activity'		
 		}
-	});
+		});
 	$('#nextorggosm').click(function() {
     	if (gosmorg.valid()){
         	window.location.href = "";
         }
         return false;
-   	});
+   		});
     // ORG_GOSM 
 
     // CSO_GOSM
@@ -1133,19 +869,21 @@ $(function(){
 			}
 
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
 
 		messages:{
 			gosmcsoorg: 'Please pick an organization',
 			gosmcsoact: 'Please pick an activity'		
 		}
-	});
+		});
 	$('#nextcsogosm').click(function() {
     	if (gosmcso.valid()){
         	window.location.href = "CSO_GOSM2.html";
         }
         return false;
-   	});
-
+   		});
     // CSO_GOSM
 
     //A_FORM 
@@ -1171,6 +909,9 @@ $(function(){
 				required:true
 			}
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
 
 		messages:{
 			actName: {
@@ -1221,8 +962,17 @@ $(function(){
 			enp: {
 				required:true,
 				maxlength: 6
+			},
+			venue: {
+				required: true
+			},
+			select: {
+				required: true
 			}
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
 
 		messages:{
 			actDate: {
@@ -1241,15 +991,21 @@ $(function(){
 			enp: {
 				required: 'Enter expect number of participants',
 				maxlength: 'Maximum number of participants exceeded'
+			},
+			venue: {
+				required: 'Enter venue'
+			},
+			select: {
+				required: 'Please select duration of activity'
 			}
 		}
-	});
+		});
 	$('#nextaform2').click(function() {
     	if (aform2.valid()){
         	window.location.href = "";
         }
         return false;
-   	});
+   		});
    	//A_FORM2
 
    	// O_ EQUIPMENT ENTRY
@@ -1267,6 +1023,9 @@ $(function(){
 				required:true
 			}
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
 
 		messages:{
 			Name: {
@@ -1280,43 +1039,34 @@ $(function(){
 				required: 'Enter reason for request'
 			}
 		}
-	});
+		});
 	$('#nextEquipment').click(function() {
     	if (formEquipment.valid()){
         	window.location.href = "";
         }
         return false;
-   	});
+   		});
 
    	// O_ EQUIPMENT ENTRY
 
-
-   	//mechanicsForm
-   	var mechanicsForm= $('#mechanicsForm');
-	mechanicsForm.validate({
+   	//Approval change act details
+   	var approvalChanges= $('#approvalChanges');
+	approvalChanges.validate({
 		rules: {
-			guidelines: {
+			actTitle: {
+				required: true
+			},
+			actType: {
 				required:true
 			},
-			mechanics: {
+			date: {
+				required: true
+			},
+			venue : {
 				required:true
 			},
-			criteria: {
+			startTime: {
 				required:true
-			},
-			judges: {
-				required:true,
-				lettersonly: true
-			
-			},
-			questions: {
-				required:true
-			}
-		},
-
-		messages:{
-			guidelines: {
-				required: 'Enter guidelines'
 			},
 			mechanics: {
 				required: 'Enter mechanics'
@@ -1344,6 +1094,7 @@ $(function(){
 			CSOactType: {
 				required:true
 			},
+
 			reason: {
 				required:true
 			},
@@ -1353,11 +1104,30 @@ $(function(){
 			
 			}
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
 
 		messages:{
-			CSOactType: {
-				required: ' Pick activity type'
+			actTitle: {
+				required: 'Enter activity title'
 			},
+			actType: {
+				required: 'Pick activity type'
+			},
+			date: {
+				required: 'Pick date of activity'
+			},
+			venue : {
+				required: 'Enter venue of activity'
+			},
+			startTime: {
+				required: 'Enter time'
+			},
+			endTime: {
+				required: 'Enter time'
+			},
+
 			reason: {
 				required: 'Enter reason of change'
 			},
@@ -1375,6 +1145,43 @@ $(function(){
         return false;
    	});
    	//Approval change act details
+
+
+
+    // Approval change act details comprehensive design
+    var changecom= $('#changecom');
+	changecom.validate({
+		rules: {
+			aname:"required",
+			stime: "required",
+			ades:"required",
+			apic: "required"
+		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
+
+		messages: {
+			aname: {required: 'Enter activity name'},
+			stime:{required: 'Enter time'},
+			ades:{required: 'Enter activity description'},
+			apic:{required: 'Enter person-in-charge'}
+		}
+		});     
+    $("#addcom").click(function(){
+        $("#trcomdes").append('<tr id= "newcom"><td align= "center"> <input type="time" style="width:75px" class="form-control" name="time"> </td><td align= "center"><input type= "time" style="width:75px"  class="form-control" name="stime"> </td><td align= "center"> <input type="text" name="aname" class="form-control" id="act" placeholder="Activity name"/></td><td align= "center"> <input type="text" name="adur" class="form-control" id="dur" disabled="true" /></td><td align= "center"> <input type="text" name="ades"  class="form-control" id="des" placeholder="Description of Activity"/></td><td align= "center"> <input type="text" name="apic"  class="form-control" id="icharge" placeholder="Person in-charge"/></td></tr>');   
+    	 });
+    $("#remcom").click(function(){
+       var v= document.getElementById("newcom");
+       v.remove(); 
+    	});
+	$('#nextbchangecom').click(function() {
+         if (changecom.valid()){
+           window.location.href = "";
+         }
+        	return false  
+   	  		});
+    //Approval change act details comprehensive design
 
    	//approval use trademark1
    	var formTrademark= $('#formTrademark');
@@ -1408,6 +1215,9 @@ $(function(){
 				minlength: 11,
 			}
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
 
 		messages:{
 			Name: {
@@ -1437,14 +1247,13 @@ $(function(){
 				maxlength: 'Invalid cellphone number'
 			},
 		}
-	});
+		});
 	$('#nextTrademark').click(function() {
     	if (formTrademark.valid()){
         	window.location.href = "ORG_PreAct_ApprovalUseTrademark2.html";
         }
         return false;
-   	});
-
+   		});
    	//approval use trademark1
 
    	//approval use trademark2
@@ -1466,10 +1275,13 @@ $(function(){
 			actType: {
 				required:true,
 			},
-			venueList: {
+			venue: {
 				required:true,
 			}
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
 
 		messages:{
 			matToProduce: {
@@ -1487,31 +1299,27 @@ $(function(){
 			actType: {
 				required: 'Pick activity type'
 			},
-			venueList: {
+			venue: {
 				required: 'Pick venue'
 			}
 		}
-	});
+		});
 	$('#nextTrademark2').click(function() {
     	if (formTrademark1.valid()){
         	window.location.href = "";
         }
         return false;
-   	});
+   		});
 
-
-    $("#tmarks").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"> <div class="col-md-8"><label class= "col-md-5"> <h4>Trademark To Use:</h4> </label> <div class= "form-group col-md-6"> <select class="select2_group form-control" name="tmChoice"> <optgroup label="Logos / Design"> <option value="delasalleuniversitylogo">De La Salle University Logo</option><option value="starscholarsdesign">Star Scholars Design</option></optgroup><optgroup label="DLSU labels"><option value="delasalleuniversity">De La Salle University</option><option value="dlsum">DLSU-M</option><option value="lasallegreenarchers">La Salle Green Archers</option><option value="lasalle">La Salle</option><option value="dlsu">DLSU</option><option value="greenarcher">Green Archer</option> <option value="delasalleathletics">De La Salle Athletics</option></optgroup><optgroup label="DLSU taglines"><option value="animolasalle">Animo La Salle</option><option value="thefuturebeginshere">The Future Begins Here</option><option value="wemeanbusiness">We Mean Business</option><option value="creatingthenextgreatidea">Creating the Next Great Idea</option> <option value="bepartofthebusinessclass">Be Part of the Business Class</option><option value="keeplearning">Keep Learning</option><option value="hiptobehere">Hip to Be Here</option> <option value="beyondhigherlearning">Beyond Higher Learning</option><option value="nevershallwefail">Never Shall We Fail</option><option value="greenwhitefights">Green White Fights</option></optgroup></select></div></div></div></div>')
-
-  	$("#addtm").click(function() {
+   		$("#tmarks").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"> <div class="col-md-8"><label class= "col-md-5"> <h4>Trademark To Use:</h4> </label> <div class= "form-group col-md-6"> <select class="select2_group form-control" name="tmChoice"> <optgroup label="Logos / Design"> <option value="delasalleuniversitylogo">De La Salle University Logo</option><option value="starscholarsdesign">Star Scholars Design</option></optgroup><optgroup label="DLSU labels"><option value="delasalleuniversity">De La Salle University</option><option value="dlsum">DLSU-M</option><option value="lasallegreenarchers">La Salle Green Archers</option><option value="lasalle">La Salle</option><option value="dlsu">DLSU</option><option value="greenarcher">Green Archer</option> <option value="delasalleathletics">De La Salle Athletics</option></optgroup><optgroup label="DLSU taglines"><option value="animolasalle">Animo La Salle</option><option value="thefuturebeginshere">The Future Begins Here</option><option value="wemeanbusiness">We Mean Business</option><option value="creatingthenextgreatidea">Creating the Next Great Idea</option> <option value="bepartofthebusinessclass">Be Part of the Business Class</option><option value="keeplearning">Keep Learning</option><option value="hiptobehere">Hip to Be Here</option> <option value="beyondhigherlearning">Beyond Higher Learning</option><option value="nevershallwefail">Never Shall We Fail</option><option value="greenwhitefights">Green White Fights</option></optgroup></select></div></div></div></div>')
+   	$("#addtm").click(function() {
        $("#tmarks").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"> <div class="col-md-8"><label class= "col-md-5"> </label> <div class= "form-group col-md-6"> <select class="select2_group form-control" name="tmChoice"> <optgroup label="Logos / Design"> <option value="delasalleuniversitylogo">De La Salle University Logo</option><option value="starscholarsdesign">Star Scholars Design</option></optgroup><optgroup label="DLSU labels"><option value="delasalleuniversity">De La Salle University</option><option value="dlsum">DLSU-M</option><option value="lasallegreenarchers">La Salle Green Archers</option><option value="lasalle">La Salle</option><option value="dlsu">DLSU</option><option value="greenarcher">Green Archer</option> <option value="delasalleathletics">De La Salle Athletics</option></optgroup><optgroup label="DLSU taglines"><option value="animolasalle">Animo La Salle</option><option value="thefuturebeginshere">The Future Begins Here</option><option value="wemeanbusiness">We Mean Business</option><option value="creatingthenextgreatidea">Creating the Next Great Idea</option> <option value="bepartofthebusinessclass">Be Part of the Business Class</option><option value="keeplearning">Keep Learning</option><option value="hiptobehere">Hip to Be Here</option> <option value="beyondhigherlearning">Beyond Higher Learning</option><option value="nevershallwefail">Never Shall We Fail</option><option value="greenwhitefights">Green White Fights</option></optgroup></select></div></div></div></div>');   
-	});
+		});
 
      $("#deletetm").click(function() {
             var v= document.getElementById("newph");
             v.remove();
       });
-
-
    	//approval use trademark2
 
    	//special approval slip
@@ -1532,6 +1340,9 @@ $(function(){
 				lettersonly: true
 			}
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
 
 		messages:{
 			actType: {
@@ -1549,105 +1360,77 @@ $(function(){
 				
 			}		
 		}
-	});
+		});
 	$('#nextSas').click(function() {
     	if (sas.valid()){
         	window.location.href = "";
         }
         return false;
-   	});
+   		});
    	//special approval slip
 
-   	//spca
+   	//spca1
    	var spca1= $('#specialPermit1');
 	spca1.validate({
 		rules: {
-			actType: {
-				required:true
-			},
-			enmp: {
-				required:true,
-				maxlength: 5
-			},
-			enp: {
-				required:true,
-				maxlength: 5
-			},
-			Faculty: {
-				required: true
-			},
-			sdate: {
-				required: true
-			},
-			stime: {
-				required: true
-			},
-			edate: {
-				required: true
-			},
-			etime: {
-				required: true
-			},
-			venue: {
-				required: true
-			}
+			actTitle: {required: true},
+			sdate:    {required: true},
+			stime:    {required: true},
+			edate:    {required: true},
+			etime:    {required: true},
+			venue:    {required: true},
+	   		numPersons:{required: true},
+  			outsidersOption:{required: true},
+	      Faculty: 	  {required: true, lettersonly: true}
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
 
 		messages:{
-			actType: {
-				required: 'Pick activity type'
-			},
-			enmp: {
-				required: 'Enter ENMP',
-				maxlength: 'Maximum ENMP exceeded'
-			},
-			enp: {
-				required:'ENTER ENP',
-				maxlength: 'Maximum ENP exceeded'
-			},
-			Faculty: {
-				required: 'Enter faculty name'
-			},
-			sdate: {
-				required: 'Enter start date'
-			},
-			stime: {
-				required: 'Enter start time'
-			},
-			edate: {
-				required: 'Enter end date'
-			},
-			etime: {
-				required: 'Enter end time'
-			},
-			venue: {
-				required: 'Enter venue'
-			}	
+		 actTitle: 	  {required: 'Enter activity title'},
+			sdate:    {required: 'Enter date'},
+			stime:    {required: 'Enter time'},
+			edate:    {required: 'Enter date'},
+			etime:    {required: 'Enter time'},
+			venue:    {required: 'Enter venue'},
+	   		numPersons:{required: 'Enter number of persons'},
+ 		    outsidersOption:{required: 'Pick option'},
+	      Faculty: 	  {required: 'Enter name'}
 		}
-	});
+		});
 	$('#nextSpecialPermit1').click(function() {
     	if (spca1.valid()){
         	window.location.href = "ORG_PreAct_SpecialPermitCampusAccess2.html";
         }
         return false;
-   	});
-
+   		});
+   	$("#addspca").click(function() {
+      $("#requests").append('<tr id ="detailss" class="details"> <td><input class="form-control" name="sdate" type="date" /></td><td> <input class="form-control" name="edate" placeholder ="Enter End Date" type="date"/></td><td> <input class="form-control" name="stime" type="time" placeholder ="Enter Start Time" /></td><td> <input class="form-control" name="etime" placeholder ="Enter End Time" type="time"/></td><td>  <input class="form-control" name="venue" placeholder ="Enter Venue"/></td></tr>');   
+     	});
+    $("#deletespca").click(function() {
+      var v= document.getElementById("detailss");
+      	v.remove();
+    	});
    	//spca1
 
 
-   	 //spca
+   	//spca 2
    	var spca2= $('#specialPermit2');
 	spca2.validate({
 		rules: {
 			lName: {
-				required:true
+				required:true,
+				lettersonly: true
 			},
 			fName: {
 				required:true,
+				lettersonly: true
 			},
 			mName: {
 				required:true,
-				maxlength: 5
+				maxlength: 5,
+				lettersonly: true
 			},
 			classification: {
 				required: true
@@ -1662,24 +1445,30 @@ $(function(){
 				maxlength:11
 			}
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
 
 		messages:{
 
 			lName: {
-				required: 'Enter Last Name'
+				required: 'Enter Last Name',
+				lettersonly: 'Alphabetic characters only'
 			},
 			fName: {
-				required: 'Enter First Name'
+				required: 'Enter First Name',
+				lettersonly: 'Alphabetic characters only'
 			},
 			mName: {
-				required: 'Enter Middle Name'
+				required: 'Enter Middle Name',
+				lettersonly: 'Alphabetic characters only'
 			},
 			classification: {
 				required: 'Enter Classification'
 			},
 			email: {
-				required: 'Enter Email address',
-				email: 'Enter correct Email Address'
+				required: 'Enter DLSU e-mail',
+				email: 'Invalid e-mail'
 			},
 			mNum: {
 				required: 'Enter Mobile Number',
@@ -1688,13 +1477,21 @@ $(function(){
 			}
 			
 		}
-	});
+		});
 	$('#nextSpecialPermit2').click(function() {
     	if (spca2.valid()){
         	window.location.href = "ORG_PreAct_SpecialPermitCampusAccess3.html";
         }
         return false;
-   	});
+   		});
+   	$("#addspca2").click(function() {
+      $("#names").append('<tr id ="detailss" class="details"> <<td>  <input class="form-control" name="lName" placeholder ="Enter Last Name" /></td><td>  <input class="form-control" name="fName" placeholder ="Enter First Name" /></td> <td>  <input class="form-control" name="mName" placeholder ="Enter Middle Name" /></td><td>  <input class="form-control" name="classification" placeholder ="Enter Classifcation" /></td><td>  <input class="form-control" name="email" placeholder ="Enter Email"/></td><td>  <input class="form-control" name="mNum" placeholder ="Enter Mobile Number"/></td></tr>');   
+     });
+    $("#deletespca2").click(function() {
+      var v= document.getElementById("detailss");
+      	v.remove();
+   	 });
+   	// spca 2
 
    	//spca3
    	var spca3= $('#specialPermit3');
@@ -1717,7 +1514,6 @@ $(function(){
 				minlength: 11
 			},
 			TelNo: {
-				required: true,
 				maxlength: 7,
 				minlength: 7
 			},
@@ -1726,6 +1522,9 @@ $(function(){
 				email: true
 			}
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
 
 		messages:{
 			Name: {
@@ -1745,7 +1544,6 @@ $(function(){
 				minlength: 'Invalid cellphone number'
 			},
 			TelNo: {
-				required: 'Enter telephone number',
 				maxlength: 'Invalid telephone number',
 				minlength: 'Invalid telephone number'
 			},
@@ -1755,21 +1553,23 @@ $(function(){
 			}		
 		}
 	});
+
+   $('#nextSpecialPermit3').click(function() {
+   		if(spcaform3.valid()){
+        	window.location.href = "";
+   		}
+   	});
    	//spca3
+
    	//org preact
    	var opre= $('#preActForm');
 	opre.validate({
 		rules: {
-			preActType: {
+			gosmoption: {
 				required:true
 			}
 		},
 
-		messages:{
-			preActType: {
-				required: 'Pick activity type'
-			}	
-		}
 	});
 	$('#nextPreAct').click(function() {
     	if (opre.valid()){
@@ -1811,6 +1611,9 @@ $(function(){
 				min: 5
 			}
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
 
 		messages:{
 			id:{
@@ -1842,55 +1645,19 @@ $(function(){
         	window.location.href = "";
         }
         return false;
-   	});
+   		});
 
-		$("#add").click(function () {
-                var det = document.getElementById('details'); 
-                var cln = det.cloneNode(true);
-                var ig = document.getElementById('student');
-                ig.appendChild(cln);    
-                //var ctr = document.getElementsByClassName("details").length;
-            });
-            $("#delete").click(function () {
-                var count = document.getElementsByClassName("details").length;
-                var last = document.getElementsByClassName("details").item(count-1);
-                if(count >1){
-                    last.remove();
-                }
-                console.log(count);
-            });
+	$("#add").click(function () {
+		$('#student').append('<tr id ="detailz" class="details"><td>  <input class="form-control" name ="id" placeholder ="Enter ID Number" /></td><td>  <input class="form-control" name ="lName" placeholder ="Enter Last Name" /></td> <td>  <input class="form-control" name = "fName" placeholder ="Enter First Name" /></td><td>  <input class="form-control" name ="mName" placeholder ="Enter Middle Initial" /></td><td>  <input class="form-control" name = "age" placeholder ="Enter Age" style ="width:120px"/></td><td> <input type="checkbox" class="js-switch" name="choice" /></td></tr>')
+
+           		});
+    $("#delete").click(function () {
+      var v= document.getElementById("detailz");
+      v.remove();
+            	});
    	// list of participants
 
 
-
-   	//spca
-
-   	$("#addspca").click(function() {
-      $("#requests").append('<tr id ="detailss" class="details"> <td><input class="form-control" name="sdate" type="date" /></td><td> <input class="form-control" name="edate" placeholder ="Enter End Date" type="date"/></td><td> <input class="form-control" name="stime" type="time" placeholder ="Enter Start Time" /></td><td> <input class="form-control" name="etime" placeholder ="Enter End Time" type="time"/></td><td>  <input class="form-control" name="venue" placeholder ="Enter Venue"/></td></tr>');   
-     });
-
-   	 
-    $("#deletespca").click(function() {
-      var v= document.getElementById("detailss");
-      	v.remove();
-    });
-
-    //
-
-    //spca 2
-
-   	$("#addspca2").click(function() {
-      $("#names").append('<tr id ="detailss" class="details"> <<td>  <input class="form-control" name="lName" placeholder ="Enter Last Name" /></td><td>  <input class="form-control" name="fName" placeholder ="Enter First Name" /></td> <td>  <input class="form-control" name="mName" placeholder ="Enter Middle Name" /></td><td>  <input class="form-control" name="classification" placeholder ="Enter Classifcation" /></td><td>  <input class="form-control" name="email" placeholder ="Enter Email"/></td><td>  <input class="form-control" name="mNum" placeholder ="Enter Mobile Number"/></td></tr>');   
-     });
-
-   	 
-    $("#deletespca2").click(function() {
-      var v= document.getElementById("detailss");
-      	v.remove();
-    });
-
-
-    //spca2
    	// contest mechanics 
    	var conmech= $('#conmech');
 	conmech.validate({
@@ -1912,6 +1679,9 @@ $(function(){
 				required: true
 			}
 		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
 
 		messages:{
 			guidelines:{
@@ -1931,17 +1701,15 @@ $(function(){
 				required: 'Enter question'
 			}
 		}
-	});
+		});
 
+	$("#mech").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"><div class="col-md-8"><label class= "col-md-2"> <h4>Mechanics</h4> </label><div class= "form-group col-md-6"><input type="text" name= "mechanics" class="form-control" placeholder="ex: Sing and dance with your blockmates"/></div></div></div>');
 
-
-   	$("#mech").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"><div class="col-md-8"><label class= "col-md-2"> <h4>Mechanics</h4> </label><div class= "form-group col-md-6"><input type="text" name= "mechanics" class="form-control" placeholder="ex: Sing and dance with your blockmates"/></div></div></div>')
-
-   	$("#addmech").click(function() {
+	$("#addmech").click(function() {
             $("#mech").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-8"><label class= "col-md-2"></label><div class= "form-group col-md-6"><input type="text" name= "mechanics" class="form-control" placeholder="ex: Sing and dance with your blockmates"/></div></div></div></div>');   
 	});
 
-     $("#deletemech").click(function() {
+    $("#deletemech").click(function() {
             var v= document.getElementById("newph");
             v.remove();
       });
