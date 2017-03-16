@@ -4,24 +4,47 @@
 			$this->load->database();
 		}
 		
-		public function newContestMechanics($actno,$guidelines){
-			return $this->db->insert('contestmechanics', array("activityID" => $actno, "guidelines" => $guidelines));
+		// TESTED
+		public function newContestMechanics($generalInfo){
+			return $this->db->insert('contestmechanics', array( "activityID"   => $generalInfo['actno'], 
+																"guidelines"   => $generalInfo['guidelines'],
+																"organization" => $generalInfo['organization']));
 		}
 
+		// TESTED
 		public function addContestMechanicsDetails($contestMechanicsNum,$mechanicsDetails) {
-			return $this->db->insert('cm_mechanics', array("CONTESTMECHANICSno" => $contestMechanicsNum, "mechanics" => $mechanicsDetails));
+			$mechanicsDetails = $mechanicsDetails['mechanics[]'];
+			for ($i = 0; $i < sizeof($mechanicsDetails); $i++) {
+				$this->db->insert('cm_mechanics', array( "CONTESTMECHANICSno" => $contestMechanicsNum, 
+														 "mechanics" 		  => $mechanicsDetails[$i]));
+			}
 		}
 
+		// TESTED
 		public function addContestMechanicsCriteria($contestMechanicsNum,$criteriaDetails) {
-			return $this->db->insert('cm_criteria', array("CONTESTMECHANICSno" => $contestMechanicsNum, "criteria" => $criteriaDetails));
+			$criteriaDetails = $criteriaDetails['criteria[]'];
+			for ($i = 0; $i < sizeof($criteriaDetails); $i++) {
+				$this->db->insert('cm_criteria', array(	"CONTESTMECHANICSno" => $contestMechanicsNum, 
+														"criteria" 			 => $criteriaDetails[$i]));
+			}
 		}
 
-		public function addContestMechanicsJudges($contestMechanicsNum,$judgeName) {
-			return $this->db->insert('cm_judges', array("CONTESTMECHANICSno" => $contestMechanicsNum, "name" => $judgeName));
+		// TESTED
+		public function addContestMechanicsJudges($contestMechanicsNum,$judges) {
+			$judges = $judges['judges[]'];
+			for ($i = 0; $i < sizeof($judges); $i++) {
+				$this->db->insert('cm_judges', array(	"CONTESTMECHANICSno" => $contestMechanicsNum, 
+														"name" 				 => $judges[$i]));
+			}
 		}
 
+		// TESTED
 		public function addContestMechanicsQuestions($contestMechanicsNum,$questionDetails) {
-			return $this->db->insert('cm_questions', array("CONTESTMECHANICSno" => $contestMechanicsNum, "question" => $questionDetails));
+			$questionDetails = $questionDetails['questions[]'];
+			for ($i = 0; $i < sizeof($questionDetails); $i++) {
+				$this->db->insert('cm_questions', array(	"CONTESTMECHANICSno" => $contestMechanicsNum, 
+															"question" 			 => $questionDetails[$i]));
+			}
 		}
 
 		public function getContestMechanicsNumber($actno) {

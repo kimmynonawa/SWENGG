@@ -4,50 +4,77 @@
 			$this->load->database();
 		}
 		
-		public function minorpub($pubname, $pubtype, $pubfreq, $pubcost, $pubdate, $obj1, $obj2, $obj3, $cont1, $cont2, $cont3, $targ1, $targ2, $targ3,
-								$pagenum, $pagemember, $spreadsize, $spreadmember, $papertype, $papermember, $colornum, $colormember, $copynum, $copymember, $pubcontent)
+		public function minorpub($data, $org, $orgname, $activity)
 		{
-			//activityID and organization should come from session, datecreated should be now()
-			$this->db->insert('MINORPUBPROPOSAL', array("activityID" => 1, "organization" => 1,
-														"pubname" => $pubname, "releasedate" => $pubdate, "pubtype" => $pubtype, "frequency" => $pubfreq,
-														"estcost" => $pubcost, "objective1" => $obj1, "objective2" => $obj2, "objective3" => $obj3,
-														"content1" => $cont1, "content2" => $cont2, "content3" => $cont3,
-														"target1" => $targ1, "target2" => $targ2, "target3" => $targ3,
-														"datecreated" => "01/01/2000 01:01:01"));
-														
-			//MINORPUBPROPOSALno should come from the current minor pub proposal no being created
-			$this->db->insert('MINORPUB_DETAILS', array("idMINORPUB_DETAILS" => 1, "MINORPUBPROPOSALno" => 1,
-														"pageno" => $pagenum, "pageno_member" => $pagemember,
-														"spreadsize" => $spreadsize, "spreadsize_member" => $spreadmember,
-														"papertype" => $papertype, "papertype_member" => $papermember,
-														"colorno" => $colornum, "colorno_member" => $colormember,
-														"copyno" => $copynum, "copyno_member" => $copymember));
+			$this->db->insert('minorpubproposal', 
+			array(
+				"activityID" => $activity,
+				"organization" => $org,
+				"pubname" => $data['pubname'],
+				"releasedate" => $data['tdate'],
+				"pubtype" => $data['pubtype'],
+				"frequency" => $data['pubfreq'],
+				"estcost" => $data['pubcost'],
+				"objective1" => $data['obj1'],
+				"objective2" => $data['obj2'],
+				"objective3" => $data['obj3'],
+				"content1" => $data['cont1'],
+				"content2" => $data['cont2'],
+				"content3" => $data['cont3'],
+				"target1" => $data['tread1'],
+				"target2" => $data['tread2'],
+				"target3" => $data['tread3'],
+				"datecreated" => date('Y-m-d H:i:s'),
+				"pageno" => $data['npages'],
+				"pageno_member" => $data['bm1'],
+				"spreadsize" => $data['ssize'],
+				"spreadsize_member" => $data['bm2'],
+				"papertype" => $data['ptype'],
+				"papertype_member" => $data['bm3'],
+				"colorno" => $data['ncolor'],
+				"colorno_member" => $data['bm4'],
+				"copyno" => $data['ncopies'],
+				"copyno_member" => $data['bm5']
+			)
+			
+			);
 		}
 		
-		public function sas($activity, $submission, $reason, $submittedby, $president)
+		public function sasform($data, $org, $orgname)
 		{
-			$this->db->insert('SAS', array("type" => $submission, "justification" => $reason, "submittedby" => $submittedby, 
-											"datesubmitted" => "01/01/2000 01:01:01", "notedby" => "Null", "datenoted" => "01/01/2000 01:01:01"));
-											
+			$this->db->insert('sas', 
+			array(
+				"type" => $data['submissionType'],
+				"justification" => $data['reason'],
+				"submittedby" => $data['name'],
+				"datesubmitted" => date('Y-m-d H:i:s'),
+				"notedby" => "Null",
+				"datenoted" => "Null",
+				"organization" => $org
+			)
 			
-			$this->db->select_max('SASno');
-			$query = $this->db->get('SAS');
-
-			$data = array
-			(
-               'SASno' => $query
-            );
-			
-			$this->db->where('activityID', $activity);
-			$this->db->update('activity', $data); 
+			);
 		}
 		
-		public function spca($act, $enmp, $enp, $faculty, $type, $org, $name, $IDnum, $office, $cellphone, $telephone, $email)
+		public function spca($data, $org, $orgname, $activity)
 		{
-			$this->db->insert('SPCA', array("activityID" => $act, "requestedby" => $org, "requestedby_position" => $name, 
-											"office" => $office, "telephone" => $telephone, "IDno" => $IDnum, "mobile" => $cellphone,
-											"email" => $email, "facultyincharge" => $faculty, "campusaccesstype" => $type, "datecreated" => "01/01/2000 01:01:01",
-											"ENP" => $enp, "ENMP" => $enmp));
+			$this->db->insert('spca', 
+			array(
+				"activityID" => $activity,
+				"requestedby" => $data['Name'],
+				"requestedby_position" => "Null",
+				"office" => date('Y-m-d H:i:s'),
+				"telephone" => $data['TelNo'],
+				"IDno" => $data['IDnum'],
+				"mobile" => $data['CPno'],
+				"email" => $data['Email'],
+				"facultyincharge" => 'Null',
+				"datecreated" => date('Y-m-d H:i:s'),
+				"ENP" => $data['numPersons'],
+				"ENMP" => 0
+			)
+			
+			);
 		}
 	}
 ?>

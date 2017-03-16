@@ -83,7 +83,7 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="http://localhost/index.php/account/logout"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                    <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
                   </ul>
                 </li>
                 </li>
@@ -96,192 +96,114 @@
      <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
-
             <div class="page-title">
               <div class="title_left">
                 <h3>CSO Chart Details</h3>
               </div>
-              </div>
 
+              </div>
+            </div>
             <div class="clearfix"></div>
 
             <div class="row">
 
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-                  <form action= "ORG_Home.html" method="post">
-                    <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                      <div class="x_title">
-                      <h2>ORGANIZATION NAME </h2> 
-                      <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>
-                      </ul>
-                      <div class="clearfix"></div>
-                      </div>
-              <div class="x_content">
-              <span class="section">Activity Information</span>
-                <div class="item form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Name: </label>
-                  <p>Leadership Seminar</p>
-                </div>
+					<form action= "ORG_Home.html" method="post">
+						<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+						  <div class="x_title">
+							<h2>ORGANIZATION NAME </h2> 
+							<ul class="nav navbar-right panel_toolbox">
+							  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+							  </li>
+							</ul>
+							<div class="clearfix"></div>
+						  </div>
+						  <div class="x_content">
+							<span class="section">Activity Information</span>
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Name: </label>
+									<p> <?php echo $activity[0]['title'];?></p>
+								</div>
 
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Goals: </label>
-                            <p>To hone the officers' and Young Officers' skills in terms of leadership and public speaking</p>
-                          </div>
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Goals: </label>
+									<p><?php echo $activity[0]['goals'];?></p>
+								</div>
 
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Brief Description: </label>
-                            <p>This is a leadership training for all the Young Officers and Officers of YES. This workshop</p>
-                          </div>
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
-                            <p>aims to give YES' Officers insights on public speaking and leadership skills so that they can</p> 
-                          </div>
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12"></label> 
-                            <p>apply it to their daily lives as an officer and as a person as well.</p>
-                          </div>
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Brief Description: </label>
+									<p><?php echo $activity[0]['description'];?></p>
+								</div>
+								
 
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Measures: </label>
-                            <p>Attendance</p>
-                          </div>
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Measures: </label>
+									<p><?php echo $activity[0]['measures'];?></p>
+								</div>
+								
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Person In Charge: </label>
+									<p><?php echo $activity[0]['personInCharge'];?></p>
+								</div>
 
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">GOSM Target Date: </label>
-                            <p>November 04, 2016</p>
-                          </div>
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">GOSM Target Date: </label>
+									<p><?php 
+									$fromdate = $activity[0]['fromDate'];
+									$fromdatenew = strtotime($fromdate);
+									$formatted_fromdate = date('F d, Y', $fromdatenew);
+									echo $formatted_fromdate;?> 
+									- 
+									<?php 
+									$todate = $activity[0]['toDate'];
+									$todatenew = strtotime($todate);
+									$formatted_todate = date('F d, Y', $todatenew);
+									echo $formatted_todate;?></p>
+								</div>
 
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Time: </label>
-                            <p>9:00am-11am</p>
-                          </div>
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Venue: </label>
+									<p><?php echo $activity[0]['venue'];?></p>
+								</div>
 
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Venue: </label>
-                            <p>Y507</p>
-                          </div>
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Nature: </label>
+									<p><?php echo $activity[0]['activitynature'];?></p>
+								</div>
 
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Nature: </label>
-                            <p>Academic</p>
-                          </div>
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Type: </label>
+									<p><?php echo $activity[0]['activitytype'];?></p>
+								</div>
 
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Type: </label>
-                            <p>Seminar/Workshops</p>
-                          </div>
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Related to: </label>
+									<p>R - 1</p>
+								</div>
 
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Related to: </label>
-                            <p>R - 1</p>
-                          </div>
-
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Budget Breakdown: </label>
-                            <p>P1000.00</p>
-                          </div>
-                          
-                        
-                        <span class="section">The Central Committee</span>
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Project Head/s: </label>
-                            <p>Aldrich Opiniano (VP Human Resources), and Allene Quintana (AVP Training and Development)</p>
-                          </div>
-                          
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Young Executives: </label>
-                            <p>"Young Executives"</p>
-                          </div>
-                          
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Internal Affairs Head/s: </label>
-                            <p>"Internal Affairs"</p>
-                          </div>
-                          
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">External Affairs  Head/s: </label>
-                            <p>"External Affairs"</p> 
-                          </div>
-
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Human Resources Head/s: </label> 
-                            <p>"Human Resources"</p>
-                          </div>
-
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Communications Head/s: </label>
-                            <p>"Communications"</p>
-                          </div>
-
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Promotions Head/s: </label>
-                            <p>"Promotions"</p>
-                          </div>
-
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Finance Head/s: </label>
-                            <p>Ryan King</p>
-                          </div>
-
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Documentations Head/s: </label>
-                            <p>Alex Espiritu</p>
-                          </div>
-                      
-                          
-                        <span class="section">Others</span>
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Photographers: </label>
-                            <p>"Photographers"</p>
-                          </div>
-
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Videographers: </label>
-                            <p>"Videographers"</p>
-                          </div>
-
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Host/s: </label>
-                            <p>"Hosts"</p> 
-                          </div>
-
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Speaker/s: </label> 
-                            <p>"Speakers"</p>
-                          </div>
-
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Sponsor/s: </label>
-                            <p>"Sponsors"</p>
-                          </div>
-
-                          <div class="item form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Equipment Needed: </label>
-                            <p>"Equipments"</p>
-                          </div>
-                          <br />
-                          <br />
-                        </div>
-                      </div> <!-- end of inner col-md-12 col-sm-12 col-xs-12"-->
-                          
-                      
-                      <button type="submit" class="btn btn-success col-md-offset-11" id="submit">NEXT</button>
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Budget Breakdown: </label>
+									<p><?php echo $activity[0]['budget'];?></p>
+								</div>
+						  </div>
+					  </div> <!-- end of inner col-md-12 col-sm-12 col-xs-12"-->
+								
+						
+						<button type="submit" class="btn btn-success col-md-offset-11" id="submit">NEXT</button>
         
               </div> <!-- END OF -ROW- DIV -->
               </form>
-              </div>
             </div> <!-- END OF X PANEL -->
           </div> <!-- END OF col-md-12 col-sm-12 col-xs-12 -->
         </div> <!-- END OF ROW FINAL!!!!!!!! -->
 
-            
+        <!-- HI KIM IF YOU'RE READING THIS YUNG BUTTON TYPE TO INPUT TYPE YUNG INIBA DI KO NA BINAGO YUNG ALIGNMENT TY!!!-->
+						
         <!-- /page content -->
-		
-     <!-- jQuery -->
+
+    <!-- jQuery -->
     <script src="<?php echo base_url();?>vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>

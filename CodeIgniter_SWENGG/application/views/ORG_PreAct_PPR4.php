@@ -18,16 +18,19 @@
     <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
     <!-- bootstrap-progressbar -->
     <link href="<?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
     <link href="<?php echo base_url();?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="<?php echo base_url();?>vendors/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
+
   </head>
 
   <body class="nav-md">
@@ -199,17 +202,17 @@
                             <tbody id= "tr">
                               <tr>
                                 <td><h4>Organizational Funds</h4></td>
-                                <td> <input type="Number" name="of41" class="form-control" id="of" placeholder="Enter Amount"/></td>
+                                <td> <input type="Number" name="orgFunds" class="form-control" id="of" placeholder="Enter Amount"/></td>
                               </tr>
 
                               <tr>
                                 <td><h4>Participants Fee</h4></td>
-                                <td> <input type="Number" name="pf41" class="form-control" id="pf" placeholder="Enter Amount"/></td>
+                                <td> <input type="Number" name="participantsFee" class="form-control" id="pf" placeholder="Enter Amount"/></td>
                               </tr>
 
                               <tr>
-                                <td> <input type="text"   name= "sname[]" class="form-control" id="sname" placeholder="Other Source"/></td>
-                                <td> <input type="Number" name="samt[]" class="form-control" id="oaf" placeholder="Enter Amount"/></td>
+                                <td> <input type="text"   name= "sourceName[]" class="form-control" id="sourceName" placeholder="Other Source"/></td>
+                                <td> <input type="Number" name="sourceAmount[]" class="form-control" id="sourceAmount" placeholder="Enter Amount"/></td>
                               </tr>
 
                             </tbody>
@@ -228,22 +231,21 @@
 
                         <div class="table-responsive">          
                           <table class="table table-bordered">
-
                             <tbody>
                               <tr>
                                 <td><h4>Operational Funds</h4></td>
-                                <td> <input type="Number" name="amt4"class="form-control" id="opf" placeholder="Enter Amount"/></td>
+                                <td> <input type="Number" name="operationalFundsAmount"class="form-control" id="operationalFundsAmount" placeholder="Enter Amount"/></td>
                               </tr>
                               <tr>
                                 <td><h4>Depository Funds as of</h4></td>
                                 <td>
-                                  <input type="date" name="dpf4" class="form-control" id="dpf"/> 
-                                  <input type="Number" name= "dpfam" class="form-control" id="dpfam" placeholder="Enter Amount"/>
+                                    <input type="date" name="depositoryDate" class="form-control" id="dpf"/>
+                                    <input type="Number" name= "depositoryAmount" class="form-control" id="depositoryAmount" placeholder="Enter Amount"/>
                                 </td>
                               </tr>
                               <tr>
                                 <td><h4>Participants Fee/Donation/Sponsorships</h4></td>
-                                <td><input type="Number" name= "pf4" class="form-control" id="dpam" placeholder="Enter Amount"/></td>
+                                <td><input type="Number" name= "donSporFunds" class="form-control" id="donSporFunds" placeholder="Enter Amount"/></td>
                               </tr>
 
                               <tr>
@@ -284,11 +286,61 @@
         </div>
         <!-- /page content -->
 
-    <!-- jQuery -->
-    <script src="<?php echo base_url();?>vendors/jquery/dist/jquery.min.js"></script>
-   <script src="<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
-    <script src="<?php echo base_url();?>js/validation.js"></script>
+    <!-- SCRIPT FOR VALIDATION AND ROW ADDING -->
+    <script type="text/javascript">
+      $(function() {
+        function removeError(element){
+          element.addClass('valid').closest('.form-group').removeClass('has-error');
+        }
+        $('#pprform41').validate({
+          rules: {
+            orgFunds:"required",
+            participantsFee: "required",
+            depositoryAmount: "required",
+            operationalFundsAmount:"required",
+            depositoryDate: "required",
+            donSporFunds:"required"
+
+          },
+          highlight: function(element){ 
+            $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+          },
+          success: removeError,
+          messages: {
+            orgFunds: {
+              required: 'Enter amount'
+            },
+
+            participantsFee:{
+              required: 'Enter amount'
+            },
+            operationalFundsAmount: {
+              required: 'Enter amount'
+            },
+
+            depositoryAmount: {
+              required: 'Enter amount'
+            },
+
+            depositoryDate:{
+              required: 'Enter date'
+            },
+
+            donSporFunds:{
+              required: 'Enter amount'
+            }
+          }
+        });
+    
+        $("#addc4").click(function(){
+           $("#tr").append('<tr id="newtr"> <td><input type="text" class="form-control" id="sourceName" name="sourceName[]" placeholder="Other Source"/></td> <td> <input type="Number" name="sourceAmount[]" class="form-control" id="of" placeholder="Enter Amount"/></td></tr>');   
+         });
+        $("#remc4").click(function(){
+           var v= document.getElementById("newtr");
+           v.remove();
+        });
+      });
+    </script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

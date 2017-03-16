@@ -18,16 +18,18 @@
     <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
     <!-- bootstrap-progressbar -->
     <link href="<?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
     <link href="<?php echo base_url();?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
+     <!-- jQuery -->
+    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src= "<?php echo base_url();?>js/jquery.validate.min.js"> </script>
+
   </head>
 
   <body class="nav-md">
@@ -155,10 +157,58 @@
         </div>
         <!-- /page content -->
 
-    <!-- jQuery -->
-      <script src="<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src= "<?php echo base_url();?>js/jquery.validate.min.js"> </script>
-    <script src= "<?php echo base_url();?>js/validation.js"></script>
+    <!-- SCRIPT FOR VALIDATION AND ROW ADDING -->
+    <script type="text/javascript">
+      $(function() {
+        function removeError(element){
+          element.addClass('valid').closest('.form-group').removeClass('has-error');
+        }
+        $('#pprform2').validate({
+          rules: {
+            'aname[]':"required",
+            
+            'stime[]': "required",
+
+            'ades[]':"required",
+            
+            'apic[]': "required"
+          },
+
+          highlight: function(element){ 
+            $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+          },
+          success: removeError,
+
+          messages: {
+            'aname[]': {
+              required: 'Enter activity name'
+            },
+
+            'stime[]':{
+              required: 'Enter time'
+            },
+
+            'ades[]':{
+              required: 'Enter activity description'
+            },
+
+            'apic[]':{
+              required: 'Enter person-in-charge'
+            }
+          }
+        });
+
+
+        $("#addc2").click(function(){
+            $("#tr").append('<tr id="newtr"><td align= "center"> <input type="time" name="time[]"> - <input type= "time" name="stime[]"> </td><td align= "center"> <input type="text" name="aname[]" class="form-control" id="act" placeholder="Activity name"/></td><td align= "center"> <input type="text" name="ades[]"  class="form-control" id="des" placeholder="Description of Activity"/></td><td align= "center"> <input type="text" name="apic[]"  class="form-control" id="icharge" placeholder="Person in-charge"/></td></tr>');   
+         });
+
+        $("#remc2").click(function(){
+           var v= document.getElementById("newtr");
+           v.remove(); 
+        });
+      });
+    </script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

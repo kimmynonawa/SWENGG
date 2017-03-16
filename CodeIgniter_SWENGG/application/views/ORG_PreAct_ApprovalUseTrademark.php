@@ -17,16 +17,19 @@
     <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
     <!-- bootstrap-progressbar -->
     <link href="<?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
     <link href="<?php echo base_url();?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
+     <!-- jQuery -->
+    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
+    <script src = "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"> </script>
+
   </head>
 
   <body class="nav-md">
@@ -267,11 +270,74 @@
           </div>
         </div>
 
-    <!-- jQuery -->
-    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
-    <script src="<?php echo base_url();?>js/validation.js"></script>
-    <script src = "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"> </script>
+    <!-- SCRIPT FOR VALIDATION -->
+    <script type="text/javascript">
+      $(function() {
+        function removeError(element){
+          element.addClass('valid').closest('.form-group').removeClass('has-error');
+        }
+
+        $('#formTrademark').validate({
+        rules: {
+          Name: {
+            required:true,
+          },
+          Position: {
+            required:true
+          },
+          IDNum: {
+            required:true,
+            maxlength: 8,
+            minlength: 8
+          
+          },
+          Email: {
+            required:true,
+            email: true
+          },
+          TelNo: {
+            maxlength: 7,
+            minlength: 7
+
+          },
+          CPNo: {
+            required:true,
+            maxlength: 11,
+            minlength: 11,
+          }
+        },
+
+        messages:{
+          Name: {
+            required: 'Enter name',
+            lettersonly: 'Alphabetic characters only'
+          },
+          Position: {
+            required: 'Enter position'
+          },
+          IDNum: {
+            required: 'Enter ID number',
+            maxlength: 'Invalid ID number',
+            minlength: 'Invalid ID number'
+          
+          },
+          Email: {
+            required: 'Enter DLSU e-mail',
+            email: 'Invalid DLSU e-mail'
+          },
+          TelNo: {
+            maxlength: 'Invalid telephone number',
+            minlength: 'Invalid telephone number'
+          },
+          CPNo: {
+            required: 'Enter cellphone number',
+            minlength: 'Invalid cellphone number',
+            maxlength: 'Invalid cellphone number'
+          },
+        }
+        });
+      })
+    </script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

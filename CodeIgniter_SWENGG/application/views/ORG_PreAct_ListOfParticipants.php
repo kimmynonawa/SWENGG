@@ -12,9 +12,9 @@
 	<script src= "<?php echo base_url();?>js/jquery.js"> </script>
 	<script src= "<?php echo base_url();?>js/jquery.min.js"></script>
 	<script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
+   <script src = "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"> </script>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <!-- Bootstrap -->
+	<!-- Bootstrap -->
     <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="<?php echo base_url();?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -23,13 +23,14 @@
     <!-- iCheck -->
     <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 	
-    <!-- bootstrap-progressbar -->
+    <!-- bootstrap-progressbar  -->
     <link href="<?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
     <link href="<?php echo base_url();?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
+     <!-- Switchery -->
+    <link href="<?php echo base_url();?>vendors/switchery/dist/switchery.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
   </head>
@@ -83,11 +84,11 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <?php echo ($this->session->userdata('org')[0]['name']);?>
+                   <?php echo ($this->session->userdata('org')[0]['name']);?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="http://localhost/index.php/account/logout"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                    <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
                   </ul>
                 </li>
                 </li>
@@ -98,72 +99,156 @@
         <!-- /top navigation -->
 
      <!-- page content -->
-      <div class="right_col" role="main">
-        <div class="">
-          <div class="page-title">
-            <div class="title_left">
-              <h3>View Activities from the GOSM</h3>
+        <div class="right_col" role="main">
+          <div class="">
+            <div class= "x_panel">
+              <div class= "row">
+                <div class="title col-md-5">
+                  <h3>List of Participants</h3>
+                </div>
+                <div align="right">
+                  <ul class="nav navbar-right panel_toolbox"> 
+                    <li>
+                      <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li> 
+                  </ul>
+                </div>
+              </div>
+              <div class= "x_content bg-success">
+                <h4> <p class="text-success"> Lorem ipsum dolor sit amet, vel pretium architecto, semper semper eu elit sed, lacus cras quis, pede velit. Pretium convallis suscipit, vestibulum rutrum, eu integer montes erat ut tincidunt, facilisis dolor. Et fermentum nulla, litora leo in, nunc aliquam aperiam, rutrum elementum, dictum malesuada morbi amet nisl. sociis odio laoreet dolor mauris. </p></h4>
+                </div>
             </div>
-            </div>
-        </div>
-        <div class="clearfix"></div>
-          <div class="row">
+            
+            <div class="clearfix"></div>
+
+            <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-                  <div class="x_content">
-                    <form id="gosmorg" class="form-horizontal form-label-left" autocomplete="off" action="viewORGGosm2" method="post">
-                      <span class="section"> Select the Necessary Fields</span>
-						
-                      <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-3"> <h4>Activity Name</h4> </label>
-                            <div class= "form-group col-md-7">  
-                              <select id="actOptions" class="form-control col-md-7 col-xs-12" name="gosmactivityorg">
-                                <option disabled selected>Select Activity</option>
-                                 <?php
-									for ($i=0; $i<count($acts);$i++){
-										echo"<option value={$acts[$i]['activityID']}>{$acts[$i]['title']}</option>";
-									}
-								  ?> 
-                              </select>
-                            </div>        
+                  <div class="form-group" >
+                    <center> <h3>List of Participants</h3></center>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12"> </label>
+                    <form id ="LPForm" action="#" method ="post">
+                      <div class="x_content">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th>ID Number</th>
+                              <th>Last Name</th>
+                              <th>First Name</th>
+                              <th>Middle Initial</th>
+                              <th>Age</th>
+                              <th>Waiver</th>
+                            </tr>
+                          </thead>
+                          <tbody id="student">
+                            <tr id ="details" class="details">
+                              <td>  <input class="form-control" name ="id[]" placeholder ="Enter ID Number" /></td>
+                              <td>  <input class="form-control" name ="lName[]" placeholder ="Enter Last Name" /></td>
+                              <td>  <input class="form-control" name = "fName[]" placeholder ="Enter First Name" /></td>
+                              <td>  <input class="form-control" name ="mName[]" placeholder ="Enter Middle Initial" /></td>
+                              <td>  <input class="form-control" name = "age[]" placeholder ="Enter Age" style ="width:120px"/></td>
+                              <td>  <input type="checkbox" class="js-switch" name="choice" /></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <div class = "buttons">
+                        <button id="add" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
+                        <button id="delete" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                      </div>
+
+
+                      <div class="ln_solid"></div> 
+                      <div class="form-group">
+                        <div class="col-md-12 col-md-offset-11">
+                          <input id="nextLP" type="submit" class="btn btn-success align: right" value ="Next"> <p></p>
                         </div>
                       </div>
-                    
-                    <div class="ln_solid"></div> 
-
-                    <div class="form-group">
-                      <div class="col-md-12 col-md-offset-11">
-                        <input id="nextorggosm" type="submit" class="btn btn-success align: right" Value = "Next">
-                      </div>
-                    </div>
-
-                    </form>                  
-                  </div> <!-- row -->
-                </div> 
+                    </form>
+                  </div>    
+                </div>
               </div>
             </div>
+          </div>
+        </div>
         <!-- /page content -->
-
 		
-	<script>
-	var gosmorg= $('#gosmorg');
-	gosmorg.validate({
+		
+   <script>
+	  $("#add").click(function () {
+		$('#student').append('<tr id ="detailz" class="details"><td>  <input class="form-control" name ="id[]" placeholder ="Enter ID Number" /></td><td>  <input class="form-control" name ="lName[]" placeholder ="Enter Last Name" /></td> <td>  <input class="form-control" name = "fName[]" placeholder ="Enter First Name" /></td><td>  <input class="form-control" name ="mName[]" placeholder ="Enter Middle Initial" /></td><td>  <input class="form-control" name = "age[]" placeholder ="Enter Age" style ="width:120px"/></td><td> <input type="checkbox" class="js-switch" name="choice" /></td></tr>')
+
+           		});
+    $("#delete").click(function () {
+      var v= document.getElementById("detailz");
+      v.remove();
+	});
+   
+   function removeError(element){
+			element.addClass('valid')
+			.closest('.form-group')
+			.removeClass('has-error');
+	}
+	
+   var lop= $('#LPForm');
+   
+	lop.validate({
 		rules: {
-			gosmactivityorg: {
-				required:true
+			'id[]':{
+				required: true,
+				maxlength: 8,
+				minlength: 8
+			},
+			'lName[]':{
+				required:true,
+				lettersonly: true
+			},
+			'fName[]':{
+				required:true,
+				lettersonly: true
+			},
+			'mName[]':{
+				required: true,
+				lettersonly: true
+			},
+			'age[]':{
+				required: true,
+				maxlength: 2,
+				min: 5
 			}
 		},
 		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
 		},
 		success: removeError,
 
-
 		messages:{
-			gosmactivityorg: 'Please pick an Activity'		
+			'id[]':{
+				required: 'Enter ID number',
+				maxlength: 'Invalid ID number',
+				minlength: 'Invalid ID number'
+			},
+			'lName[]':{
+				required: 'Enter last name',
+				lettersonly: 'Alphabetic characters only'
+			},
+			'fName[]':{
+				required: 'Enter first name',
+				lettersonly: 'Alphabetic characters only'
+			},
+			'mName[]':{
+				required: 'Enter middle initial',
+				lettersonly: 'Alphabetic characters only'
+			},
+			'age[]':{
+				required: 'Enter age',
+				maxlength: 'Invalid age',
+				min: 'Invalid age'
+			}
 		}
-		});
+	});
 	</script>
+   
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -202,6 +287,11 @@
 
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url();?>build/js/custom.min.js"></script>
-	
+	 <script src="<?php echo base_url();?>vendors/switchery/dist/switchery.min.js"></script>
+
   </body>
 </html>
+
+
+
+ 

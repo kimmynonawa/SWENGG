@@ -7,11 +7,12 @@
 			$this->load->library('session');
 			$this->load->model('Gosm_model');
 			$this->load->model('Org_model');
+			$this->load->model('PreActivity_model');
 			$this->load->model('Activity_model');
 		}
 		
 		public function add(){
-			
+			//Start Form Validation
 			$this->form_validation->set_rules(
 				'gosmtitle', 'Title', 
 				'required',
@@ -123,14 +124,16 @@
 					'required'      => 'You have not provided %s.',
 				)
 			);
+			//End Form Validation
 			
+			//If Error
 			if ($this->form_validation->run() == FALSE){
-				$res1 = $this->Gosm_model->getActivityNature();
-				$res2 = $this->Gosm_model->getActivityType();
-				$data = array("activityNature" => $res1, "activityType" => $res2);
-				$this->load->view('ORG_AddGosm', $data);
+				$this->load->view('ORG_AddGosm');
 			}
+			//If success
 			else{
+				
+				//Array for Insert
 				$data = array(
 					'gosmtitle'  => $this->input->post("gosmtitle"),
 					'gosmgoals'  => $this->input->post("gosmgoals"),
@@ -149,6 +152,7 @@
 				$orgname = $this->session->userdata('org')[0]['acronym'];
 				$gosm = 1;
 				
+				//Check if related to 
 				if ($this->input->post("reto") == 'yes'){
 					$reto = 1;
 				}
@@ -156,20 +160,23 @@
 					$reto = 0;
 				}
 				
+				//Insert new Activity
 				$this->Gosm_model->insertActivity($data, $org, $gosm, $reto, $orgname);
 				$data = array ("success" => "true");
-				$this->load->view('ORG_AddGosm', $data);
+				
+				$this->load->view('ORG_AddGosm');
 			}
 			
 		} 
 		
-		
+		//View Gosm Activity with orgs listed - CSO side
 		public function viewCSOGosm1(){
 			$res = $this->Org_model->getOrg();
 			$data = (array("orgs" => $res));
 			$this->load->view('CSO_GOSM', $data);
 		}
 		
+		//returns Activities through JSON - CSO side
 		public function viewCSOGosm2(){
 			header("Content-type: application/json");
 			$res = $this->Activity_model->getAct($this->input->post('org'));
@@ -177,6 +184,7 @@
 			
 		}
 		
+		//GOSM(ACTIVITIES) Details - CSO side
 		public function viewCSOGosm3(){
 			$gosmdetails = $this->Gosm_model->getGosmDetails($this->input->post('gosmcsoact'));
 			$data = array("activity" => $gosmdetails);
@@ -184,14 +192,18 @@
 			
 		}
 		
+		//View Gosm Activity - ORG side
 		public function viewORGGosm1(){
 			$res = $this->Activity_model->getAct($this->session->userdata('org')[0]['userID']);
 			$data = (array("acts" => $res));
 			$this->load->view('ORG_GOSM', $data);
 		}
 		
+		//GOSM(ACTIVITIES) Details - ORG side
 		public function viewORGGosm2(){
-			
+			$gosmdetails = $this->Gosm_model->getGosmDetails($this->input->post('gosmactivityorg'));
+			$data = array("activity" => $gosmdetails);
+			$this->load->view('ORG_GOSM2', $data);
 		}
 		
 		

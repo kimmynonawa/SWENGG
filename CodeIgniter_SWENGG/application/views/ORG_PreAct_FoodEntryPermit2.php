@@ -29,6 +29,11 @@
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
+
   </head>
 
   <body class="nav-md">
@@ -245,10 +250,58 @@
         </div>
         <!-- /page content -->
 
-    <!-- jQuery -->
-    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
-    <script src="<?php echo base_url();?>js/validation.js"></script>
+     <script type="text/javascript">
+
+      $(function() {
+        function removeError(element){
+          element.addClass('valid').closest('.form-group').removeClass('has-error');
+        }
+        $('#foodlistform').validate({
+        rules: {
+          'fqty[]': "required",
+          'funit[]': "required",
+          'fdes[]': "required",
+          'fecost[]': "required",
+        },
+
+        highlight: function(element) {
+          $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        success: removeError,
+
+        messages: {
+          'fqty[]':{
+            required: 'Enter quantity'
+          },
+
+          'funit[]':{
+            required: 'Enter unit'
+          },
+
+          'fdes[]': {
+            required:'Enter description'
+          },
+
+          'fecost[]': {
+            required: 'Enter estimated cost'
+          },
+        }
+        });
+
+        // ADD ROW
+        $("#addcf").click(function() {
+           $("#tr").append(' <tr id= "newtr"><td align= "center" ><input type="number" name= "fqty[]" class="form-control" id="foqty"/></td><td align= "center"><input type="text" name= "funit[]" class="form-control" id="founit"/></td><td align= "center"><input type="text" name= "fdes[]" class="form-control" id="fodes" placeholder="Description"/></td><td align= "center"><input type="number" name= "fecost" class="form-control" id="foecost"/></td></tr>');   
+         });
+        
+        // REMOVE ROW 
+        $("#remcf").click(function() {
+          var v= document.getElementById("newtr");
+          v.remove();
+        });
+      })
+      
+    </script>
+
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -287,6 +340,7 @@
 
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url();?>build/js/custom.min.js"></script>
-	
+	   
+
   </body>
 </html>

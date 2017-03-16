@@ -8,6 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title><?php echo ($this->session->userdata('org')[0]['acronym']);?></title>
+	
+	<script src= "<?php echo base_url();?>js/jquery.js"> </script>
+	<script src= "<?php echo base_url();?>js/jquery.min.js"></script>
+	<script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <!-- Bootstrap -->
@@ -120,64 +124,45 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-                    <form id="aform1" method="post" autocomplete="off">
+                    <form id="aform1" autocomplete="off" action="aformGOSM" method="post">
                       <span class="section">General Information</span>
-
+                     
                       <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-5"> <h4>Title Of Activity:</h4> </label>
-                          <div class= "form-group col-md-6">
-                              <input type="text" name= "actName" class="form-control" placeholder="ex:  General Assembly"/>
-                          </div>        
-                        </div>
-                      </div> 
-
-                      <!--IF ITS PART OF THE GOSM USE THIS
-                      <div class= "row">
-                        <div class="col-md-8">   
+                        <div class="col-md-8">
                           <label class= "col-md-5"> <h4>Title Of Activity:</h4> </label>
                           <div class= "form-group col-md-6">
                               <select name= "actName" class="form-control"/>
-                                <option>Annual General Assembly</option>
+                                <option disabled selected>Select Activity</option>
+									<?php
+										for ($i = 0; $i < count($activity); $i++){
+											echo"<option value={$activity[$i]['activityID']}>{$activity[$i]['title']}</option>";
+										}
+									?>
                               </select>
                           </div>        
                         </div>
-                      </div> -->
+                      </div>
 
                     <p> </p>
                     <span class="section">Nature of Activity</span>
                     <div class= "row">
-                      <div class="col-md-8">   
-                        <label class= "col-md-5"> <h4>CSO and Special Groups</h4> </label>
+                      <div class="col-md-8">
+					   <label class= "col-md-5"> <h4>Select Activity Office</h4> </label>
                           <div class= "form-group col-md-6">
-                            <select id="cso" onchange ="disable(this.value)" class="form-control col-md-7 col-xs-12" name="CSOactOptions">
-                              <option value = "0">Select Nature Of Activity</option>
-                              <option value = "1"> Academic</option>
-                              <option value = "2"> Special Interest</option>
-                              <option value = "3"> Departmental Initiative</option>
-                              <option value = "4"> Fundraising</option>
-                              <option value = "5"> Community Development</option>
-                              <option value = "6"> Organization Development</option>
-                              <option value = "7">Issue Advocacy</option>
-                              <option value = "8">Lasallian Formation/Spiritual Growth</option>
-                              <option value = "9">Outreach</option>                   
+                            <select id="activityoffice" class="form-control col-md-7 col-xs-12" name="actoff">
+                              <option disabled selected>Select Activity Office</option>
+							  <option value="1">CSO and Special Groups</option>
+							  <option value="2">USG</option>
                             </select>
                           </div>
-                          <label class= "col-md-5"> <h4>USG</h4> </label>
+                        <label class= "col-md-5"> <h4>Nature of Activity</h4> </label>
                           <div class= "form-group col-md-6">
-                            <select id="usg" onchange ="disable2(this.value)" class="form-control col-md-7 col-xs-12" name="USGactOptions">
-                              <option  value = "0">Select Nature Of Activity</option>
-                              <option value = "1"> Student Services</option>
-                              <option value = "2"> Student Rights and Welfare</option>
-                              <option value = "3"> Rules and Policies</option>
-                              <option value = "4"> Fundraising</option>
-                              <option value = "5"> Community Development</option>
-                              <option value = "6"> Organization Development</option>
-                              <option value = "7"> Issue Advocacy</option>
-                              <option value = "8"> Lasallian Formation/Spiritual Growth</option>
-                              <option value = "9">Outreach</option>                   
+                            <select id="natact" class="form-control col-md-7 col-xs-12" name="natact">
+                              <option disabled selected>Select Nature of Activity</option>
+								
                             </select>
-                          </div>                
+                          </div>
+                                  
                         </div>
                       </div>  
           
@@ -185,33 +170,20 @@
                       <span class="section">Type of Activity</span>
                       <div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-5"> <h4>Through CSO or DAAM</h4> </label>
+                          <label class= "col-md-5"> <h4>Type of Activity</h4> </label>
                           <div class= "form-group col-md-6">
-                            <select id="cso2" onchange ="disable3(this.value)" class="form-control col-md-7 col-xs-12" name="CSOactType">
-							  <option value = "0">Select Nature Of Activity</option>
-                              <option value = "1"> Academic Contest</option>
-                              <option value = "2"> Distribution</option>
-                              <option value = "3"> General Assembly</option>
-                              <option value = "4"> Seminar/Workshops</option>
-                              <option value = "5"> Publicity/Awareness Campaign</option>
-                              <option value = "6"> Meetings</option>
-                              <option value = "7"> Spiritual Activity</option>
-                              <option value = "8"> Recruitment/Audition</option>
-                              <option value = "9"> Recreation</option>   
+                            <select id="processingoffice" class="form-control col-md-7 col-xs-12" name="prooff">
+                              <option disabled selected>Processing Office</option>
+								<option value="1">CSO or DAAM</option>
+								<option value="2">SLIFE</option>
+                                          
                             </select>
                           </div>
-                          <label class= "col-md-5"> <h4>Through SLIFE</h4> </label>
+                          <label class= "col-md-5"> <h4>Type of Activity</h4> </label>
                           <div class= "form-group col-md-6">  
-                            <select id="usg2" onchange ="disable4(this.value)" name="USGactType" class="form-control col-md-7 col-xs-12" >
-                             <option value = "0">Select Nature Of Activity</option>
-                              <option value = "1"> Alliance with Outside Organizations</option>
-                              <option value = "2"> Off-Campus Activities</option>
-                              <option value = "3"> Seminar with Distinguished Speakers</option>
-                              <option value = "4"> Conference involving Outside Participants</option>
-                              <option value = "5"> Solicitations</option>
-                              <option value = "6"> Fundraising</option>
-                              <option value = "7">Donation Drive</option>
-                                      
+                            <select id="typeact"  class="form-control col-md-7 col-xs-12" name="typeact">
+                              <option disabled selected>Select Type of Activity</option>
+                                       
                             </select>
                           </div>                
                         </div>
@@ -220,14 +192,15 @@
                       <span class="section">Reach of Activity</span>
                       <div class= "row">
                         <div class="col-md-8">   
-                        <label class= "col-md-5"> <h4>Through CSO or DAAM</h4> </label>
+                        <label class= "col-md-5"> <h4>Reach of Activity</h4> </label>
                           <div class= "form-group col-md-6">
                             <select id="reachType"  name="reachType" class="form-control col-md-7 col-xs-12">
                               <option disabled selected>Select Reach Of Activity</option>
-                              <option value = "1"> College Wide</option>
-                              <option value = "2"> University Wide</option>
-                              <option value = "3"> Organization Wide</option>
-                              <option value = "4"> Batch Wide</option>               
+								<?php
+									for ($i = 0; $i < count($reach); $i++){
+										echo"<option value={$reach[$i]['idREF_ACTIVITYREACH']}>{$reach[$i]['activityreach']}</option>";
+									}
+								?>        
                             </select>
                           </div>      
                         </div>
@@ -236,7 +209,7 @@
                       <div class="ln_solid"></div> 
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-11">
-                          <input id="nextaform"  type="submit" "class="btn btn-success align: right" Value="Next">
+                          <input id="nextaform" type="submit" class="btn btn-success align: right" Value="Next">
                         </div>
                       </div>    
                     </form>
@@ -247,13 +220,100 @@
           </div>
         </div>
 
-    <!-- IMPORTANT IMPORTS -->
-    <script src="js/jquery.min.js"></script>
-    <script src= "js/jquery.validate.min.js"> </script>
-    <script src= js/validation.js></script>
-    <script src= "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js" </script>
-    <!-- IMPORTANT IMPORTS -->
     
+	<script>
+		$('#activityoffice').on('change',function(){
+			var actoff = $('#activityoffice').val();
+			$.ajax({
+			url: "getActivityNature",
+			method: "POST",
+			data:{
+				'actoff':actoff
+			},
+			success: function(data){
+				console.log(1)
+				$('#natact').empty ();
+				$('#natact').append('<option disabled selected>Select Nature of Activity</option>');
+				for (i = 0; i < data.length; i++){
+					$('#natact').append('<option value="'+ data[i].idREF_ACTIVITYNATURE +'">'+ data[i].activitynature +'</option>');
+				}
+				}
+			});
+		});
+		
+		$('#processingoffice').on('change',function(){
+			var prooff = $('#processingoffice').val();
+			$.ajax({
+			url: "getActivityType",
+			method: "POST",
+			data:{
+				'prooff':prooff
+			},
+			success: function(data){
+				console.log(1)
+				$('#typeact').empty ();
+				$('#typeact').append('<option disabled selected>Select Type of Activity</option>');
+				for (i = 0; i < data.length; i++){
+					$('#typeact').append('<option value="'+ data[i].idREF_ACTIVITYTYPE +'">'+ data[i].activitytype+'</option>');
+				}
+				}
+			});
+		});
+	</script>
+	<script>
+		var aform1= $('#aform1');
+		function removeError(element){
+			element.addClass('valid')
+					.closest('.form-group')
+					.removeClass('has-error');
+			}
+		aform1.validate({
+			rules: {
+				actName: {
+					required:true
+				},
+				actoff: {
+					required:true
+				},
+				natact: {
+					required:true
+				},
+				prooff: {
+					required:true
+				},
+				typeact: {
+					required:true
+				},
+				reachType: {
+					required:true
+				}
+			},
+			highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+			},
+			success: removeError,
+
+			messages:{
+				actName: {
+					required: 'Enter activity name'
+				},
+				actoff: {
+					required: 'Pick activity office'
+				},
+				natact: {
+					required: 'Pick nature of activity'
+				},
+				prooff: {
+					required: 'Pick processing office'
+				},
+				typeact: {
+					required: 'Pick type of activity'
+				},
+				reachType: {
+					required: 'Pick reach of activity'
+				}	
+			}
+		});
+	</script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -292,199 +352,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url();?>build/js/custom.min.js"></script>
-	<script>
-	  function disable(str)
-  {
-	  if(str == "1")
-	  {
-		  document.getElementById("usg").disabled = true;
-	  }
-	  if(str == "0")
-	  {
-		  document.getElementById("usg").disabled = false;
-	  }
-	 if(str == "2")
-	  {
-		  document.getElementById("usg").disabled = true;
-	  }
-	  if(str == "3")
-	  {
-		  document.getElementById("usg").disabled = true;
-	  }
-	  if(str == "4")
-	  {
-		  document.getElementById("usg").disabled = true;
-	  }
-	  if(str == "5")
-	  {
-		  document.getElementById("usg").disabled = true;
-	  }
-	  if(str == "6")
-	  {
-		  document.getElementById("usg").disabled = true;
-	  }
-	  if(str == "7")
-	  {
-		  document.getElementById("usg").disabled = true;
-	  }
-	  if(str == "8")
-	  {
-		  document.getElementById("usg").disabled = true;
-	  }
-	  if(str == "9")
-	  {
-		  document.getElementById("usg").disabled = true;
-	  }
-	  
-  }
-    function disable2(str)
-  {
-	  if(str == "1")
-	  {
-		  document.getElementById("cso").disabled = true;
-	  }
-	  if(str == "0")
-	  {
-		  document.getElementById("cso").disabled = false;
-	  }
-	 if(str == "2")
-	  {
-		  document.getElementById("cso").disabled = true;
-	  }
-	  if(str == "3")
-	  {
-		  document.getElementById("cso").disabled = true;
-	  }
-	  if(str == "4")
-	  {
-		  document.getElementById("cso").disabled = true;
-	  }
-	  if(str == "5")
-	  {
-		  document.getElementById("cso").disabled = true;
-	  }
-	  if(str == "6")
-	  {
-		  document.getElementById("cso").disabled = true;
-	  }
-	  if(str == "7")
-	  {
-		  document.getElementById("cso").disabled = true;
-	  }
-	  if(str == "8")
-	  {
-		  document.getElementById("cso").disabled = true;
-	  }
-	  if(str == "9")
-	  {
-		  document.getElementById("cso").disabled = true;
-	  }
-  }
-	   function disable3(str)
-  {
-	  if(str == "1")
-	  {
-		  document.getElementById("usg2").disabled = true;
-	  }
-	  if(str == "0")
-	  {
-		  document.getElementById("usg2").disabled = false;
-	  }
-	 if(str == "2")
-	  {
-		  document.getElementById("usg2").disabled = true;
-	  }
-	  if(str == "3")
-	  {
-		  document.getElementById("usg2").disabled = true;
-	  }
-	  if(str == "4")
-	  {
-		  document.getElementById("usg2").disabled = true;
-	  }
-	  if(str == "5")
-	  {
-		  document.getElementById("usg2").disabled = true;
-	  }
-	  if(str == "6")
-	  {
-		  document.getElementById("usg2").disabled = true;
-	  }
-	  if(str == "7")
-	  {
-		  document.getElementById("usg2").disabled = true;
-	  }
-	  if(str == "8")
-	  {
-		  document.getElementById("usg2").disabled = true;
-	  }
-	  if(str == "9")
-	  {
-		  document.getElementById("usg2").disabled = true;
-	  }
-  }
-	  
-	   function disable4(str)
-  {
-	  if(str == "1")
-	  {
-		  document.getElementById("cso2").disabled = true;
-	  }
-	  if(str == "0")
-	  {
-		  document.getElementById("cso2").disabled = false;
-	  }
-	 if(str == "2")
-	  {
-		  document.getElementById("cso2").disabled = true;
-	  }
-	  if(str == "3")
-	  {
-		  document.getElementById("cso2").disabled = true;
-	  }
-	  if(str == "4")
-	  {
-		  document.getElementById("cso2").disabled = true;
-	  }
-	  if(str == "5")
-	  {
-		  document.getElementById("cso2").disabled = true;
-	  }
-	  if(str == "6")
-	  {
-		  document.getElementById("cso2").disabled = true;
-	  }
-	  if(str == "7")
-	  {
-		  document.getElementById("cso2").disabled = true;
-	  }  
-  }
- 
-	</script>
-	<script>
-	var aform1= $('#aform1');
-	aform1.validate({
-		rules: {
-			reachType: {
-				required:true
-			}
-		},
-
-		messages:{
-			
-			reachType: {
-				required: 'Pick reach of activity'
-			}	
-		}
-	});
-	$('#nextaform').click(function() {
-    	if (aform1.valid()){
-        	window.location.href = 'ORG_PreAct_AForm2";
-        }
-        return false;
-   	});
-	
-	</script>
-	
+  
   </body>
 </html>

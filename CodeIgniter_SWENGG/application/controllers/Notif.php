@@ -7,28 +7,21 @@
 			$this->load->model('Gosm_model');
 		}
 		
-		public function loadA(){
-			$this->load->view('a');
-		}
-		
-		public function add(){
-			$datetime = date('Y-m-d H:i:s');
-			$this->Gosm_model->add($datetime);
-			$this->load->view('a');
-		}
-		
+		//Get New Activities for Notif
 		public function getnew(){
 			header("Content-type: application/json");
 			$res = $this->Gosm_model->getnew();
 			echo json_encode($res);
 		}
 		
+		//Get All Activities for Notif
 		public function getall(){
 			header("Content-type: application/json");
 			$res = $this->Gosm_model->getall();
 			echo json_encode($res);
 		}
 		
+		//Update New Activities to Seen
 		public function setseen(){
 			$this->Gosm_model->setseen();
 		}

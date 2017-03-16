@@ -4,12 +4,32 @@
 			$this->load->database();
 		}
 		
-		public function createFoodPermit($actno, $name, $IDnum, $position, $email, $mobile, $telephone){
-			return $this->db->insert('foodpermit', array("activityID" => $actno, "name" => $name, "IDnumber" => $IDnum, "position" => $position, "email" => $email, "mobile" => $mobile, "telephone" => $telephone));
+		// TESTED
+		public function createFoodPermit($data){
+			$this->db->insert('foodpermit', array(	"activityID" 	=> $data['actno'], 
+													"name" 		 	=> $data['name'], 
+													"IDnumber" 	 	=> $data['IDnum'], 
+													"position" 	 	=> $data['position'], 
+													"email" 	 	=> $data['email'], 
+													"mobile" 	 	=> $data['mobile'], 
+													"telephone"  	=> $data['telephone'],
+													"organization"  => $data['organization']));
 		}
 
-		public function createFoodPermitDetails($foodPermitNum, $quantity, $unit, $description, $cost) {
-			return $this->db->insert('fp_details', array("FOODPERMITno" => $foodPermitNum, "quantity" => $quantity, "unit" => $unit, "description" => $description, "cost" => $cost));
+		// TESTED
+		public function createFoodPermitDetails($foodPermitNum, $data) {
+			$quantity 	 = $data['quantity[]'];
+			$unit 	 	 = $data['unit[]'];
+			$description = $data['description[]'];
+			$cost 		 = $data['cost[]'];
+
+			for ($i = 0; $i < sizeof($quantity); $i++){
+				$this->db->insert('fp_details',	array(	"FOODPERMITno" 	=> $foodPermitNum, 
+														"quantity" 		=> $quantity[$i], 
+														"unit" 			=> $unit[$i], 
+														"description" 	=> $description[$i], 
+														"cost" 			=> $cost[$i]));
+			}
 		}
 
 		public function getFoodPermit($actno) {

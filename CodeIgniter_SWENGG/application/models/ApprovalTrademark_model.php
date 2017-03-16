@@ -4,16 +4,43 @@
 			$this->load->database();
 		}
 		
-		public function createTrademarkUseApproval($actno, $trademark, $purpose, $duration, $startTime, $endTime, $venue){
+		public function createTrademarkUseApproval($data){
 			date_default_timezone_set('Asia/Manila');
 			$dateCreated = date("Y-m-d g:i:s");
+			// COMPUTATION FOR DURATION
+			$startTime = date('H:i:s', strtotime($data['startTime']));
+			$endTime = date('H:i:s', strtotime($data['endTime']));
+			
+			$newStartTime = new DateTime($startTime);
+			$newEndTime   = new DateTime($endTime);
+			$difference   = $newEndTime->diff($newStartTime);
+			$duration 	  = $difference->format('%H hour(s) and %i minute(s)');
 
-			return $this->db->insert('trademarkuse', array("activityID" => $actno, "trademark" => $trademark, "purpose" => $purpose, "duration" => $duration, "startTime" => $startTime, "endTime" => $endTime, "venue" => $venue, "dateCreated" => $dateCreated));
+			$this->db->insert('trademarkuse', array("activityID"  => $data['actno'], 
+													"purpose" 	  => $data['purposeOfUse'], 
+													"startTime"   => $data['startTime'], 
+													"endTime" 	  => $data['endTime'], 
+													"venue" 	  => $data['venue'],
+													"duration" 	  => $duration,  
+													"dateCreated" => $dateCreated));
 		}
 
-		public function createTrademarkUseRequestInfo($trademarkUseNum, $requestedBy, $requestedBy_position, $IDnum, $email, $telephone, $mobile){
-			
-			return $this->db->insert('trademark_requestingInfo', array("TRADEMARKUSEno" => $trademarkUseNum, "requestedby" => $requestedBy, "requestedby_position" => $requestedBy_position, "IDnumber" => $IDnum, "email" => $email, "telephone" => $telephone, "mobile" => $mobile));
+		public function createTrademarkUseRequestInfo($trademarkUseNum, $data){
+			$this->db->insert('trademark_requestingInfo', array( "TRADEMARKUSEno" 		=> $trademarkUseNum,
+																 "organization"			=> $data['organization'], 
+																 "requestedby" 			=> $data['requestedby_name'], 
+																 "requestedby_position" => $data['requestedby_position'], 
+																 "IDnumber" 			=> $data['IDnum'], 
+																 "email" 				=> $data['email'], 
+																 "telephone" 			=> $data['telephone'], 
+																 "mobile" 				=> $data['mobile']));
+		}
+
+		public function addTrademarkToUse($trademarkUseNum, $trademarksChosen) {
+			for ($i = 0; $i < sizeof($trademarksChosen); $i++) {
+				$this->db->insert('trademarkuse_tm', array( "TRADEMARKUSEno" => $trademarkUseNum, 
+			 											 	"trademark" 	  => $trademarksChosen[$i]));
+			}
 		}
 
 		public function getTrademarkUseApproval($actno) {
@@ -45,13 +72,28 @@
 		}
 
 		public function getActivityTypes() {
-			$query = $this->db->query('SELECT idREF_ACTIVITYTYPE, activityType FROM ref_activitytype ORDER BY activityType ASC');
+			$query = $this->db->query('SELECT idREF_ACTIVITYTYPE, activityType 
+										 FROM ref_activitytype 
+									 ORDER BY activityType ASC');
 	        return $query->result();
 		}
 
-		public function getTrademarks() {
-			$query = $this->db->query('SELECT idREF_TRADEMARKS,type,name FROM ref_trademarks ORDER BY idREF_TRADEMARKS ASC');
+		public function getTrademarks($type) {
+			if ($type == 1) $trademarkType = "Logos/Design";
+			else if ($type == 2) $trademarkType = "DLSU Labels";
+			else if ($type == 3) $trademarkType = "DLSU Taglines";
+
+			$query = $this->db->query("SELECT idREF_TRADEMARKS, name 
+										 FROM ref_trademarks 
+										WHERE type LIKE '{$trademarkType}' 
+									 ORDER BY idREF_TRADEMARKS ASC");
 	        return $query->result();
+		}
+
+		public function getDifferentTrademarks(){
+			header("Content-type: application/json");
+			$result = $this->ApprovalTrademark_model->getTrademarks($this->input->post('trademark'));
+			echo json_encode($result);
 		}
 
 	}

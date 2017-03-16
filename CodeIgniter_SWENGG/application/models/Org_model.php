@@ -15,12 +15,5 @@
 			return $res->result_array();
 		}
 		
-		public function getAcro(){
-			$this->db->select('acronym');
-			$this->db->from('ref_users');
-			$res = $this->db->get();
-			return $res->result_array();
-		}
-		
 	}
 ?>

@@ -4,10 +4,6 @@
 			$this->load->database();
 		}
 		
-		public function add($datetime){
-			$this->db->insert('gosm', array("datecreated" => $datetime, "status" => 1));
-		}
-		
 		public function getnew(){
 			$this->db->where(array("status" => 1));
 			$this->db->from('activity');
@@ -60,18 +56,6 @@
 			)
 			
 			);
-		}
-		
-		public function getActivityNature(){
-			$this->db->from('ref_activitynature');
-			$res = $this->db->get();
-			return $res->result_array();
-		}
-		
-		public function getActivityType(){
-			$this->db->from('ref_activitytype');
-			$res = $this->db->get();
-			return $res->result_array();
 		}
 		
 		

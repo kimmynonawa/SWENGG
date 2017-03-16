@@ -6,6 +6,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<script src= "<?php echo base_url();?>js/jquery.js"> </script>
+	<script src= "<?php echo base_url();?>js/jquery.min.js"></script>
+	<script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
 
     <title><?php echo ($this->session->userdata('org')[0]['acronym']);?></title>
 
@@ -214,20 +218,27 @@
                              <span class="section">Activity Details</span>
                           </div>
 
-                          <label> <h3> Nature of Activity</h3> </label>
+                          <label> <h3>CSO and  Special Groups</h3> </label>
                           <div class= "row">
                                 <div class="form-group col-md-6 col-sm-6 col-xs-6">
                                   <select name="gosmnat" class="form-control" id="gosmnat">
+										
+										<!--Select Activity Nature where Activity office is CSO and SPECIAL GROUPS-->
 									   <option disabled selected>Select Nature of Activity</option>
                                       <?php
-										for ($i=0; $i<count($activityNature);$i++){
-											echo"<option value={$activityNature[$i][idREF_ACTIVITYNATURE]}>{$activityNature[$i][activitynature]}</option>";
+										for ($i=0; $i<count($activityNature1);$i++){
+											echo"<option value={$activityNature1[$i][idREF_ACTIVITYNATURE]}>{$activityNature1[$i][activitynature]}</option>";
 										}
 									  ?>
                                   </select>
                                   <p></p>
                                   <select name="gosmnatt" class="form-control" id="gosmnat">
-                                      <option value="default">University Student Government</option>
+                                      <option disabled selected>Select Nature of Activity</option>
+									  <?php
+										for ($i=0; $i<count($activityNature2);$i++){
+											echo"<option value={$activityNature2[$i][idREF_ACTIVITYNATURE]}>{$activityNature2[$i][activitynature]}</option>";
+										}
+									  ?>
                                   </select>
                             </div>
                            </div>
@@ -238,14 +249,19 @@
                                   <select name="gosmtype" class="form-control" id="gosmtype">
 									  <option disabled selected>Select Type of Activity</option>
                                       <?php
-										for ($i=0; $i<count($activityType);$i++){
-											echo"<option value={$activityType[$i][idREF_ACTIVITYTYPE]}>{$activityType[$i][activitytype]}</option>";
+										for ($i=0; $i<count($activityType1);$i++){
+											echo"<option value={$activityType1[$i][idREF_ACTIVITYTYPE]}>{$activityType1[$i][activitytype]}</option>";
 										}
 									  ?>
                                   </select>
                                   <p></p>
                                   <select name="gosmtypee" class="form-control" id="gosmtype">
-                                      <option value="default">University Student Government</option>
+                                      <option disabled selected>Select Type of Activity</option>
+                                      <?php
+										for ($i=0; $i<count($activityType2);$i++){
+											echo"<option value={$activityType2[$i][idREF_ACTIVITYTYPE]}>{$activityType2[$i][activitytype]}</option>";
+										}
+									  ?>
                                   </select>
                                </div>
                            </div>
@@ -274,10 +290,6 @@
             </div>
          </div>
         <!-- /page content -->
-
-		<script src= "<?php echo base_url();?>js/jquery.js"> </script>
-		<script src= "<?php echo base_url();?>js/jquery.min.js"></script>
-		<script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
 		
 		<script>
 			var gosmnew= $('#gosm');

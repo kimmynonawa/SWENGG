@@ -28,6 +28,11 @@
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.validate.min.js"></script>
+
   </head>
 
   <body class="nav-md">
@@ -109,11 +114,22 @@
                     <div class="x_panel">
                         <div class="x_content">
                           <form class="form-horizontal form-label-left" id= "pprform1" method="post">
-
-                              <div class="row" id="ph" >
-                                  <span class="section">General Information</span>
-                                  <p><label> <h3> Project Head </h3> </label></p>
-                              </div>
+                            <div class="row" id="ph">
+                              <span class="section">General Information</span>
+                              <label> <h3> Project Head </h3> </label>
+                                <div class="col-md-12 col-sm-12 col-xs-12" id="new">
+                                  <div class="row">
+                                    <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                      <input type="text" name="phname[]" class="form-control has-feedback-left" id="name" placeholder="Name">
+                                      <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                      <input type="text" name="phnum[]" class="form-control" id="contact" placeholder="Contact Number">
+                                      <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
 
                             <div class= "row">
                                <div class="col-md-3 col-sm-3 col-xs-12 form-group">
@@ -122,8 +138,8 @@
                                </div>
                             </div>
 
-                          <div class= "row">
-                           <p><label> <h3> Objectives</h3> </label></p>
+                            <div class="row">
+                             <p><label> <h3> Objectives</h3> </label></p>
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                   <input type="text" name="obje1" class="form-control" id="obj1" placeholder="1st Objective">
                                   <p></p>
@@ -134,25 +150,32 @@
                             </div>
                 
                             <div class= "row">
-                                 <p><label> <h3> Brief Description of Activity </h3> </label></p>
-                                  <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                    <p class="text-success">/*Guidelines per paragraph are shown here.*/</p>
-                                     <textarea name="desc1" class="form-control"></textarea> 
+                             <p><label> <h3> Brief Description of Activity </h3> </label></p>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                <p class="text-success">/*Guidelines per paragraph are shown here.*/</p>
+                                 <textarea name="desc1" class="form-control"></textarea> 
 
-                                    <p class="text-success">/*Guidelines per paragraph are shown here.*/</p>
-                                     <textarea  name="desc2" class="form-control"></textarea>
+                                <p class="text-success">/*Guidelines per paragraph are shown here.*/</p>
+                                 <textarea  name="desc2" class="form-control"></textarea>
 
-                                    <p class="text-success">/*Guidelines per paragraph are shown here.*/</p>
-                                     <textarea  name="desc3" class="form-control"></textarea>
-                                  </div>
+                                <p class="text-success">/*Guidelines per paragraph are shown here.*/</p>
+                                 <textarea  name="desc3" class="form-control"></textarea>
+                              </div>
                             </div>
 
-                             <div class="ln_solid"></div> 
-                                <div class="form-group">
-                                  <div class="col-md-12 col-md-offset-11">
-                                    <input id="nextbppr" type="submit" class="btn btn-success align: right" value="Next">
-                                  </div>
-                                </div>
+                            <div class= "row">
+                              <p><label><h3> Faculty Adviser</h3></label></p>
+                              <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                               
+                              </div>
+                            </div>
+
+                            <div class="ln_solid"></div> 
+                            <div class="form-group">
+                              <div class="col-md-12 col-md-offset-11">
+                                <input id="nextbppr" type="submit" class="btn btn-success align: right" value="Next">
+                              </div>
+                            </div>
                           </form>  
                         </div>
                     </div>
@@ -162,10 +185,87 @@
          </div>
         <!-- /page content -->
 
-    <!-- jQuery -->
-    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src="<?php echo base_url();?>js/jquery.validate.min.js"></script>
-    <script src= "<?php echo base_url();?>js/validation.js"></script>
+    <!-- VALIDATION -->
+    <script type="text/javascript">
+      $(function() {
+        function removeError(element){
+          element.addClass('valid').closest('.form-group').removeClass('has-error');
+        }
+
+        $('#pprform1').validate({
+        
+        rules: {
+          'phname[]':{
+            required:true,
+            lettersonly: true
+          },
+          'phnum[]': {
+            required: true,
+            maxlength: 11,
+            minlength: 11
+          },
+          obje1:  "required",
+          obje2:  "required",
+          obje3:  "required",
+          desc1:  "required",
+          desc2:  "required",
+          desc3:  "required",
+
+        },
+
+        highlight: function(element){ 
+          $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+        },
+        success: removeError,
+        messages: {
+          'phname[]': {
+            required: 'Enter project head name',
+            lettersonly:'Alphabetic characters only'
+          },
+
+          'phnum[]':{
+            required: 'Enter project head contact number',
+            maxlength: 'Invalid contact number',
+            minlength: 'Invalid contact number'
+          },
+
+          obje1: {
+            required: 'Enter objective'
+          },
+
+          obje2: {
+            required: 'Enter objective'
+          },
+
+          obje3: {
+            required: 'Enter objective'
+          },
+
+          desc1: {
+            required: 'Enter description'
+          },
+
+          desc2: {
+             required: 'Enter description'
+          },
+
+          desc3: {
+            required: 'Enter description'
+          },
+        }
+        });
+
+         $("#addc").click(function(){
+              $("#ph").append(' <div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="phname[]" class="form-control has-feedback-left" id="name" placeholder="Name"><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="phnum[]" class="form-control" id="contact" placeholder="Contact Number"><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div></div></div>');   
+         });
+
+        $("#remc").click(function(){
+            var v= document.getElementById("newph");
+            v.remove();
+        });  
+      });
+    </script>
+    
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

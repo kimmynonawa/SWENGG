@@ -8,6 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>LSCS</title>
+	
+	<script src= "<?php echo base_url();?>js/jquery.js"> </script>
+	<script src="<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src= "<?php echo base_url();?>js/jquery.validate.min.js"> </script>
 
     <!-- Bootstrap -->
     <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,18 +21,16 @@
     <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+	
     <!-- bootstrap-progressbar -->
     <link href="<?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
     <link href="<?php echo base_url();?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
-     <!-- jQuery -->
-    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
-    <script src= "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
   </head>
 
   <body class="nav-md">
@@ -51,7 +53,8 @@
             <!-- /menu profile quick info -->
 
             <br />
-          <!-- sidebar menu -->
+
+             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -169,144 +172,122 @@
           </div>
         </div>
         <!-- /top navigation -->
-
-<!-- page content -->
+  <!-- page content -->
+        
+          
         <div class="right_col" role="main">
           <div class="">
             <div class= "x_panel">
               <div class= "row">
                 <div class="title col-md-5">
-                  <h3>Application For Use Of Trademark</h3>
+                  <h3>Special Permit For Campus Access</h3>
                 </div>
                 <div align="right">
-                    <ul class="nav navbar-right panel_toolbox"> 
-                      <li>
-                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li> 
-                    </ul>
+                  <ul class="nav navbar-right panel_toolbox"> 
+                    <li>
+                      <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li> 
+                  </ul>
                 </div>
               </div>
               <div class= "x_content bg-success">
-                <h4><p class="text-success"><b> Important Reminders: </b></p> <p class="text-success"> 1. Accomplish two (2) copies of this form for your office/organization and STRATCOM reference.</p> <p class="text-success"> 2. Attach a copy of the proposed design/layout of the merchandise/print material/video. </p> <p class="text-success"> 3. Allow five (5) days processing for the approval of the merchandise/print material/video. </p><p class="text-success"> 4. Strictly follow the approved duration and quantity for the use of trademark. </p> <p class="text-success">5. Check the remarks on the attachments. </p></h4>
+                <h4><p class="text-success"><b> Important Reminders: </b></p> <p class="text-success"> 1. This form is used ONLY for requesting permission for ACCESS OF PERSONS into the campus.</p> <p class="text-success"> 2. This form will be accepted only within office hours (Mon to Fri: 8:00am to 12:00pm and 1:30pm to 5:00pm). </p> <p class="text-success"> 3. This form must be submitted at the Security Office (J108) no later than two (2) working days before the requested date of campus access (Saturday is not counted as a working day for this purpose). </p><p class="text-success"> 4. This form is considered an application only unless a final decision is made and indicated on this form. </p> <p class="text-success">5. Clinics in campus are open only from 06:00am to 10:00pm, Mondays to Saturdays. </p></h4>
               </div>
             </div>
-            
+                
             <div class="clearfix"></div>
 
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-                    <form method="post" id = "formTrademark2" autocomplete="off">
-                      <div class= "row" id="tmarks">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                          <div class="row"> 
-                            <div class="col-md-8">
-                              <label class= "col-md-5"><h4>Trademark To Use:</h4></label>
-                                <div class= "form-group col-md-3">
-                                  <select class="select2_group form-control" id="trademarkType" name="trademarkTypeChoice[]">
-                                    <option value="1">Logos/Design</option>
-                                    <option value="2">DLSU Labels</option>
-                                    <option value="3">DLSU Taglines</option>
-                                  </select>
-                                </div>
-                               
-                                <div class= "form-group col-md-4">
-                                  
-                                  <select class="select2_group form-control" id="trademarkOptions" name="trademarkChoice[]">
-                                    <?php
-                                      foreach ($trademarkList as $trademark) { 
-                                        echo "<option value='$trademark->idREF_TRADEMARKS'> $trademark->name </option>";
-                                      }
-                                    ?> 
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          
-                      </div> 
+                    <form class="form-horizontal form-label-left" novalidate id="p_forms_controller" action="spca_form" method="Post">
+                      <span class="section"></span>
+                    
+                      <?php if (isset($success)): ?>
+						<h4>Successfully Added!</h4>
+						<?php endif; ?>
+					  
                       <div class= "row">
-                        <div class= "col-md-8">
-                          <label class="control-label col-md-5"></label>
-                          <div class="col-md-6">
-                            <div class = "buttons">
-                                <button id="addtm" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                                <button id="deletetm" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                            </div>     
-                          </div>
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Title Of Activity</h4> </label>
+                          <div class= "form-group col-md-6">
+                              <input type="text" name= "actTitle" class="form-control" placeholder="ex: General Assembly"/>
+                          </div>        
                         </div>
                       </div>
-                      <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-5"> <h4>Type of Item/Material To Produce</h4> </label>
-                            <div class= "form-group col-md-7">
-                              <select id="matToProduce" name="matToProduce" class="form-control col-md-7 col-xs-12">
-                                <option disabled selected>Select Type</option>
-                                <option> Merchandise</option>
-                                <option> Multimedia/Web</option>
-                                <option> Video</option>
-                                <option> Poster/Flyer/Invite/Banner</option>
-                                <option> Brochure/Publication</option>                 
-                              </select>
-                            </div>        
-                        </div>
-                      </div> 
-                      
-                      <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-5"> <h4>Purpose Of Use</h4> </label>
-                            <div class= "form-group col-md-7">
-                              <textarea name= "trademarkUse" rows="2" class="form-control" placeholder="ex: Banner for the winners of a contest"></textarea> 
-                            </div>        
-                        </div>
-                      </div>  
 
                       <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-5"> <h4>Proposed Start Time</h4> </label>
-                          <div class= "form-group col-md-7">
-                            <input type="time" name= "startTime" id="startTime" class="form-control"/>
+                        <div class="col-md-12">   
+                          <label class= "col-md-3"> <h4>Requests</h4> </label>
+                          <div class= "form-group col-md-12">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr> 
+                                  <th> Start Date</th> 
+                                  <th> End Date</th>
+                                  <th> Start Time</th>
+                                  <th> End Time</th>
+                                  <th> Venue</th>
+                                </tr>
+                              </thead>
+                              <tbody id="requests">
+                                <tr id ="details" class="details">
+                                <td>  <input class="form-control" name="sdate[]" type="date" placeholder ="Enter Start Date" /></td>
+                                <td>  <input class="form-control" name="stime[]" type="date" placeholder ="Enter End Date" /></td>
+                                <td>  <input class="form-control" name="edate[]" type="time" placeholder ="Enter Start Time" /></td>
+                                <td>  <input class="form-control" name="etime[]" type="time" placeholder ="Enter End Time" /></td>
+                                <td>  <input class="form-control" name="venue[]" placeholder ="Enter Venue"/></td>
+                                </tr>
+                              </tbody>
+                            </table>
                           </div>
-                          <label class= "col-md-5"> <h4>Proposed End Time</h4> </label>
-                          <div class= "form-group col-md-7">
-                            <input type="time" name= "endTime" id="endTime" class="form-control"/>
-                          </div>          
+                        </div>
+
+                        <div class = "buttons col-md-12">
+                          <div class="col-md-3">
+                            <button id="addspca" type ="button" class ="btn btn-default">  <span class="glyphicon glyphicon-plus-sign"></span> </button>
+                            <button id="deletespca" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                          </div>    
+                        </div>
+                      </div>   
+
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-4"> <h4>Total Number of Persons</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <input type="number" min="1" id="numPerons" name= "numPersons" class="form-control" /> 
+                            
+                          </div>        
                         </div>
                       </div>  
 
                       <div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-5"> <h4>Activity Where Trademark Will Be Used</h4> </label>
-                            <div class= "form-group col-md-7">
-                              <select id="actType" name="actType" class="form-control col-md-7 col-xs-12" >
-                                <option disabled selected>Select Type Of Activity</option>
-                                <?php
-                                  foreach ($activityTypes as $activity) { 
-                                    echo "<option value='$activity->idREF_ACTIVITYTYPE'> $activity->activityType </option>";
-                                  }
-                                ?>                
-                              </select>
-                          </div>    
+                          <label class= "col-md-4"> <h4>With Outsiders</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <input type="radio"  id="gosmoption" name= "outsidersOption" class="flat"/> <label> Yes</label>
+                            <input type="radio"  id="gosmoption" name= "outsidersOption" class="flat"/> <label>No </label>
+                          </div>        
                         </div>
-                      </div> 
+                      </div>  
 
                       <div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-5"> <h4>Venue</h4> </label>
-                            <div class= "form-group col-md-7">
-                              <input type="text" name= "venue" class="form-control" placeholder="ex: Henry Sy Grounds" />
-                          </div>    
+                          <label class= "col-md-4"> <h4>Faculty In-Charge:</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <input type="text" name= "Faculty" class="form-control" placeholder="ex: Mr. Juan Dela Cruz"/>
+                          </div>        
                         </div>
-                      </div> 
-
+                      </div>
+  
                       <div class="ln_solid"></div> 
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-11">
-                          <input id="nextTrademark2" type="submit" class="btn btn-success align: right" value ="Next">
+                          <input id="nextSpecialPermit1" type="submit" class="btn btn-success align: right" Value="Next">
                         </div>
-                      </div>
+                      </div>    
                     </form>
                   </div><!-- xcontent -->
                 </div> <!-- xpanel -->              
@@ -315,135 +296,59 @@
           </div>
         </div>
 
-    <!-- SCRIPT FOR VALIDATION AND ROW ADDING -->
-    <script type="text/javascript">
-      $(function() {
-        function removeError(element){
-          element.addClass('valid').closest('.form-group').removeClass('has-error');
+
+    <script>
+	function removeError(element)
+	{
+		element.addClass('valid')
+						.closest('.form-group')
+						.removeClass('has-error');
+	}
+	
+	var spca1= $('#specialPermit1');
+	spca1.validate({
+		rules: {
+			actTitle: {required: true},
+			sdate[]:    {required: true},
+			stime[]:    {required: true},
+			edate[]:    {required: true},
+			etime[]:    {required: true},
+			venue[]:    {required: true},
+	   		numPersons:{required: true},
+  			outsidersOption:{required: true},
+	      Faculty: 	  {required: true, lettersonly: true}
+		},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
+
+		messages:{
+		 actTitle: 	  {required: 'Enter activity title'},
+			sdate[]:    {required: 'Enter date'},
+			stime[]:    {required: 'Enter time'},
+			edate[]:    {required: 'Enter date'},
+			etime[]:    {required: 'Enter time'},
+			venue[]:    {required: 'Enter venue'},
+	   		numPersons:{required: 'Enter number of persons'},
+ 		    outsidersOption:{required: 'Pick option'},
+	      Faculty: 	  {required: 'Enter name'}
+		}
+		});
+	$('#nextSpecialPermit1').click(function() {
+    	if (spca1.valid()){
+        	window.location.href = "ORG_PreAct_SpecialPermitCampusAccess2.html";
         }
-        $('#formTrademark2').validate({
-        rules: {
-          matToProduce: {
-            required:true
-          },
-          trademarkUse: {
-            required:true
-          },
-          startTime: {
-            required:true
-          },
-          endTime: {
-            required: true
-          },
-          actType: {
-            required:true,
-          },
-          venue: {
-            required:true,
-          }
-        },
-        highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
-        },
-        success: removeError,
+        return false;
+   		});
+   	$("#addspca").click(function() {
+      $("#requests").append('<tr id ="detailss" class="details"> <td><input class="form-control" name="sdate" type="date" /></td><td> <input class="form-control" name="edate" placeholder ="Enter End Date" type="date"/></td><td> <input class="form-control" name="stime" type="time" placeholder ="Enter Start Time" /></td><td> <input class="form-control" name="etime" placeholder ="Enter End Time" type="time"/></td><td>  <input class="form-control" name="venue" placeholder ="Enter Venue"/></td></tr>');   
+     	});
+    $("#deletespca").click(function() {
+      var v= document.getElementById("detailss");
+      	v.remove();
+    	});
+	</script>
 
-        messages:{
-          matToProduce: {
-            required: 'Select material type'
-          },
-          trademarkUse: {
-            required: 'Enter purpose'
-          },
-          startTime: {
-            required: 'Enter start time'
-          },
-          endTime: {
-            required: 'Enter end time'      
-          },
-          actType: {
-            required: 'Select activity type'
-          },
-          venue: {
-            required: 'Indicate venue'
-          }
-        }
-        });
-
-        // AJAX FOR LIST OF TRADEMARKS FOR FIRST ROW
-        $('#trademarkType').on('change',function(){
-          var trademark = $('#trademarkType').val();
-          $.ajax({
-            url: "approval_use_trademark_details_2",
-            method: "POST",
-            data:{
-              'trademark':trademark
-            },
-            success: function(data){
-            $('#trademarkOptions').empty();
-              for (i = 0; i < data.length; i++){
-                $('#trademarkOptions').append('<option value="'+ data[i].idREF_TRADEMARKS +'">'+ data[i].name +'</option>');
-              }
-            }
-          });
-        });
-
-        // AJAX FOR LIST OF TRADEMARKS FOR ADDED ROWS
-        $('#newTrademarkType').on('change',function(){
-          var trademark = $('#newTrademarkType').val();
-          $.ajax({
-            url: "approval_use_trademark_details_2",
-            method: "POST",
-            data:{
-              'trademark':trademark
-            },
-            success: function(data){
-            $('#newTrademarkOptions').empty();
-              for (i = 0; i < data.length; i++){
-                $('#newTrademarkOptions').append('<option value="'+ data[i].idREF_TRADEMARKS +'">'+ data[i].name +'</option>');
-              }
-            }
-          });
-          console.log("change");
-        });
-    
-        $("#addtm").click(function() {
-          var size = <?php echo sizeof($trademarkList);?>;
-          var optionValues = new Array(); 
-          var optionNames = new Array();
-          var i = 0;
-          <?php
-            foreach($trademarkList as $trademark) {?>
-              optionValues[i] = <?php echo $trademark->idREF_TRADEMARKS; ?>;
-              optionNames[i] = "<?php echo $trademark->name; ?>";
-              i++;     
-          <?php
-            }
-          ?> 
-
-          var newRow = '<div class="col-md-12 col-sm-12 col-xs-12" id="newph">';
-          newRow += '<div class="row">';
-          newRow += '<div class="col-md-8">';
-          newRow += '<label class= "col-md-5"></label>';
-          newRow += '<div class= "form-group col-md-3">';
-          newRow += '<select class="select2_group form-control" id="newTrademarkType" name="trademarkTypeChoice[]">';
-          newRow += '<option value="1">Logos/Design</option>';
-          newRow += '<option value="2">DLSU Labels</option>';
-          newRow += '<option value="3">DLSU Taglines</option>';
-          newRow += '</select></div>';
-          newRow += '<div class= "form-group col-md-4">';
-          newRow += '<select class="select2_group form-control" id="newTrademarkOptions" name="trademarkChoice[]">';
-          for (i = 0; i < optionValues.length; i++) {
-            newRow += '<option value='+optionValues[i]+'>'+optionNames[i]+'</option>';
-          }
-          newRow += '</select></div></div></div>';
-           $("#tmarks").append(newRow);              
-        });
-
-       $("#deletetm").click(function() {
-          var v = document.getElementById("newph");
-          v.remove();
-        });
-      });
-    </script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

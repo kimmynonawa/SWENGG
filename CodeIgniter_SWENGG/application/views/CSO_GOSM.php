@@ -8,7 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title><?php echo ($this->session->userdata('org')[0]['acronym']);?></title>
-
+	
+	
+	<script src= "<?php echo base_url();?>js/jquery.js"> </script>
+	<script src= "<?php echo base_url();?>js/jquery.min.js"></script>
+	<script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
+	
     <!-- Bootstrap -->
     <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -28,10 +33,6 @@
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
 	
-	<!-- jQuery -->
-    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src="<?php echo base_url();?>js/jquery.validate.min.js"></script>
-    <script src="<?php echo base_url();?>js/validation.js"></script>
   </head>
 
   <body class="nav-md">
@@ -134,15 +135,17 @@
                         <div class="col-md-8">   
                           <label class= "col-md-3"> <h4>Organization Name</h4> </label>
                              <div class= "form-group col-md-7">
-                              <select id="OrgOptions" class="form-control col-md-7 col-xs-12" name="gosmcsoorg">
+                              <select id="OrgOptions" class="form-control col-md-7 col-xs-12" name="org">
+								
 								 <option disabled selected>Select Organization</option>
-                                 <?php
+                                <!--Get All the Orgs-->
+								 <?php
 									for ($i=0; $i<count($orgs);$i++){
 										echo"<option value={$orgs[$i]['userID']}>{$orgs[$i]['name']}</option>";
 									}
 								  ?>
                               </select>
-								
+								<!--Script for Activities based on what org is selected-->
 								<script>
 									$('#OrgOptions').on('change',function(){
 										var org = $('#OrgOptions').val();
@@ -196,6 +199,29 @@
         <!-- /page content -->
 
     
+		
+		<script src= "<?php echo base_url();?>js/jquery.min.js"></script>
+		<script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
+	
+	<script>
+	 var gosmcso= $('#gosmcso');
+	gosmcso.validate({
+		rules: {
+			gosmcsoorg: {
+				required:true
+			},
+			gosmcsoact: {
+				required:true
+			}
+
+		},
+
+		messages:{
+			gosmcsoorg: 'Please pick an organization',
+			gosmcsoact: 'Please pick an activity'		
+		}
+		});
+	</script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

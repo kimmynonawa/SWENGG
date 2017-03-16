@@ -7,8 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>LSCS</title>
+    <title><?php echo ($this->session->userdata('org')[0]['acronym']);?></title>
+	
+	<script src= "<?php echo base_url();?>js/jquery.js"> </script>
+	<script src= "<?php echo base_url();?>js/jquery.min.js"></script>
+	<script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <!-- Bootstrap -->
     <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -27,11 +32,6 @@
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
-
-    <!-- jQuery -->
-    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
-
   </head>
 
   <body class="nav-md">
@@ -39,134 +39,57 @@
       <div class="main_container">
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
+            <!--<div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Yo!</span></a>
+            </div> -->
+
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="<?php echo base_url();?>images/user.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>ORG NAME</h2>
+                <h2> <?php echo ($this->session->userdata('org')[0]['acronym']);?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
 
             <br />
 
-               <!-- sidebar menu -->
+            <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="ORG_Home.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
-                  <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu"> 
-                      <li><a href="ORG_AddGOSM.html">Add New GOSM</li>
-                      <li><a href="ORG_PreAct.html">Pre-Activity Form</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="ORG_Calendar.html"><i class="fa fa-table"></i> Calendar <span class="fa fa-chevron-down"></span></a>
-                  <li><a href="ORG_GOSM.html"><i class="fa fa-list-alt"></i> GOSM <span class="fa fa-chevron-down"></span></a>
-                  </li>
-                </ul>
+				  <li><a href="http://localhost/index.php/account/org"><i class="fa fa-home"></i> Home <span ></span></a></li>
+                  <li><a href="http://localhost/index.php/gosm/add"><i class="fa fa-table"></i> Add New GOSM <span ></span></a></li>
+                  <li><a href="http://localhost/index.php/PreActivity/preacts"><i class="fa fa-edit"></i> Add Pre-Activity <span ></span></a></li>				  
+				  <li><a href="#"><i class="fa fa-calendar"></i> Calendar <span ></span></a></li>
+				  <li><a href="http://localhost/index.php/gosm/viewORGGosm1"><i class="fa fa-list-alt"></i> GOSM <span ></span></a></li>
+				</ul>
               </div>
             </div>
             <!-- /sidebar menu -->
           </div>
         </div>
 
-        <!-- top navigation -->
         <div class="top_nav">
+		
           <div class="nav_menu">
             <nav>
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
 
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   La Sallian Computer Society
+                   <?php echo ($this->session->userdata('org')[0]['name']);?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
-                    <li>
-                      <a href="javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
-                      </a>
-                    </li>
-                    <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
                   </ul>
                 </li>
-
-                <li role="presentation" class="dropdown">
-                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
-                  </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
-                        <a>
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
                 </li>
               </ul>
             </nav>
@@ -174,14 +97,13 @@
         </div>
         <!-- /top navigation -->
 
-
 <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
             <div class= "x_panel">
               <div class= "row">
                 <div class="title col-md-5">
-                  <h3>Equipment Entry Permit</h3>
+                  <h3>Approval in Changes of Activity Details</h3>
                 </div>
                 <div align="right">
                     <ul class="nav navbar-right panel_toolbox"> 
@@ -198,36 +120,99 @@
             
             <div class="clearfix"></div>
 
+          <div class="clearfix"></div>
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-                    <form method="post" id = "formEquipment" autocomplete="off">
+                    <form method="post" id = "approvalChanges" autocomplete="off">
                      <span class="section"></span>
-                     
+                      
                       <div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Name</h4> </label>
+                          <label class= "col-md-5"> <h4>Title Of Activity</h4> </label>
                             <div class= "form-group col-md-6">
-                              <input type="text" name= "Name" class="form-control" placeholder="ex: Juan Dela Cruz" />
-                            </div>        
-                        </div>
-                      </div> 
-
-                      <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Position</h4> </label>
-                            <div class= "form-group col-md-6">
-                              <input type="text" name= "Position" class="form-control" placeholder="ex: Executive Vice President" />
+                              <input type="text" name= "actTitle" class="form-control" placeholder="ex: General Assembly" />
                             </div>        
                         </div>
                       </div>
 
                       <div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Reason For Request</h4> </label>
+                          <label class= "col-md-5"> <h4>Type of Activity</h4> </label>
+                          <div class= "form-group col-md-6">                  
+                            <select id="actType" name="actType" class="form-control col-md-7 col-xs-12" >
+                              <option disabled selected>Select Type Of Activity</option>
+                              <option> Academic</option>
+                              <option> Special Interest</option>
+                              <option> Departmental Initiative</option>
+                              <option> Fundraising</option>
+                              <option> Community Development</option>
+                              <option> Organization Development</option>
+                              <option>Issue Advocacy</option>
+                              <option>Lasallian Formation/Spiritual Growth</option>
+                              <option>Outreach</option>                   
+                            </select>
+                          </div>    
+                        </div>
+                      </div>
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Date</h4> </label>
                             <div class= "form-group col-md-6">
-                              <textarea name= "reasonRequest" rows="3" class="form-control" placeholder="ex: Concert in Henry Grounds"></textarea> 
+                              <input type="date" name= "requestName" class="form-control" />
+                            </div>        
+                        </div>
+                      </div>
+
+                      
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Time</h4> </label>
+                          <div class= "form-inline col-md-6">
+                            <input type="time" name= "startTime" id="startTime" class="form-control" style="width:154px" /> - <input type="time" name= "endTime" id="endTime"  class="form-control" style="width:154px"/>
+                          </div>    
+                        </div>
+                      </div> 
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Venue</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input type="text" name= "venue" class="form-control" placeholder="ex: Henry Sy Grounds" />
+                            </div>        
+                        </div>
+                      </div>  
+                      
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Changes</h4> </label>
+                            <div class= "form-inline col-md-6">  
+                              <input type="checkbox" name= "changeVenue" value="1" class="form-control flat checkbox"/> Venue&nbsp&nbsp
+                              <input type="text" name= "venue" class="form-control" placeholder="Enter New Venue"   style="width:248px"><p></p>      
+                              <input type="checkbox" name= "changeDate" value ="2" class="form-control flat checkbox"/> Date &nbsp&nbsp&nbsp <input type="date" name= "venue" class="form-control" placeholder="Enter New Date"   style="width:248px"><p></p>
+                              <input type="checkbox" name= "changeTime" value ="3" class="form-control flat checkbox"/> Time &nbsp&nbsp&nbsp<input type="time" name= "newStartTime" id="newStartTime" class="form-control" style="width:119px"/> - <input type="time" name= "newEndTime" id="newEndTime" class="form-control" style="width:119px"/><p></p>
+                              <input type="checkbox" value ="4" value="4" name= "programDesign" class="form-control flat checkbox"/> Program Design <p></p>
+                                 <input type="checkbox" name= "change" value="5" class="form-control flat checkbox"/> Cancellation<p></p>
+                            </div>  
+                        </div>
+                      </div>  
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Justification/Reason </h4> </label>
+                            <div class= "form-group col-md-6">
+                              <textarea name= "reason" rows="4" class="form-control" placeholder="The facilitator of the recollection is not available."></textarea> 
+                            </div>        
+                        </div>
+                      </div>  
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Requested By:</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input type="text" name= "requestName" class="form-control" placeholder="Juan Dela Cruz" />
                             </div>        
                         </div>
                       </div>  
@@ -235,7 +220,8 @@
                       <div class="ln_solid"></div> 
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-11">
-                          <input id="nextEquipment" type="submit" class="btn btn-success align: right" value ="Next">
+                          <input id="nextApproveChanges" type="submit" class="btn btn-success align: right" value ="Next">
+                          
                         </div>
                       </div>
                     </form>
@@ -243,49 +229,16 @@
                 </div> <!-- xpanel -->              
               </div> <!-- row -->
             </div> 
-          </div>
         </div>
+      </div>
+    
 
-    <script type="text/javascript">
-      $(function() {
-        function removeError(element){
-          element.addClass('valid').closest('.form-group').removeClass('has-error');
-        }
-        $('#formEquipment').validate({
-          rules: {
-            Name: {
-              required:true,
-              lettersonly: true
-            },
-            Position: {
-              required:true
-            },
-            reasonRequest: {
-              required:true
-            }
-          },
 
-          highlight: function(element) {
-            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-          },
-          success: removeError,
-
-          messages:{
-            Name: {
-              required: 'Enter name',
-              lettersonly: 'Alphabetic characters only'
-            },
-            Position: {
-              required: 'Enter position'
-            },
-            reasonRequest: {
-              required: 'Enter reason for request'
-            }
-          }
-        });
-      })
-    </script>
-
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <script src= "js/jquery.validate.min.js"> </script>
+    <script src= js/validation.js></script>
+    <script src = "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"> </script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -324,6 +277,17 @@
 
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url();?>build/js/custom.min.js"></script>
-	
+	 <script>
+
+      $(document).ready(function () {
+        var checked = $('.checkbox').val();
+
+        if(checked==4){
+
+        }
+        
+
+      });
+   </script>
   </body>
 </html>

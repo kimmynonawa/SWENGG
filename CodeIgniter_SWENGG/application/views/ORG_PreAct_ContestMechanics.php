@@ -28,6 +28,12 @@
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
+
+    <!-- jquery -->
+    <script src= "<?php echo base_url();?>js/jquery.js"> </script>
+    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
+
   </head>
 
   <body class="nav-md">
@@ -275,10 +281,102 @@
           </div>
         </div>
 
-    <script src= "<?php echo base_url();?>js/jquery.js"> </script>
-    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
-    <script src= "<?php echo base_url();?>js/validation.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        function removeError(element){
+          element.addClass('valid').closest('.form-group').removeClass('has-error');
+        }
+        $('#conmech').validate({
+          rules: {
+            guidelines:{
+              required:true
+            },
+            'mechanics[]':{
+              required: true
+            },
+            'criteria[]':{
+              required: true
+            },
+            'judges[]':{
+              required:true,
+              lettersonly: true
+            },
+            'questions[]':{
+              required: true
+            }
+          },
+
+          highlight: function(element) {
+            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+          },
+          success: removeError,
+
+          messages:{
+            guidelines:{
+              required: 'Enter guideline'
+            },
+            'mechanics[]':{
+              required: 'Enter mechanic'
+            },
+            'criteria[]':{
+              required: 'Enter criteria'
+            },
+            'judges[]':{
+              required: 'Enter name',
+              lettersonly: 'Alphabetic characters only'
+            },
+            'questions[]':{
+              required: 'Enter question'
+            }
+          }
+        });
+
+        $("#mech").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"><div class="col-md-8"><label class= "col-md-2"> <h4>Mechanics</h4> </label><div class= "form-group col-md-6"><input type="text" name= "mechanics[]" class="form-control" placeholder="ex: Sing and dance with your blockmates"/></div></div></div>')
+
+        $("#addmech").click(function() {
+          $("#mech").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-8"><label class= "col-md-2"></label><div class= "form-group col-md-6"><input type="text" name= "mechanics[]" class="form-control" placeholder="ex: Sing and dance with your blockmates"/></div></div></div></div>');   
+        });
+
+        $("#deletemech").click(function() {
+          var v= document.getElementById("newph");
+          v.remove();
+        });
+
+        $("#criteria").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"><div class="col-md-8"><label class= "col-md-2"> <h4>Criteria</h4> </label><div class= "form-group col-md-6"><input type="text" name= "criteria[]" class="form-control" placeholder="ex: One hundred points for costume."/></div></div></div>')
+
+        $("#addcrit").click(function() {
+          $("#criteria").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-8"><label class= "col-md-2"></label><div class= "form-group col-md-6"><input type="text" name= "criteria[]" class="form-control" placeholder="ex: One hundrer points for costume."/></div></div></div>');   
+        });
+
+        $("#deletecrit").click(function() {
+          var v= document.getElementById("newph");
+          v.remove();
+        });
+
+        $("#listjudge").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"><div class="col-md-8"><label class= "col-md-2"> <h4>Judges</h4> </label><div class= "form-group col-md-6"><input type="text" name= "judges[]" class="form-control" placeholder="ex: Juan Dela Cruz"/></div></div></div>')
+
+        $("#addjudge").click(function() {
+          $("#listjudge").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-8"><label class= "col-md-2"></label><div class= "form-group col-md-6"><input type="text" name= "judges[]" class="form-control" placeholder="ex: Juan Dela Cruz"/></div></div></div>');   
+        });
+
+        $("#deletejudge").click(function() {
+          var v= document.getElementById("newph");
+          v.remove();
+        });
+
+        $("#listquestions").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"><div class="col-md-8"><label class= "col-md-2"> <h4>Questions </h4> </label><div class= "form-group col-md-6"><input type="text" name= "questions[]" class="form-control" placeholder="ex: What is your advocacy?"/></div></div></div>')
+
+        $("#addquestion").click(function() {
+          $("#listquestions").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-8"><label class= "col-md-2"></label><div class= "form-group col-md-6"><input type="text" name= "questions[]" class="form-control" placeholder="ex: What is your advocacy?"/></div></div></div>');   
+        });
+
+       $("#deletequestion").click(function() {
+              var v= document.getElementById("newph");
+              v.remove();
+        });
+      })
+    </script>
+   
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

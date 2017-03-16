@@ -28,6 +28,11 @@
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
+
+     <!-- jQuery -->
+    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
+
   </head>
 
   <body class="nav-md">
@@ -275,11 +280,85 @@
         </div>
 
 
+     <!-- for validation -->
+    <script type="text/javascript">
+      $(function(){
+        function removeError(element){
+          element.addClass('valid').closest('.form-group').removeClass('has-error');
+        }
 
-    <!-- jQuery -->
-    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
-    <script src="<?php echo base_url();?>js/validation.js"></script>
+        $('#formFoodEntry').validate({
+        rules: {
+          Name: {
+            required:true,
+            lettersonly: true
+          },
+          IDNum:{
+            required: true,
+            minlength: 8
+
+          },
+          Position: {
+            required: true,
+            lettersonly: true
+          },
+          Email:{
+            required: true,
+            email: true
+          },
+
+          CPNo:{
+            required: true,
+            maxlength: 11,
+            minlength: 11
+          },
+
+          TelNo:{
+            maxlength: 7
+          }
+
+        },
+        
+        highlight: function(element) {
+          $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        success: removeError,
+
+        messages: {
+          Name:{
+            required: 'Enter your full name',
+            lettersonly: 'Alphabetic characters only'
+          },
+
+          IDNum:{
+            required: 'Enter your ID number',
+            minlength: 'Invalid ID number'
+          },
+
+          Position: {
+            required:'Enter your position',
+            lettersonly: 'Invalid position'
+          },
+
+          Email: {
+            required: 'Enter your DLSU e-mail',
+            email: 'Invalid DLSU e-mail'
+          },
+
+          CPNo: {
+            required: 'Enter mobile number.',
+            maxlength: 'Invalid mobile number',
+            minlength: 'Invalid mobile number'
+          },
+
+          TelNo:{
+            maxlength: 'Enter a valid local number'
+          }
+        }
+      });
+      })
+    </script>
+   
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -318,6 +397,7 @@
 
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url();?>build/js/custom.min.js"></script>
+
 
 	
   </body>

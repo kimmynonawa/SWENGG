@@ -4,51 +4,154 @@
 			$this->load->database();
 		}
 		
-		public function createNewPPR($actno, $context1, $context2, $context3, $objective1, $objective2, $objective3, $preparedby_name, $preparedby_position, $notedby_name, $facultyAdviser){
+		// TESTED
+		public function createNewPPR($data){
+			date_default_timezone_set('Asia/Manila');
+			$dateCreated = date("Y-m-d g:i:s");
+			return $this->db->insert('ppr', array(  "activityID" 	=> $data['actno'], 
+													"context1" 		=> $data['description1'], 
+													"context2" 		=> $data['description2'], 
+													"context3" 		=> $data['description3'], 
+													"objective1"	=> $data['objective1'], 
+													"objective2" 	=> $data['objective2'], 
+													"objective3" 	=> $data['objective3'],
+													"organization"	=> $data['organization'],  
+													"datecreated" 	=> $dateCreated));
+		}
+
+		// TESTED
+		public function createProgramDesign($PPRnum, $data){
 			date_default_timezone_set('Asia/Manila');
 			$dateCreated = date("Y-m-d g:i:s");
 
-			return $this->db->insert('ppr', array("activityID" => $actno, "context1" => $context1, "context2" => $context2, "context3" => $context3, "objective1" => $objective1, "objective2" => $objective2, "objective3" => $objective3, "preparedby" => $preparedby_name, "preparedby_position" => $preparedby_position, "notedby" => $notedby_name, "facultyadviser" =>$facultyAdviser, "datecreated" => $dateCreated));
+			// ASSIGNMENT OF VARIABLES
+			$startTimes   		= $data['startTime[]'];
+			$endTimes 	  		= $data['endTime[]'];
+			$names		  		= $data['activityName[]'];
+			$descriptions 		= $data['activityDes[]'];
+			$personsincharge	= $data['activityPerson[]'];
+
+			for ($i = 0; $i < sizeof($startTimes); $i++){
+				// COMPUTATION FOR DURATION
+				$startTime = date('H:i:s', strtotime($startTimes[$i]));
+				$endTime = date('H:i:s', strtotime($endTimes[$i]));
+				
+				$newStartTime = new DateTime($startTime);
+				$newEndTime   = new DateTime($endTime);
+				$difference   = $newEndTime->diff($newStartTime);
+				$duration 	  = $difference->format('%H hour(s) and %i minute(s)');
+
+				$this->db->insert('ppr_programdesign', array("PPRno" 		  => $PPRnum, 
+															 "date" 		  => $dateCreated, 
+															 "duration"		  => $duration, 
+															 "starttime" 	  => $startTime, 
+															 "endtime" 		  => $endTime, 
+															 "name"			  => $names[$i], 
+															 "description"	  => $descriptions[$i], 
+															 "personincharge" => $personsincharge[$i]));
+			}
 		}
 
-		public function createProgramDesign($PPRnum, $starttime, $endtime, $name, $description, $personincharge){
-			// DURATION COMPUTATION HERE
-			$duration = "30 minutes";
-			// DURATION COMPUTATION END HERE
+		// TESTED
+		public function addExpenses($PPRnum, $data) {
+			// ASSIGNMENT OF VARIABLES
+			$materials = $data['material[]'];
+			$quantity  = $data['quantity[]'];
+			$unitCost  = $data['unitcost[]'];
 
-			date_default_timezone_set('Asia/Manila');
-			$dateCreated = date("Y-m-d g:i:s");
-
-
-			return $this->db->insert('ppr_programdesign', array("PPRno" => $PPRnum, "date" => $dateCreated, "starttime" => $starttime, "endtime" => $endtime, "duration" => $duration, "name" => $name, "description" => $description, "personincharge" => $personincharge));
+			for ($i = 0; $i < sizeof($materials); $i++) {
+				$totalCost = 0;
+				$totalCost = $quantity[$i] * $unitCost[$i];
+				$this->db->insert('ppr_expenses', array("PPRno" 	=> $PPRnum, 
+														"material"  => $materials[$i], 
+														"quantity"  => $quantity[$i], 
+														"unitcost"  => $unitCost[$i], 
+														"totalcost" => $totalCost));
+			}
 		}
 
-		public function addExpenses($PPRnum, $material, $quantity, $unitCost, $totalCost) {
-					return $this->db->insert('ppr_expenses', array("PPRno" => $PPRnum, "material" => $material, "quantity" => $quantity, "unitcost" => $unitCost, "totalcost" => $totalCost));
+		// TESTED
+		public function addProjectHeads($PPRnum, $projectHeadInfo) {
+			$projectHead_names = $projectHeadInfo['names[]'];
+			$projectHead_num   = $projectHeadInfo['contactno[]'];
+
+			for ($i = 0; $i < sizeof($projectHeadInfo); $i++) {
+				$this->db->insert('ppr_projectheads', array("PPRno" 				=> $PPRnum, 
+															"projecthead_name"  	=> $projectHead_names[$i],
+															"projecthead_contactno" => $projectHead_num[$i],));
+			}
+		} 
+
+		// TESTED
+		public function addFunds($PPRnum, $data) {
+			$this->db->insert('ppr_funds', array("PPRno" 			=> $PPRnum, 
+												 "orgfunds"	 		=> $data['orgFunds'], 
+												 "participantsfee" 	=> $data['participantsFee'], 
+												 "others" 			=> $data['totalOthersFund']));
 		}
 
-		public function addFunds($PPRnum, $orgFunds, $participantsFee, $others) {
-			return $this->db->insert('ppr_funds', array("PPRno" => $PPRnum, "orgfunds" => $orgFunds, "participantsfee" => $participantsFee, "others" => $others));
+		// TESTED
+		public function addOtherFunds($PPRFundsNum, $data) {
+			$sourceName   = $data['othersName[]'];
+			$sourceAmount = $data['othersAmount[]'];
+			for ($i = 0; $i < sizeof($sourceName); $i++) {
+				$this->db->insert('ppr_otherfunds', array(  "PPR_FUNDSno" => $PPRFundsNum, 
+															"source" 	  => $sourceName[$i], 
+															"amount" 	  => $sourceAmount[$i]));
+			}
 		}
 
-		public function addOtherFunds($PPRFundsNum, $source, $amount) {
-			return $this->db->insert('ppr_otherfunds', array("PPR_FUNDSno" => $PPRFundsNum, "source" => $source, "amount" => $amount));
+		// TESTED
+		public function addOrgFunds($PPRnum, $data) {
+			foreach ($this->PPR_model->getSourceFundsTotalAmount($PPRnum) as $disbursement) {
+				$totalDisbursement = $disbursement->totalAmount;
+			}
+			foreach ($this->PPR_model->getExpensesTotalAmount($PPRnum) as $expenses) {
+				$lessExpenses = $expenses->totalAmount;
+			}
+			$balance = $totalDisbursement - $lessExpenses;
+
+			$this->db->insert('ppr_orgfunds', array("PPRno" 			=> $PPRnum, 
+													"operationalfunds" 	=> $data['operationalFunds'], 
+													"depositoryfunds" 	=> $data['depositoryFunds'], 
+													"depository_asof" 	=> $data['depositoryDate'], 
+													"totaldisbursement" => $totalDisbursement, 
+													"less_expenses" 	=> $lessExpenses, 
+													"balance" 			=> $balance));
 		}
 
-		public function addOrgFunds($PPRnum, $operationalFunds, $depositoryFunds, $depositoryAsOfDate, $otherFunds, $totalDisbursement, $lessExpenses, $balance) {
-			return $this->db->insert('ppr_orgfunds', array("PPRno" => $PPRnum, "operationalfunds" => $operationalFunds, "depositoryfunds" => $depositoryFunds, "depository_asof" => $depositoryAsOfDate, "totaldisbursement" => $totalDisbursement, "less_expenses" => $lessExpenses, "balance" => $balance));
+		// TESTED
+		public function addProjectedIncome($PPRnum, $data) {
+			$itemList  = $data['incomeItem[]'];
+			$qtyList   = $data['incomeQty[]'];
+			$priceList = $data['incomeSellPrice[]'];
+
+			for ($i = 0; $i < sizeof($itemList); $i++) {
+				$amount = 0;
+				$amount = $qtyList[$i] * $priceList[$i];
+				$this->db->insert('ppr_projectedincome', array(	"PPRno" 		=> $PPRnum, 
+																"item" 			=> $itemList[$i], 
+																"quantity" 		=> $qtyList[$i], 
+																"sellingprice"  => $priceList[$i], 
+																"amount" 		=> $amount));
+			}
 		}
 
-		public function addProjectedIncome($PPRnum, $item, $quantity, $sellingPrice, $amount) {
-			return $this->db->insert('ppr_projectedincome', array("PPRno" => $PPRnum, "item" => $item, "quantity" => $quantity, "sellingprice" => $sellingPrice, "amount" => $amount));
-		}
+		// TESTED
+		public function addProjectedExpenses($PPRnum, $data) {
+			$itemList  = $data['expenseItem[]'];
+			$qtyList   = $data['expenseQty[]'];
+			$priceList = $data['expenseSellPrice[]'];
 
-		public function addProjectedExpenses($PPRnum, $item, $quantity, $sellingPrice, $amount) {
-			return $this->db->insert('ppr_projectedexpenses', array("PPRno" => $PPRnum, "item" => $item, "quantity" => $quantity, "sellingprice" => $sellingPrice, "amount" => $amount));
-		}
-
-		public function addProvisions($PPRnum, $person1, $position1, $person2, $position2) {
-			return $this->db->insert('ppr_provisions', array("PPRno" => $PPRnum, "person1" => $person1, "position1" => $position1, "person2" => $person2, "position2" => $position2));
+			for ($i = 0; $i < sizeof($itemList); $i++) {
+				$amount = 0;
+				$amount = $qtyList[$i] * $priceList[$i];
+				$this->db->insert('ppr_projectedexpenses', array("PPRno" 		=> $PPRnum, 
+																 "item" 		=> $itemList[$i], 
+																 "quantity" 	=> $qtyList[$i], 
+																 "sellingprice" => $priceList[$i], 
+																 "amount" 		=> $amount));
+			}
 		}
 
 		public function getPPR($actno) {
@@ -69,9 +172,34 @@
 	        return $query->row_array();
 		}
 
-		public function getFunds($PPRnum) {
+		public function getSourceFunds($PPRnum) {
 			$this->db->select('orgfunds, participantsfee, others');
 			$this->db->from('ppr_funds');
+			$this->db->where('PPRno', $PPRnum);
+			$query = $this->db->get();
+
+	        return $query->result_array();
+		}
+
+		public function getSourceFundsTotalAmount($PPRnum) {
+			$query = $this->db->query("SELECT (SUM(orgfunds)+SUM(participantsfee)+SUM(others)) AS 'totalAmount'
+										 FROM ppr_funds
+										WHERE PPRno = {$PPRnum}");
+	        return $query->result();
+		}
+
+		public function getOtherSourceFunds($PPRFundsNum) {
+			$this->db->select('source, amount');
+			$this->db->from('ppr_otherfunds');
+			$this->db->where('idPPR_OTHERFUNDS', $PPRFundsNum);
+			$query = $this->db->get();
+
+	        return $query->result_array();
+		}
+
+		public function getOrgFunds($PPRnum) {
+			$this->db->select('operationalfunds, depositoryfunds, otherfunds, totaldisbursement, balance');
+			$this->db->from('ppr_orgfunds');
 			$this->db->where('PPRno', $PPRnum);
 			$query = $this->db->get();
 
@@ -87,13 +215,11 @@
 	        return $query->result_array();
 		}
 
-		public function getOtherFunds($PPRFundsNum) {
-			$this->db->select('source, amount');
-			$this->db->from('ppr_otherfunds');
-			$this->db->where('idPPR_OTHERFUNDS', $PPRFundsNum);
-			$query = $this->db->get();
-
-	        return $query->result_array();
+		public function getExpensesTotalAmount($PPRnum) {
+			$query = $this->db->query("SELECT SUM(totalcost) AS 'totalAmount'
+										 FROM ppr_expenses
+										WHERE PPRno = {$PPRnum}");
+	        return $query->result();
 		}
 
 		public function getProjectedIncome($PPRnum) {

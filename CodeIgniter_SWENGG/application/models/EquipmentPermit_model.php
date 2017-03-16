@@ -4,11 +4,17 @@
 			$this->load->database();
 		}
 		
-		public function createEquipmentEntryPermit($actno, $name, $position, $reasonRequest){
+		// TESTED
+		public function createEquipmentEntryPermit($data){
 			date_default_timezone_set('Asia/Manila');
-			$dateCreated = date("Y-m-d g:i:s");
+			$dateCreated = date("Y-m-d g:i:s"); 
 
-			return $this->db->insert('equipmentpermit', array("activityID" => $actno, "datecreated" => $dateCreated, "requestedby" => $name, "requestedby_position" => $position, "body" => $reasonRequest));
+			return $this->db->insert('equipmentpermit', array(	"activityID" 			=> $data['actno'], 
+															 	"requestedby" 			=> $data['name'], 
+															 	"requestedby_position" 	=> $data['position'],
+															 	"body"					=> $data['reasonRequest'],
+															 	"organization"			=> $data['organization'],
+															 	"datecreated" 			=> $dateCreated));
 		}
 
 		public function getEquipmentPermit($actno) {
