@@ -252,20 +252,24 @@
                         </div>
                       </div>
 
-                      <div class= "row" id="listquestions"></div>
-
                       <div class= "row">
-                        <div class= "col-md-8">
-                          <label class="control-label col-md-2"></label>
-                          <div class="col-md-8">
-                            <div class = "buttons">
-                              <button id="addquestion" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button>
-                              <button id="deletequestion" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                            </div>     
-                          </div>
-                        </div>
-                      </div>
-
+                        <div class="col-md-8">   
+                          <label class= "col-md-2"> <h4>Type of Contest</h4></label>
+                            <div class= "form-group col-md-4">
+                              <select id="type" class="form-control col-md-7 col-xs-12" style="width:220px">
+                                <option disabled selected>Select Type of Contest</option>
+                                <option value="1"> Academic</option>
+                                <option value="2"> Not Academic</option>           
+                              </select>
+                            </div>
+                            <div class="col-md-6">
+                              <button class="form-control" id="select" style="width:95px">Select</button>
+                            </div>        
+                          </div> 
+                      </div>  
+                           
+                      <div class= "row" id="listquestions"></div>
+                      <div id="buttons"> </div>
                 
                       <div class="ln_solid"></div> 
                       <div class="form-group">
@@ -364,16 +368,31 @@
           v.remove();
         });
 
-        $("#listquestions").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"><div class="col-md-8"><label class= "col-md-2"> <h4>Questions </h4> </label><div class= "form-group col-md-6"><input type="text" name= "questions[]" class="form-control" placeholder="ex: What is your advocacy?"/></div></div></div>')
+        $('#select').click(function(){
+        console.log("yay");
+        var choice = document.getElementById("type").value;
+        console.log("choice" + choice);
+        if(choice==1){
+    
+           event.preventDefault();
+            $("#listquestions").append('<div class="col-md-12 col-sm-12 col-xs-12"><div class="row"><div class="col-md-8"><label class= "col-md-2"> <h4>Questions </h4> </label><div class= "form-group col-md-6"><input type="text" name= "questions[]" class="form-control" placeholder="ex: What is your advocacy?"/></div></div></div>');
 
-        $("#addquestion").click(function() {
-          $("#listquestions").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-8"><label class= "col-md-2"></label><div class= "form-group col-md-6"><input type="text" name= "questions[]" class="form-control" placeholder="ex: What is your advocacy?"/></div></div></div>');   
-        });
+            $("#buttons").append('<div class= "row"><div class= "col-md-8"><label class="control-label col-md-2"></label><div class="col-md-8"><div class = "buttons"><button id="addquestion" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span> </button><button id="deletequestion" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button></div></div></div></div>');
 
-       $("#deletequestion").click(function() {
-              var v= document.getElementById("newph");
-              v.remove();
+            $("#addquestion").click(function() {
+              $("#listquestions").append('<div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-8"><label class= "col-md-2"></label><div class= "form-group col-md-6"><input type="text" name= "questions[]" class="form-control" placeholder="ex: What is your advocacy?"/></div></div></div>');   
+            });
+
+           $("#deletequestion").click(function() {
+                  var v= document.getElementById("newph");
+                  v.remove();
         });
+        
+        }
+      });
+
+
+       
       })
     </script>
    

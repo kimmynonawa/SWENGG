@@ -62,22 +62,13 @@
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="#"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
-                  <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu"> 
-                      <li><a href="#">Add New GOSM</li>
-                      <li><a href="#">Fill out Pre-Activity Requirements</a></li>
-                      <li><a href="#">Fill out Additional Requirements</a></li>
-                      <li><a href="#">Fill out Special Approval Slip</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#"><i class="fa fa-folder-open"></i> View Pre-Acts <span class="fa fa-chevron-down"></span></a>
-                  <li><a href="#"><i class="fa fa-table"></i> Calendar <span class="fa fa-chevron-down"></span></a>
-                  <li><a href="#"><i class="fa fa-list-alt"></i> GOSM <span class="fa fa-chevron-down"></span></a>
-                  </li>
-                </ul>
+				  <li><a href="http://localhost/index.php/account/org"><i class="fa fa-home"></i> Home <span ></span></a></li>
+                  <li><a href="http://localhost/index.php/gosm/add"><i class="fa fa-table"></i> Add New GOSM <span ></span></a></li>
+                  <li><a href="http://localhost/index.php/PreActivity/preacts"><i class="fa fa-edit"></i> Add Pre-Activity <span ></span></a></li>				  
+				  <li><a href="#"><i class="fa fa-calendar"></i> Calendar <span ></span></a></li>
+				  <li><a href="http://localhost/index.php/gosm/viewORGGosm1"><i class="fa fa-list-alt"></i> GOSM <span ></span></a></li>
+				</ul>
               </div>
             </div>
             <!-- /sidebar menu -->
@@ -106,202 +97,165 @@
         </div>
         <!-- /top navigation -->
 
-     <!-- page content -->
+      <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
             <div class= "x_panel">
               <div class= "row">
                 <div class="title col-md-5">
-                  <h3>Activity Approval Form</h3>
+                  <h3>Approval in Changes of Activity Details</h3>
                 </div>
                 <div align="right">
-                  <ul class="nav navbar-right panel_toolbox"> 
-                    <li>
-                      <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li> 
-                  </ul>
+                    <ul class="nav navbar-right panel_toolbox"> 
+                      <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li> 
+                    </ul>
                 </div>
               </div>
               <div class= "x_content bg-success">
                 <h4><p class="text-success"> Lorem ipsum dolor sit amet, vel pretium architecto, semper semper eu elit sed, lacus cras quis, pede velit. Pretium convallis suscipit, vestibulum rutrum, eu integer montes erat ut tincidunt, facilisis dolor. Et fermentum nulla, litora leo in, nunc aliquam aperiam, rutrum elementum, dictum malesuada morbi amet nisl. sociis odio laoreet dolor mauris. </p></h4>
               </div>
             </div>
-                
+            
             <div class="clearfix"></div>
 
+          <div class="clearfix"></div>
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-                    <form id="aform1" autocomplete="off" action="aformGOSM" method="post">
-                      <span class="section">General Information</span>
-                     
+                    <form method="post" id = "approvalChanges" autocomplete="off">
+                     <span class="section"></span>
+                      
                       <div class= "row">
-                        <div class="col-md-8">
-                          <label class= "col-md-5"> <h4>Title Of Activity:</h4> </label>
-                          <div class= "form-group col-md-6">
-                              <select name= "actName" class="form-control"/>
-                                <option disabled selected>Select Activity</option>
-                									<?php
-                										for ($i = 0; $i < count($activity); $i++){
-                											echo"<option value={$activity[$i]['activityID']}>{$activity[$i]['title']}</option>";
-                										}
-                									?>
-                              </select>
-                          </div>        
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Title Of Activity</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <label type="text" class="form-control"> insert title of activity here</label>
+                            </div>        
                         </div>
                       </div>
 
-                    <p> </p>
-                    <span class="section">Nature of Activity</span>
-                    <div class= "row">
-                      <div class="col-md-8">
-					             <label class= "col-md-5"> <h4>Type of Activity</h4> </label>
-                          <div class= "form-group col-md-6">
-                            <label id="natact" class="form-control col-md-7 col-xs-12"> Insert type of activity here</label> 
-                           
-                          </div>
-                       
-                                  
-                        </div>
-                      </div>  
-                      <p> </p>
-                      <span class="section">Type of Activity</span>
                       <div class= "row">
                         <div class="col-md-8">   
                           <label class= "col-md-5"> <h4>Type of Activity</h4> </label>
-                          <div class= "form-group col-md-6">
-                          <label  id="typeact" class="form-control col-md-7 col-xs-12"> Insert type of activity here</label>
-                          </div>
-                                     
+                          <div class= "form-group col-md-6">                  
+                            <label id="actType" class="form-control col-md-7 col-xs-12"> insert type of activity here</select>
+                          </div>    
                         </div>
-                      </div>  
-                      <p> </p>
-                      <span class="section">Reach of Activity</span>
+                      </div>
+
                       <div class= "row">
                         <div class="col-md-8">   
-                        <label class= "col-md-5"> <h4>Reach of Activity</h4> </label>
-                          <div class= "form-group col-md-6">
-                            <select id="reachType"  name="reachType" class="form-control col-md-7 col-xs-12">
-                              <option disabled selected>Select Reach Of Activity</option>
-								<?php
-									for ($i = 0; $i < count($reach); $i++){
-										echo"<option value={$reach[$i]['idREF_ACTIVITYREACH']}>{$reach[$i]['activityreach']}</option>";
-									}
-								?>        
-                            </select>
-                          </div>      
+                          <label class= "col-md-5"> <h4>Date</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <label type="date"  class="form-control"> insert date here</label>
+                            </div>        
+                        </div>
+                      </div>
+  
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Time</h4> </label>
+                          <div class= "form-inline col-md-6">
+                            <label class="form-control" style="width:154px"> start time </label> - <label class="form-control" style="width:154px"/> end time</div>
+                          </div>    
                         </div>
                       </div> 
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Venue</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <label class="form-control"> insert venue here </label>
+                            </div>        
+                        </div>
+                      </div>  
+                      
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Changes</h4></label>
+                            <div class= "form-group col-md-3">
+                              <select id="changes" class="form-control col-md-7 col-xs-12" style="width:160px">
+                                <option disabled selected>Select Changes</option>
+                                <option value="1"> Venue</option>
+                                <option value="2"> Date</option>
+                                <option value="3"> Time</option>
+                                <option value="4"> Program Design</option>
+                                <option value="5"> Cancellation</option>             
+                              </select>
+                            </div>
+                            <div class="col-md-3">
+                              <button class="form-control" id="select" style="width:155px">Select Change</button>
+                            </div>        
+                          </div> 
+                      </div>  
+                      <div id="changeDetails"> </div>
+                      
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Justification/Reason </h4> </label>
+                            <div class= "form-group col-md-6">
+                              <textarea name= "reason" rows="4" class="form-control" placeholder="The facilitator of the recollection is not available."></textarea> 
+                            </div>        
+                        </div>
+                      </div>  
+
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Requested By:</h4> </label>
+                            <div class= "form-group col-md-6">
+                              <input type="text" name= "requestName" class="form-control" placeholder="Juan Dela Cruz" />
+                            </div>        
+                        </div>
+                      </div>  
 
                       <div class="ln_solid"></div> 
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-11">
-                          <input id="nextaform" type="submit" class="btn btn-success align: right" Value="Next">
+                          <input id="nextApproveChanges" type="submit" class="btn btn-success align: right" value ="Next">
+                          
                         </div>
-                      </div>    
+                      </div>
                     </form>
                   </div><!-- xcontent -->
                 </div> <!-- xpanel -->              
               </div> <!-- row -->
             </div> 
-          </div>
         </div>
-
+      </div>
     
-	<script>
-		$('#activityoffice').on('change',function(){
-			var actoff = $('#activityoffice').val();
-			$.ajax({
-			url: "getActivityNature",
-			method: "POST",
-			data:{
-				'actoff':actoff
-			},
-			success: function(data){
-				console.log(1)
-				$('#natact').empty ();
-				$('#natact').append('<option disabled selected>Select Nature of Activity</option>');
-				for (i = 0; i < data.length; i++){
-					$('#natact').append('<option value="'+ data[i].idREF_ACTIVITYNATURE +'">'+ data[i].activitynature +'</option>');
-				}
-				}
-			});
-		});
-		
-		$('#processingoffice').on('change',function(){
-			var prooff = $('#processingoffice').val();
-			$.ajax({
-			url: "getActivityType",
-			method: "POST",
-			data:{
-				'prooff':prooff
-			},
-			success: function(data){
-				console.log(1)
-				$('#typeact').empty ();
-				$('#typeact').append('<option disabled selected>Select Type of Activity</option>');
-				for (i = 0; i < data.length; i++){
-					$('#typeact').append('<option value="'+ data[i].idREF_ACTIVITYTYPE +'">'+ data[i].activitytype+'</option>');
-				}
-				}
-			});
-		});
-	</script>
-	<script>
-		var aform1= $('#aform1');
-		function removeError(element){
-			element.addClass('valid')
-					.closest('.form-group')
-					.removeClass('has-error');
-			}
-		aform1.validate({
-			rules: {
-				actName: {
-					required:true
-				},
-				actoff: {
-					required:true
-				},
-				natact: {
-					required:true
-				},
-				prooff: {
-					required:true
-				},
-				typeact: {
-					required:true
-				},
-				reachType: {
-					required:true
-				}
-			},
-			highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
-			},
-			success: removeError,
+  <script>
 
-			messages:{
-				actName: {
-					required: 'Enter activity name'
-				},
-				actoff: {
-					required: 'Pick activity office'
-				},
-				natact: {
-					required: 'Pick nature of activity'
-				},
-				prooff: {
-					required: 'Pick processing office'
-				},
-				typeact: {
-					required: 'Pick type of activity'
-				},
-				reachType: {
-					required: 'Pick reach of activity'
-				}	
-			}
-		});
-	</script>
+   $(document).ready(function () {
+      $('#select').click(function(){
+        console.log("yay");
+        var choice = document.getElementById("changes").value;
+        console.log("choice" + choice);
+        if(choice==1){
+          var toAppend=' <div class= "row"><div class="col-md-8"> <label class= "col-md-5"> <h4>Venue</h4> </label><div class= "form-group col-md-6"><input type="text" name= "venue" class="form-control" placeholder="ex: Henry Sy Grounds"></div> </div></div>';
+           event.preventDefault();
+          $('#changeDetails').append(toAppend);
+        }
+        else if(choice==2){
+          var toAppend='   <div class= "row"><div class="col-md-8"> <label class= "col-md-5"> <h4>Date</h4> </label><div class= "form-inline col-md-6"><input type="date" name= "startDate" id="startDate" class="form-control" style="width:154px" /> - <input type="date" name= "endDate" id="endDate"  class="form-control" style="width:154px"/></div></div></div>';
+           event.preventDefault();
+          $('#changeDetails').append(toAppend);
+        }
+        else if(choice==3){
+          var toAppend='   <div class= "row"><div class="col-md-8"> <label class= "col-md-5"> <h4>Time</h4> </label><div class= "form-inline col-md-6"><input type="time" name= "startTime" id="startTime" class="form-control" style="width:154px" /> - <input type="time" name= "endTime" id="endTime"  class="form-control" style="width:154px"/></div></div></div>';
+           event.preventDefault();
+          $('#changeDetails').append(toAppend);
+        }
+      });
+
+   });
+
+  </script>
+
+    <!-- jQuery -->
+    <script src = "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"> </script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -340,6 +294,5 @@
 
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url();?>build/js/custom.min.js"></script>
-  
   </body>
 </html>

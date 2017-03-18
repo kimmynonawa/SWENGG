@@ -8,12 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title><?php echo ($this->session->userdata('org')[0]['acronym']);?></title>
-	
-	<script src= "<?php echo base_url();?>js/jquery.js"> </script>
-	<script src= "<?php echo base_url();?>js/jquery.min.js"></script>
-	<script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
+  
+  <script src= "<?php echo base_url();?>js/jquery.js"> </script>
+  <script src= "<?php echo base_url();?>js/jquery.min.js"></script>
+  <script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <!-- Bootstrap -->
     <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -22,7 +22,7 @@
     <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
+  
     <!-- bootstrap-progressbar -->
     <link href="<?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -85,7 +85,7 @@
         </div>
 
         <div class="top_nav">
-		
+    
           <div class="nav_menu">
             <nav>
 
@@ -142,11 +142,11 @@
                           <div class= "form-group col-md-6">
                               <select name= "actName" class="form-control"/>
                                 <option disabled selected>Select Activity</option>
-                									<?php
-                										for ($i = 0; $i < count($activity); $i++){
-                											echo"<option value={$activity[$i]['activityID']}>{$activity[$i]['title']}</option>";
-                										}
-                									?>
+                  <?php
+                    for ($i = 0; $i < count($activity); $i++){
+                      echo"<option value={$activity[$i]['activityID']}>{$activity[$i]['title']}</option>";
+                    }
+                  ?>
                               </select>
                           </div>        
                         </div>
@@ -156,24 +156,37 @@
                     <span class="section">Nature of Activity</span>
                     <div class= "row">
                       <div class="col-md-8">
-					             <label class= "col-md-5"> <h4>Type of Activity</h4> </label>
+                        <label class= "col-md-5"> <h4>Processing Office</h4> </label>
                           <div class= "form-group col-md-6">
-                            <label id="natact" class="form-control col-md-7 col-xs-12"> Insert type of activity here</label> 
-                           
+                            <select id="activityoffice" class="form-control col-md-7 col-xs-12" name="actoff">
+                              <option disabled selected>Select Processing Office</option>
+                              <option value="1">CSO and Special Groups</option>
+                              <option value="2">USG</option>
+                            </select>
                           </div>
-                       
+                        <label class= "col-md-5"> <h4>Nature of Activity</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <select id="natact" class="form-control col-md-7 col-xs-12" name="natact">
+                              <option disabled selected>Select Nature of Activity</option>
+                
+                            </select>
+                          </div>
                                   
                         </div>
                       </div>  
+          
                       <p> </p>
                       <span class="section">Type of Activity</span>
                       <div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-5"> <h4>Type of Activity</h4> </label>
+                          <label class= "col-md-5"> <h4>Processing Office</h4> </label>
                           <div class= "form-group col-md-6">
-                          <label  id="typeact" class="form-control col-md-7 col-xs-12"> Insert type of activity here</label>
+                            <label id="processingoffice" class="form-control col-md-7 col-xs-12" name="prooff">insert processing office here</label>
                           </div>
-                                     
+                          <label class= "col-md-5"> <h4>Type of Activity</h4> </label>
+                          <div class= "form-group col-md-6">  
+                            <label id="typeact"  class="form-control col-md-7 col-xs-12" name="typeact">insert type of activity here</label>
+                          </div>                
                         </div>
                       </div>  
                       <p> </p>
@@ -184,11 +197,11 @@
                           <div class= "form-group col-md-6">
                             <select id="reachType"  name="reachType" class="form-control col-md-7 col-xs-12">
                               <option disabled selected>Select Reach Of Activity</option>
-								<?php
-									for ($i = 0; $i < count($reach); $i++){
-										echo"<option value={$reach[$i]['idREF_ACTIVITYREACH']}>{$reach[$i]['activityreach']}</option>";
-									}
-								?>        
+                              <?php
+                                for ($i = 0; $i < count($reach); $i++){
+                                  echo"<option value={$reach[$i]['idREF_ACTIVITYREACH']}>{$reach[$i]['activityreach']}</option>";
+                                }
+                              ?>        
                             </select>
                           </div>      
                         </div>
@@ -209,99 +222,99 @@
         </div>
 
     
-	<script>
-		$('#activityoffice').on('change',function(){
-			var actoff = $('#activityoffice').val();
-			$.ajax({
-			url: "getActivityNature",
-			method: "POST",
-			data:{
-				'actoff':actoff
-			},
-			success: function(data){
-				console.log(1)
-				$('#natact').empty ();
-				$('#natact').append('<option disabled selected>Select Nature of Activity</option>');
-				for (i = 0; i < data.length; i++){
-					$('#natact').append('<option value="'+ data[i].idREF_ACTIVITYNATURE +'">'+ data[i].activitynature +'</option>');
-				}
-				}
-			});
-		});
-		
-		$('#processingoffice').on('change',function(){
-			var prooff = $('#processingoffice').val();
-			$.ajax({
-			url: "getActivityType",
-			method: "POST",
-			data:{
-				'prooff':prooff
-			},
-			success: function(data){
-				console.log(1)
-				$('#typeact').empty ();
-				$('#typeact').append('<option disabled selected>Select Type of Activity</option>');
-				for (i = 0; i < data.length; i++){
-					$('#typeact').append('<option value="'+ data[i].idREF_ACTIVITYTYPE +'">'+ data[i].activitytype+'</option>');
-				}
-				}
-			});
-		});
-	</script>
-	<script>
-		var aform1= $('#aform1');
-		function removeError(element){
-			element.addClass('valid')
-					.closest('.form-group')
-					.removeClass('has-error');
-			}
-		aform1.validate({
-			rules: {
-				actName: {
-					required:true
-				},
-				actoff: {
-					required:true
-				},
-				natact: {
-					required:true
-				},
-				prooff: {
-					required:true
-				},
-				typeact: {
-					required:true
-				},
-				reachType: {
-					required:true
-				}
-			},
-			highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
-			},
-			success: removeError,
+  <script>
+    $('#activityoffice').on('change',function(){
+      var actoff = $('#activityoffice').val();
+      $.ajax({
+      url: "getActivityNature",
+      method: "POST",
+      data:{
+        'actoff':actoff
+      },
+      success: function(data){
+        console.log(1)
+        $('#natact').empty ();
+        $('#natact').append('<option disabled selected>Select Nature of Activity</option>');
+        for (i = 0; i < data.length; i++){
+          $('#natact').append('<option value="'+ data[i].idREF_ACTIVITYNATURE +'">'+ data[i].activitynature +'</option>');
+        }
+        }
+      });
+    });
+    
+    $('#processingoffice').on('change',function(){
+      var prooff = $('#processingoffice').val();
+      $.ajax({
+      url: "getActivityType",
+      method: "POST",
+      data:{
+        'prooff':prooff
+      },
+      success: function(data){
+        console.log(1)
+        $('#typeact').empty ();
+        $('#typeact').append('<option disabled selected>Select Type of Activity</option>');
+        for (i = 0; i < data.length; i++){
+          $('#typeact').append('<option value="'+ data[i].idREF_ACTIVITYTYPE +'">'+ data[i].activitytype+'</option>');
+        }
+        }
+      });
+    });
+  </script>
+  <script>
+    var aform1= $('#aform1');
+    function removeError(element){
+      element.addClass('valid')
+          .closest('.form-group')
+          .removeClass('has-error');
+      }
+    aform1.validate({
+      rules: {
+        actName: {
+          required:true
+        },
+        actoff: {
+          required:true
+        },
+        natact: {
+          required:true
+        },
+        prooff: {
+          required:true
+        },
+        typeact: {
+          required:true
+        },
+        reachType: {
+          required:true
+        }
+      },
+      highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+      },
+      success: removeError,
 
-			messages:{
-				actName: {
-					required: 'Enter activity name'
-				},
-				actoff: {
-					required: 'Pick activity office'
-				},
-				natact: {
-					required: 'Pick nature of activity'
-				},
-				prooff: {
-					required: 'Pick processing office'
-				},
-				typeact: {
-					required: 'Pick type of activity'
-				},
-				reachType: {
-					required: 'Pick reach of activity'
-				}	
-			}
-		});
-	</script>
+      messages:{
+        actName: {
+          required: 'Enter activity name'
+        },
+        actoff: {
+          required: 'Pick activity office'
+        },
+        natact: {
+          required: 'Pick nature of activity'
+        },
+        prooff: {
+          required: 'Pick processing office'
+        },
+        typeact: {
+          required: 'Pick type of activity'
+        },
+        reachType: {
+          required: 'Pick reach of activity'
+        } 
+      }
+    });
+  </script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

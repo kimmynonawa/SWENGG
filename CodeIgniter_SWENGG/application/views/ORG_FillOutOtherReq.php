@@ -102,7 +102,7 @@
         <div class="">
           <div class="page-title">
             <div class="title_left">
-              <h3>View Activities from the GOSM</h3>
+              <h3>Fill Out Other Requirements</h3>
             </div>
             </div>
         </div>
@@ -120,11 +120,6 @@
                             <div class= "form-group col-md-7">  
                               <select id="actOptions" class="form-control col-md-7 col-xs-12" name="gosmactivityorg">
                                 <option disabled selected>Select Activity</option>
-                                 <?php
-                									for ($i=0; $i<count($acts);$i++){
-                										echo"<option value={$acts[$i]['activityID']}>{$acts[$i]['title']}</option>";
-                									}
-                								  ?> 
                               </select>
                             </div>        
                         </div>

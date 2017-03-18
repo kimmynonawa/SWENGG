@@ -278,22 +278,6 @@
 
                       <div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-5"> <h4>Activity Where Trademark Will Be Used</h4> </label>
-                            <div class= "form-group col-md-7">
-                              <select id="actType" name="actType" class="form-control col-md-7 col-xs-12" >
-                                <option disabled selected>Select Type Of Activity</option>
-                                <?php
-                                  foreach ($activityTypes as $activity) { 
-                                    echo "<option value='$activity->idREF_ACTIVITYTYPE'> $activity->activityType </option>";
-                                  }
-                                ?>                
-                              </select>
-                          </div>    
-                        </div>
-                      </div> 
-
-                      <div class= "row">
-                        <div class="col-md-8">   
                           <label class= "col-md-5"> <h4>Venue</h4> </label>
                             <div class= "form-group col-md-7">
                               <input type="text" name= "venue" class="form-control" placeholder="ex: Henry Sy Grounds" />

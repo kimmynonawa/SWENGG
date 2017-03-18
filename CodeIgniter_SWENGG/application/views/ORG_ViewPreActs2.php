@@ -9,28 +9,27 @@
 
     <title>LSCS</title>
 
-	<script src= "<?php echo base_url();?>js/jquery.js"> </script>
-	<script src="<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src= "<?php echo base_url();?>js/jquery.validate.min.js"> </script>
-	
+    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
+    <script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
+    <script src= "<?php echo base_url();?>js/validation.js"></script>
     <!-- Bootstrap -->
-    <link href="<?php echo base_url();?>/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="<?php echo base_url();?>/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="<?php echo base_url();?>/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="<?php echo base_url();?>/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 	
     <!-- bootstrap-progressbar -->
-    <link href="<?php echo base_url();?>/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="<?php echo base_url();?>/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="<?php echo base_url();?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="<?php echo base_url();?>/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="<?php echo base_url();?>/build/css/custom.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -43,7 +42,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="<?php echo base_url();?>." class="img-circle profile_img">
+                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -54,7 +53,7 @@
 
             <br />
 
-            <!-- sidebar menu -->
+             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -117,7 +116,7 @@
                           <span class="time">3 mins ago</span>
                         </span>
                         <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where<?php echo base_url();?>.
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
                         </span>
                       </a>
                     </li>
@@ -129,7 +128,7 @@
                           <span class="time">3 mins ago</span>
                         </span>
                         <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where<?php echo base_url();?>.
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
                         </span>
                       </a>
                     </li>
@@ -141,7 +140,7 @@
                           <span class="time">3 mins ago</span>
                         </span>
                         <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where<?php echo base_url();?>.
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
                         </span>
                       </a>
                     </li>
@@ -153,7 +152,7 @@
                           <span class="time">3 mins ago</span>
                         </span>
                         <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where<?php echo base_url();?>.
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
                         </span>
                       </a>
                     </li>
@@ -172,145 +171,39 @@
           </div>
         </div>
         <!-- /top navigation -->
-      <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">
-            <div class= "x_panel">
-              <div class= "row">
-                <div class="title col-md-5">
-                  <h3>Special Approval Slip</h3>
-                </div>
-                <div align="right">
-                  <ul class="nav navbar-right panel_toolbox"> 
-                    <li>
-                      <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li> 
-                  </ul>
-                </div>
-              </div>
-              <div class= "x_content bg-success">
-                <h4><p class="text-success"> Lorem ipsum dolor sit amet, vel pretium architecto, semper semper eu elit sed, lacus cras quis, pede velit. Pretium convallis suscipit, vestibulum rutrum, eu integer montes erat ut tincidunt, facilisis dolor. Et fermentum nulla, litora leo in, nunc aliquam aperiam, rutrum elementum, dictum malesuada morbi amet nisl. sociis odio laoreet dolor mauris. </p></h4>
-              </div>
+
+     <!-- page content -->
+      <div class="right_col" role="main">
+        <div class="">
+          <div class="page-title">
+            <div class="title_left">
+              <h3>View Pre-Acts </h3>
             </div>
-                
-            <div class="clearfix"></div>
-
-            <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_content">
-                    <form id="specialappslip" method="post" autocomplete="off">
-                      <span class="section"></span>
-                    
-                      <div class= "row">
-                        <div class="col-md-8">   
-             
-                          <label class= "col-md-4"> <h4>Title of Activity</h4> </label>
-                          <div class= "form-group col-md-6">  
-                            <select id="titleAct"  class="form-control col-md-7 col-xs-12" name="typeact">
-                              <option disabled selected>Select Title of Activity</option>
-                                       
-                            </select>
-                          </div>                
-                        </div>
-                      </div>
-                      
-                      <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Type of Submission</h4> </label>
-                          <div class= "form-group col-md-6">
-                            <select id="submissionType" name="submissionType" class="form-control col-md-7 col-xs-12">
-                              <option disabled selected>Select Type Of Submission</option>
-                              <option> Lost AForm</option>
-                              <option> Cancellation of Activity</option>
-                              <option> In Case of Change</option>
-                            </select>
-                          </div>       
-                        </div>
-                      </div> 
-
-                      <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Justification/Reason </h4> </label>
-                            <div class= "form-group col-md-6">
-                              <textarea name= "reason" rows="4" class="form-control" placeholder="The Pre-Activity Form was misplaced by the organization representative."></textarea> 
-                            </div>        
-                        </div>
-                      </div>  
-                      
-                      <div class= "row">
-                        <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Submitted By:</h4> </label>
-                            <div class= "form-group col-md-6">
-                              <input type="text" name= "name" class="form-control" placeholder="Juan Dela Cruz" />
-                            </div>        
-                        </div>
-                      </div>  
-
-                      <div class="ln_solid"></div> 
-                      <div class="form-group">
-                        <div class="col-md-12 col-md-offset-11">
-                          <input id="nextSas" type="submit" class="btn btn-success align: right" Value="Next">
-                        </div>
-                      </div>    
-                    </form>
-                  </div><!-- xcontent -->
-                </div> <!-- xpanel -->              
-              </div> <!-- row -->
-            </div> 
-          </div>
+            </div>
         </div>
+        <div class="clearfix"></div>
+          <div class="x_panel">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-4">
+                                <br><br>   
+                                <table id="table" class="table table-striped table-bordered table-hover" style="width:300px">
+                                    <thead>
+                                        <th><div align="center">Filled Out Requirements</div></th>
+                                    </thead>
+                                    <tbody>
+                                        <tr> <td align="center"> Aform</td><tr>
+                                        <tr> <td align="center"> PPR</td><tr>
+                                        <tr> <td align="center"> Minor Pub</td><tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
 
-    <script>
-	
-	function removeError(element)
-	{
-		element.addClass('valid')
-						.closest('.form-group')
-						.removeClass('has-error');
-	}
-	
-	var sas= $('#specialappslip');
-	sas.validate({
-		rules: {
-			actType: {
-				required:true
-			},
-			submissionType: {
-				required:true
-			},
-			reason: {
-				required:true
-			},
-			name: {
-				required: true,
-				lettersonly: true
-			}
-		},
-		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
-		},
-		success: removeError,
+        <!-- /page content -->
 
-		messages:{
-			actType: {
-				required: 'Pick activity type'
-			},
-			submissionType: {
-				required: 'Pick submission type'
-			},
-			reason: {
-				required: 'Enter reason/justification'
-			},
-			name: {
-				required: 'Enter name',
-				lettersonly: 'Alphabetic characters only'
-				
-			}		
-		}
-		});
-	
-	</script>
-	
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

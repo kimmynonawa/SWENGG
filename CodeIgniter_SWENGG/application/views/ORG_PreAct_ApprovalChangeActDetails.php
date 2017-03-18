@@ -187,17 +187,23 @@
                       
                       <div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-5"> <h4>Changes</h4> </label>
-                            <div class= "form-inline col-md-6">  
-                              <input type="checkbox" name= "changeVenue" value="1" class="form-control flat checkbox"/> Venue&nbsp&nbsp
-                              <input type="text" name= "venue" class="form-control" placeholder="Enter New Venue"   style="width:248px"><p></p>      
-                              <input type="checkbox" name= "changeDate" value ="2" class="form-control flat checkbox"/> Date &nbsp&nbsp&nbsp <input type="date" name= "venue" class="form-control" placeholder="Enter New Date"   style="width:248px"><p></p>
-                              <input type="checkbox" name= "changeTime" value ="3" class="form-control flat checkbox"/> Time &nbsp&nbsp&nbsp<input type="time" name= "newStartTime" id="newStartTime" class="form-control" style="width:119px"/> - <input type="time" name= "newEndTime" id="newEndTime" class="form-control" style="width:119px"/><p></p>
-                              <input type="checkbox" value ="4" value="4" name= "programDesign" class="form-control flat checkbox"/> Program Design <p></p>
-                                 <input type="checkbox" name= "change" value="5" class="form-control flat checkbox"/> Cancellation<p></p>
-                            </div>  
-                        </div>
+                          <label class= "col-md-5"> <h4>Changes</h4></label>
+                            <div class= "form-group col-md-3">
+                              <select id="changes" class="form-control col-md-7 col-xs-12" style="width:160px">
+                                <option disabled selected>Select Changes</option>
+                                <option value="1"> Venue</option>
+                                <option value="2"> Date</option>
+                                <option value="3"> Time</option>
+                                <option value="4"> Program Design</option>
+                                <option value="5"> Cancellation</option>             
+                              </select>
+                            </div>
+                            <div class="col-md-3">
+                              <button class="form-control" id="select" style="width:155px">Select Change</button>
+                            </div>        
+                          </div> 
                       </div>  
+                      <div id="changeDetails"> </div>
 
                       <div class= "row">
                         <div class="col-md-8">   
@@ -232,6 +238,34 @@
         </div>
       </div>
     
+   
+  <script>
+
+   $(document).ready(function () {
+      $('#select').click(function(){
+        console.log("yay");
+        var choice = document.getElementById("changes").value;
+        console.log("choice" + choice);
+        if(choice==1){
+          var toAppend=' <div class= "row"><div class="col-md-8"> <label class= "col-md-5"> <h4>Venue</h4> </label><div class= "form-group col-md-6"><input type="text" name= "venue" class="form-control" placeholder="ex: Henry Sy Grounds"></div> </div></div>';
+           event.preventDefault();
+          $('#changeDetails').append(toAppend);
+        }
+        else if(choice==2){
+          var toAppend='   <div class= "row"><div class="col-md-8"> <label class= "col-md-5"> <h4>Date</h4> </label><div class= "form-inline col-md-6"><input type="date" name= "startDate" id="startDate" class="form-control" style="width:154px" /> - <input type="date" name= "endDate" id="endDate"  class="form-control" style="width:154px"/></div></div></div>';
+           event.preventDefault();
+          $('#changeDetails').append(toAppend);
+        }
+        else if(choice==3){
+          var toAppend='   <div class= "row"><div class="col-md-8"> <label class= "col-md-5"> <h4>Time</h4> </label><div class= "form-inline col-md-6"><input type="time" name= "startTime" id="startTime" class="form-control" style="width:154px" /> - <input type="time" name= "endTime" id="endTime"  class="form-control" style="width:154px"/></div></div></div>';
+           event.preventDefault();
+          $('#changeDetails').append(toAppend);
+        }
+      });
+
+   });
+
+  </script>
 
 
     <!-- jQuery -->

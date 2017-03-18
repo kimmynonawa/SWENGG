@@ -35,7 +35,11 @@
 		}
 		
 		public function aformSAS(){
-			$this->load->view('ORG_PreAct_SpecialApprovalSlip');
+			$this->load->view('ORG_PreAct_AFormSAS');
+		}
+
+		public function aformNotInGOSM(){
+			$this->load->view('ORG_PreAct_AFormNotInGOSM');
 		}
 		
 		public function aformGOSM(){
@@ -205,13 +209,20 @@
 			$this->load->view('ORG_PreAct_ListOfParticipants');
 		}
 		
-		public function changActDetails(){
+		public function changeActDetails(){
 			$this->load->view('ORG_PreAct_ApprovalChangeActDetails');
 		}
 		
-		public function changActDetails2(){
+		public function changeActDetails2(){
 			$this->load->view('ORG_PreAct_ApprovalChangeActDetails_ComDes');
 		}
+		public function changeActDetails_Change(){
+			$this->load->view('ORG_PreAct_ApprovalChangeActDetails_Change');
+		}
+		public function changeActDetails_Cancel(){
+			$this->load->view('ORG_PreAct_ApprovalChangeActDetails_Cancel');
+		}
+
 		
 	}
 ?>
