@@ -177,8 +177,9 @@
 		
    <script>
 	  $("#add").click(function () {
-		$('#student').append('<tr id ="detailz" class="details"><td>  <input class="form-control" name ="id[]" placeholder ="Enter ID Number" /></td><td>  <input class="form-control" name ="lName[]" placeholder ="Enter Last Name" /></td> <td>  <input class="form-control" name = "fName[]" placeholder ="Enter First Name" /></td><td>  <input class="form-control" name ="mName[]" placeholder ="Enter Middle Initial" /></td><td>  <input class="form-control" name = "age[]" placeholder ="Enter Age" style ="width:120px"/></td><td> <input type="checkbox" class="js-switch" name="choice" /></td></tr>')
-
+		  var i =1;
+		$('#student').append('<tr id ="detailz" class="details"><td>  <input class="form-control" name ="id['+i+']" placeholder ="Enter ID Number" /></td><td>  <input class="form-control" name ="lName[]" placeholder ="Enter Last Name" /></td> <td>  <input class="form-control" name = "fName[]" placeholder ="Enter First Name" /></td><td>  <input class="form-control" name ="mName[]" placeholder ="Enter Middle Initial" /></td><td>  <input class="form-control" name = "age[]" placeholder ="Enter Age" style ="width:120px"/></td><td> <input type="checkbox" class="js-switch" name="choice" /></td></tr>')
+		  i++;
            		});
     $("#delete").click(function () {
       var v= document.getElementById("detailz");

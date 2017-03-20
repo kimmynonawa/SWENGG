@@ -64,20 +64,14 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="#"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
-                  <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu"> 
-                      <li><a href="#">Add New GOSM</li>
-                      <li><a href="#">Fill out Pre-Activity Requirements</a></li>
-                      <li><a href="#">Fill out Additional Requirements</a></li>
-                      <li><a href="#">Fill out Special Approval Slip</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#"><i class="fa fa-folder-open"></i> View Pre-Acts <span class="fa fa-chevron-down"></span></a>
-                  <li><a href="#"><i class="fa fa-table"></i> Calendar <span class="fa fa-chevron-down"></span></a>
-                  <li><a href="#"><i class="fa fa-list-alt"></i> GOSM <span class="fa fa-chevron-down"></span></a>
-                  </li>
-                </ul>
+				          <li><a href="http://localhost/index.php/account/org"><i class="fa fa-home"></i> Home</a></li>
+                  <li><a href="http://localhost/index.php/gosm/add"><i class="fa fa-table"></i> Add New GOSM</a></li>
+                  <li><a href="http://localhost/index.php/PreActivity/preacts"><i class="fa fa-edit"></i> Fill Out Pre-Activity Requirements</a></li>
+                  <li><a href="#"><i class="fa fa-edit"></i>  Fill Out Additional Requirements</a></li>	  
+                  <li><a href="#"><i class="fa fa-folder-open"></i>  View Pre-Acts </a></li>
+				          <li><a href="#"><i class="fa fa-calendar"></i> Calendar <span ></span></a></li>
+				          <li><a href="http://localhost/index.php/gosm/viewORGGosm1"><i class="fa fa-list-alt"></i> GOSM <span ></span></a></li>
+				        </ul>
               </div>
             </div>
             <!-- /sidebar menu -->

@@ -224,5 +224,9 @@
 		}
 
 		
+		public function yo2(){
+			$this->load->view('ORG_PreAct_ApprovalChangeActDetails_Change');
+		}
+		
 	}
 ?>
