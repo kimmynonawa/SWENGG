@@ -197,55 +197,52 @@
             </div>
             
             <div class="clearfix"></div>
-
-            <div class="row">
+              <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
+                      <form class="form-label-left"  id="foodlistform" method="post">
+                      <span class="section"></span>
+                    
 
-                    <form class="form-inline form-label-left" id="foodlistform" method="post">
-                      <span class="section">Food Items</span>
-
-                        <div class="table-responsive">          
-                          <table class="table table-striped">
-                            <thead>
+                      <div class= "row">
+                        <div class="col-md-12">   
+                         <span class="section">Food Items</span>
+                          <div class= "form-group col-md-12">
+                            <table class="table table-striped">
+                              <thead>
                               <tr>
                                 <th>Quantity</th>
                                 <th>Unit</th>
                                 <th>Description</th>
                                 <th>Estimated Cost</th>
-                              </tr>
-                            </thead>
-                            <tbody id="tr">
-                              <tr>
-                                <td align= "center"><input type="number" name= "fqty[]" class="form-control" id="fqty"/></td>
-                                <td align= "center"><input type="text" name= "funit[]" class="form-control" id="funit"/></td>
-                                <td align= "center"><input type="text"   name= "fdes[]" class="form-control" id="fdes" placeholder="Description"/></td>
-                                <td align= "center"><input type="number" name= "fecost[]" class="form-control" id="fecost"/></td>
-                              </tr>
-                            </tbody>
-                          </table>
+                              </tr> 
+                              </thead>
+                              <tbody id="tr">
+                              </tbody>
+                            </table>
                           </div>
+                        </div>
 
-                           <div class= "row">
-                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                        <div class = "buttons col-md-12">
+                              <div class="col-md-3 col-sm-3 col-xs-12 form-group">
                                  <button id="addcf" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
                                  <button id="remcf" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                               </div>
-                            </div>
-
-                    <div class="ln_solid"></div>
+                               </div> 
+                        </div>
+                      </div>  
+                     
+                      <div class="ln_solid"></div> 
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-11">
                           <input id="nextbff2" type="submit" class="btn btn-success align: right" value="Next">
                         </div>
-                      </div>
-                         
-                      </form>
-                  </div>
-                </div>
-              </div>
-            </div>
+                      </div>    
+                    </form>
+                  </div><!-- xcontent -->
+                </div> <!-- xpanel -->              
+              </div> <!-- row -->
+            </div> 
           </div>
         </div>
         <!-- /page content -->
@@ -253,52 +250,99 @@
      <script type="text/javascript">
 
       $(function() {
-        function removeError(element){
-          element.addClass('valid').closest('.form-group').removeClass('has-error');
-        }
-        $('#foodlistform').validate({
-        rules: {
-          'fqty[]': "required",
-          'funit[]': "required",
-          'fdes[]': "required",
-          'fecost[]': "required",
-        },
+jQuery.validator.addMethod("lettersonly", function(value, element) {
+  return this.optional(element) || /^[a-z\s]+$/i.test(value);
+  })
 
-        highlight: function(element) {
-          $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-        },
-        success: removeError,
+  function removeError(element){
+  element.addClass('valid')
+      .closest('.tbl')
+      .removeClass('has-error');
+  }
 
-        messages: {
-          'fqty[]':{
-            required: 'Enter quantity'
-          },
+  var numberIncr = 0;
+  $("#tr").append($(' <tr id= "newt"> <td><input class="fqt form-control"  name= "fqty[' + numberIncr + ']" type="number"/></td> <td><input class="fnt form-control"  name= "funit[' + numberIncr + ']" type="text"/></td><td><input class="fde form-control"  name= "fdes[' + numberIncr + ']" type="text"/> <td><input class="fcs form-control"  name= "fecost[' + numberIncr + ']" type="number"/></td></tr>'));  
+  var foodform2= $('#foodlistform');
+  foodform2.validate({
+    rules: {
+      'fqty[0]' : "required",
+      'funit[0]': "required",
+      'fdes[0]': "required",
+      'fecost[0]': "required"
+    },
+    highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+    },
+    success: removeError,
 
-          'funit[]':{
-            required: 'Enter unit'
-          },
 
-          'fdes[]': {
-            required:'Enter description'
-          },
+    messages: {
+      'fqty[0]':{
+        required: 'Enter quantity'
+      },
 
-          'fecost[]': {
-            required: 'Enter estimated cost'
-          },
-        }
-        });
+      'funit[0]':{
+        required: 'Enter unit'
+      },
 
-        // ADD ROW
-        $("#addcf").click(function() {
-           $("#tr").append(' <tr id= "newtr"><td align= "center" ><input type="number" name= "fqty[]" class="form-control" id="foqty"/></td><td align= "center"><input type="text" name= "funit[]" class="form-control" id="founit"/></td><td align= "center"><input type="text" name= "fdes[]" class="form-control" id="fodes" placeholder="Description"/></td><td align= "center"><input type="number" name= "fecost" class="form-control" id="foecost"/></td></tr>');   
-         });
+      'fdes[0]': {
+        required:'Enter description'
+      },
+
+      'fecost[0]': {
+        required: 'Enter estimated cost'
+      }
+    }
+    });
+    $("#addcf").click(function(){
+       numberIncr++;
+       $("#tr").append(' <tr id= "newtr"> <td><input class="fqt form-control"  name= "fqty[' + numberIncr + ']" type="number"/></td> <td><input class="fnt form-control"  name= "funit[' + numberIncr + ']" type="text"/></td><td><input class="fde form-control"  name= "fdes[' + numberIncr + ']" type="text"/> <td><input class="fcs form-control"  name= "fecost[' + numberIncr + ']" type="number"/></td></tr>');   
+       $(".fqt").each(function(){
+        $(this).rules( "add", {
+        required:true,
+      messages: {
+        required: 'Enter quantity',
+      }
+    });
+      });
+
+       $(".fnt").each(function(){
+        $(this).rules( "add", {
+        required:true,
+      messages: {
+        required: 'Enter unit',
+      }
+    });
+      });
+
+       $(".fde").each(function(){
+        $(this).rules( "add", {
+        required:true,
+      messages: {
+        required: 'Enter description',
+      }
+    });
+      });
+
+      $(".fcs").each(function(){
+        $(this).rules( "add", {
+        required:true,
+      messages: {
+        required: 'Enter estimated cost',
+      }
+    });
+      });
+     });
         
-        // REMOVE ROW 
-        $("#remcf").click(function() {
-          var v= document.getElementById("newtr");
-          v.remove();
-        });
-      })
+          $("#remcf").click(function() {
+            var v= document.getElementById("newtr");
+            v.remove();
+          });
+  $('#nextbff2').click(function(){
+     if(foodform2.valid()){
+          window.location.href = "";
+      }
+      });
+      });
       
     </script>
 

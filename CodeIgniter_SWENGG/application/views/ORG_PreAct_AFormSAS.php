@@ -138,32 +138,23 @@
                     
                       <div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Processing Office</h4> </label>
-                          <div class= "form-group col-md-6">
-                            <select id="processingoffice" class="form-control col-md-7 col-xs-12" name="prooff">
-                              <option disabled selected>Select Processing Office</option>
-                              <option value="1">CSO or DAAM</option>
-                              <option value="2">SLIFE</option>            
-                            </select>
-                          </div>
-                          <label class= "col-md-4"> <h4>Type of Activity</h4> </label>
+                          
+                          <label class= "col-md-4"> <h4>Title of Activity</h4> </label>
                           <div class= "form-group col-md-6">  
-                            <select id="typeact"  class="form-control col-md-7 col-xs-12" name="typeact">
-                              <option disabled selected>Select Type of Activity</option>
-                                       
-                            </select>
+                             <input type="text" name= "actName" class="form-control" placeholder="ex:  General Assembly"/>
                           </div>                
                         </div>
                       </div>
-                      
-                      <div class= "row">
+					  
+                       <div class= "row">
                         <div class="col-md-8">   
                           <label class= "col-md-4"> <h4>Type of Submission</h4> </label>
                           <div class= "form-group col-md-6">
-                            <label id="actType" name="actType" class="form-control col-md-7 col-xs-12"> Activity Not in GOSM</label>
-                          </div>       
+                             <label id="actType" name="typesubmission" class="form-control col-md-7 col-xs-12" value=""> Activity not in GOSM</label>
+                          </div>        
                         </div>
-                      </div> 
+                    </div> 
+                      
 
                       <div class= "row">
                         <div class="col-md-8">   
@@ -178,7 +169,7 @@
                         <div class="col-md-8">   
                           <label class= "col-md-4"> <h4>Submitted By:</h4> </label>
                             <div class= "form-group col-md-6">
-                              <input type="text" name= "name" class="form-control" placeholder="Juan Dela Cruz" />
+                              <input type="text" name= "submittedby" class="form-control" placeholder="Juan Dela Cruz" />
                             </div>        
                         </div>
                       </div>  
@@ -196,6 +187,48 @@
             </div> 
           </div>
         </div>
+		
+	<script>
+      jQuery.validator.addMethod("lettersonly", function(value, element) {
+      return this.optional(element) || /^[a-z\s]+$/i.test(value);
+      })
+    var sas= $('#specialappslip');
+    function removeError(element){
+      element.addClass('valid')
+          .closest('.form-group')
+          .removeClass('has-error');
+      }
+    sas.validate({
+      rules: {
+        actName: {
+          required:true
+        },
+        reason: {
+          required:true
+        },
+        submittedby: {
+          required:true,
+          lettersonly: true
+        }
+      },
+      highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+      },
+      success: removeError,
+
+      messages:{
+        actName: {
+          required: 'Enter Activity Title'
+        },
+        reason: {
+          required: 'Enter justification'
+        },
+        submittedby: {
+          required: 'Enter name',
+          lettersonly: 'Alphabetical characters only'
+        }
+      }
+    });
+  </script>
 
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>

@@ -141,7 +141,7 @@
 							data: [<?php 
 							
 									for ($i = 0; $i<count($preacts);$i++){
-										echo '"'; echo "{$preacts[$i]['numpreacts']}"; echo '",';
+										echo '"'; echo "{$preacts[$i]['numofpreacts']}"; echo '",';
 									}
 										
 								  ?>],
@@ -356,9 +356,12 @@
 		
 	<script src= "<?php echo base_url();?>js/jquery.min.js"></script>
 	<script>
+		//5 seconds interval
 		var interval = 5000;
 		get();
 		
+		
+		//for old notifications na nakita na
 		$.ajax({
 			type: 'POST',
 			url: 'http://localhost/index.php/Notif/getall',					
@@ -375,10 +378,25 @@
 				type: 'POST',
 				url: 'http://localhost/index.php/Notif/getnew',					
 				success: function (data) {
-					
+						//para lang malinis yung number ng notif
 						$('#num').empty();
+						//if may bagong notif
 						if(data.length != 0){
+							$.ajax({
+								type: 'POST',
+								url: 'http://localhost/index.php/Notif/getall',					
+								success: function (data) {
+									//empty muna yung notifcations
+									$('#menu1').empty();
+									//then append all old notif
+									for (i = 0; i < data.length; i++){
+										$('#menu1').prepend('<li></span><span><b>'+data[i].orgname+'</b> added a new GOSM</span><br><span class="time">'+data[i].title+'<br>'+data[i].created+'</span><span></li>');
+									}
+								}
+							});
+							//append ng number ng notification
 							$('#num').append('<span class="badge bg-green">'+ data.length +'</span>');
+							//prepend ng new notification (sa taas)
 							for (i = 0; i < data.length; i++){
 								$('#menu1').prepend('<li style="background-color:#ccffcc;"></span><span><b>'+data[i].orgname+'</b> added a new GOSM</span><br><span class="time">'+data[i].title+'<br>'+data[i].created+'</span><span></li>');
 							}
@@ -388,6 +406,7 @@
 			});
 		}
 		
+		//on click magiging seen na yung notif, mawawala yung number of notif sa icon
 		$('#but').on('click',function(){
 			$.ajax({
 				type: 'POST',
@@ -398,6 +417,7 @@
 			});
 		});
 		
+		//every 5 seconds gagwin yung get
 		setInterval(get, interval);
 	</script>
 

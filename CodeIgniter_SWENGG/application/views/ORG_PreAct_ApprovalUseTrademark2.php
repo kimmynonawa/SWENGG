@@ -216,7 +216,7 @@
                                   <select class="select2_group form-control" id="trademarkOptions" name="trademarkChoice[]">
                                     <?php
                                       foreach ($trademarkList as $trademark) { 
-                                        echo "<option value='$trademark->idREF_TRADEMARKS'> $trademark->name </option>";
+                                        echo "<option value='$trademark->trademarkID'> $trademark->name </option>";
                                       }
                                     ?> 
                                   </select>
@@ -265,16 +265,32 @@
 
                       <div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-5"> <h4>Proposed Start Time</h4> </label>
+                          <label class= "col-md-5"> <h4>Proposed Start Date</h4> </label>
                           <div class= "form-group col-md-7">
-                            <input type="time" name= "startTime" id="startTime" class="form-control"/>
+                            <input type="date" name= "startDate" id="startDate" class="form-control"/>
                           </div>
-                          <label class= "col-md-5"> <h4>Proposed End Time</h4> </label>
+                          <label class= "col-md-5"> <h4>Proposed End Date</h4> </label>
                           <div class= "form-group col-md-7">
-                            <input type="time" name= "endTime" id="endTime" class="form-control"/>
+                            <input type="date" name= "endDate" id="endDate" class="form-control"/>
                           </div>          
                         </div>
                       </div>  
+
+                     <!--  <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Activity Where Trademark Will Be Used</h4> </label>
+                            <div class= "form-group col-md-7">
+                              <select id="actType" name="actType" class="form-control col-md-7 col-xs-12" >
+                                <option disabled selected>Select Type Of Activity</option>
+                                <?php
+                                  foreach ($activityTypes as $activity) { 
+                                    echo "<option value='$activity->idREF_ACTIVITYTYPE'> $activity->activityType </option>";
+                                  }
+                                ?>                
+                              </select>
+                          </div>    
+                        </div>
+                      </div>  -->
 
                       <div class= "row">
                         <div class="col-md-8">   
@@ -313,15 +329,15 @@
           trademarkUse: {
             required:true
           },
-          startTime: {
+          startDate: {
             required:true
           },
-          endTime: {
+          endDate: {
             required: true
           },
-          actType: {
-            required:true,
-          },
+          // actType: {
+          //   required:true,
+          // },
           venue: {
             required:true,
           }
@@ -337,15 +353,15 @@
           trademarkUse: {
             required: 'Enter purpose'
           },
-          startTime: {
+          startDate: {
             required: 'Enter start time'
           },
-          endTime: {
+          endDate: {
             required: 'Enter end time'      
           },
-          actType: {
-            required: 'Select activity type'
-          },
+          // actType: {
+          //   required: 'Select activity type'
+          // },
           venue: {
             required: 'Indicate venue'
           }
@@ -364,7 +380,7 @@
             success: function(data){
             $('#trademarkOptions').empty();
               for (i = 0; i < data.length; i++){
-                $('#trademarkOptions').append('<option value="'+ data[i].idREF_TRADEMARKS +'">'+ data[i].name +'</option>');
+                $('#trademarkOptions').append('<option value="'+ data[i].trademarkID +'">'+ data[i].name +'</option>');
               }
             }
           });
@@ -382,7 +398,7 @@
             success: function(data){
             $('#newTrademarkOptions').empty();
               for (i = 0; i < data.length; i++){
-                $('#newTrademarkOptions').append('<option value="'+ data[i].idREF_TRADEMARKS +'">'+ data[i].name +'</option>');
+                $('#newTrademarkOptions').append('<option value="'+ data[i].trademarkID +'">'+ data[i].name +'</option>');
               }
             }
           });
@@ -396,7 +412,7 @@
           var i = 0;
           <?php
             foreach($trademarkList as $trademark) {?>
-              optionValues[i] = <?php echo $trademark->idREF_TRADEMARKS; ?>;
+              optionValues[i] = <?php echo $trademark->trademarkID; ?>;
               optionNames[i] = "<?php echo $trademark->name; ?>";
               i++;     
           <?php

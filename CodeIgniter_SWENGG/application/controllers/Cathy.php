@@ -8,9 +8,10 @@
 
 			$this->load->model('FoodPermit_model');
 			$this->load->model('ContestMechanics_model');
-			$this->load->model('EquipmentPermit_model');
 			$this->load->model('ApprovalTrademark_model');
 			$this->load->model('PPR_model');
+
+
 		}
 
 		// REVISED AND TESTED
@@ -32,8 +33,7 @@
 			else  {
 				$this->session->set_userdata('projectHeads', $this->input->post('phname[]'));
 				$pprGeneralInfo  = array(
-										'actno'			=> $this->session->userdata('actitvityID'),
-										'organization'	=> $this->session->userdata('userID'),
+										'preactsID'		=> 1,//$this->session->userdata('preactsID'),
 										'objective1' 	=> $this->input->post('obje1'),
 										'objective2' 	=> $this->input->post('obje2'),
 										'objective3' 	=> $this->input->post('obje3'),
@@ -48,6 +48,14 @@
 
 				$this->session->set_userdata('pprGeneralInfo', $pprGeneralInfo);
 				$this->session->set_userdata('pprProjectHeads', $projectHeadInfo);
+
+				// FOR TESTING PURPOSES
+				// $this->PPR_model->createNewPPR($this->session->userdata('pprGeneralInfo'));
+				// $PPRNum = $this->PPR_model->getPPR($this->session->userdata('preactsID'));
+				// foreach ($PPRNum as $ppr) {
+				// 	$this->PPR_model->addProjectHeads($ppr, $this->session->userdata['pprProjectHeads']);
+				// }
+
 				redirect('Cathy/new_ppr_program_design');
 			}
 		}
@@ -74,6 +82,14 @@
 				);
 
 				$this->session->set_userdata('pprProgramDesign', $data);
+
+				//FOR TESTING PURPOSES
+				$this->PPR_model->createNewPPR($this->session->userdata('pprGeneralInfo'));
+				$PPRNum = $this->PPR_model->getPPR(1);
+				foreach ($PPRNum as $ppr) {
+					$this->PPR_model->createProgramDesign($ppr, $this->session->userdata['pprProgramDesign']);
+				}
+
 				redirect('Cathy/new_ppr_expense_breakdown');
 			}	
 		}
@@ -81,21 +97,28 @@
 		// REVISED AND TESTED
 		// EDITED UI FOR VALIDATION
 		public function new_ppr_expense_breakdown() {
-			$this->form_validation->set_rules('mat3[]', 'mat3', 'required');
-			$this->form_validation->set_rules('qty3[]', 'qty3', 'required');
-			$this->form_validation->set_rules('ucost3[]', 'ucost3', 'required');
+			$this->form_validation->set_rules('matname[]', 'matname', 'required');
+			$this->form_validation->set_rules('matqty[]', 'matqty', 'required');
+			$this->form_validation->set_rules('matcost[]', 'matcost', 'required');
 			
 			if ($this->form_validation->run() == FALSE){
 				$this->load->view('ORG_PreAct_PPR3');
 			}
 			else {
 				$data = array(
-					'material[]' 	=> $this->input->post('mat3[]'),
-					'quantity[]' 	=> $this->input->post('qty3[]'),
-					'unitcost[]' 	=> $this->input->post('ucost3[]'),
+					'material[]' 	=> $this->input->post('matname[]'),
+					'quantity[]' 	=> $this->input->post('matqty[]'),
+					'unitcost[]' 	=> $this->input->post('matcost[]'),
 				);
 
 				$this->session->set_userdata('pprExpenseBreakdown', $data);
+
+				// FOR TESTING PURPOSES
+				$this->PPR_model->createNewPPR($this->session->userdata('pprGeneralInfo'));
+				$PPRNum = $this->PPR_model->getPPR(1);
+				foreach ($PPRNum as $ppr) {
+					$this->PPR_model->addExpenses($ppr, $this->session->userdata['pprExpenseBreakdown']);
+				}
 				redirect('Cathy/new_ppr_funding_details');
 			}
 		}
@@ -135,13 +158,23 @@
 										);
 
 				$pprOtherSourceData = array(
-											'othersName[]' 		=> $this->input->post('sourceName[]'),
-											'othersAmount[]' 	=> $this->input->post('sourceAmount[]'),
+											'othersName[]' 		=> $this->input->post('sourcename[]'),
+											'othersAmount[]' 	=> $this->input->post('sourceamount[]'),
 										);
 
 				$this->session->set_userdata('pprFunds', $pprFundsData);
 				$this->session->set_userdata('pprOrgFunds', $pprOrgFundsData);
 				$this->session->set_userdata('pprOtherSource', $pprOtherSourceData);
+
+				// FOR TESTING PURPOSES
+				$this->PPR_model->createNewPPR($this->session->userdata('pprGeneralInfo'));
+				$PPRNum = $this->PPR_model->getPPR(1);
+				foreach ($PPRNum as $ppr) {
+					$this->PPR_model->addFunds($ppr, $this->session->userdata['pprFunds']);
+					$this->PPR_model->addOtherFunds($ppr, $this->session->userdata['pprOtherSource']);
+					$this->PPR_model->addOrgFunds($ppr, $this->session->userdata['pprOrgFunds']);
+
+				}
 				redirect('Cathy/new_ppr_projected_income');
 			}
 		}
@@ -173,10 +206,20 @@
 
 				$this->session->set_userdata('pprProjectedIncome', $incomeData);
 				$this->session->set_userdata('pprProjectedExpenses', $expenseData);
+
+				// FOR TESTING PURPOSES
+				$this->PPR_model->createNewPPR($this->session->userdata('pprGeneralInfo'));
+				$PPRNum = $this->PPR_model->getPPR(1);
+				foreach ($PPRNum as $ppr) {
+					$this->PPR_model->addProjectedIncome($ppr, $this->session->userdata['pprProjectedIncome']);
+					$this->PPR_model->addProjectedExpenses($ppr, $this->session->userdata['pprProjectedExpenses']);
+
+				}
 			}
 		}
 
-		// REVISED AND TESTED
+		// REVISED FOR NEW DB
+		// TESTED FOR NEW DB
 		// EDITED UI FOR VALIDATION
 		public function new_food_permit() {
 			$this->form_validation->set_rules('Name', 'Full Name', 'required');
@@ -191,8 +234,7 @@
 			}
 			else  {
 				$data = array(
-					'actno' 		=> $this->session->userdata('actitvityID'),
-					'organization'  => $this->session->userdata('userID'),
+					'preactsID' 	=> $this->session->userdata("actno"),
 					'name' 			=> $this->input->post('Name'),
 					'IDnum' 		=> $this->input->post('IDNum'),
 					'email' 		=> $this->input->post('Email'),
@@ -206,7 +248,8 @@
 			}
 		}
 
-		// REVISED AND TESTED
+		// REVISED FOR NEW DB
+		// TESTED FOR NEW DB
 		// EDITED UI FOR VALIDATION
 		public function food_permit_details() {
 			$this->form_validation->set_rules('fqty[]', 'fqty', 'required');
@@ -226,62 +269,64 @@
 							'cost[]' 		=> $this->input->post('fecost[]')
 						);
 				$this->session->set_userdata('foodPermitDetails', $data);
+
+				// FOR TESTING
+				$this->FoodPermit_model->createFoodPermit($this->session->userdata('foodPermitGeneralInfo'));
+				$foodPermit = $this->FoodPermit_model->getFoodPermit($this->session->userdata("actno"));
+				foreach ($foodPermit as $permit) {
+					$this->FoodPermit_model->createFoodPermitDetails($permit,$data);
+				}
 			}
 		}
 
-		// REVISED AND TESTED
+		// REVISED FOR NEW DB
+		// TESTED FOR NEW DB
 		// EDITED UI FOR VALIDATION
 		public function new_contest_mechanics() {
 			$this->form_validation->set_rules('guidelines', 'General Guidelines', 'required');
 			$this->form_validation->set_rules('mechanics[]', 'Mechanics', 'required');
-			$this->form_validation->set_rules('criteria[]', 'Criteria For Judging', 'required');
-			$this->form_validation->set_rules('judges[]', 'List of Judges', 'required');
-			$this->form_validation->set_rules('questions[]', 'Questions for Academic Contests', 'required');
+			$this->form_validation->set_rules('cri[]', 'Criteria For Judging', 'required');
+			$this->form_validation->set_rules('judge[]', 'List of Judges', 'required');
+			// $this->form_validation->set_rules('questions[]', 'Questions for Academic Contests', 'required');
 
 			if ($this->form_validation->run() == FALSE){
 				$this->load->view('ORG_PreAct_ContestMechanics');
 			}
 			else  {
-				$generalInfo = array('actno'	   => $this->session->userdata('actitvityID'), 
-									 'organization'=> $this->session->userdata('userID'), 
+				$generalInfo = array('preactsID'   => $this->session->userdata("actno"), 
 									 'guidelines'  => $this->input->post('guidelines'));
 				$mechanics   = array('mechanics[]' => $this->input->post('mechanics[]'));
-				$criteria    = array('criteria[]'  => $this->input->post('criteria[]'));
-				$judges 	 = array('judges[]'	   => $this->input->post('judges[]'));
-				$questions 	 = array('questions[]' => $this->input->post('questions[]'));
+				$criteria    = array('criteria[]'  => $this->input->post('cri[]'));
+				$judges 	 = array('judges[]'	   => $this->input->post('judge[]'));
+				if ($this->input->post['questions[]'] !== FALSE)  {
+					$questions 	 = array('questions[]' => $this->input->post('questions[]'));
+				}
 				
 				$this->session->set_userdata('contestMechanicsGeneralInfo', $generalInfo);
 				$this->session->set_userdata('contestMechanicsMechanics',$mechanics);				
 				$this->session->set_userdata('contestMechanicsCriteria',$criteria);				
 				$this->session->set_userdata('contestMechanicsJudges',$judges);				
-				$this->session->set_userdata('contestMechanicsQuestions',$questions);				
+				if (isset($questions)) {
+					$this->session->set_userdata('contestMechanicsQuestions',$questions);
+				}
+
+				// FOR TESTING PURPOSES
+				$this->ContestMechanics_model->newContestMecHanics($this->session->userdata('contestMechanicsGeneralInfo'));
+				$contestMechanicsNumber = $this->ContestMechanics_model->getContestMechanicsNumber($this->session->userdata("actno"));
+				foreach ($contestMechanicsNumber as $contestMechanics) {
+					$this->ContestMechanics_model->addContestMechanicsDetails($contestMechanics,$this->session->userdata('contestMechanicsMechanics'));
+					$this->ContestMechanics_model->addContestMechanicsCriteria($contestMechanics,$this->session->userdata('contestMechanicsCriteria'));
+					$this->ContestMechanics_model->addContestMechanicsJudges($contestMechanics,$this->session->userdata('contestMechanicsJudges'));
+					if ($this->session->userdata('contestMechanicsQuestions')) {
+						$this->ContestMechanics_model->addContestMechanicsQuestions($contestMechanics,$this->session->userdata('contestMechanicsQuestions'));
+					}
+				}	
+
 			}
 		}
 
-		// REVISED AND TESTED
-		// EDITED UI FOR VALIDATION
-		public function new_equipment_entry() {
-			$this->form_validation->set_rules('Name', 'Name', 'required');
-			$this->form_validation->set_rules('Position', 'Position', 'required');
-			$this->form_validation->set_rules('reasonRequest', 'Reason For Request', 'required');
-
-			if ($this->form_validation->run() == FALSE){
-				$this->load->view('ORG_PreAct_EquipmentEntry');
-			}
-			else  {
-				$data = array(
-					'actno' 		=> $this->session->userdata('actitvityID'),
-					'organization'	=> $this->session->userdata('userID'),
-					'name' 			=> $this->input->post('Name'),
-					'position' 		=> $this->input->post('Position'),
-					'reasonRequest' => $this->input->post('reasonRequest'),
-				);
-
-				$this->EquipmentPermit_model->createEquipmentEntryPermit($data);
-			}
-		}
-
-		// REVISED
+		// REVISED FOR NEW DB
+		// TESTED FOR NEW DB
 		// EDITED UI FOR VALIDATION
 		public function new_approval_use_trademark() { 
 			$this->form_validation->set_rules('Name', 'Full Name', 'required');
@@ -296,7 +341,6 @@
 			}
 			else  {
 				$data = array(
-					'organization'			=> $this->session->userdata('userID'),
 					'requestedby_name' 		=> $this->input->post('Name'),
 					'requestedby_position' 	=> $this->input->post('Position'),
 					'IDnum'					=> $this->input->post('IDNum'),
@@ -310,14 +354,15 @@
 			}
 		}
 
-		// REVISED
+		// REVISED FOR NEW DB
+		// TESTED FOR NEW DB
 		// EDITED UI FOR VALIDATION
 		public function approval_use_trademark_details() {
 			$this->form_validation->set_rules('matToProduce', 'Type of Item/Material To Produce', 'required');
 			$this->form_validation->set_rules('trademarkUse', 'Purpose Of Use', 'required');
-			$this->form_validation->set_rules('startTime', 'Proposed Start Time', 'required');
-			$this->form_validation->set_rules('endTime', 'Proposed End Time', 'required');
-			$this->form_validation->set_rules('actType', 'Activity Where Trademark Will Be Used', 'required');
+			$this->form_validation->set_rules('startDate', 'Proposed Start Date', 'required');
+			$this->form_validation->set_rules('endDate', 'Proposed End Date', 'required');
+			// $this->form_validation->set_rules('actType', 'Activity Where Trademark Will Be Used', 'required');
 			$this->form_validation->set_rules('venue', 'Venue', 'required');
 
 			if ($this->form_validation->run() == FALSE){
@@ -336,18 +381,26 @@
 				$duration->format('%H hour(s) and %i minute(s)');
 
 				$data = array(
-					'actno'			=> $this->session->userdata('actitvityID'),
+					'preactsID'		=> $this->session->userdata("actno"),
 					'material' 		=> $this->input->post('matToProduce'),
 					'purposeOfUse' 	=> $this->input->post('trademarkUse'),
-					'startTime'		=> $this->input->post('startTime'),
-					'endTime' 		=> $this->input->post('endTime'),
-					'activityType' 	=> $this->input->post('actType'),
+					'startDate'		=> $this->input->post('startDate'),
+					'endDate' 		=> $this->input->post('endDate'),
+					// 'activityType' 	=> $this->input->post('actType'),
 					'venue' 		=> $this->input->post('venue'),
 					'duration'		=> $duration
 				);
 
 				$this->session->set_userdata('trademarkUseInfo', $data);
 				$this->session->set_userdata('trademarksToUse', $this->input->post('trademarkChoice[]'));
+
+				// FOR TESTING
+				$this->ApprovalTrademark_model->createTrademarkUseApproval($this->session->userdata('trademarkUseInfo'));
+				$getTrademarkApproval = $this->ApprovalTrademark_model->getTrademarkUseApproval($this->session->userdata("actno"));
+				foreach ($getTrademarkApproval as $trademarkUseNum) {
+					$this->ApprovalTrademark_model->createTrademarkUseRequestInfo($trademarkUseNum,$this->session->userdata('trademarkRequestInfo'));
+					$this->ApprovalTrademark_model->addTrademarkToUse($trademarkUseNum, $this->session->userdata('trademarksToUse'));
+				}
 			} 
 		}
 
@@ -357,5 +410,6 @@
 			$result = $this->ApprovalTrademark_model->getTrademarks($this->input->post('trademark'));
 			echo json_encode($result);
 		}
+
 	}
 ?>

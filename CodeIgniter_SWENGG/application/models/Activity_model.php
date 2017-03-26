@@ -5,11 +5,13 @@
 		}
 		
 		public function getAct($org){
-			$this->db->where(array("organization" => $org ));
-			$this->db->from('activity');
+			$this->db->where(array("organizationID" => $org ));
+			$this->db->from('GOSM');
 			$res = $this->db->get();
 			return $res->result_array();
 		}
+		
+		
 		
 	}
 ?>

@@ -115,7 +115,6 @@
                                <span class="section">General Information</span>
                               </div>
 							  
-								<?php echo validation_errors(); ?>
 						
 								<?php if (isset($success)): ?>
 									<h4>Successfully Added!</h4>
@@ -218,62 +217,61 @@
                              <span class="section">Activity Details</span>
                           </div>
 
-                          <label> <h3>CSO and  Special Groups</h3> </label>
-                          <div class= "row">
-                                <div class="form-group col-md-6 col-sm-6 col-xs-6">
-                                  <select name="gosmnat" class="form-control" id="gosmnat">
-										
-										<!--Select Activity Nature where Activity office is CSO and SPECIAL GROUPS-->
-									   <option disabled selected>Select Nature of Activity</option>
-                                      <?php
-										for ($i=0; $i<count($activityNature1);$i++){
-											echo"<option value={$activityNature1[$i][idREF_ACTIVITYNATURE]}>{$activityNature1[$i][activitynature]}</option>";
-										}
-									  ?>
-                                  </select>
-                                  <p></p>
-                                  <select name="gosmnatt" class="form-control" id="gosmnat">
-                                      <option disabled selected>Select Nature of Activity</option>
-									  <?php
-										for ($i=0; $i<count($activityNature2);$i++){
-											echo"<option value={$activityNature2[$i][idREF_ACTIVITYNATURE]}>{$activityNature2[$i][activitynature]}</option>";
-										}
-									  ?>
-                                  </select>
-                            </div>
-                           </div>
-
-                        <label> <h3> Type of Activity</h3> </label>
-                        <div class= "row">
-                                <div class="form-group col-md-6 col-sm-6 col-xs-6">
-                                  <select name="gosmtype" class="form-control" id="gosmtype">
-									  <option disabled selected>Select Type of Activity</option>
-                                      <?php
-										for ($i=0; $i<count($activityType1);$i++){
-											echo"<option value={$activityType1[$i][idREF_ACTIVITYTYPE]}>{$activityType1[$i][activitytype]}</option>";
-										}
-									  ?>
-                                  </select>
-                                  <p></p>
-                                  <select name="gosmtypee" class="form-control" id="gosmtype">
-                                      <option disabled selected>Select Type of Activity</option>
-                                      <?php
-										for ($i=0; $i<count($activityType2);$i++){
-											echo"<option value={$activityType2[$i][idREF_ACTIVITYTYPE]}>{$activityType2[$i][activitytype]}</option>";
-										}
-									  ?>
-                                  </select>
-                               </div>
-                           </div>
+                          <p> </p>
+                    <span class="section">Nature of Activity</span>
+                    <div class= "row">
+                      <div class="col-md-8">
+					        <label class= "col-md-5"> <h4>Select Activity Office</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <select id="activityoffice" class="form-control col-md-7 col-xs-12" name="actoff">
+                              <option disabled selected>Select Activity Office</option>
+              							  <option value="1">CSO and Special Groups</option>
+              							  <option value="2">USG</option>
+                            </select>
+                          </div>
+                        <label class= "col-md-5"> <h4>Nature of Activity</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <select id="natact" class="form-control col-md-7 col-xs-12" name="natact">
+                              <option disabled selected>Select Nature of Activity</option>
+								
+                            </select>
+                          </div>
+                                  
+                        </div>
+                      </div>  
+          
+                      <p> </p>
+                      <span class="section">Type of Activity</span>
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Type of Activity</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <select id="processingoffice" class="form-control col-md-7 col-xs-12" name="prooff">
+                              <option disabled selected>Processing Office</option>
+              								<option value="1">CSO or DAAM</option>
+              								<option value="2">SLIFE</option>
+                                          
+                            </select>
+                          </div>
+                          <label class= "col-md-5"> <h4>Type of Activity</h4> </label>
+                          <div class= "form-group col-md-6">  
+                            <select id="typeact"  class="form-control col-md-7 col-xs-12" name="typeact">
+                              <option disabled selected>Select Type of Activity</option>
+                                       
+                            </select>
+                          </div>                
+                        </div>
+                      </div>  
+                      <p> </p>
 
                           <label><h3>Related to</h3> </label>
                           <div class= "row">
                             <div class="form-group col-md-1 col-sm-2 col-xs-2">
-                                   <input type="radio" name="reto" id="reto" class="flat" value="yes"> Related
-                            </div>
+                                   <input type="radio" name="reto" id="reto" class="flat" value="yes"> 
+                            </div>Related<br></br>
                             <div class="form-group col-md-1 col-sm-2 col-xs-2">
-                                   <input type="radio" name="reto" id="reto" class="flat" value="no"> Not related
-                            </div> 
+                                   <input type="radio" name="reto" id="reto" class="flat" value="no"> 
+                            </div> Not related
                             </div>
 
                              <div class="ln_solid"></div> 
@@ -290,9 +288,53 @@
             </div>
          </div>
         <!-- /page content -->
+		<script>
+		$('#activityoffice').on('change',function(){
+			var actoff = $('#activityoffice').val();
+			$.ajax({
+			url: "http://localhost/index.php/PreActivity/getActivityNature",
+			method: "POST",
+			data:{
+				'actoff':actoff
+			},
+			success: function(data){
+				console.log(1)
+				$('#natact').empty ();
+				$('#natact').append('<option disabled selected>Select Nature of Activity</option>');
+				for (i = 0; i < data.length; i++){
+					$('#natact').append('<option value="'+ data[i].activitynatureID +'">'+ data[i].activitynature +'</option>');
+				}
+				}
+			});
+		});
 		
+		$('#processingoffice').on('change',function(){
+			var prooff = $('#processingoffice').val();
+			$.ajax({
+			url: "http://localhost/index.php/PreActivity/getActivityType",
+			method: "POST",
+			data:{
+				'prooff':prooff
+			},
+			success: function(data){
+				console.log(1)
+				$('#typeact').empty ();
+				$('#typeact').append('<option disabled selected>Select Type of Activity</option>');
+				for (i = 0; i < data.length; i++){
+					$('#typeact').append('<option value="'+ data[i].activitytypeID +'">'+ data[i].activitytype+'</option>');
+				}
+				}
+			});
+		});
+	</script>
 		<script>
 			var gosmnew= $('#gosm');
+			
+			function removeError(element){
+			element.addClass('valid')
+					.closest('.form-group')
+					.removeClass('has-error');
+			}
 			gosmnew.validate({
 				rules: {
 					gosmtitle:{
@@ -316,26 +358,89 @@
 					gosmfromdate:{
 						required: true
 					},
+					gosmtodate:{
+						required: true
+					},
 					gosmvenue:{
 						required: true
 					},
 					gosmbug:{
 						required: true
 					},
-					gosmnat:{
-						required: true
+					actoff: {
+					required:true
 					},
-					gosmtype:{
-						required: true
+					natact: {
+						required:true
+					},
+					prooff: {
+						required:true
+					},
+					typeact: {
+						required:true
 					},
 					reto:{
 						required: true
 					}
-				}
+				},
+		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+		},
+		success: removeError,
+
+
+		messages: {
+			gosmtitle:{
+				required: 'Enter the title of activity'
+			},
+			gosmperic:{
+				required: 'Enter person in-charge'
+			},
+			gosmgoals:{
+				required: 'Enter the goals of the activity'
+			},
+			gosmobj: {
+				required: 'Enter the objectives of the activity'
+			},
+			gosmdes:{
+				required: 'Enter the description of the activity'
+			},
+			gosmmeas:{
+				required: 'Enter the measures of the activity'
+			},
+			gosmfromdate: {
+				required: 'Pick a start date for the activity'
+			},
+			gosmtodate: {
+				required: 'Pick an end date for the activity'
+			},
+			gosmvenu: {
+				required: 'Enter preferred venue for the activity'
+			},
+			gosmbug: {
+				required: 'Enter budget',
+				minlength: 'Minimum amount is 10.00',
+				maxlength: 'Maximum amount exceeded'
+			},
+			actoff: {
+					required: 'Pick activity office'
+			},
+			natact: {
+				required: 'Pick nature of activity'
+			},
+			prooff: {
+				required: 'Pick processing office'
+			},
+			typeact: {
+				required: 'Pick type of activity'
+			},
+			reto: {
+				required: 'Pick related to or not'
+			}	
+		}
 			});
 		
 		</script>
-    <!-- Bootstrap -->
+   <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
     <script src="<?php echo base_url();?>vendors/fastclick/lib/fastclick.js"></script>
@@ -373,6 +478,7 @@
 
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url();?>build/js/custom.min.js"></script>
+  
 
   </body>
 </html>

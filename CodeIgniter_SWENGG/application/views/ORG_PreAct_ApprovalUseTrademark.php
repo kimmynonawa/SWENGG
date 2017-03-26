@@ -273,6 +273,9 @@
     <!-- SCRIPT FOR VALIDATION -->
     <script type="text/javascript">
       $(function() {
+        jQuery.validator.addMethod("lettersonly", function(value, element) {
+          return this.optional(element) || /^[a-z\s]+$/i.test(value);
+        })
         function removeError(element){
           element.addClass('valid').closest('.form-group').removeClass('has-error');
         }
@@ -296,6 +299,7 @@
             email: true
           },
           TelNo: {
+            required:true,
             maxlength: 7,
             minlength: 7
 
@@ -326,6 +330,7 @@
             email: 'Invalid DLSU e-mail'
           },
           TelNo: {
+            required: 'Enter telephone number',
             maxlength: 'Invalid telephone number',
             minlength: 'Invalid telephone number'
           },

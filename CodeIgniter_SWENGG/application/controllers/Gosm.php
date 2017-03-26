@@ -93,8 +93,9 @@
 				)
 			);
 			
+			
 			$this->form_validation->set_rules(
-				'gosmnat', 'Nature of Activity', 
+				'natact', 'Nature of Activity', 
 				'required',
 				array(
 					'required'      => 'You have not provided %s.',
@@ -102,15 +103,7 @@
 			);
 			
 			$this->form_validation->set_rules(
-				'gosmnat', 'Nature of Activity', 
-				'required',
-				array(
-					'required'      => 'You have not provided %s.',
-				)
-			);
-			
-			$this->form_validation->set_rules(
-				'gosmtype', 'Type of Activity', 
+				'typeact', 'Type of Activity', 
 				'required',
 				array(
 					'required'      => 'You have not provided %s.',
@@ -145,12 +138,10 @@
 					'gosmtodate'  => $this->input->post("gosmtodate"),
 					'gosmvenue'  => $this->input->post("gosmvenue"),
 					'gosmbug'  => $this->input->post("gosmbug"),
-					'gosmnat'  => $this->input->post("gosmnat"),
-					'gosmtype'  => $this->input->post("gosmtype"),
+					'gosmnat'  => $this->input->post("natact"),
+					'gosmtype'  => $this->input->post("typeact"),
 				);
 				$org = $this->session->userdata('org')[0]['userID'];
-				$orgname = $this->session->userdata('org')[0]['acronym'];
-				$gosm = 1;
 				
 				//Check if related to 
 				if ($this->input->post("reto") == 'yes'){
@@ -161,10 +152,10 @@
 				}
 				
 				//Insert new Activity
-				$this->Gosm_model->insertActivity($data, $org, $gosm, $reto, $orgname);
+				$this->Gosm_model->insertActivity($data, $org, $reto);
 				$data = array ("success" => "true");
 				
-				$this->load->view('ORG_AddGosm');
+				$this->load->view('ORG_AddGosm', $data);
 			}
 			
 		} 

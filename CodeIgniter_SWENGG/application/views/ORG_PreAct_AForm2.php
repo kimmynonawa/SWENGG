@@ -121,14 +121,14 @@
             
         <div class="clearfix"></div>
 
+
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
               <div class="x_content">
-                <form id="aform2" autocomplete="off" action="aform2" method="post" >
+                <form id="aform2" action="aformGOSM2" method="post" autocomplete="off">
                   <span class="section">Activity Details</span>
-                  <?php var_dump ($this->session->userdata('aform1'));?>
-                  <div class= "row" id="dates"> </div>
+					<!-- <?php var_dump ($this->session->userdata('aform1'));?> -->
                   <div class= "row">
                     <div class="col-md-10">   
                       <label class= "col-md-4"> <h4></h4></label>
@@ -140,10 +140,11 @@
                         </select>
                       </div>
                       <div class="col-md-2">
-                           <button class="form-control" id="dateOption" > Add Date</button>
+                           <button type="button" class="form-control" id="dateOption" > Add Date</button>
                       </div>       
                     </div>
-                  </div> 
+                  </div>
+                  <div class= "row" id="dates"> </div>   
 
                   <div class= "row">
                     <div class="col-md-10">   
@@ -176,7 +177,7 @@
 
                   <div class="form-group">
                     <div class="col-md-12 col-md-offset-11">
-                      <button id="nextAform2" type="submit" class="btn btn-success align: right">Next</button>
+                      <button type="submit" class="btn btn-success align: right">Next</button>
                     </div>
                   </div>
 
@@ -184,70 +185,11 @@
               </div><!-- xcontent -->
             </div> <!-- xpanel -->              
           </div> <!-- row -->
-        </div> 
+        </div>
+
       </div>
     </div>
     <!-- /page content -->
-
-	
-	<script>
-		
-		
-		var aform2= $('#aform2');
-		aform2.validate({
-			rules: {
-				actDate: {
-					required:true
-				},
-				startTime: {
-					required:true
-				},
-				endTime: {
-					required:true
-				},
-				enmp: {
-					required:true,
-					maxlength: 6
-				},
-				enp: {
-					required:true,
-					maxlength: 6
-				},
-				venue: {
-					required: true
-				},
-				select: {
-					required: true
-				}
-			},
-
-			messages:{
-				actDate: {
-					required:  'Enter activity date'
-				},
-				startTime: {
-					required:  'Enter start time'
-				},
-				endTime: {
-					required:  'Enter end time'
-				},
-				enmp: {
-					required:  'Enter expected number of members',
-					maxlength: 'Maximum number of participants exceeded'
-				},
-				enp: {
-					required: 'Enter expect number of participants',
-					maxlength: 'Maximum number of participants exceeded'
-				},
-				venue: {
-					required: 'Enter venue'
-				},
-				select: {
-					required: 'Please select duration of activity'
-				}
-			}
-		});
-	</script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -291,32 +233,133 @@
   <script>
 
    $(document).ready(function () {
-      $('#dateOption').click(function(){
-        console.log("yay");
-        var choice = document.getElementById("select").value;
-        if(choice==1){
+        jQuery.validator.addMethod("lettersonly", function(value, element) {
+           return this.optional(element) || /^[a-z\s]+$/i.test(value);
+        })
 
-          var toAppend='<p></p><div class="details"><div class= "row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Date</h4></label></div> <div class= "form-group col-md-4"><input type="date" name="sDate[]" class= "form-control" /></div><div class="col-md-2"><button class="form-control btn btn-danger" id="rDate" name="rDate"> Remove Date</button></div></div></div> \
-              <div class= "row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Time</h4></label></div> <div class= "form-inline col-md-4"><input type="time" name= "s1Time[]" id="startTime" class="form-control" style="width:129px" /> - <input type="time" name= "e1Time[]" id="endTime"  class="form-control" style="width:130px"/></div></div></div> \
-              <div class="row" id ="time"> </div></div>';
-          $('#dates').append(toAppend);
+        function removeError(element){
+          element.addClass('valid')
+              .closest('.form-group')
+              .removeClass('has-error');
+        }
+
+      var aform2= $('#aform2');
+      var numberInc=0;
+      var numberIncr=0;
+
+      $('#dateOption').on('click', function () {
+        var choice = document.getElementById("select").value;
+ 
+        if(choice==1){
+          event.preventDefault();
+          $('#dates').append($('<p></p><div class="details"><div class= "row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Date</h4></label></div> <div class= "form-group col-md-4"><input class= "dt form-control" type="date" name="sDate[' + numberInc + ']"/> </div><div class="col-md-2"><button class="form-control btn btn-danger" id="rDate" name="rDate"> Remove Date</button></div></div></div><div class= "row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Time</h4></label></div> <div class= "form-inline col-md-4"><input type="time" name= "s1Time[' + numberInc + ']" id="startTime" class="form-control" style="width:129px" /> - <input class= "etm form-control" type="time" name= "e1Time[' + numberInc + ']" class="form-control" style="width:130px"/></div></div></div><div class="row" id ="time"> </div></div>'));
+              numberInc++;
+            $(".dt").each(function(){
+             $(this).rules( "add",{
+                required:true,
+              messages: {
+                required: 'Enter date'
+              }
+             });
+            });
+
+            $(".etm").each(function(){
+                $(this).rules( "add", {
+                required:true,
+              messages: {
+                required: 'Enter time'
+
+              }
+             });
+         });
+
 
 
           $(document).on("click", "#rDate", function(){
             (this).closest(".details").remove();
           });
-        }
-        else if(choice==2){
-          var toAppend='<p></p><div class="details"><div class= "row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Date</h4></label></div> <div class= "form-inline col-md-4"><input type="date" name= "drsDate[]" id="startDate" class="form-control" style="width:129px" /> - <input type="date" name= "dreDate[]" id="endDate" class="form-control" style="width:130px"/></div><div class="col-md-2"><button class="form-control btn btn-danger" id="rDate" name="rDate"> Remove Date</button></div></div></div> \
-              <div class="row" id ="time"> </div>\
-              <div class= "row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Time</h4></label></div> <div class= "form-inline col-md-4"><input type="time" name= "s2Time[]" id="startTime" class="form-control" style="width:129px" /> - <input type="time" name= "e2Time[]" id="endTime"  class="form-control" style="width:130px"/></div></div>';
-          $('#dates').append(toAppend);
+        } else if(choice==2){
+          $('#dates').append($('<p></p><div class="details"><div class= "row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Date</h4></label></div> <div class= "form-inline col-md-4"><input type="date" name= "drsDate[' + numberIncr + ']" id="startDate" class="form-control" style="width:129px" /> - <input class="eda form-control" type="date" name= "dreDate[' + numberIncr + ']"  style="width:130px"/></div><div class="col-md-2"><button class="form-control btn btn-danger" id="rDate" name="rDate"> Remove Date</button></div></div></div> <div class="row" id ="time"> </div><div class= "row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Time</h4></label></div> <div class= "form-inline col-md-4"><input type="time" name= "s2Time[' + numberIncr + ']" id="startTime" class="form-control" style="width:129px" /> - <input class="eti form-control" type="time" name= "e2Time[' + numberIncr + ']"  style="width:130px"/></div></div>'));
+
+             numberIncr++;
+            $(".eda").each(function(){
+                $(this).rules( "add", {
+                required:true,
+              messages: {
+                required: 'Enter date'
+              }
+             });
+            });
+
+            $(".eti").each(function(){
+                $(this).rules( "add", {
+                required:true,
+              messages: {
+                required: 'Enter time'
+              }
+             });
+            });
 
           $(document).on("click", "#rDate", function(){
             (this).closest(".details").remove();
           });
         }
       });
+
+    aform2.validate({
+    rules: {
+		'sDate[0]': "required",
+		'eDate[0]': "required",
+		'eTime[0]': "required",
+		'eTim[0]': "required",
+      enmp: {
+        required:true,
+        maxlength: 6
+      },
+      enp: {
+        required:true,
+        maxlength: 6
+      },
+      venue: {
+        required: true
+      },
+      select: {
+        required: true
+      }
+    },
+    highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+    },
+    success: removeError,
+
+    messages:{
+    'Date[0]':{
+      required: 'Enter date'
+    },
+    'eDate[0]':{
+      required: 'Enter date'
+    },
+    'eTime[0]':{
+      required: 'Enter time'
+    },
+    'eTim[0]':{
+      required: 'Enter time'
+    },
+      enmp: {
+        required:  'Enter expected number of members',
+        maxlength: 'Maximum number of participants exceeded'
+      },
+      enp: {
+        required: 'Enter expect number of participants',
+        maxlength: 'Maximum number of participants exceeded'
+      },
+      venue: {
+        required: 'Enter venue'
+      },
+      select: {
+        required: 'Please select duration of activity'
+      }
+    }
+    });
 
    });
 

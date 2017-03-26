@@ -142,7 +142,6 @@
                           <label class= "col-md-5"> <h4>Type of Activity</h4> </label>
                           <div class= "form-group col-md-6">                  
                             <label id="actType" class="form-control col-md-7 col-xs-12"> insert type of activity here</select>
-                       
                           </div>    
                         </div>
                       </div>
@@ -235,15 +234,18 @@
         var choice = document.getElementById("changes").value;
         console.log("choice" + choice);
         if(choice==1){
-          var toAppend=' <div class= "row"><div class="col-md-8"> <label class= "col-md-5"> <h4>Venue</h4> </label><div class= "form-group col-md-6"><input type="text" name= "venue" class="form-control" placeholder="ex: Henry Sy Grounds"> insert venue here </label></div> </div></div>';
+          var toAppend=' <div class= "row"><div class="col-md-8"> <label class= "col-md-5"> <h4>Venue</h4> </label><div class= "form-group col-md-6"><input type="text" name= "venue" class="form-control" placeholder="ex: Henry Sy Grounds"></div> </div></div>';
+           event.preventDefault();
           $('#changeDetails').append(toAppend);
         }
         else if(choice==2){
-          var toAppend='   <div class= "row"><div class="col-md-8"> <label class= "col-md-5"> <h4>Time</h4> </label><div class= "form-inline col-md-6"><input type="date" name= "startDate" id="startDate" class="form-control" style="width:154px" /> - <input type="time" name= "endDate" id="endDate"  class="form-control" style="width:154px"/></div></div></div>';
+          var toAppend='   <div class= "row"><div class="col-md-8"> <label class= "col-md-5"> <h4>Date</h4> </label><div class= "form-inline col-md-6"><input type="date" name= "startDate" id="startDate" class="form-control" style="width:154px" /> - <input type="date" name= "endDate" id="endDate"  class="form-control" style="width:154px"/></div></div></div>';
+           event.preventDefault();
           $('#changeDetails').append(toAppend);
         }
         else if(choice==3){
           var toAppend='   <div class= "row"><div class="col-md-8"> <label class= "col-md-5"> <h4>Time</h4> </label><div class= "form-inline col-md-6"><input type="time" name= "startTime" id="startTime" class="form-control" style="width:154px" /> - <input type="time" name= "endTime" id="endTime"  class="form-control" style="width:154px"/></div></div></div>';
+           event.preventDefault();
           $('#changeDetails').append(toAppend);
         }
       });

@@ -127,8 +127,11 @@
                   <div class="form-group" >
                     <center> <h3>List of Participants</h3></center>
                     <label class="control-label col-md-3 col-sm-3 col-xs-12"> </label>
-                    <form id ="LPForm" action="#" method ="post">
+                    <form id ="LPForm" action="listOfParticipants" method ="post">
                       <div class="x_content">
+					  <?php if (isset($success)): ?>
+							<h4>Successfully Added!</h4>
+						<?php endif; ?>
                         <table class="table table-striped">
                           <thead>
                             <tr>
@@ -141,14 +144,6 @@
                             </tr>
                           </thead>
                           <tbody id="student">
-                            <tr id ="details" class="details">
-                              <td>  <input class="form-control" name ="id[]" placeholder ="Enter ID Number" /></td>
-                              <td>  <input class="form-control" name ="lName[]" placeholder ="Enter Last Name" /></td>
-                              <td>  <input class="form-control" name = "fName[]" placeholder ="Enter First Name" /></td>
-                              <td>  <input class="form-control" name ="mName[]" placeholder ="Enter Middle Initial" /></td>
-                              <td>  <input class="form-control" name = "age[]" placeholder ="Enter Age" style ="width:120px"/></td>
-                              <td>  <input type="checkbox" class="js-switch" name="choice" /></td>
-                            </tr>
                           </tbody>
                         </table>
                       </div>
@@ -162,7 +157,7 @@
                       <div class="ln_solid"></div> 
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-11">
-                          <input id="nextLP" type="submit" class="btn btn-success align: right" value ="Next"> <p></p>
+                          <input type="submit" class="btn btn-success align: right" value ="Next"> <p></p>
                         </div>
                       </div>
                     </form>
@@ -176,78 +171,155 @@
 		
 		
    <script>
-	  $("#add").click(function () {
-		  var i =1;
-		$('#student').append('<tr id ="detailz" class="details"><td>  <input class="form-control" name ="id['+i+']" placeholder ="Enter ID Number" /></td><td>  <input class="form-control" name ="lName[]" placeholder ="Enter Last Name" /></td> <td>  <input class="form-control" name = "fName[]" placeholder ="Enter First Name" /></td><td>  <input class="form-control" name ="mName[]" placeholder ="Enter Middle Initial" /></td><td>  <input class="form-control" name = "age[]" placeholder ="Enter Age" style ="width:120px"/></td><td> <input type="checkbox" class="js-switch" name="choice" /></td></tr>')
-		  i++;
-           		});
+   $(function(){
+  jQuery.validator.addMethod("lettersonly", function(value, element) {
+  return this.optional(element) || /^[a-z\s]+$/i.test(value);
+  })
+
+  function removeError(element){
+  element.addClass('valid')
+      .closest('.form-group')
+      .removeClass('has-error');
+  }
+
+  var numberIncr = 0;
+  $('#student').append($('<tr id ="detail" class="details"><td>  <input class="idc form-control" name ="id[' + numberIncr + ']" placeholder ="Enter ID Number" /></td><td>  <input class="lnc form-control" name ="lName[' + numberIncr + ']" placeholder ="Enter Last Name" /></td> <td>  <input class="fnc form-control" name = "fName[' + numberIncr + ']" placeholder ="Enter First Name" /></td><td>  <input class="mnc form-control" name ="mName[' + numberIncr + ']" placeholder ="Enter Middle Initial" /></td><td>  <input class="mge form-control" name = "age[' + numberIncr + ']" placeholder ="Enter Age" style ="width:120px"/></td><td> <input type="checkbox" class="js-switch" name="choice" /></td></tr>'));
+
+  $("#add").click(function () {
+     numberIncr++;
+    $('#student').append('<tr id ="detailz" class="details"><td>  <input class="idc form-control" name ="id[' + numberIncr + ']" placeholder ="Enter ID Number" /></td><td>  <input class="lnc form-control" name ="lName[' + numberIncr + ']" placeholder ="Enter Last Name" /></td> <td>  <input class="fnc form-control" name = "fName[' + numberIncr + ']" placeholder ="Enter First Name" /></td><td>  <input class="mnc form-control" name ="mName[' + numberIncr + ']" placeholder ="Enter Middle Initial" /></td><td>  <input class="mge form-control" name = "age[' + numberIncr + ']" placeholder ="Enter Age" style ="width:120px"/></td><td> <input type="checkbox" class="js-switch" name="choice" /></td></tr>');
+    $(".idc").each(function(){
+        $(this).rules( "add", {
+        required: true,
+        maxlength: 8,
+        minlength: 8,
+      messages: {
+        required: 'Enter ID number',
+        maxlength: 'Invalid ID number',
+        minlength: 'Invalid ID number'
+      }
+    });
+      });
+
+       $(".lnc").each(function(){
+        $(this).rules( "add", {
+        required:true,
+        lettersonly: true,
+      messages: {
+        required: 'Enter last name',
+        lettersonly: 'Alphabetic characters only'
+      }
+    });
+      });
+
+       $(".fnc").each(function(){
+        $(this).rules( "add", {
+        required:true,
+        lettersonly: true,
+      messages: {
+        required: 'Enter first name',
+        lettersonly: 'Alphabetic characters only'
+      }
+    });
+      });
+
+      $(".mnc").each(function(){
+        $(this).rules( "add", {
+        required:true,
+        lettersonly: true,
+      messages: {
+        required: 'Enter middle initial',
+        lettersonly: 'Alphabetic characters only'
+      }
+    });
+      });
+
+       $(".mge").each(function(){
+        $(this).rules( "add", {
+        required: true,
+        maxlength: 2,
+        min: 9,
+
+      messages: {
+        required: 'Enter age',
+        maxlength: 'Invalid age',
+        min: 'Invalid age'
+      }
+    });
+      });
+
+
+    });
+
+  var lop= $('#LPForm');
+  
+  lop.validate({
+    rules: {
+      'id[0]':{
+        required: true,
+        maxlength: 8,
+        minlength: 8
+      },
+      'lName[0]':{
+        required:true,
+        lettersonly: true
+      },
+      'fName[0]':{
+        required:true,
+        lettersonly: true
+      },
+      'mName[0]':{
+        required: true,
+        lettersonly: true
+      },
+      'age[0]':{
+        required: true,
+        maxlength: 2,
+        min: 9
+      }
+    },
+    highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+    },
+    success: removeError,
+
+    messages:{
+      'id[0]':{
+        required: 'Enter ID number',
+        maxlength: 'Invalid ID number',
+        minlength: 'Invalid ID number'
+      },
+      'lName[0]':{
+        required: 'Enter last name',
+        lettersonly: 'Alphabetic characters only'
+      },
+      'fName[0]':{
+        required: 'Enter first name',
+        lettersonly: 'Alphabetic characters only'
+      },
+      'mName[0]':{
+        required: 'Enter middle initial',
+        lettersonly: 'Alphabetic characters only'
+      },
+      'age[0]':{
+        required: 'Enter age',
+        maxlength: 'Invalid age',
+        min: 'Invalid age'
+      }
+    }
+  });
+  $('#nextLP').click(function() {
+      if (lop.valid()){
+          window.location.href = "";
+        }
+        return false;
+      });
+
     $("#delete").click(function () {
       var v= document.getElementById("detailz");
       v.remove();
-	});
-   
-   function removeError(element){
-			element.addClass('valid')
-			.closest('.form-group')
-			.removeClass('has-error');
-	}
-	
-   var lop= $('#LPForm');
-   
-	lop.validate({
-		rules: {
-			'id[]':{
-				required: true,
-				maxlength: 8,
-				minlength: 8
-			},
-			'lName[]':{
-				required:true,
-				lettersonly: true
-			},
-			'fName[]':{
-				required:true,
-				lettersonly: true
-			},
-			'mName[]':{
-				required: true,
-				lettersonly: true
-			},
-			'age[]':{
-				required: true,
-				maxlength: 2,
-				min: 5
-			}
-		},
-		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
-		},
-		success: removeError,
+              });
+});
 
-		messages:{
-			'id[]':{
-				required: 'Enter ID number',
-				maxlength: 'Invalid ID number',
-				minlength: 'Invalid ID number'
-			},
-			'lName[]':{
-				required: 'Enter last name',
-				lettersonly: 'Alphabetic characters only'
-			},
-			'fName[]':{
-				required: 'Enter first name',
-				lettersonly: 'Alphabetic characters only'
-			},
-			'mName[]':{
-				required: 'Enter middle initial',
-				lettersonly: 'Alphabetic characters only'
-			},
-			'age[]':{
-				required: 'Enter age',
-				maxlength: 'Invalid age',
-				min: 'Invalid age'
-			}
-		}
-	});
 	</script>
    
     <!-- Bootstrap -->

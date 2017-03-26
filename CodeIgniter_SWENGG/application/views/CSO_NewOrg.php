@@ -123,9 +123,6 @@
                     <form class="form-horizontal form-label-left" novalidate id="csoneworg" action="add" method="Post">
                      <span class="section"></span>
 
-					
-						<?php echo validation_errors(); ?>
-						
 						<?php if (isset($success)): ?>
 							<h4>Successfully Added!</h4>
 						<?php endif; ?>

@@ -4,19 +4,19 @@
 			$this->load->database();
 		}
 		
-		// TESTED
+		// REVISED FOR NEW DB
+		// TESTED FOR NEW DB
 		public function createFoodPermit($data){
-			$this->db->insert('foodpermit', array(	"activityID" 	=> $data['actno'], 
+			$this->db->insert('foodpermit', array(	"preactsID" 	=> $data['preactsID'], 
 													"name" 		 	=> $data['name'], 
-													"IDnumber" 	 	=> $data['IDnum'], 
+													"IDno"	 	 	=> $data['IDnum'], 
 													"position" 	 	=> $data['position'], 
 													"email" 	 	=> $data['email'], 
 													"mobile" 	 	=> $data['mobile'], 
-													"telephone"  	=> $data['telephone'],
-													"organization"  => $data['organization']));
+													"telephone"  	=> $data['telephone'],));
 		}
 
-		// TESTED
+		// TESTED FOR NEW DB
 		public function createFoodPermitDetails($foodPermitNum, $data) {
 			$quantity 	 = $data['quantity[]'];
 			$unit 	 	 = $data['unit[]'];
@@ -24,7 +24,7 @@
 			$cost 		 = $data['cost[]'];
 
 			for ($i = 0; $i < sizeof($quantity); $i++){
-				$this->db->insert('fp_details',	array(	"FOODPERMITno" 	=> $foodPermitNum, 
+				$this->db->insert('fp_details',	array(	"foodpermitID" 	=> $foodPermitNum, 
 														"quantity" 		=> $quantity[$i], 
 														"unit" 			=> $unit[$i], 
 														"description" 	=> $description[$i], 
@@ -32,10 +32,10 @@
 			}
 		}
 
-		public function getFoodPermit($actno) {
-			$this->db->select('FOODPERMITno');
+		public function getFoodPermit($preactsID) {
+			$this->db->select('foodpermitID');
 	        $this->db->from('foodpermit');
-	        $this->db->where('activityID', $actno); 
+	        $this->db->where('preactsID', $preactsID); 
 	        $query = $this->db->get();
 
 	        return $query->row_array();
@@ -44,7 +44,7 @@
 		public function getFoodPermitDetails($foodPermitNum) {
 			$this->db->select('quantity,unit,description,cost');
 			$this->db->from('fp_details');
-			$this->db->where('FOODPERMITno', $foodPermitNum);
+			$this->db->where('foodpermitID', $foodPermitNum);
 	        $query = $this->db->get();
 
 	        return $query->result_array();

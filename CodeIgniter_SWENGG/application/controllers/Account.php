@@ -43,12 +43,12 @@
 					$data = array("wrong" => "true");
 					$this->load->view('login', $data);
 				}
-				else if ($type[0]['type'] == "1"){//if login as cso redirect to cso homepage
+				else if ($type[0]['usertypeID'] == "1"){//if login as cso redirect to cso homepage
 					$org = $this->Account_model->getID($this->input->post('Username'),$this->input->post('Password'));
 					$this->session->set_userdata('org', $org);
 					redirect('account/cso');
 				}
-				else if ($type[0]['type'] == "2"){//if login as org redirect to org homepage
+				else if ($type[0]['usertypeID'] == "2"){//if login as org redirect to org homepage
 					$org = $this->Account_model->getID($this->input->post('Username'),$this->input->post('Password'));
 					$this->session->set_userdata('org', $org);
 					redirect('account/org');

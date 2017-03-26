@@ -111,19 +111,45 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-                    <form id="gosmorg" class="form-horizontal form-label-left" autocomplete="off" action="viewORGGosm2" method="post">
+                    <form id="p_forms_controller" class="form-horizontal form-label-left" autocomplete="off" action="other" method="post">
                       <span class="section"> Select the Necessary Fields</span>
+						
+						<?php if (isset($success)): ?>
+							<h4>Successfully Added!</h4>
+						<?php endif; ?>
+						
+						<?php echo validation_errors(); ?>
 						
                       <div class= "row">
                         <div class="col-md-8">   
                           <label class= "col-md-3"> <h4>Activity Title</h4> </label>
                             <div class= "form-group col-md-7">  
-                              <select id="actOptions" class="form-control col-md-7 col-xs-12" name="gosmactivityorg">
+                              <select id="act" class="form-control col-md-7 col-xs-12" name="act">
                                 <option disabled selected>Select Activity</option>
+									<?php
+										foreach($groups as $row)
+										{ 
+											echo '<option value="'.$row->preactsID.'">'.$row->title.'</option>';
+										}
+									?>
                               </select>
-                            </div>        
-                        </div>
-                      </div>
+							  
+                            </div>
+							<label class= "col-md-3"> <h4>Other Requirements</h4> </label>
+							<div class= "form-group col-md-7">  
+								<select id="req" class="form-control col-md-7 col-xs-12" name="req">
+									<option disabled selected>Select Requirement</option>
+									<option value="1">List of Participants</option>
+									<option value="2">Special Approval Slip</option>
+									<option value="3">Special Permit Campus Access</option>
+									<option value="4">Trademark Use</option>
+									<option value="5">Contest Mechanics</option>
+									<option value="6">Food Permit</option>
+									<option value="7">Minor Publication Proposal</option>
+								</select>
+							</div>
+						</div>
+                    </div>
                     
                     <div class="ln_solid"></div> 
 
@@ -142,12 +168,19 @@
 
 		
 	<script>
-	var gosmorg= $('#gosmorg');
-	gosmorg.validate({
+	function removeError(element)
+	{
+		element.addClass('valid')
+						.closest('.form-group')
+						.removeClass('has-error');
+	}
+	var otherreq= $('#otherreq');
+	otherreq.validate({
 		rules: {
 			gosmactivityorg: {
 				required:true
 			}
+			
 		},
 		highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
 		},

@@ -207,12 +207,14 @@
 						<?php if (isset($success)): ?>
 							<h4>Successfully Added!</h4>
 						<?php endif; ?>
+						
+						<?php echo validation_errors(); ?>
 
                       <div class= "row">
                         <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                 <label class= "col-md-2"> <h4>Publication Name:</h4> </label>
                                 <div class= "form-group col-md-10">            
-                                   <p><input type="text" class="form-control has-feedback-left" id="pubname" name="pubname" placeholder="  Name of Publication"/></p>  
+                                   <p><input type="text" class="form-control has-feedback-left" id="pubname" name="pubname" placeholder="  Name of Publication" required/></p>  
                                   <span class="fa fa-file form-control-feedback left" aria-hidden="true"></span>
                                 </div>   
                         </div>    
@@ -222,31 +224,34 @@
                          <div class="form-group col-md-6 col-sm-6 col-xs-12">
                               <label class= "col-md-2"> <h4>Publication Type:</h4> </label>
                                 <div class= "form-group col-md-10">            
-                                      <select class="form-control" name= "pubtype"> 
-                                    <option selected="selected" disabled="disabled">Select Publication Type</option> 
-                                    <option>Big Pub</option> 
-                                    </select>
+                                    <p><input type="text" class="form-control has-feedback-left" id="pubname" name="pubtype" placeholder="  Type of Publication" required/></p>  
                                 </div>      
                             </div>
                          </div>  
-
-
-                      <div class="row">
-                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                          <div class=" form-group col-md-6 col-sm-6">         
-                                   <p> <input type="Number" class="form-control" id="pubfreq" name="pubfreq" placeholder="Frequency of Publication (Days)"/></p>  
-                          </div>
-                        <div class=" form-group col-md-6 col-sm-6">          
-                                  <input type="Number" class="form-control" id="pubcost" name="pubcost" placeholder="Estimated Cost"/>       
-                        </div>
-                        </div>
-                      </div>  <!-- row -->
+						 
+						  <div class="row">
+                         <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                              <label class= "col-md-2"> <h4>Frequency of Publication:</h4> </label>
+                                 <div class= "form-group col-md-10">            
+                                    <p> <input type="Number" class="form-control" id="pubfreq" name="pubfreq" placeholder="Frequency of Publication (Days)" required/></p> 
+                                </div>  
+                            </div>
+                         </div>  
+						 
+						  <div class="row">
+                         <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                              <label class= "col-md-2"> <h4>Estimated Cost:</h4> </label>
+                                 <div class= "form-group col-md-10">            
+                                    <p> <input type="Number" class="form-control" id="pubcost" name="pubcost" placeholder="Estimated Cost" required/>  </p> 
+                                </div>  
+                            </div>
+                         </div> 
 
                       <div class="row">
                         <div class="col-md-6 col-sm-6 col-xs-12">   
                                 <label class= "col-md-2"> <h4>Target Date:</h4> </label>
                                 <div class= "form-group col-md-10">
-                                    <input type="date" name= "tdate" class="form-control" name="pubdate" id="pubdate"/>
+                                    <input type="date" name= "tdate" class="form-control" id="tdate" required/>
                                 </div>        
                         </div>
                       </div> <!-- row -->
@@ -258,11 +263,11 @@
                                
                                 <label class= "col-md-2"> <h4> Objectives</h4> </label>
                                 <div class="form-group col-md-10 col-sm-10 col-xs-10">
-                                  <input type="text" class="form-control" id="obj1" name="obj1" placeholder="1st Objective" />
+                                  <input type="text" class="form-control" id="obj1" name="obj1" placeholder="1st Objective" required/>
                                   <p></p>
-                                  <input type="text" class="form-control" id="obj2" name="obj2" placeholder="2nd Objective" />
+                                  <input type="text" class="form-control" id="obj2" name="obj2" placeholder="2nd Objective" required/>
                                   <p></p>
-                                  <input type="text" class="form-control" id="obj3" name="obj3" placeholder="3rd Objective" />
+                                  <input type="text" class="form-control" id="obj3" name="obj3" placeholder="3rd Objective" required/>
                                 </div>      
                         </div>
                       </div> <!-- row -->
@@ -273,11 +278,11 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">        
                            <label class= "col-md-2"> <h4> Proposed Content</h4> </label>
                                 <div class="form-group col-md-10 col-sm-10 col-xs-10">
-                                  <input type="text" class="form-control" id="cont1" name="cont1" placeholder="Publication Content" />
+                                  <input type="text" class="form-control" id="cont1" name="cont1" placeholder="Publication Content" required/>
                                   <p></p>
-                                  <input type="text" class="form-control" id="cont2" name="cont2" placeholder="Publication Content" />
+                                  <input type="text" class="form-control" id="cont2" name="cont2" placeholder="Publication Content" required/>
                                   <p></p>
-                                  <input type="text" class="form-control" id="cont3" name="cont3" placeholder="Publication Content" />
+                                  <input type="text" class="form-control" id="cont3" name="cont3" placeholder="Publication Content" required/>
                                 </div>      
                           </div>
                         </div> <!-- row -->
@@ -288,17 +293,17 @@
                           <div class="col-md-6 col-sm-6 col-xs-12">                           
                                 <label class= "col-md-2"> <h4> Target Readers</h4> </label>
                                 <div class="form-group col-md-10 col-sm-10 col-xs-10">
-                                  <input type="text" class="form-control" id="tread1" name="tread1" placeholder="Target Audience" />
+                                  <input type="text" class="form-control" id="tread1" name="tread1" placeholder="Target Audience" required/>
                                   <p></p>
-                                  <input type="text" class="form-control" id="tread2" name="tread2" placeholder="Target Audience" />
+                                  <input type="text" class="form-control" id="tread2" name="tread2" placeholder="Target Audience" required/>
                                   <p></p>
-                                  <input type="text" class="form-control" id="tread3" name="tread3" placeholder="Target Audience" />
+                                  <input type="text" class="form-control" id="tread3" name="tread3" placeholder="Target Audience" required/>
                                 </div>      
                          </div>
 
                         <div class="form-group">
                           <div class="col-md-12 col-md-offset-11">
-                            <input id="nextpub" type="submit" class="btn btn-success align: right" value ="Next">
+                            <input type="submit" class="btn btn-success align: right" value ="Next">
                           </div>
                         </div>
 

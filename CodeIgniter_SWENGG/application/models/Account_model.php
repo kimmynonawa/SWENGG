@@ -6,7 +6,7 @@
 		
 		public function checkLogin($username, $password){
 			$this->db->where(array("username" => $username, "password" => $password));
-			$this->db->select('type');
+			$this->db->select('usertypeID');
 			$this->db->from('ref_users');
 			$res = $this->db->get();
 			return $res->result_array();

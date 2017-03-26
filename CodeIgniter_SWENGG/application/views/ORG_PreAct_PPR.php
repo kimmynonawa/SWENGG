@@ -117,18 +117,6 @@
                             <div class="row" id="ph">
                               <span class="section">General Information</span>
                               <label> <h3> Project Head </h3> </label>
-                                <div class="col-md-12 col-sm-12 col-xs-12" id="new">
-                                  <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                                      <input type="text" name="phname[]" class="form-control has-feedback-left" id="name" placeholder="Name">
-                                      <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-                                    </div>
-                                    <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                                      <input type="text" name="phnum[]" class="form-control" id="contact" placeholder="Contact Number">
-                                      <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
-                                    </div>
-                                  </div>
-                                </div>
                             </div>
 
                             <div class= "row">
@@ -161,14 +149,7 @@
                                 <p class="text-success">/*Guidelines per paragraph are shown here.*/</p>
                                  <textarea  name="desc3" class="form-control"></textarea>
                               </div>
-                            </div>
-
-                            <div class= "row">
-                              <p><label><h3> Faculty Adviser</h3></label></p>
-                              <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                               
-                              </div>
-                            </div>
+                            </div>  
 
                             <div class="ln_solid"></div> 
                             <div class="form-group">
@@ -187,83 +168,121 @@
 
     <!-- VALIDATION -->
     <script type="text/javascript">
-      $(function() {
-        function removeError(element){
-          element.addClass('valid').closest('.form-group').removeClass('has-error');
-        }
+    $(function() {
+      jQuery.validator.addMethod("lettersonly", function(value, element) {
+      return this.optional(element) || /^[a-z\s]+$/i.test(value);
+      })
 
-        $('#pprform1').validate({
-        
-        rules: {
-          'phname[]':{
+      function removeError(element){
+      element.addClass('valid')
+          .closest('.form-group')
+          .removeClass('has-error');
+      }
+
+      var numberIncr = 0;
+
+      // append basic table data
+
+      $("#ph").append($('<div class="col-md-12 col-sm-12 col-xs-12" id="ne"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input class="phname form-control has-feedback-left" name="phname[' + numberIncr + ']" placeholder="Name" type="text"/><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input class="phnum form-control has-feedback-right" name="phnum[' + numberIncr + ']" placeholder="Contact Number" /><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div></div></div>'));
+
+      $("#addc").on('click', function () {
+           numberIncr++;
+           var temp = $("#ph").append($('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input class="phname form-control has-feedback-left" name="phname[' + numberIncr + ']" placeholder="Name" /><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input class="phnum form-control has-feedback-right" name="phnum[' + numberIncr + ']" placeholder="Contact Number" /><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div></div></div>'));  
+           
+          $(".phname").each(function(){
+            $(this).rules( "add", {
             required:true,
-            lettersonly: true
-          },
-          'phnum[]': {
-            required: true,
-            maxlength: 11,
-            minlength: 11
-          },
-          obje1:  "required",
-          obje2:  "required",
-          obje3:  "required",
-          desc1:  "required",
-          desc2:  "required",
-          desc3:  "required",
-
-        },
-
-        highlight: function(element){ 
-          $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
-        },
-        success: removeError,
-        messages: {
-          'phname[]': {
+            lettersonly: true,
+          messages: {
             required: 'Enter project head name',
             lettersonly:'Alphabetic characters only'
-          },
+          }
+        });
+          });
 
-          'phnum[]':{
+          $(".phnum").each(function(){
+            $(this).rules( "add", {
+            required: true,
+            maxlength: 11,
+            minlength: 11,
+          messages: {
             required: 'Enter project head contact number',
             maxlength: 'Invalid contact number',
             minlength: 'Invalid contact number'
-          },
+          }
+        });
+          });
 
-          obje1: {
-            required: 'Enter objective'
-          },
-
-          obje2: {
-            required: 'Enter objective'
-          },
-
-          obje3: {
-            required: 'Enter objective'
-          },
-
-          desc1: {
-            required: 'Enter description'
-          },
-
-          desc2: {
-             required: 'Enter description'
-          },
-
-          desc3: {
-            required: 'Enter description'
-          },
-        }
         });
 
-         $("#addc").click(function(){
-              $("#ph").append(' <div class="col-md-12 col-sm-12 col-xs-12" id="newph"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input type="text" name="phname[]" class="form-control has-feedback-left" id="name" placeholder="Name"><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input type="text" name="phnum[]" class="form-control" id="contact" placeholder="Contact Number"><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div></div></div>');   
-         });
+      $("#pprform1").validate({
+      rules:{
+        'phname[0]' : "required",
+        'phnum[0]'  : "required",
+        obje1:  "required",
+
+        obje2:  "required",
+
+        obje3:  "required",
+
+        desc1:  "required",
+
+        desc2:  "required",
+        
+        desc3:  "required"
+
+      },
+      highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+      },
+        success: removeError,
+      messages:{
+        'phname[0]':{
+          required: "Enter project head name"
+        },
+        'phnum[0]':{
+          required: "Enter project head contact number"
+        },
+        obje1: {
+        required: 'Enter objective'
+      },
+
+      obje2: {
+        required: 'Enter objective'
+      },
+
+      obje3: {
+        required: 'Enter objective'
+      },
+
+      desc1: {
+        required: 'Enter description'
+      },
+
+      desc2: {
+         required: 'Enter description'
+      },
+
+      desc3: {
+        required: 'Enter description'
+      }
+      }
+
+      });
+
 
         $("#remc").click(function(){
-            var v= document.getElementById("newph");
+            var v= document.getElementById("new");
             v.remove();
         });  
-      });
+
+      $('#nextbppr').click(function(){
+          if (pprform1.valid()){
+             window.location.href = "ORG_PreAct_PPR2.html";
+           }
+           return false;
+         });
+  
+    });
     </script>
     
     <!-- Bootstrap -->

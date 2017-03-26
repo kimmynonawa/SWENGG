@@ -12,6 +12,7 @@
 	<script src= "<?php echo base_url();?>js/jquery.js"> </script>
 	<script src= "<?php echo base_url();?>js/jquery.min.js"></script>
 	<script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
+    <script src = "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"> </script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <!-- Bootstrap -->
@@ -119,20 +120,22 @@
             </div>
             
             <div class="clearfix"></div>
-
+			<?php var_dump ($preactinfo);?> <br></br>
+			<?php var_dump ($datetime);?> 
+			
           <div class="clearfix"></div>
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-                    <form method="post" id = "approvalChanges" autocomplete="off">
+                    <form  id = "approvalChanges" autocomplete="off" action="changActDetailsCancel" method="post">
                      <span class="section"></span>
                       
                       <div class= "row">
                         <div class="col-md-8">   
                           <label class= "col-md-5"> <h4>Title Of Activity</h4> </label>
                             <div class= "form-group col-md-6">
-                              <input type="text" name= "actTitle" class="form-control" placeholder="ex: General Assembly" />
+                              <label  name= "actTitle" class="form-control"> <?php echo $preactinfo[0]['title'];?> </label>
                             </div>        
                         </div>
                       </div>
@@ -141,46 +144,56 @@
                         <div class="col-md-8">   
                           <label class= "col-md-5"> <h4>Type of Activity</h4> </label>
                           <div class= "form-group col-md-6">                  
-                            <select id="actType" name="actType" class="form-control col-md-7 col-xs-12" >
-                              <option disabled selected>Select Type Of Activity</option>
-                              <option> Academic</option>
-                              <option> Special Interest</option>
-                              <option> Departmental Initiative</option>
-                              <option> Fundraising</option>
-                              <option> Community Development</option>
-                              <option> Organization Development</option>
-                              <option>Issue Advocacy</option>
-                              <option>Lasallian Formation/Spiritual Growth</option>
-                              <option>Outreach</option>                   
-                            </select>
+                            <label id="actType" name="actType" class="form-control col-md-7 col-xs-12" > <?php echo $preactinfo[0]['activitytype'];?> </label>
+                              
                           </div>    
                         </div>
                       </div>
-
+					
+					<?php for ($i =0; $i<count($datetime); $i++):?>
                       <div class= "row">
                         <div class="col-md-8">   
                           <label class= "col-md-5"> <h4>Date</h4> </label>
-                            <div class= "form-group col-md-6">
-                              <input type="date" name= "requestName" class="form-control" />
+                            <div class= "form-inline col-md-6">
+                              <label  name= "startTime" id="startTime" class="form-control" style="width:154px" />
+									<?php 
+									$fromdate = $datetime[$i]['startdate'];
+									$fromdatenew = strtotime($fromdate);
+									$formatted_fromdate = date('F d, Y', $fromdatenew);
+									echo $formatted_fromdate;?> 
+							  </label> - 
+								<label  name= "endTime" id="endTime"  class="form-control" style="width:154px"> 
+									<?php 
+									if ($datetime[$i]['enddate'] != Null){
+										$todate = $datetime[$i]['enddate'];
+										$todatenew = strtotime($todate);
+										$formatted_todate = date('F d, Y', $todatenew);
+										echo $formatted_todate;
+									}?>
+								</label>
                             </div>        
                         </div>
                       </div>
-
-                      
                       <div class= "row">
                         <div class="col-md-8">   
                           <label class= "col-md-5"> <h4>Time</h4> </label>
                           <div class= "form-inline col-md-6">
-                            <input type="time" name= "startTime" id="startTime" class="form-control" style="width:154px" /> - <input type="time" name= "endTime" id="endTime"  class="form-control" style="width:154px"/>
+                            <label  name= "startTime" id="startTime" class="form-control" style="width:154px" />
+								<?php echo $datetime[$i]['starttime'];?> 
+							</label> - 
+                            <label  name= "endTime" id="endTime"  class="form-control" style="width:154px">
+								<?php echo $datetime[$i]['endtime'];?> 
+							</label>
                           </div>    
                         </div>
                       </div> 
-
+					<?php endfor;?>
+					
                       <div class= "row">
                         <div class="col-md-8">   
                           <label class= "col-md-5"> <h4>Venue</h4> </label>
                             <div class= "form-group col-md-6">
-                              <input type="text" name= "venue" class="form-control" placeholder="ex: Henry Sy Grounds" />
+                              <label type="text" name= "venue" class="form-control"><?php echo $preactinfo[0]['venue'];?>  </label>
                             </div>        
                         </div>
                       </div>  
@@ -215,7 +228,7 @@
                       <div class="ln_solid"></div> 
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-11">
-                          <input id="nextApproveChanges" type="submit" class="btn btn-success align: right" value ="Next">
+                          <input type="submit" class="btn btn-success align: right" value ="Next">
                           
                         </div>
                       </div>
@@ -226,14 +239,98 @@
             </div> 
         </div>
       </div>
+	  
+	  <script>
+    jQuery.validator.addMethod("lettersonly", function(value, element) {
+      return this.optional(element) || /^[a-z\s]+$/i.test(value);
+    });
     
+    function removeError(element)
+    {
+      element.addClass('valid')
+              .closest('.form-group')
+              .removeClass('has-error');
+    }
+    
+     var approvalchange= $('#approvalChanges');
+    approvalchange.validate({
+      rules: {
+        actTitle:{
+          required:true
+        },
+        actType: {
+          required: true
+        },
+
+        date: {
+          required: true,
+        },
+
+        startTime: {
+          required:true 
+        },      
+        
+        endTime: {
+          required: true
+        },
+        
+        venue: {
+          required: true
+        },
+        reason: {
+          required:true
+        },
+        requestName:{ 
+          required:true,
+          lettersonly:true
+        }
+      },
+      highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+      },
+      success: removeError,
+
+      messages: {
+        actTitle:{
+          required: 'Enter activity title'
+        },
+        actType: {
+          required: 'Pick activity type'
+        },
+
+        date: {
+          required: 'Enter date'
+        },
+
+        startTime: {
+          required: 'Enter time'
+        },      
+        
+        endTime: {
+          required: 'Enter time'
+        },
+        
+        venue: {
+          required: 'Enter venue'
+        },
+        reason: {
+          required: 'Enter Justification'
+        },
+        requestName:{ 
+          required: 'Enter name',
+          lettersonly: 'Alphabetic characters only'
+        }
+      }
+      });
 
 
-    <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
-    <script src= "js/jquery.validate.min.js"> </script>
-    <script src= js/validation.js></script>
-    <script src = "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"> </script>
+      $('#nextApproveChanges').click(function(){
+          if (approvalchange.valid()){
+             window.location.href = "";
+           }
+           return false;
+         });
+    </script>
+   
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -272,17 +369,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url();?>build/js/custom.min.js"></script>
-	 <script>
-
-      $(document).ready(function () {
-        var checked = $('.checkbox').val();
-
-        if(checked==4){
-
-        }
-        
-
-      });
-   </script>
+	 
   </body>
 </html>

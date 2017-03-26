@@ -4,22 +4,23 @@
 			$this->load->database();
 		}
 		
-		// TESTED
-		public function createNewPPR($data){
+		// REVISED FOR NEW DB
+		// TESTED FOR NEW DB
+		public function createNewPPR($preactsID, $data){
 			date_default_timezone_set('Asia/Manila');
 			$dateCreated = date("Y-m-d g:i:s");
-			return $this->db->insert('ppr', array(  "activityID" 	=> $data['actno'], 
+			return $this->db->insert('ppr', array(  "preactsID" 	=> $preactsID, 
 													"context1" 		=> $data['description1'], 
 													"context2" 		=> $data['description2'], 
 													"context3" 		=> $data['description3'], 
 													"objective1"	=> $data['objective1'], 
 													"objective2" 	=> $data['objective2'], 
 													"objective3" 	=> $data['objective3'],
-													"organization"	=> $data['organization'],  
 													"datecreated" 	=> $dateCreated));
 		}
 
-		// TESTED
+		// REVISED FOR NEW DB
+		// TESTED FOR NEW DB
 		public function createProgramDesign($PPRnum, $data){
 			date_default_timezone_set('Asia/Manila');
 			$dateCreated = date("Y-m-d g:i:s");
@@ -41,7 +42,7 @@
 				$difference   = $newEndTime->diff($newStartTime);
 				$duration 	  = $difference->format('%H hour(s) and %i minute(s)');
 
-				$this->db->insert('ppr_programdesign', array("PPRno" 		  => $PPRnum, 
+				$this->db->insert('ppr_programdesign', array("pprID" 		  => $PPRnum, 
 															 "date" 		  => $dateCreated, 
 															 "duration"		  => $duration, 
 															 "starttime" 	  => $startTime, 
@@ -52,7 +53,8 @@
 			}
 		}
 
-		// TESTED
+		// REVISED FOR NEW DB
+		// TESTED FOR NEW DB
 		public function addExpenses($PPRnum, $data) {
 			// ASSIGNMENT OF VARIABLES
 			$materials = $data['material[]'];
@@ -62,7 +64,7 @@
 			for ($i = 0; $i < sizeof($materials); $i++) {
 				$totalCost = 0;
 				$totalCost = $quantity[$i] * $unitCost[$i];
-				$this->db->insert('ppr_expenses', array("PPRno" 	=> $PPRnum, 
+				$this->db->insert('ppr_expenses', array("pprID" 	=> $PPRnum, 
 														"material"  => $materials[$i], 
 														"quantity"  => $quantity[$i], 
 														"unitcost"  => $unitCost[$i], 
@@ -70,38 +72,43 @@
 			}
 		}
 
-		// TESTED
+		// REVISED FOR NEW DB
+		// TESTED FOR NEW DB
 		public function addProjectHeads($PPRnum, $projectHeadInfo) {
 			$projectHead_names = $projectHeadInfo['names[]'];
 			$projectHead_num   = $projectHeadInfo['contactno[]'];
 
-			for ($i = 0; $i < sizeof($projectHeadInfo); $i++) {
-				$this->db->insert('ppr_projectheads', array("PPRno" 				=> $PPRnum, 
-															"projecthead_name"  	=> $projectHead_names[$i],
-															"projecthead_contactno" => $projectHead_num[$i],));
+			for ($i = 0; $i < sizeof($projectHead_names); $i++) {
+				$this->db->insert('ppr_projectheads', array("pprID" 		=> $PPRnum, 
+															"name"  		=> $projectHead_names[$i],
+															"contactnumber" => $projectHead_num[$i],));
 			}
 		} 
 
-		// TESTED
+		// REVISED FOR NEW DB
+		// TESTED FOR NEW DB
 		public function addFunds($PPRnum, $data) {
-			$this->db->insert('ppr_funds', array("PPRno" 			=> $PPRnum, 
+			$this->db->insert('ppr_funds', array("pprID" 			=> $PPRnum, 
 												 "orgfunds"	 		=> $data['orgFunds'], 
 												 "participantsfee" 	=> $data['participantsFee'], 
 												 "others" 			=> $data['totalOthersFund']));
 		}
 
-		// TESTED
+		// REVISED FOR NEW DB
+		// TESTED FOR NEW DB
 		public function addOtherFunds($PPRFundsNum, $data) {
 			$sourceName   = $data['othersName[]'];
 			$sourceAmount = $data['othersAmount[]'];
 			for ($i = 0; $i < sizeof($sourceName); $i++) {
-				$this->db->insert('ppr_otherfunds', array(  "PPR_FUNDSno" => $PPRFundsNum, 
+				// echo $PPRFundsNum;
+				$this->db->insert('ppr_otherfunds', array(  "ppr_fundsID" => $PPRFundsNum, 
 															"source" 	  => $sourceName[$i], 
 															"amount" 	  => $sourceAmount[$i]));
 			}
 		}
 
-		// TESTED
+		// REVISED FOR NEW DB
+		// TESTED FOR NEW DB
 		public function addOrgFunds($PPRnum, $data) {
 			foreach ($this->PPR_model->getSourceFundsTotalAmount($PPRnum) as $disbursement) {
 				$totalDisbursement = $disbursement->totalAmount;
@@ -111,16 +118,17 @@
 			}
 			$balance = $totalDisbursement - $lessExpenses;
 
-			$this->db->insert('ppr_orgfunds', array("PPRno" 			=> $PPRnum, 
+			$this->db->insert('ppr_orgfunds', array("pprID" 			=> $PPRnum, 
 													"operationalfunds" 	=> $data['operationalFunds'], 
 													"depositoryfunds" 	=> $data['depositoryFunds'], 
 													"depository_asof" 	=> $data['depositoryDate'], 
 													"totaldisbursement" => $totalDisbursement, 
-													"less_expenses" 	=> $lessExpenses, 
+													"lessexpenses" 		=> $lessExpenses, 
 													"balance" 			=> $balance));
 		}
 
-		// TESTED
+		// REVISED FOR NEW DB
+		// TESTED FOR NEW DB
 		public function addProjectedIncome($PPRnum, $data) {
 			$itemList  = $data['incomeItem[]'];
 			$qtyList   = $data['incomeQty[]'];
@@ -129,7 +137,7 @@
 			for ($i = 0; $i < sizeof($itemList); $i++) {
 				$amount = 0;
 				$amount = $qtyList[$i] * $priceList[$i];
-				$this->db->insert('ppr_projectedincome', array(	"PPRno" 		=> $PPRnum, 
+				$this->db->insert('ppr_projectedincome', array(	"pprID" 		=> $PPRnum, 
 																"item" 			=> $itemList[$i], 
 																"quantity" 		=> $qtyList[$i], 
 																"sellingprice"  => $priceList[$i], 
@@ -137,7 +145,8 @@
 			}
 		}
 
-		// TESTED
+		// REVISED FOR NEW DB
+		// TESTED FOR NEW DB
 		public function addProjectedExpenses($PPRnum, $data) {
 			$itemList  = $data['expenseItem[]'];
 			$qtyList   = $data['expenseQty[]'];
@@ -146,7 +155,7 @@
 			for ($i = 0; $i < sizeof($itemList); $i++) {
 				$amount = 0;
 				$amount = $qtyList[$i] * $priceList[$i];
-				$this->db->insert('ppr_projectedexpenses', array("PPRno" 		=> $PPRnum, 
+				$this->db->insert('ppr_projectedexpenses', array("pprID" 		=> $PPRnum, 
 																 "item" 		=> $itemList[$i], 
 																 "quantity" 	=> $qtyList[$i], 
 																 "sellingprice" => $priceList[$i], 
@@ -154,19 +163,19 @@
 			}
 		}
 
-		public function getPPR($actno) {
-			$this->db->select('PPRno');
+		public function getPPR($preactsID) {
+			$this->db->select('pprID');
 	        $this->db->from('PPR');
-	        $this->db->where('activityID', $actno); 
+	        $this->db->where('preactsID', $preactsID); 
 	        $query = $this->db->get();
 
 	        return $query->row_array();
 		}
 
 		public function getFundsNum($PPRnum) {
-			$this->db->select('idPPR_FUNDS');
+			$this->db->select('ppr_fundsID');
 	        $this->db->from('PPR_FUNDS');
-	        $this->db->where('PPRno', $PPRnum); 
+	        $this->db->where('pprID', $PPRnum); 
 	        $query = $this->db->get();
 
 	        return $query->row_array();
@@ -175,7 +184,7 @@
 		public function getSourceFunds($PPRnum) {
 			$this->db->select('orgfunds, participantsfee, others');
 			$this->db->from('ppr_funds');
-			$this->db->where('PPRno', $PPRnum);
+			$this->db->where('pprID', $PPRnum);
 			$query = $this->db->get();
 
 	        return $query->result_array();
@@ -184,14 +193,14 @@
 		public function getSourceFundsTotalAmount($PPRnum) {
 			$query = $this->db->query("SELECT (SUM(orgfunds)+SUM(participantsfee)+SUM(others)) AS 'totalAmount'
 										 FROM ppr_funds
-										WHERE PPRno = {$PPRnum}");
+										WHERE pprID = {$PPRnum}");
 	        return $query->result();
 		}
 
 		public function getOtherSourceFunds($PPRFundsNum) {
 			$this->db->select('source, amount');
 			$this->db->from('ppr_otherfunds');
-			$this->db->where('idPPR_OTHERFUNDS', $PPRFundsNum);
+			$this->db->where('ppr_otherfundsID', $PPRFundsNum);
 			$query = $this->db->get();
 
 	        return $query->result_array();
@@ -200,7 +209,7 @@
 		public function getOrgFunds($PPRnum) {
 			$this->db->select('operationalfunds, depositoryfunds, otherfunds, totaldisbursement, balance');
 			$this->db->from('ppr_orgfunds');
-			$this->db->where('PPRno', $PPRnum);
+			$this->db->where('pprID', $PPRnum);
 			$query = $this->db->get();
 
 	        return $query->result_array();
@@ -209,7 +218,7 @@
 		public function getExpenses($PPRnum) {
 			$this->db->select('material, quantity, unitcost, totalcost');
 			$this->db->from('ppr_expenses');
-			$this->db->where('PPRno', $PPRnum);
+			$this->db->where('pprID', $PPRnum);
 			$query = $this->db->get();
 
 	        return $query->result_array();
@@ -218,14 +227,14 @@
 		public function getExpensesTotalAmount($PPRnum) {
 			$query = $this->db->query("SELECT SUM(totalcost) AS 'totalAmount'
 										 FROM ppr_expenses
-										WHERE PPRno = {$PPRnum}");
+										WHERE pprID = {$PPRnum}");
 	        return $query->result();
 		}
 
 		public function getProjectedIncome($PPRnum) {
 			$this->db->select('item, quantity, sellingprice');
 			$this->db->from('ppr_projectedincome');
-			$this->db->where('PPRno', $PPRnum);
+			$this->db->where('pprID', $PPRnum);
 			$query = $this->db->get();
 
 	        return $query->result_array();
@@ -234,7 +243,7 @@
 		public function getProjectedExpenses($PPRnum) {
 			$this->db->select('item, quantity, sellingprice');
 			$this->db->from('ppr_projectedincome');
-			$this->db->where('PPRno', $PPRnum);
+			$this->db->where('pprID', $PPRnum);
 			$query = $this->db->get();
 
 	        return $query->result_array();

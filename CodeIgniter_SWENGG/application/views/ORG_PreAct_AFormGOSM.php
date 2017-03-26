@@ -64,14 +64,20 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-				          <li><a href="http://localhost/index.php/account/org"><i class="fa fa-home"></i> Home</a></li>
-                  <li><a href="http://localhost/index.php/gosm/add"><i class="fa fa-table"></i> Add New GOSM</a></li>
-                  <li><a href="http://localhost/index.php/PreActivity/preacts"><i class="fa fa-edit"></i> Fill Out Pre-Activity Requirements</a></li>
-                  <li><a href="#"><i class="fa fa-edit"></i>  Fill Out Additional Requirements</a></li>	  
-                  <li><a href="#"><i class="fa fa-folder-open"></i>  View Pre-Acts </a></li>
-				          <li><a href="#"><i class="fa fa-calendar"></i> Calendar <span ></span></a></li>
-				          <li><a href="http://localhost/index.php/gosm/viewORGGosm1"><i class="fa fa-list-alt"></i> GOSM <span ></span></a></li>
-				        </ul>
+                  <li><a href="#"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
+                  <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu"> 
+                      <li><a href="#">Add New GOSM</li>
+                      <li><a href="#">Fill out Pre-Activity Requirements</a></li>
+                      <li><a href="#">Fill out Additional Requirements</a></li>
+                      <li><a href="#">Fill out Special Approval Slip</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#"><i class="fa fa-folder-open"></i> View Pre-Acts <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="#"><i class="fa fa-table"></i> Calendar <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="#"><i class="fa fa-list-alt"></i> GOSM <span class="fa fa-chevron-down"></span></a>
+                  </li>
+                </ul>
               </div>
             </div>
             <!-- /sidebar menu -->
@@ -127,7 +133,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-                    <form id="aform1" autocomplete="off" action="aformGOSM" method="post">
+                   <form id="aform1" autocomplete="off" action="aformGOSM" method="post">
                       <span class="section">General Information</span>
                      
                       <div class= "row">
@@ -138,7 +144,7 @@
                                 <option disabled selected>Select Activity</option>
                 									<?php
                 										for ($i = 0; $i < count($activity); $i++){
-                											echo"<option value={$activity[$i]['activityID']}>{$activity[$i]['title']}</option>";
+                											echo"<option value={$activity[$i]['gosmID']}>{$activity[$i]['title']}</option>";
                 										}
                 									?>
                               </select>
@@ -150,24 +156,45 @@
                     <span class="section">Nature of Activity</span>
                     <div class= "row">
                       <div class="col-md-8">
-					             <label class= "col-md-5"> <h4>Type of Activity</h4> </label>
+					        <label class= "col-md-5"> <h4>Select Activity Office</h4> </label>
                           <div class= "form-group col-md-6">
-                            <label id="natact" class="form-control col-md-7 col-xs-12"> Insert type of activity here</label> 
-                           
+                            <select id="activityoffice" class="form-control col-md-7 col-xs-12" name="actoff">
+                              <option disabled selected>Select Activity Office</option>
+              							  <option value="1">CSO and Special Groups</option>
+              							  <option value="2">USG</option>
+                            </select>
                           </div>
-                       
+                        <label class= "col-md-5"> <h4>Nature of Activity</h4> </label>
+                          <div class= "form-group col-md-6">
+                            <select id="natact" class="form-control col-md-7 col-xs-12" name="natact">
+                              <option disabled selected>Select Nature of Activity</option>
+								
+                            </select>
+                          </div>
                                   
                         </div>
                       </div>  
+          
                       <p> </p>
                       <span class="section">Type of Activity</span>
                       <div class= "row">
                         <div class="col-md-8">   
                           <label class= "col-md-5"> <h4>Type of Activity</h4> </label>
                           <div class= "form-group col-md-6">
-                          <label  id="typeact" class="form-control col-md-7 col-xs-12"> Insert type of activity here</label>
+                            <select id="processingoffice" class="form-control col-md-7 col-xs-12" name="prooff">
+                              <option disabled selected>Processing Office</option>
+              								<option value="1">CSO or DAAM</option>
+              								<option value="2">SLIFE</option>
+                                          
+                            </select>
                           </div>
-                                     
+                          <label class= "col-md-5"> <h4>Type of Activity</h4> </label>
+                          <div class= "form-group col-md-6">  
+                            <select id="typeact"  class="form-control col-md-7 col-xs-12" name="typeact">
+                              <option disabled selected>Select Type of Activity</option>
+                                       
+                            </select>
+                          </div>                
                         </div>
                       </div>  
                       <p> </p>
@@ -178,11 +205,11 @@
                           <div class= "form-group col-md-6">
                             <select id="reachType"  name="reachType" class="form-control col-md-7 col-xs-12">
                               <option disabled selected>Select Reach Of Activity</option>
-								<?php
-									for ($i = 0; $i < count($reach); $i++){
-										echo"<option value={$reach[$i]['idREF_ACTIVITYREACH']}>{$reach[$i]['activityreach']}</option>";
-									}
-								?>        
+                								<?php
+                									for ($i = 0; $i < count($reach); $i++){
+                										echo"<option value={$reach[$i]['activityreachID']}>{$reach[$i]['activityreach']}</option>";
+                									}
+                								?>        
                             </select>
                           </div>      
                         </div>
@@ -191,7 +218,7 @@
                       <div class="ln_solid"></div> 
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-11">
-                          <input id="nextaform" type="submit" class="btn btn-success align: right" Value="Next">
+                          <input  type="submit" class="btn btn-success align: right" Value="Next">
                         </div>
                       </div>    
                     </form>
@@ -217,7 +244,7 @@
 				$('#natact').empty ();
 				$('#natact').append('<option disabled selected>Select Nature of Activity</option>');
 				for (i = 0; i < data.length; i++){
-					$('#natact').append('<option value="'+ data[i].idREF_ACTIVITYNATURE +'">'+ data[i].activitynature +'</option>');
+					$('#natact').append('<option value="'+ data[i].activitynatureID +'">'+ data[i].activitynature +'</option>');
 				}
 				}
 			});
@@ -236,7 +263,7 @@
 				$('#typeact').empty ();
 				$('#typeact').append('<option disabled selected>Select Type of Activity</option>');
 				for (i = 0; i < data.length; i++){
-					$('#typeact').append('<option value="'+ data[i].idREF_ACTIVITYTYPE +'">'+ data[i].activitytype+'</option>');
+					$('#typeact').append('<option value="'+ data[i].activitytypeID +'">'+ data[i].activitytype+'</option>');
 				}
 				}
 			});

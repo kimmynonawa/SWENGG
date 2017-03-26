@@ -283,6 +283,9 @@
      <!-- for validation -->
     <script type="text/javascript">
       $(function(){
+        jQuery.validator.addMethod("lettersonly", function(value, element) {
+          return this.optional(element) || /^[a-z\s]+$/i.test(value);
+        })
         function removeError(element){
           element.addClass('valid').closest('.form-group').removeClass('has-error');
         }
@@ -314,6 +317,7 @@
           },
 
           TelNo:{
+            required: true,
             maxlength: 7
           }
 
@@ -352,6 +356,7 @@
           },
 
           TelNo:{
+            required: 'Enter telephone number.',
             maxlength: 'Enter a valid local number'
           }
         }

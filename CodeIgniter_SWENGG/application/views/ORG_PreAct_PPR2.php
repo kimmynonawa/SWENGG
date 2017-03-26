@@ -104,55 +104,55 @@
               </div>
             </div>
             <div class="clearfix"></div>
-
-            <div class="row">
+              <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
+                     <form class=" form-label-left" id="pprform2" method="post">
+                      <span class="section"></span>
+                    
 
-                    <form class="form-inline form-label-left" id="pprform2" method="post">
-                      <span class="section">Comprehensive Program Design</span>
-
-                        <div class="table-responsive">          
-                          <table class="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th>Time</th>
+                      <div class= "row">
+                        <div class="col-md-12">   
+                          <span class="section">Comprehensive Program Design</span>
+                          <div class= "form-group col-md-12">
+                            <table class="table table-striped">
+                              <thead>
+                                 <tr>
+                                <th>Start Time</th>
+                                <th>End Time</th>
                                 <th>Activity</th>
+                                <th>Duration</th>
                                 <th>Description</th>
                                 <th>Person In-Charge</th>
                               </tr>
-                            </thead>
-                            <tbody id="tr">
-                              <tr>
-                                <td align= "center"> <input type="time" name="time[]"> - <input type= "time" name="stime[]"> </td>
-                                <td align= "center"> <input type="text" name="aname[]" class="form-control" id="act" placeholder="Activity name"/></td>
-                                <td align= "center"> <input type="text" name="ades[]"  class="form-control" id="des" placeholder="Description of Activity"/></td>
-                                <td align= "center"> <input type="text" name="apic[]"  class="form-control" id="icharge" placeholder="Person in-charge"/></td>
-                              </tr>
-                            </tbody>
-                           </table>
+                              </thead>
+                              <tbody id="tr">
+                              </tbody>
+                            </table>
                           </div>
+                        </div>
 
-                           <div class= "row">
-                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                        <div class = "buttons col-md-12">
+                          <div class="col-md-3">
                                  <button id="addc2" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
                                  <button id="remc2" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                               </div>
-                            </div>
-
-                       <div class="ln_solid"></div>
+                          </div>    
+                        </div>
+                      </div>  
+                        <div class="ln_solid"></div> 
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-11">
-                          <input id="nextbppr2" type="submit" class="btn btn-success align: right" value="Next">
+                          <button id="nextbppr2" type="submit" class="btn btn-success align: right">Next</button>
                         </div>
-                      </div>
-                         
-                      </form>
-                  </div>
-                </div>
-              </div>
-            </div>
+                      </div> 
+                    </form>
+                    
+                  </div><!-- xcontent -->
+                </div> <!-- xpanel -->              
+              </div> <!-- row -->
+            </div> 
+
           </div>
         </div>
         <!-- /page content -->
@@ -160,53 +160,129 @@
     <!-- SCRIPT FOR VALIDATION AND ROW ADDING -->
     <script type="text/javascript">
       $(function() {
-        function removeError(element){
-          element.addClass('valid').closest('.form-group').removeClass('has-error');
-        }
-        $('#pprform2').validate({
-          rules: {
-            'aname[]':"required",
-            
-            'stime[]': "required",
+       jQuery.validator.addMethod("lettersonly", function(value, element) {
+  return this.optional(element) || /^[a-z\s]+$/i.test(value);
+  })
 
-            'ades[]':"required",
-            
-            'apic[]': "required"
-          },
+  function removeError(element){
+  element.addClass('valid')
+      .closest('.form-group')
+      .removeClass('has-error');
+  }
 
-          highlight: function(element){ 
-            $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
-          },
-          success: removeError,
+  var numberIncr = 0;
+  $("#tr").append('<tr><td> <input  class="stm form-control" type="time" name="time[' + numberIncr + ']"> </td><td><input class="stc form-control" type= "time" name="stime[' + numberIncr + ']"> </td><td> <input class="nmc form-control" type="text" name="aname[' + numberIncr + ']" id="act" placeholder="Activity name"/></td><td> <input class="drc form-control" type="text" name="adur[' + numberIncr + ']"  id="dur" disabled="true" /></td><td> <input class="dsc form-control" type="text" name="ades[' + numberIncr + ']" id="des" placeholder="Description of Activity"/></td><td> <input class="pcc form-control" type="text" name="apic[' + numberIncr + ']" id="icharge" placeholder="Person in-charge"/></td></tr>');   
 
-          messages: {
-            'aname[]': {
-              required: 'Enter activity name'
-            },
+  var pprform2= $('#pprform2');
+  pprform2.validate({
+    rules: {
+      'aname[0]':"required",
+      
+      'stime[0]': "required",
 
-            'stime[]':{
-              required: 'Enter time'
-            },
+      'time[0]': "required",
 
-            'ades[]':{
-              required: 'Enter activity description'
-            },
-
-            'apic[]':{
-              required: 'Enter person-in-charge'
-            }
-          }
-        });
+      'ades[0]':"required",
+      
+      'apic[0]': {
+        required: true,
+        lettersonly: true
+      }
+    },
+    highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+    },
+    success: removeError,
 
 
-        $("#addc2").click(function(){
-            $("#tr").append('<tr id="newtr"><td align= "center"> <input type="time" name="time[]"> - <input type= "time" name="stime[]"> </td><td align= "center"> <input type="text" name="aname[]" class="form-control" id="act" placeholder="Activity name"/></td><td align= "center"> <input type="text" name="ades[]"  class="form-control" id="des" placeholder="Description of Activity"/></td><td align= "center"> <input type="text" name="apic[]"  class="form-control" id="icharge" placeholder="Person in-charge"/></td></tr>');   
-         });
+    messages: {
+      'aname[0]': {
+        required: 'Enter activity name'
+      },
 
-        $("#remc2").click(function(){
-           var v= document.getElementById("newtr");
-           v.remove(); 
-        });
+      'stime[0]':{
+        required: 'Enter time'
+      },
+
+      'time[0]':{
+        required: 'Enter time'
+      },
+
+      'ades[0]':{
+        required: 'Enter description'
+      },
+
+      'apic[0]':{
+        required: 'Enter name',
+        lettersonly: 'Alphabetical characters only'
+      }
+    }
+    });     
+
+  $("#addc2").click(function() {
+    numberIncr++;
+      $("#tr").append($('<tr id="newtr"><td> <input class="stm form-control"  type="time" name="time[' + numberIncr + ']"> </td><td><input class="stc form-control" type= "time" name="stime[' + numberIncr + ']"> </td><td> <input class="nmc form-control" type="text" name="aname[' + numberIncr + ']"  placeholder="Activity name"/></td><td> <input class="drc form-control" type="text" name="adur[' + numberIncr + ']"   disabled="true" /></td><td> <input class="dsc form-control" type="text" name="ades[' + numberIncr + ']"  placeholder="Description of Activity"/></td><td> <input class="pcc form-control" type="text" name="apic[' + numberIncr + ']"  placeholder="Person in-charge"/></td></tr>'));   
+
+      $(".stm").each(function(){
+        $(this).rules( "add", {
+        required:true,
+      messages: {
+        required: 'Enter time'
+      }
+    });
+      });
+      
+        $(".stc").each(function(){
+        $(this).rules( "add", {
+        required:true,
+      messages: {
+        required: 'Enter time'
+      }
+    });
+      });
+
+       $(".nmc").each(function(){
+        $(this).rules( "add", {
+        required:true,
+      messages: {
+        required: 'Enter activity name'
+      }
+    });
+      });
+
+      $(".dsc").each(function(){
+        $(this).rules( "add", {
+        required:true,
+      messages: {
+        required: 'Enter description'
+      }
+    });
+      });
+
+      $(".pcc").each(function(){
+        $(this).rules( "add", {
+        required:true,
+        lettersonly: true,
+      messages: {
+        required: 'Enter name',
+      lettersonly: 'Alphabetical characters only'
+        
+      }
+    });
+      });
+
+
+     });
+
+    $("#remc2").click(function(){
+       var v= document.getElementById("newppr2");
+       v.remove(); 
+      });
+  // $('#nextbppr2').click(function() {
+  //        if (pprform2.valid()){
+  //          window.location.href = "ORG_PreAct_PPR3.html";
+  //        }
+  //         return false  
+  //      });
       });
     </script>
     <!-- Bootstrap -->

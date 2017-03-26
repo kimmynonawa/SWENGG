@@ -11,7 +11,6 @@
 
     <script src="<?php echo base_url();?>js/jquery.min.js"></script>
     <script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
-    <script src= "<?php echo base_url();?>js/validation.js"></script>
     <!-- Bootstrap -->
     <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -191,15 +190,15 @@
             
                       <div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-3"> <h4>Activity Title</h4> </label>
+                          <label class= "col-md-3"> <h4>Pre-Activity Title</h4> </label>
                             <div class= "form-group col-md-7">  
                               <select id="actOptions" class="form-control col-md-7 col-xs-12" name="gosmactivityorg">
-                                <option disabled selected>Select Activity</option>
-                                 <?php
-                                  for ($i=0; $i<count($acts);$i++){
-                                    echo"<option value={$acts[$i]['activityID']}>{$acts[$i]['title']}</option>";
-                                  }
-                                  ?> 
+                                <option disabled selected>Select Pre-Activity</option>
+									<?php
+										for ($i = 0; $i < count($activity); $i++){
+											echo"<option value={$activity[$i]['activityID']}>{$activity[$i]['title']}</option>";
+										}
+									?>
                               </select>
                             </div>        
                         </div>

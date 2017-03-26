@@ -207,11 +207,11 @@
                           <span class="section">Publication Specifications</span>
                           <div class="col-md-4 col-sm-6 col-xs-12">
                                 <div class="form-group col-md-4 col-sm-6 col-xs-12"> 
-                                   <p> <input type="Number" name= "npages" class="form-control" id="nump" placeholder="Number of Pages"/></p>
+                                   <p> <input type="Number" name= "npages" class="form-control" id="nump" placeholder="Number of Pages" required/></p>
                                 </div>   
                                 <!-- fix alignment -->
                                 <div class="form-group col-md-8 col-sm-6 col-xs-12"> 
-                                    <input type="text" name="bm1" class="form-control" id="nbmember" placeholder="Board member-In-Charge"/>
+                                    <input type="text" name="bm1" class="form-control" id="nbmember" placeholder="Board member-In-Charge"  required/>
                                 </div>         
                           </div>
                         </div> <!-- row -->
@@ -220,11 +220,11 @@
                       <div class="row">
                         <div class="col-md-4 col-sm-6 col-xs-12">
                                 <div class="form-group col-md-4 col-sm-6 col-xs-12"> 
-                                   <p> <input type="Number" name="ssize" class="form-control" id="spreadsize" placeholder="Spread Size"/></p>
+                                   <p> <input type="Number" name="ssize" class="form-control" id="spreadsize" placeholder="Spread Size" required/></p>
                                 </div>   
                                 <!-- fix alignment -->
                                 <div class="form-group col-md-8 col-sm-6 col-xs-12"> 
-                                    <input type="text" name="bm2" class="form-control" id="spbmember" placeholder="Board member-In-Charge"/>
+                                    <input type="text" name="bm2" class="form-control" id="spbmember" placeholder="Board member-In-Charge" required/>
                                 </div>     
                         </div>
                       
@@ -233,11 +233,11 @@
                        <div class="row">
                         <div class="col-md-4 col-sm-6 col-xs-12">
                                 <div class="form-group col-md-4 col-sm-6 col-xs-12"> 
-                                   <p> <input type="text" name="ptype" class="form-control" id="papertype" placeholder="Type of Paper"/></p>
+                                   <p> <input type="text" name="ptype" class="form-control" id="papertype" placeholder="Type of Paper" required/></p>
                                 </div>   
                                 <!-- fix alignment -->
                                 <div class="form-group col-md-8 col-sm-6 col-xs-12"> 
-                                 <input type="text" name= "bm3" class="form-control" id="ptbmember" placeholder="Board member-In-Charge"/>
+                                 <input type="text" name= "bm3" class="form-control" id="ptbmember" placeholder="Board member-In-Charge" required/>
                                 </div>     
                         </div>
                       </div> <!-- row -->
@@ -245,11 +245,11 @@
                          <div class="row">
                         <div class="col-md-4 col-sm-6 col-xs-12">
                                 <div class="form-group col-md-4 col-sm-6 col-xs-12"> 
-                                   <p> <input type="Number" name="ncolor" class="form-control" id="numcolor" placeholder="Number of Color"/></p>
+                                   <p> <input type="Number" name="ncolor" class="form-control" id="numcolor" placeholder="Number of Color" required/></p>
                                 </div>   
                                 <!-- fix alignment -->
                                 <div class="form-group col-md-8 col-sm-6 col-xs-12"> 
-                                    <input type="text" name="bm4" class="form-control" id="ncbmember" placeholder="Board member-In-Charge"/>
+                                    <input type="text" name="bm4" class="form-control" id="ncbmember" placeholder="Board member-In-Charge" required/>
                                 </div>     
                         </div>
                       </div> <!-- row -->
@@ -258,31 +258,21 @@
                         <div class="col-md-4 col-sm-6 col-xs-12">
 
                                 <div class="form-group col-md-4 col-sm-6 col-xs-12"> 
-                                   <p> <input type="Number" name="ncopies" class="form-control" id="numcopies" placeholder="Number of copies"/></p>
+                                   <p> <input type="Number" name="ncopies" class="form-control" id="numcopies" placeholder="Number of copies" required/></p>
                                 </div>   
                                 <!-- fix alignment -->
                                 <div class="form-group col-md-8 col-sm-6 col-xs-12"> 
-                                    <input type="text" name="bm5" class="form-control" id="ncpbmember" placeholder="Board member-In-Charge"/>
+                                    <input type="text" name="bm5" class="form-control" id="ncpbmember" placeholder="Board member-In-Charge" required/>
                                 </div>     
                         </div>
                       </div> <!-- row -->
 
                         <div class="ln_solid"></div> 
-                      
-                       <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-12">                                  
-                                <label class= "col-md-6"> <h4>Publication Content</h4> </label>
-                                <div class="form-group col-md-10 col-sm-10 col-xs-10">
-                                    <textarea name=pcont class="form-control" rows="6"></textarea>
-                                </div>      
-                        </div>     
-                      </div> <!-- row -->
-
     
                         
                         <div class="form-group">
                                   <div class="col-md-12 col-md-offset-11">
-                                    <input id="send" type="submit" class="btn btn-success align: right" value="Next">
+                                    <input type="submit" class="btn btn-success align: right" value="Next">
                                   </div>
                         </div>
 
@@ -337,8 +327,6 @@
 				minlength: 1
 			},
 
-			pcont: "required",
-
 			bm1: {
 				required:true,
 				lettersonly:true
@@ -389,11 +377,6 @@
 			ncopies: {
 				required: 'Enter # of copies',
 				minlength: 1
-			},
-
-			pcont:{
-				required: 'Enter publication content'
-
 			},
 
 			bm1:{

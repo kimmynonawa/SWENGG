@@ -160,7 +160,7 @@
 												$('#actOptions').empty ();
 												$('#actOptions').append('<option disabled selected>Select Activity Type</option>');
 												for (i = 0; i < data.length; i++){
-													$('#actOptions').append('<option value="'+ data[i].activityID +'">'+ data[i].title +'</option>');
+													$('#actOptions').append('<option value="'+ data[i].gosmID +'">'+ data[i].title +'</option>');
 												}
 											}
 										});

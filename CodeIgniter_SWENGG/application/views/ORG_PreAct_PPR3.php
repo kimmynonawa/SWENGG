@@ -105,59 +105,60 @@
             </div>
             <div class="clearfix"></div>
 
-            <div class="row">
+             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-                    <form class="form-inline form-label-left" method="post" id="pprform3">
-                      <span class="section">Breakdown of Expenses</span>
-                        <div class="table-responsive">          
-                          <table class="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th>Material</th>
-                                <th>Quantity</th>
-                                <th>Unit Cost</th>
-                                <th>Sub-total</th>
-                              </tr>
-                            </thead>
-                            <tbody id= "trr">
-                              <tr>
-                                <td align= "center"><input type="text"   name= "mat3[]" class="form-control" id="mat3" placeholder="Material name"/></td>
-                                <td align= "center"><input type="number" name="qty3[]" class="form-control" id="qty3" placeholder="Quantity"/></td>
-                                <td align= "center"><input type="number" name= "ucost3[]" class="form-control" id="ucost3" placeholder="Unit Cost"/></td>
-                                <td align="center" style= "background-color:#D3D3D3"><h4> P750.00</h4></td>
-                              </tr>
-                            </tbody>
-                               <tr>
-                                <td align= "center"></td>
-                                <td align= "center"></td>
-                                <td align= "right"><h4>Total:</h4></td>
+                    <form class="form-label-left" id="pprform3" method="post">
+                      <span class="section"></span>
+                    
 
+                      <div class= "row">
+                        <div class="col-md-12">   
+                           <span class="section">Breakdown of Expenses</span>
+                          <div class= "form-group col-md-12">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr> 
+                                  <th>Material Name</th>
+                                  <th>Quantity</th>
+                                  <th>Unit Cost</th>
+                                  <th>Sub-total</th>
+                                </tr>
+                              </thead>
+                              <tbody id="trr">
+                              </tbody>
+                              <tr>
+                               <td align= "center"></td>
                                 <td align= "center"></td>
+                                <td align= "right"><h4>Total:</h4></td>  
+                                <td align= "center"></td>
+                            
                               </tr>
-                          </table>
+
+                            </table>
                           </div>
+                        </div>
 
-                          <div class= "row">
-                            <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                        <div class = "buttons col-md-12">
+                          <div class="col-md-3">
                                <button id="addc3" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
                                 <button id="remc3" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                            </div>
-                          </div>
-
-                     <div class="ln_solid"></div>
+                          </div>    
+                        </div>
+                      </div>  
+                     
+                      <div class="ln_solid"></div> 
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-11">
                           <input id="nextbppr3" type="submit" class="btn btn-success align: right" value="Next">
                         </div>
-                      </div>
-                         
-                      </form>
-                  </div>
-                </div>
-              </div>
-            </div>
+                      </div>    
+                    </form>
+                  </div><!-- xcontent -->
+                </div> <!-- xpanel -->              
+              </div> <!-- row -->
+            </div> 
           </div>
         </div>
         <!-- /page content -->
@@ -165,42 +166,93 @@
     <!-- SCRIPT FOR VALIDATION -->
     <script type="text/javascript">
       $(function() {
-        function removeError(element){
-          element.addClass('valid').closest('.form-group').removeClass('has-error');
-        }
-        $('#pprform3').validate({
-          rules: {
-            'mat3[]':"required",
-            'qty3[]': "required",
-            'ucost3[]':"required",
-          },
-          highlight: function(element){ 
-            $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
-          },
-          success: removeError,
-          messages: {
-            'mat3[]': {
-              required: 'Enter material name'
-            },
+jQuery.validator.addMethod("lettersonly", function(value, element) {
+  return this.optional(element) || /^[a-z\s]+$/i.test(value);
+  })
 
-            'qty3[]':{
-              required: 'Enter quantity'
-            },
+  function removeError(element){
+  element.addClass('valid')
+      .closest('.form-group')
+      .removeClass('has-error');
+  }
 
-            'ucost3[]':{
-              required: 'Enter unit cost'
-            },
-          }
-        });
+  var numberIncr = 0;
+  $("#trr").append('<tr><td><input type="text" class="mnm form-control" name="matname[' + numberIncr + ']" placeholder="Material name"/></td> <td><input class="mqt form-control"  name="matqty[' + numberIncr + ']" placeholder="Quantity"/></td><td><input class="mcs form-control"name="matcost[' + numberIncr + ']" placeholder="Unit Cost"/></td> <td align="center" style= "background-color:#D3D3D3"><h4> P750.00</h4></td></tr>');   
 
-        $("#addc3").click(function() {
-          $("#trr").append('<tr id="newtr"><td align= "center"><input type="text" class="form-control" id="act" name="mat3[]" placeholder="Material name"/></td> <td align= "center"><input type="number" class="form-control" id="act" name="qty3[]" placeholder="Quantity"/></td><td align= "center"><input type="number" class="form-control" id="des" name="ucost3[]" placeholder="Unit Cost"/></td> <td align="center" style= "background-color:#D3D3D3"><h4> P750.00</h4></td></tr>');   
-         });
-     
-        $("#remc3").click(function() {
-          var v= document.getElementById("newtr");
-          v.remove();
-        });
+  var pprform3= $('#pprform3');
+  pprform3.validate({
+    rules: {
+      'matname[0]':"required",
+      
+      'matqty[0]': "required",
+
+      'matcost[0]':"required",
+      
+    },
+    highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+    },
+    success: removeError,
+
+
+    messages: {
+      'matname[0]': {
+        required: 'Enter Material Name'
+      },
+
+      'matqty[0]':{
+        required: 'Enter Quantity'
+      },
+
+      'matcost[0]':{
+        required: 'Enter Unit Cost'
+      }
+    }
+    });     
+
+  $("#addc3").click(function() {
+    numberIncr++;
+      $("#trr").append($('<tr id="newtr"><td><input type="text" class="mnm form-control" name="matname[' + numberIncr + ']" placeholder="Material name"/></td> <td><input class="mqt form-control"  name="matqty[' + numberIncr + ']" placeholder="Quantity"/></td><td><input class="mcs form-control"name="matcost[' + numberIncr + ']" placeholder="Unit Cost"/></td> <td align="center" style= "background-color:#D3D3D3"><h4> P750.00</h4></td></tr>'));   
+    
+        $(".mnm").each(function(){
+        $(this).rules( "add", {
+        required:true,
+      messages: {
+        required: 'Enter Material Name'
+      }
+    });
+      });
+
+       $(".mqt").each(function(){
+        $(this).rules( "add", {
+        required:true,
+      messages: {
+        required: 'Enter Quantity'
+      }
+    });
+      });
+
+      $(".mcs").each(function(){
+        $(this).rules( "add", {
+        required:true,
+      messages: {
+        required: 'Enter Unit Cost'
+      }
+    });
+      });
+
+
+     });
+
+  $("#remc3").click(function() {
+      var v= document.getElementById("newtr");
+      v.remove();
+      }); 
+  // $('#nextbppr3').click(function() {
+  //     if (pprform3.valid()){
+  //         window.location.href = "ORG_PreAct_PPR4.html";
+  //     }
+  //      return false;
+  //     });
       });
     </script>
     <!-- Bootstrap -->

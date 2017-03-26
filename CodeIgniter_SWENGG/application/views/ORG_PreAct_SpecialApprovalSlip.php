@@ -7,30 +7,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>LSCS</title>
-
-	<script src= "<?php echo base_url();?>js/jquery.js"> </script>
-	<script src="<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src= "<?php echo base_url();?>js/jquery.validate.min.js"> </script>
+    <title><?php echo ($this->session->userdata('org')[0]['acronym']);?></title>
 	
+	<script src= "<?php echo base_url();?>js/jquery.js"> </script>
+	<script src= "<?php echo base_url();?>js/jquery.min.js"></script>
+	<script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <!-- Bootstrap -->
-    <link href="<?php echo base_url();?>/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="<?php echo base_url();?>/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="<?php echo base_url();?>/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="<?php echo base_url();?>/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 	
     <!-- bootstrap-progressbar -->
-    <link href="<?php echo base_url();?>/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="<?php echo base_url();?>/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="<?php echo base_url();?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="<?php echo base_url();?>/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="<?php echo base_url();?>/build/css/custom.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -38,16 +39,20 @@
       <div class="main_container">
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
+            <!--<div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Yo!</span></a>
+            </div> -->
+
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="<?php echo base_url();?>." class="img-circle profile_img">
+                <img src="<?php echo base_url();?>images/user.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>ORG NAME</h2>
+                <h2> <?php echo ($this->session->userdata('org')[0]['acronym']);?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -59,15 +64,18 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="ORG_Home.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
+                  <li><a href="#"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
                   <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu"> 
-                      <li><a href="ORG_AddGOSM.html">Add New GOSM</li>
-                      <li><a href="ORG_PreAct.html">Pre-Activity Form</a></li>
+                      <li><a href="#">Add New GOSM</li>
+                      <li><a href="#">Fill out Pre-Activity Requirements</a></li>
+                      <li><a href="#">Fill out Additional Requirements</a></li>
+                      <li><a href="#">Fill out Special Approval Slip</a></li>
                     </ul>
                   </li>
-                  <li><a href="ORG_Calendar.html"><i class="fa fa-table"></i> Calendar <span class="fa fa-chevron-down"></span></a>
-                  <li><a href="ORG_GOSM.html"><i class="fa fa-list-alt"></i> GOSM <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="#"><i class="fa fa-folder-open"></i> View Pre-Acts <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="#"><i class="fa fa-table"></i> Calendar <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="#"><i class="fa fa-list-alt"></i> GOSM <span class="fa fa-chevron-down"></span></a>
                   </li>
                 </ul>
               </div>
@@ -76,102 +84,28 @@
           </div>
         </div>
 
-        <!-- top navigation -->
         <div class="top_nav">
+		
           <div class="nav_menu">
             <nav>
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
 
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   La Sallian Computer Society
+                   <?php echo ($this->session->userdata('org')[0]['name']);?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
-                    <li>
-                      <a href="javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
-                      </a>
-                    </li>
-                    <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
                   </ul>
                 </li>
-
-                <li role="presentation" class="dropdown">
-                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
-                  </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where<?php echo base_url();?>.
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where<?php echo base_url();?>.
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where<?php echo base_url();?>.
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where<?php echo base_url();?>.
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
-                        <a>
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
                 </li>
               </ul>
             </nav>
           </div>
         </div>
         <!-- /top navigation -->
+
       <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
@@ -199,21 +133,17 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-                    <form id="specialappslip" method="post" autocomplete="off">
+                      <form class="form-horizontal form-label-left" id="specialappslip" action="sas" method="Post">
                       <span class="section"></span>
-                    
+                    <?php var_dump ($preactinfo);?>
                       <div class= "row">
                         <div class="col-md-8">   
-             
-                          <label class= "col-md-4"> <h4>Title of Activity</h4> </label>
-                          <div class= "form-group col-md-6">  
-                            <select id="titleAct"  class="form-control col-md-7 col-xs-12" name="typeact">
-                              <option disabled selected>Select Title of Activity</option>
-                                       
-                            </select>
-                          </div>                
+                          <label class= "col-md-4"> <h4>Title Of Activity:</h4> </label>
+                          <div class= "form-group col-md-6">
+                             <label id="actType" name="actName" class="form-control col-md-7 col-xs-12" > <?php echo $preactinfo[0]['title']?> </label>
+                          </div>        
                         </div>
-                      </div>
+                    </div> 
                       
                       <div class= "row">
                         <div class="col-md-8">   
@@ -221,9 +151,9 @@
                           <div class= "form-group col-md-6">
                             <select id="submissionType" name="submissionType" class="form-control col-md-7 col-xs-12">
                               <option disabled selected>Select Type Of Submission</option>
-                              <option> Lost AForm</option>
-                              <option> Cancellation of Activity</option>
-                              <option> In Case of Change</option>
+                              <option value="2"> In Case of Change</option>
+                              <option value="3"> Cancellation</option>
+							  <option value="6"> Lost A-Form</option>
                             </select>
                           </div>       
                         </div>
@@ -250,7 +180,7 @@
                       <div class="ln_solid"></div> 
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-11">
-                          <input id="nextSas" type="submit" class="btn btn-success align: right" Value="Next">
+                          <input  type="submit" class="btn btn-success align: right" Value="Next">
                         </div>
                       </div>    
                     </form>
@@ -273,9 +203,6 @@
 	var sas= $('#specialappslip');
 	sas.validate({
 		rules: {
-			actType: {
-				required:true
-			},
 			submissionType: {
 				required:true
 			},
@@ -292,9 +219,6 @@
 		success: removeError,
 
 		messages:{
-			actType: {
-				required: 'Pick activity type'
-			},
 			submissionType: {
 				required: 'Pick submission type'
 			},

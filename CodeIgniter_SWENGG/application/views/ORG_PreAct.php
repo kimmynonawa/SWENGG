@@ -130,7 +130,7 @@
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-10">
                           <input type="submit" class="btn btn-danger" value="Cancel" id="returnHome">
-                          <input  type="submit" class="btn btn-success align: right" value="Next" id="nextPreAct">
+                          <input type="submit" class="btn btn-success align: right" value="Next" id="nextPreAct">
                         </div>
                       </div>
                     </form>                     
@@ -140,7 +140,6 @@
           </div> <!-- end of row -->
         </div>
         <!-- /page content -->
-
      <!-- jQuery -->
     <script src="<?php echo base_url();?>vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->

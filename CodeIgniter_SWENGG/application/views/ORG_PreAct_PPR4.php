@@ -181,75 +181,90 @@
               </div>
             </div>
             <div class="clearfix"></div>
-
-            <div class="row">
+                        <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
 
-
-                  <form class="form-inline form-label-left" id= "pprform41" method="post">
+                    <form class="form-inline form-label-left" id="pprform41" method="post">
                       <span class="section">Source of Funds</span>
-
-                        <div class="table-responsive">          
-                          <table class="table table-bordered">
+                        <div class="tbl table-responsive">          
+                          <table class="table table-striped">
                             <thead>
                               <tr>
-                                <th>Source/s of Funds</th>
-                                <th>Amount</th>
+                                <th align="center">Source/s of Funds</th>
+                                <th align="center">Amount</th>
                               </tr>
                             </thead>
-                            <tbody id= "tr">
+                            <tbody id="tr">
                               <tr>
                                 <td><h4>Organizational Funds</h4></td>
                                 <td> <input type="Number" name="orgFunds" class="form-control" id="of" placeholder="Enter Amount"/></td>
                               </tr>
-
                               <tr>
                                 <td><h4>Participants Fee</h4></td>
                                 <td> <input type="Number" name="participantsFee" class="form-control" id="pf" placeholder="Enter Amount"/></td>
                               </tr>
-
-                              <tr>
-                                <td> <input type="text"   name= "sourceName[]" class="form-control" id="sourceName" placeholder="Other Source"/></td>
-                                <td> <input type="Number" name="sourceAmount[]" class="form-control" id="sourceAmount" placeholder="Enter Amount"/></td>
-                              </tr>
-
+                              <tr id="others"> <!-- append in js --> </tr>
                             </tbody>
-                          </table>
-                          </div>
 
-                           <div class= "row">
-                            <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                               <button id="addc4" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
-                                <button id="remc4" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                            </div>
-                          </div>
-                         
-                      <div class="ln_solid"></div>
-                      <span class="section">Organizational Funds</span>
-
-                        <div class="table-responsive">          
-                          <table class="table table-bordered">
                             <tbody>
+                              <tr  style= "background-color:#D3D3D3">
+                                <td></td>
+                                <td align="left" ><h4>Total:</h4></td>
+                              </tr>
+                              </tbody>
+                           </table>
+                          </div>
+
+                          <div class= "row">
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                                   <button id="addc4" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                  <button id="remc4" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                               </div>
+                          </div>
+
+                          <div class="ln_solid"></div>
+                          <span class="section">Organizational Funds</span>
+
+                         <div class="tbl table-responsive">          
+                          <table class="table table-striped">
+                            <thead>
                               <tr>
-                                <td><h4>Operational Funds</h4></td>
-                                <td> <input type="Number" name="operationalFundsAmount"class="form-control" id="operationalFundsAmount" placeholder="Enter Amount"/></td>
+                                <th></th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody id="tr">
+                              <tr>
+                                <td> <h4>Accumulated Operational Funds</h4> </td>
+                                <td></td>
                               </tr>
                               <tr>
-                                <td><h4>Depository Funds as of</h4></td>
-                                <td>
+                                <td align="right"><h4>Operational Funds</h4></td>
+                                 <td> <input type="Number" name="operationalFundsAmount"class="form-control" id="operationalFundsAmount" placeholder="Enter Amount"/></td>
+                              </tr>
+                              <tr>
+                                <td> <h4>Accumulated Depository Funds</h4> </td>
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td align="right"><h4>Depository Funds as of</h4></td>
+                                <td> 
                                     <input type="date" name="depositoryDate" class="form-control" id="dpf"/>
                                     <input type="Number" name= "depositoryAmount" class="form-control" id="depositoryAmount" placeholder="Enter Amount"/>
                                 </td>
                               </tr>
+                                <tr>
+                                <td> <h4>Other Sources of Funds (should match with Section 6, if applicable)</h4> </td>
+                                <td></td>
+                              </tr>
                               <tr>
-                                <td><h4>Participants Fee/Donation/Sponsorships</h4></td>
+                                <td align="right"><h4>Participants Fee/Donation/Sponsorship</h4></td>
                                 <td><input type="Number" name= "donSporFunds" class="form-control" id="donSporFunds" placeholder="Enter Amount"/></td>
                               </tr>
-
                               <tr>
-                                <td style= "background-color:#D3D3D3"><h4>Total Cash for Disbursement:</h4></td>
+                                <td align="right" style= "background-color:#D3D3D3"><h4>Total Cash for Disbursement:</h4></td>
                                 <td style= "background-color:#D3D3D3"><h4> 315,869.00</h4></td>
                               </tr>
 
@@ -259,26 +274,27 @@
                               </tr>
 
                               <tr>
-                                <td style="background-color:#D3D3D3"><h4>Remaining Balance: </h4></td>
+                                <td align="right" style="background-color:#D3D3D3"><h4>Remaining Balance: </h4></td>
                                 <td style="background-color:#D3D3D3"><h4>310,869.00</h4></td>
                               </tr>
-
                             </tbody>
-                          </table>
+                           </table>
+                          </div>
+                          <div class="ln_solid"></div>
+                          <div class="row">
+                                <div class="col-sm-offset-11 col-sm-1">
+                                  <input id="nextbppr4" type="submit" class="btn btn-success align: right" value="Next">
+                                </div>
                           </div>
 
-                        <div class="ln_solid"></div>
-                          <div class="form-group">
-                            <div class="col-md-12 col-md-offset-11">
-                              <input id="nextbppr4" type="submit" class="btn btn-success align: right" value="Next">
-                            </div>
-                          </div>
-                      </form>
+                       </form>
 
+                       
                   </div>
                 </div>
               </div>
             </div>
+
           </div>
 
 
@@ -289,11 +305,49 @@
     <!-- SCRIPT FOR VALIDATION AND ROW ADDING -->
     <script type="text/javascript">
       $(function() {
-        function removeError(element){
-          element.addClass('valid').closest('.form-group').removeClass('has-error');
-        }
-        $('#pprform41').validate({
-          rules: {
+       jQuery.validator.addMethod("lettersonly", function(value, element) {
+  return this.optional(element) || /^[a-z\s]+$/i.test(value);
+  })
+
+  function removeError(element){
+  element.addClass('valid')
+      .closest('.tbl')
+      .removeClass('has-error');
+  }
+
+  var pprform41= $('#pprform41');
+  var numberIncr = 0;
+  $("#others").append('<td><input type="text" class="snm form-control" name="sourcename[' + numberIncr + ']" placeholder="Other Source"/></td> <td> <input class="smt form-control"  name="sourceamount[' + numberIncr + ']"  placeholder="Enter Amount"/></td>');   
+    $("#addc4").click(function(){
+      numberIncr++;
+       $("#tr").append('<tr id="newtr"><td><input type="text" class="snm form-control" name="sourcename[' + numberIncr + ']" placeholder="Other Source"/></td> <td> <input class="smt form-control"  name="sourceamount[' + numberIncr + ']"  placeholder="Enter Amount"/></td></tr>');   
+
+       $(".snm").each(function(){
+        $(this).rules( "add", {
+        required:true,
+      messages: {
+        required: 'Enter source'
+      }
+    });
+      });
+
+      $(".smt").each(function(){
+        $(this).rules( "add", {
+        required: true,
+
+      messages: {
+        required: 'Enter Amount'
+      }
+    });
+
+     });
+
+   });
+
+  pprform41.validate({
+    rules: {
+      'sourcename[0]' : "required",
+      'sourceamount[0]' : "required",
             orgFunds:"required",
             participantsFee: "required",
             depositoryAmount: "required",
@@ -301,13 +355,19 @@
             depositoryDate: "required",
             donSporFunds:"required"
 
-          },
-          highlight: function(element){ 
-            $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
-          },
-          success: removeError,
-          messages: {
-            orgFunds: {
+    },
+    highlight: function(element){ $(element).closest('.tbl').removeClass('has-success').addClass('has-error'); 
+    },
+    success: removeError,
+
+    messages: {
+      'sourcename[0]' : {
+        required: 'Enter source'
+      },
+      'sourceamount[0]' : {
+        required: 'Enter source'
+      },
+      orgFunds: {
               required: 'Enter amount'
             },
 
@@ -329,16 +389,20 @@
             donSporFunds:{
               required: 'Enter amount'
             }
-          }
-        });
-    
-        $("#addc4").click(function(){
-           $("#tr").append('<tr id="newtr"> <td><input type="text" class="form-control" id="sourceName" name="sourceName[]" placeholder="Other Source"/></td> <td> <input type="Number" name="sourceAmount[]" class="form-control" id="of" placeholder="Enter Amount"/></td></tr>');   
-         });
-        $("#remc4").click(function(){
-           var v= document.getElementById("newtr");
-           v.remove();
-        });
+    }
+    });    
+
+    $("#remc4").click(function(){
+       var v= document.getElementById("newtr");
+       v.remove();
+      });
+  // $('#nextbppr4').click(function(){
+  //    if (pprform41.valid()){
+  //      window.location.href = "ORG_PreAct_PPR5.html"; // next page
+  //     }
+  //     return false;
+  //    });
+
       });
     </script>
     <!-- Bootstrap -->

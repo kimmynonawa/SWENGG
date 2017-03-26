@@ -5,7 +5,7 @@
 		}
 		
 		public function get(){
-			$this->db->where(array("type"=>2));
+			$this->db->where(array("usertypeID"=>2));
 			$this->db->from('ref_users');
 			$res = $this->db->get();
 			return $res->result_array();

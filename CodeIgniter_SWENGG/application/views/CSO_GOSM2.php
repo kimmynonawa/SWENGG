@@ -158,19 +158,19 @@
 								
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Person In Charge: </label>
-									<p><?php echo $activity[0]['personInCharge'];?></p>
+									<p><?php echo $activity[0]['personincharge'];?></p>
 								</div>
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">GOSM Target Date: </label>
 									<p><?php 
-									$fromdate = $activity[0]['fromDate'];
+									$fromdate = $activity[0]['fromdate'];
 									$fromdatenew = strtotime($fromdate);
 									$formatted_fromdate = date('F d, Y', $fromdatenew);
 									echo $formatted_fromdate;?> 
 									- 
 									<?php 
-									$todate = $activity[0]['toDate'];
+									$todate = $activity[0]['todate'];
 									$todatenew = strtotime($todate);
 									$formatted_todate = date('F d, Y', $todatenew);
 									echo $formatted_todate;?></p>
@@ -193,7 +193,14 @@
 
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Related to: </label>
-									<p>R - 1</p>
+									<p><?php 
+									if ($activity[0]['reto'] == 1){
+										echo 'Yes';
+									}
+									else{
+										echo 'No';
+									}
+									?></p>
 								</div>
 
 								<div class="item form-group">

@@ -131,12 +131,12 @@
                     <div class="col-md-12">
                         <div class="col-md-4">
                             <br><br>   
-                            <table id="table" class="table table-striped table-bordered table-hover" style="width:300px">
+                            <table id="table" class="table table-striped table-bordered table-hover" style="width:300px;">
                                 <thead>
                                     <th><div align="center">Filled Out Requirements</div></th>
                                 </thead>
                                 <tbody>
-                                    <tr> <td align="center"> Aform</td><tr>
+                                    <tr style="background-color:#e9e4e4;"> <td align="center"><button style='background-color:#e9e4e4;border:none;color:black;'> Aform</td><tr>
                                     <tr> <td align="center"> PPR</td><tr>
                                     <tr> <td align="center"> Minor Pub</td><tr>
                                 </tbody>

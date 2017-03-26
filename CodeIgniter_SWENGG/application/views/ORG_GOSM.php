@@ -122,7 +122,7 @@
                                 <option disabled selected>Select Activity</option>
                                  <?php
                 									for ($i=0; $i<count($acts);$i++){
-                										echo"<option value={$acts[$i]['activityID']}>{$acts[$i]['title']}</option>";
+                										echo"<option value={$acts[$i]['gosmID']}>{$acts[$i]['title']}</option>";
                 									}
                 								  ?> 
                               </select>
