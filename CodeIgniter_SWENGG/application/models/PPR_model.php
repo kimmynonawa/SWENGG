@@ -249,5 +249,26 @@
 	        return $query->result_array();
 		}
 		
+
+		public function getProjectHeads($activityID) {
+			$this->db->select('name,contactnumber');
+			$this->db->from('ppr_projectheads ph');
+			$this->db->join('ppr p', 'ph.pprID = p.pprID');
+			$this->db->where('p.preactsID', $activityID);
+			$query = $this->db->get();
+
+	        return $query->result_array();
+		}
+
+		public function getActivityDetails($actid) {
+			$this->db->select('title,startdate,enddate,starttime,endtime,venue,activitynature, ENP');
+			$this->db->from('aform a');
+			$this->db->join('ref_activitynature an', 'a.activitynatureID = an.activitynatureID');
+			$this->db->join('aform_date ad', 'a.aformID = ad.aformID');
+
+
+			$res = $this->db->get();
+			return $res->result_array();
+		}
 	}
 ?>

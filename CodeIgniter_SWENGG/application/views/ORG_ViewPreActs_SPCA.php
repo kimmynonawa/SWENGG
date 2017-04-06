@@ -30,79 +30,63 @@
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
   </head>
 
-  <body class="nav-md">
+ <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <!--<div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Yo!</span></a>
-            </div> -->
-
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="<?php echo base_url();?>images/user.png" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h2> <?php echo ($this->session->userdata('org')[0]['acronym']);?></h2>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <ul class="nav side-menu">
-				  <li><a href="http://localhost/index.php/account/org"><i class="fa fa-home"></i> Home <span ></span></a></li>
-                  <li><a href="http://localhost/index.php/gosm/add"><i class="fa fa-table"></i> Add New GOSM <span ></span></a></li>
-                  <li><a href="http://localhost/index.php/PreActivity/preacts"><i class="fa fa-edit"></i> Add Pre-Activity <span ></span></a></li>				  
-				  <li><a href="#"><i class="fa fa-calendar"></i> Calendar <span ></span></a></li>
-				  <li><a href="http://localhost/index.php/gosm/viewORGGosm1"><i class="fa fa-list-alt"></i> GOSM <span ></span></a></li>
-				</ul>
-              </div>
-            </div>
-            <!-- /sidebar menu -->
+        <div class="col-md-3 left_col ">
+          <div class="clearfix"></div>
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section nav side-menu"> 
+            <br>      
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Create New GOSM</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Pre-Activity Requirements</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Additional Requirements</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Special Approval Slip</a></li>
+            <li><a href="#"><i class="fa fa-folder-open"></i> View Pre-Acts</a></li>
+            <li><a href="#"><i class="fa fa-list-alt"></i> View GOSM</a></li>
           </div>
         </div>
-
-        <div class="top_nav">
-		
-          <div class="nav_menu">
-            <nav>
-
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   <?php echo ($this->session->userdata('org')[0]['name']);?>
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
-                  </ul>
-                </li>
-                </li>
-              </ul>
-            </nav>
-          </div>
+      </div>
+    </div>
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="userIcon">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['name']);?>La Salle Computer Society
+                  <span class="fa fa-caret-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                </ul>
+              </li>
+              <li role="presentation" class="dropdown">
+                <a id="but" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                  <i class="fa fa-envelope fa-fw"></i>
+                  <i class="fa fa-caret-down"></i>
+                  <div id="num"> </div>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="http://localhost/index.php/account/logout">insert notifs here</a></li>
+                </ul>
+                <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <!-- /top navigation -->
-
+      </div>
      <!-- page content -->
         <div class="right_col" role="main">
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>View Project Proposal</h3>
+                    <h3>View Special Permit for Campus Access</h3>
                 </div>
             </div>
 
             <div class="clearfix"></div>
+     
      
 
             <div class="x_panel">
@@ -115,9 +99,94 @@
                                     <th><div align="center">Filled Out Requirements</div></th>
                                 </thead>
                                 <tbody>
-                                    <tr> <td align="center"> Aform</td><tr>
-                                    <tr> <td align="center"> PPR</td><tr>
-                                    <tr> <td align="center"> Minor Pub</td><tr>
+                                    <?php
+								    if($aformexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/viewaform"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'A-Form';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($lopexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/viewLOP"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'List of Participants';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									
+                                    <?php
+								    if($contestexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/view_contest_mechanics"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Contest Mechanics';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+                                    <?php
+								    if($foodexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/view_food_permit"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Food Permit';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($trademarkexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/view_trademark_use"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Trademark Use';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($minorpubexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/ORGminorPubView"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Minor Publication Proposal';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($sasexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/ORGsasview"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Special Approval Slip';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($spcaexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/ORGspcaview"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Special Permit Campus Access';
+										echo '</td><tr>';
+                                    
+									}
+									?>
                                 </tbody>
                             </table>
                         </div>
@@ -125,27 +194,75 @@
                             <span class="section">Requesting Details</span>
                              <div class="item form-group">
                                 <label class="control-label col-md-3">Date Created:</label>
-                                <p> date</p>
+                                <?php 
+									foreach($groups as $row)
+									{ 
+										echo $row->datecreated;
+									}
+								?>
                             </div>  
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Office Location:</label>
-                                <p> loc</p>
+                                <?php 
+									foreach($groups as $row)
+									{ 
+										echo $row->office;
+									}
+								?>
                             </div>  
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Telephone Number</label>
-                                <p> no </p>
+                               <?php 
+									foreach($groups as $row)
+									{ 
+										echo $row->telephone;
+									}
+								?>
                             </div> 
                             <div class="item form-group">
                                 <label class="control-label col-md-3">ID Number</label>
-                                <p> type </p>
+                                <?php 
+									foreach($groups as $row)
+									{ 
+										echo $row->IDno;
+									}
+								?>
                             </div> 
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Mobile Number:</label>
-                                <p> type </p>
+                                <?php 
+									foreach($groups as $row)
+									{ 
+										echo $row->mobile;
+									}
+								?>
                             </div> 
                             <div class="item form-group">
                                 <label class="control-label col-md-3"> Email Address:</label>
-                                <p> March 20, 2016 </p>
+                                <?php 
+									foreach($groups as $row)
+									{ 
+										echo $row->email;
+									}
+								?>
+                            </div> 
+							<div class="item form-group">
+                                <label class="control-label col-md-3"> Total Number of Persons:</label>
+                                <?php 
+									foreach($groups as $row)
+									{ 
+										echo $row->ENP;
+									}
+								?>
+                            </div> 
+							<div class="item form-group">
+                                <label class="control-label col-md-3"> Faculty-in-Charge:</label>
+                                <?php 
+									foreach($groups as $row)
+									{ 
+										echo $row->facultyincharge;
+									}
+								?>
                             </div> 
                             <span class="section">Activity Details</span>
                             <table class="table table-hover">
@@ -158,25 +275,46 @@
                                 <th><div align="center">Venue</div></th>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td width="20%" align="center">yo</td>
-                                    <td width="20%" align="center">sup</td>
-                                    <td width="20%" align="center">fuck</td>
-                                    <td width="20%" align="center">this</td>
-                                    <td width="20%" align="center">lol</td>
-                                    <td width="20%" align="center">lol</td>
-                                </tr>
+                                <?php
+									$counter=1;
+									
+									foreach($groups2 as $row)
+									{
+										echo '<tr>';
+										
+										echo '<td width="20%" align="center">';
+										echo $counter;
+										echo '</td>';
+										
+										echo '<td width="20%" align="center">';
+										echo $row->startdate;
+										echo '</td>';
+										
+										echo '<td width="20%" align="center">';
+										echo $row->enddate;
+										echo '</td>';
+										
+										echo '<td width="20%" align="center">';
+										echo $row->starttime;
+										echo '</td>';
+										
+										echo '<td width="20%" align="center">';
+										echo $row->endtime;
+										echo '</td>';
+										
+										echo '<td width="20%" align="center">';
+										echo $row->venue;
+										echo '</td>';
+										
+										echo '</tr>';
+										
+										$counter++;
+									}
+								?>
                             </tbody>
                             </table>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3"> Total Number of Persons:</label>
-                                <p> no</p>
-                            </div> 
-                            <div class="item form-group">
-                                <label class="control-label col-md-3"> With Outsiders:</label>
-                                <p> yes</p>
-                            </div> 
-                            <span class="section">Faculty-In-Charge</span>
+                       
+                            <span class="section">Persons Covered</span>
                             <table class="table table-hover">
                             <thead>
                                 <th><div align="center">Name</div></th>
@@ -185,30 +323,38 @@
                                 <th><div align="center">Email Address</div></th>  
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td width="20%" align="center">yo</td>
-                                    <td width="20%" align="center">sup</td>
-                                    <td width="20%" align="center">fuck</td>
-                                    <td width="20%" align="center">this</td>
-                                </tr>
+								<?php
+									foreach($groups3 as $row)
+									{
+										echo '<tr>';
+										
+										echo '<td width="20%" align="center">';
+										echo $row->lastname;
+										echo ', ';
+										echo $row->firstname;
+										echo ' ';
+										echo $row->middle;
+										echo '.';
+										echo '</td>';
+										
+										echo '<td width="20%" align="center">';
+										echo $row->classification;
+										echo '</td>';
+										
+										echo '<td width="20%" align="center">';
+										echo $row->mobile;
+										echo '</td>';
+										
+										echo '<td width="20%" align="center">';
+										echo $row->email;
+										echo '</td>';
+										
+										echo '</tr>';
+									}
+								?>
                             </tbody>
                             </table>
-                                <span class="section">Source of Funds</span>
-                            <table class="table table-hover">
-                            <thead>
-                                <th><div align="center">Organizational Funds</div></th>
-                                <th><div align="center">Participants Fee</div></th>
-                                <th><div align="center"> Other shit</div></th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td width="20%" align="center">yo</td>
-                                    <td width="20%" align="center">sup</td>
-                                    <td width="20%" align="center">fuck</td>
-                                    <td width="20%" align="center">this</td>
-                                </tr>
-                            </tbody>
-                            </table>
+                            
                         </div>
                     </div>
                 </div> 

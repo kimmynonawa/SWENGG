@@ -29,70 +29,52 @@
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
   </head>
-
-  <body class="nav-md">
+<body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <!--<div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Yo!</span></a>
-            </div> -->
-
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="<?php echo base_url();?>images/user.png" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h2> <?php echo ($this->session->userdata('org')[0]['acronym']);?></h2>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <ul class="nav side-menu">
-				  <li><a href="http://localhost/index.php/account/org"><i class="fa fa-home"></i> Home <span ></span></a></li>
-                  <li><a href="http://localhost/index.php/gosm/add"><i class="fa fa-table"></i> Add New GOSM <span ></span></a></li>
-                  <li><a href="http://localhost/index.php/PreActivity/preacts"><i class="fa fa-edit"></i> Add Pre-Activity <span ></span></a></li>				  
-				  <li><a href="#"><i class="fa fa-calendar"></i> Calendar <span ></span></a></li>
-				  <li><a href="http://localhost/index.php/gosm/viewORGGosm1"><i class="fa fa-list-alt"></i> GOSM <span ></span></a></li>
-				</ul>
-              </div>
-            </div>
-            <!-- /sidebar menu -->
+        <div class="col-md-3 left_col ">
+          <div class="clearfix"></div>
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section nav side-menu"> 
+            <br>      
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Create New GOSM</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Pre-Activity Requirements</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Additional Requirements</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Special Approval Slip</a></li>
+            <li><a href="#"><i class="fa fa-folder-open"></i> View Pre-Acts</a></li>
+            <li><a href="#"><i class="fa fa-list-alt"></i> View GOSM</a></li>
           </div>
         </div>
-
-        <div class="top_nav">
-		
-          <div class="nav_menu">
-            <nav>
-
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   <?php echo ($this->session->userdata('org')[0]['name']);?>
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
-                  </ul>
-                </li>
-                </li>
-              </ul>
-            </nav>
-          </div>
+      </div>
+    </div>
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="userIcon">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['name']);?>La Salle Computer Society
+                  <span class="fa fa-caret-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                </ul>
+              </li>
+              <li role="presentation" class="dropdown">
+                <a id="but" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                  <i class="fa fa-envelope fa-fw"></i>
+                  <i class="fa fa-caret-down"></i>
+                  <div id="num"> </div>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="http://localhost/index.php/account/logout">insert notifs here</a></li>
+                </ul>
+                <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <!-- /top navigation -->
-
+      </div>
      <!-- page content -->
         <div class="right_col" role="main">
         <div class="">
@@ -115,9 +97,94 @@
                                     <th><div align="center">Filled Out Requirements</div></th>
                                 </thead>
                                 <tbody>
-                                    <tr> <td align="center"> Aform</td><tr>
-                                    <tr> <td align="center"> PPR</td><tr>
-                                    <tr> <td align="center"> Minor Pub</td><tr>
+                                    <?php
+								    if($aformexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/viewaform"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'A-Form';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($lopexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/viewLOP"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'List of Participants';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									
+                                    <?php
+								    if($contestexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/view_contest_mechanics"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Contest Mechanics';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+                                    <?php
+								    if($foodexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/view_food_permit"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Food Permit';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($trademarkexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/view_trademark_use"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Trademark Use';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($minorpubexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/ORGminorPubView"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Minor Publication Proposal';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($sasexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/ORGsasview"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Special Approval Slip';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($spcaexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/ORGspcaview"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Special Permit Campus Access';
+										echo '</td><tr>';
+                                    
+									}
+									?>
                                 </tbody>
                             </table>
                         </div>
@@ -125,29 +192,50 @@
                             <span class="section">Activity Details</span>
                              <div class="item form-group">
                                 <label class="control-label col-md-3">Date Created:</label>
-                                <p> date</p>
+                                <p> 
+								<?php 
+									$fromdate = $aform[0]['datecreated'];
+									$fromdatenew = strtotime($fromdate);
+									$formatted_fromdate = date('F d, Y H:i:s', $fromdatenew);
+									echo $formatted_fromdate;?></p>
                             </div>  
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Activity Title:</label>
-                                <p> ORG General Assembly </p>
-                            </div>  
+                                <p><?php echo $aform[0]['title']?> </p>
+                            </div>   
+							
+							<?php for ($i =0; $i<count($aformdate); $i++):?>
                             <div class="item form-group">
-                                <label class="control-label col-md-3">Date:</label>
-                                <p> March 20, 2016 </p>
+                                <label class="control-label col-md-3">Date and Time :</label>
+                                <p><?php 
+									$fromdate = $aformdate[$i]['startdate'];
+									$fromdatenew = strtotime($fromdate);
+									$formatted_fromdate = date('F d, Y', $fromdatenew);
+									echo $formatted_fromdate;
+									if($aformdate[$i]['enddate'] != Null){
+										echo " - ";
+										$fromdate = $aformdate[$i]['enddate'];
+										$fromdatenew = strtotime($fromdate);
+										$formatted_fromdate = date('F d, Y', $fromdatenew);
+										echo $formatted_fromdate;
+									}
+									?>  </p>
                             </div> 
                             <div class="item form-group">
-                                <label class="control-label col-md-3">Time:</label>
-                                <p> time</p>
+                                <label class="control-label col-md-3"></label>
+                                <p> <?php echo $aformdate[$i]['starttime']?> - <?php echo $aformdate[$i]['endtime']?></p>
                             </div> 
+							<?php endfor;?>
+							
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Venue:</label>
-                                <p> venue</p>
+                                <p> <?php echo $aform[0]['venue']?></p>
                             </div> 
                             <div class="item form-group">
-                                <label class="control-label col-md-3">ENP:</label>
-                                <p> enp </p>
+                                <label class="control-label col-md-3">ENMP:</label>
+                                <p> <?php echo $aform[0]['ENMP']?> </p>
                             </div> 
-
+							
                             <span class="section">Participants</span>
                             <table class="table table-hover">
                             <thead>
@@ -159,14 +247,16 @@
                                 <th><div align="center">With Waiver</div></th>
                             </thead>
                             <tbody>
+							<?php for ($i =0; $i<count($lopdetails); $i++):?>
                                 <tr>
-                                    <td width="20%" align="center">yo</td>
-                                    <td width="20%" align="center">sup</td>
-                                    <td width="20%" align="center">fuck</td>
-                                    <td width="20%" align="center">this</td>
-                                    <td width="20%" align="center">lol</td>
-                                    <td width="20%" align="center">no</td>
+                                    <td width="20%" align="center"><?php echo $lopdetails[$i]['IDno']?></td>
+                                    <td width="20%" align="center"><?php echo $lopdetails[$i]['lastname']?></td>
+                                    <td width="20%" align="center"><?php echo $lopdetails[$i]['firstname']?></td>
+                                    <td width="20%" align="center"><?php echo $lopdetails[$i]['middleinitial']?></td>
+                                    <td width="20%" align="center"><?php echo $lopdetails[$i]['age']?></td>
+                                    <td width="20%" align="center"><?php if($lopdetails[$i]['waiver'] == 1) {echo 'yes';} else echo 'no'; ?></td>
                                 </tr>
+							<?php endfor;?>
                             </tbody>
                             </table>
                         </div>

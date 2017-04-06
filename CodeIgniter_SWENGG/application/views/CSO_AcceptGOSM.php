@@ -85,118 +85,178 @@
           </nav>
         </div>
       </div>
-
-     <!-- page content -->
+    
+   <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>View Activities of the Organizations</h3>
+                <h3>Accept GOSM</h3>
               </div>
             </div>
-          </div>
-          <div class="clearfix"></div>
+            <div class="clearfix"></div>
 
-      
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="x_panel">
-                <div class="x_content">
-                  <form id="ViewPreActs" class="form-horizontal form-label-left" action="viewPreacts" method ="post" autocomplete="off">
-                    <span class="section"> Select the Necessary Fields</span>
-                    <div class= "row">
-						
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_content">
+                    <form class="form-horizontal form-label-left" novalidate id="csoneworg" action="accept" method="Post">
+                     <span class="section"></span>
+
+						<?php if (isset($success)): ?>
+						  <h4>Successfully Added!</h4>
+						<?php endif; ?>
+			
+						<div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-3"> <h4>Organization Name</h4> </label>
-                             <div class= "form-group col-md-7">
-                              <select id="gosmcsoorg" class="form-control col-md-7 col-xs-12" name="org">
-								
-								 <option disabled selected>Select Organization</option>
-                                <!--Get All the Orgs-->
-								 <?php
-									for ($i=0; $i<count($orgs);$i++){
-										echo"<option value={$orgs[$i]['userID']}>{$orgs[$i]['name']}</option>";
-									}
-								  ?>
-                              </select>
-							  
-							  <script>
-									$('#gosmcsoorg').on('change',function(){
-										var org = $('#gosmcsoorg').val();
-										$.ajax({
-											url: "getPreacts",
-											method: "POST",
-											data:{
-												'org':org
-											},
-											success: function(data){
-												console.log(data)
-												$('#act').empty ();
-												$('#act').append('<option disabled selected>Select Activity</option>');
-												for (i = 0; i < data.length; i++){
-													$('#act').append('<option value="'+ data[i].preactsID +'">'+ data[i].title +'</option>');
-												}
-											}
-										});
-									});
-									
-								</script>
-								
-								
-                            </div>  
-							</div>
-					<div class="col-md-8">   
-                          <label class= "col-md-3"> <h4>Activity Name</h4> </label>
-                             <div class= "form-group col-md-7">
-                              <select id="act" class="form-control col-md-7 col-xs-12" name="act" >
-                                <option value="">Select Activity</option>
-									
-                              </select>
-							  
-                            </div>			
-					</div>							
+                          <label class= "col-md-3"> <h4>Current Term</h4> </label>
+                            <div class= "form-group col-md-5 ">
+								 <label id="actType" name="actType" class="form-control col-md-7 col-xs-12" >
+									<?php 
+									echo $term[0]['term'];
+									echo " ";
+									echo $term[0]['schoolyear'];
+									?>
+								 </label>
+                            </div>        
                         </div>
-                      </div>
+                      </div> 
+					  
+					  <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-3"> <h4>Current Start Date</h4> </label>
+                            <div class= "form-group col-md-5 ">
+								 <label id="actType" name="actType" class="form-control col-md-7 col-xs-12" >
+								<?php 
+									$todate = $term[0]['startdate'];
+									$todatenew = strtotime($todate);
+									$formatted_todate = date('F d, Y', $todatenew);
+									echo $formatted_todate;?>
+								 </label>
+                            </div>        
+                        </div>
+                      </div> 
+					  
+					  <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-3"> <h4>Current End Date</h4> </label>
+                            <div class= "form-group col-md-5 ">
+								 <label id="actType" name="actType" class="form-control col-md-7 col-xs-12" >
+
+								<?php 
+									$todate = $term[0]['enddate'];
+									$todatenew = strtotime($todate);
+									$formatted_todate = date('F d, Y', $todatenew);
+									echo $formatted_todate;?>
+									</label>
+                            </div>        
+                        </div>
+                      </div> 
+					  
+					  <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-3"> <h4>Status</h4> </label>
+                            <div class= "form-group col-md-5 ">
+								 <label id="actType" name="actType" class="form-control col-md-7 col-xs-12" >
+								<?php 
+									$todate = $term[0]['enddate'];
+									$todatenew = strtotime($todate);
+									$formatted_todate = date('Y/m/d', $todatenew);
+									if ($formatted_todate < date("Y/m/d") ){
+										echo "Ended";
+									}
+									else{
+										echo "On going";
+									}
+									?>
+								 </label>
+                            </div>        
+                        </div>
+                      </div> 
+					<br>
+					
+					
+						<div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-3"> <h4>Term</h4> </label>
+                            <div class= "form-group col-md-2 ">
+                              <select id="term"  name="term" class="form-control col-md-7 col-xs-12">
+								<option disabled selected>Term</option>
+								<option value="1st Term">1st</option>
+								<option value="2nd Term">2nd</option>
+								<option value="3rd Term">3rd</option>
+							  </select>
+                            </div>     
+							<div class= "form-group col-md-3 ">
+                              <select id="sy"  name="sy" class="form-control col-md-7 col-xs-12">
+							   <option disabled selected>School Year</option>
+								<option value="2016-2017">2016-2017</option>
+								<option value="2017-2018">2017-2018</option>
+								<option value="2018-2019">2018-2019</option>
+							  </select>
+                            </div>  							
+                        </div>
+                      </div> 
+					  
                       <div class= "row">
-                        
+                        <div class="col-md-8">   
+                          <label class= "col-md-3"> <h4>Start Date</h4> </label>
+                            <div class= "form-group col-md-5 ">
+                              <input type="date" name="startDate" class="form-control">
+                            </div>        
+                        </div>
+                      </div> 
+            
+                      <div class= "row">
+                        <div class="col-md-8">   
+                          <label class= "col-md-3"> <h4>End Date</h4> </label>
+                            <div class= "form-group col-md-5">
+                              <input type="date" name="endDate" class="form-control">
+							  
+                            </div>        
+                        </div>
+                      </div> 
+                      <br>
+                      <div class= "row">
+                        <div class="col-md-5">   
+                          <label class= "col-md-4">  </label>
+                            <div align="center">
+                              <input type="submit" name="hi" class="form-control btn-primary" style="width: 190px" value="submit"
+							  
+							  <?php 
+									$todate = $term[0]['enddate'];
+									$todatenew = strtotime($todate);
+									$formatted_todate = date('Y/m/d', $todatenew);
+									if ($formatted_todate < date("Y/m/d") ){
+										echo "";
+									}
+									else{
+										echo "disabled";
+									}
+									?>
+							  >
+							    
+                            </div>        
+                        </div>
+                      </div> 
+                  
+
+                    <!--
+                      <div class="ln_solid"></div> 
+                      <div align="center" class="form-inline">
+                       <button type="button" name="endDate" class="form-control btn-success" style="width: 190px"> Start Accepting GOSM </button>  
+                          <button type="button" name="endDate" class="form-control btn-danger" style="width: 190px"> Stop Accepting GOSM </button>
                       </div>
-
-                    <div class="ln_solid"></div> 
-
-                    <div class="form-group">
-                      <div align="right">
-                        <input type ="submit" class="btn btn-success align: right" value ="Next" style="width:80px">
-                      </div>
-                    </div>
-
-                  </form>            
-                </div> <!-- row -->
-              </div> 
-            </div>
+					   -->
+                    </form>
+                  </div><!-- xcontent -->
+                </div> <!-- xpanel -->              
+              </div> <!-- row -->
+            </div> 
           </div>
         </div>
-        <!-- /page content -->
-
+  
     
-		
-		<script src= "<?php echo base_url();?>js/jquery.min.js"></script>
-		<script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
-	
-	<script>
-	 var hi= $('#ViewPreActs');
-	hi.validate({
-		rules: {
-			gosmcsoorg: {
-				required:true
-			},
-
-		},
-
-		messages:{
-			gosmcsoorg: 'Please pick an organization',
-		}
-		});
-	</script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url();?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -235,6 +295,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url();?>build/js/custom.min.js"></script>
-	
+  
   </body>
 </html>

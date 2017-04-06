@@ -6,11 +6,14 @@
 			$this->load->helper("url");
 			$this->load->library('form_validation');
 			$this->load->library('encrypt');
-			$this->load->model("Org_model");
 			$this->load->library('session');
+			
+			$this->load->model("Org_model");
 		}
 		
-		//ADD NEW ORG
+		// This serves as a function to add a new organization into the database as a user
+		// @return this function will load the page again if the form validation returns FALSE
+		// @return this function will load a page that will inform the CSO user of the success in the creation of a new organization
 		public function add(){
 			
 			//START of form validation
@@ -68,96 +71,32 @@
 			}
 			
 		}
-
-		public function viewPreActs(){
-			$this->load->view('ORG_ViewPreActs');
-		}
-
-		public function viewPreActs2(){
-			$this->load->view('ORG_ViewPreActs2');
-		}
-
-		public function viewAform(){
-			$this->load->view('ORG_ViewPreActs_Aform');
-		}
-
-		public function viewppr(){
-			$this->load->view('ORG_ViewPreActs_PPR');
-		}
-		public function viewApprovalChangeAct(){
-			$this->load->view('ORG_ViewPreActs_ApprovalChangeAct');
-		}
-		public function viewApprovalChangeActWithDes(){
-			$this->load->view('ORG_ViewPreActs_ApprovalChangeActWithDes');
-		}
-		public function viewTrademark(){
-			$this->load->view('ORG_ViewPreActs_Trademark');
-		}
-		public function viewContestMechanics(){
-			$this->load->view('ORG_ViewPreActs_ContestMechanics');
-		}
-		public function viewFoodEntry(){
-			$this->load->view('ORG_ViewPreActs_FoodEntry');
-		}
-		public function viewListOfParticipants(){
-			$this->load->view('ORG_ViewPreActs_ListOfParticipants');
-		}
-		public function viewMinorPub(){
-			$this->load->view('ORG_ViewPreActs_MinorPub');
-		}
-		public function viewSAS(){
-			$this->load->view('ORG_ViewPreActs_SAS');
-		}
-		public function viewSPCA(){
-			$this->load->view('ORG_ViewPreActs_SPCA');
-		}
-		public function fillOutOtherReq(){
-			$this->load->view('ORG_FillOutOtherReq');
-		}
-		public function fillOutOtherReq2(){
-			$this->load->view('ORG_FillOutOtherReq2');
-		}
-		//CSO controllers
-		public function CSOviewPreActs(){
-			$this->load->view('CSO_ViewPreActs');
-		}
-		public function CSOviewPreActs2(){
-			$this->load->view('CSO_ViewPreActs2');
-		}
-
-		public function CSOviewAform(){
-			$this->load->view('CSO_ViewPreActs_Aform');
+		
+		public function edit(){
+			
+			$this->form_validation->set_rules(
+				'newemail', 'Email', 'required'
+			);
+			
+			if ($this->form_validation->run() == FALSE){
+				$org = $this->Org_model->getOrg();
+				$data = array('org' => $org);
+				$this->load->view('CSO_EditOrg', $data);
+			}
+			else{
+				$this->Org_model->updateOrg($this->input->post('org'), $this->input->post('newemail'));
+				
+				$org = $this->Org_model->getOrg();
+				$data = array('org' => $org, 'success' => 'true');
+				$this->load->view('CSO_EditOrg', $data);
+			}
 		}
 		
-		public function CSOviewppr(){
-			$this->load->view('CSO_ViewPreActs_PPR');
+		public function getOrgDetails(){
+			header("Content-type: application/json");
+			$res = $this->Org_model->getOrgDetails($this->input->post('org'));
+			echo json_encode($res);
 		}
-		public function CSOviewApprovalChangeAct(){
-			$this->load->view('CSO_ViewPreActs_ApprovalChangeAct');
-		}
-		public function CSOviewApprovalChangeActWithDes(){
-			$this->load->view('CSO_ViewPreActs_ApprovalChangeActWithDes');
-		}
-		public function CSOviewTrademark(){
-			$this->load->view('CSO_ViewPreActs_Trademark');
-		}
-		public function CSOviewContestMechanics(){
-			$this->load->view('CSO_ViewPreActs_ContestMechanics');
-		}
-		public function CSOviewFoodEntry(){
-			$this->load->view('CSO_ViewPreActs_FoodEntry');
-		}
-		public function CSOviewListOfParticipants(){
-			$this->load->view('CSO_ViewPreActs_ListOfParticipants');
-		}
-		public function CSOviewMinorPub(){
-			$this->load->view('CSO_ViewPreActs_MinorPub');
-		}
-		public function CSOviewSAS(){
-			$this->load->view('CSO_ViewPreActs_SAS');
-		}
-		public function CSOviewSPCA(){
-			$this->load->view('CSO_ViewPreActs_SPCA');
-		}
+
 	}
 ?>

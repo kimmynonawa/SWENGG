@@ -34,92 +34,69 @@
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
   </head>
-
-  <body class="nav-md">
+ <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <!--<div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Yo!</span></a>
-            </div> -->
-
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="<?php echo base_url();?>images/user.png" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h2> <?php echo ($this->session->userdata('org')[0]['acronym']);?></h2>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <ul class="nav side-menu">
-				  <li><a href="http://localhost/index.php/account/org"><i class="fa fa-home"></i> Home <span ></span></a></li>
-                  <li><a href="http://localhost/index.php/gosm/add"><i class="fa fa-table"></i> Add New GOSM <span ></span></a></li>
-                  <li><a href="http://localhost/index.php/PreActivity/preacts"><i class="fa fa-edit"></i> Add Pre-Activity <span ></span></a></li>				  
-				  <li><a href="#"><i class="fa fa-calendar"></i> Calendar <span ></span></a></li>
-				  <li><a href="http://localhost/index.php/gosm/viewORGGosm1"><i class="fa fa-list-alt"></i> GOSM <span ></span></a></li>
-				</ul>
-              </div>
-            </div>
-            <!-- /sidebar menu -->
+        <div class="col-md-3 left_col ">
+          <div class="clearfix"></div>
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section nav side-menu"> 
+            <br>      
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Create New GOSM</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Pre-Activity Requirements</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Additional Requirements</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Special Approval Slip</a></li>
+            <li><a href="#"><i class="fa fa-folder-open"></i> View Pre-Acts</a></li>
+            <li><a href="#"><i class="fa fa-list-alt"></i> View GOSM</a></li>
           </div>
         </div>
-
-        <div class="top_nav">
-		
-          <div class="nav_menu">
-            <nav>
-
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   <?php echo ($this->session->userdata('org')[0]['name']);?>
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
-                  </ul>
-                </li>
-                </li>
-              </ul>
-            </nav>
-          </div>
+      </div>
+    </div>
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="userIcon">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['name']);?>La Salle Computer Society
+                  <span class="fa fa-caret-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                </ul>
+              </li>
+              <li role="presentation" class="dropdown">
+                <a id="but" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                  <i class="fa fa-envelope fa-fw"></i>
+                  <i class="fa fa-caret-down"></i>
+                  <div id="num"> </div>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="http://localhost/index.php/account/logout">insert notifs here</a></li>
+                </ul>
+                <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <!-- /top navigation -->
-
+      </div>
+      
     <!-- page content -->
-    <div class="right_col" role="main">
-      <div class="">
-        <div class= "x_panel">
-          <div class= "row">
-            <div class="title col-md-5">
-              <h3>Activity Approval Form</h3>
+        <div class="right_col" role="main">
+          <div class= "infoPanel">
+            <div class="infoHead" data-toggle="collapse" href="#info">
+              <h3> ACTIVITY APPROVAL FORM
+                <div class="icon">
+                  <span class="glyphicon glyphicon-menu-down"></span> 
+                </div>
+              </h3>
             </div>
-            <div align="right">
-              <ul class="nav navbar-right panel_toolbox"> 
-                <li>
-                  <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                </li> 
-              </ul>
+            <div class="infoBody" id="info">
+              <h4> <p>The Activity Approval Form is filled out in order to determine the different details about the activity that the organization is planning to have. This must be downloaded for approval along with the PPR after filling out the necessary fields.</p></h4>
             </div>
           </div>
-          <div class= "x_content bg-success">
-            <h4><p class="text-success"> Lorem ipsum dolor sit amet, vel pretium architecto, semper semper eu elit sed, lacus cras quis, pede velit. Pretium convallis suscipit, vestibulum rutrum, eu integer montes erat ut tincidunt, facilisis dolor. Et fermentum nulla, litora leo in, nunc aliquam aperiam, rutrum elementum, dictum malesuada morbi amet nisl. sociis odio laoreet dolor mauris. </p></h4>
-          </div>
-        </div>
-            
-        <div class="clearfix"></div>
+                
+            <div class="clearfix"></div>
 
 
         <div class="row">
@@ -176,8 +153,8 @@
                   <div class="ln_solid"></div> 
 
                   <div class="form-group">
-                    <div class="col-md-12 col-md-offset-11">
-                      <button type="submit" class="btn btn-success align: right">Next</button>
+                    <div align="right">
+                      <button type="submit" class="btn btn-success" style="width: 80px">Next</button>
                     </div>
                   </div>
 
@@ -230,12 +207,22 @@
     <script src="<?php echo base_url();?>build/js/custom.min.js"></script>
 	
   </body>
-  <script>
+   <script>
 
    $(document).ready(function () {
         jQuery.validator.addMethod("lettersonly", function(value, element) {
            return this.optional(element) || /^[a-z\s]+$/i.test(value);
         })
+
+         jQuery.validator.addMethod("endtime", function(value, element) {
+            var startTime = $('.starttime').val();
+            return Date.parse(startTime) <= Date.parse(value) || value == "";
+        });
+
+        jQuery.validator.addMethod("enddate", function(value, element) {
+            var startDate = $('.startdate').val();
+            return Date.parse(startDate) <= Date.parse(value) || value == "";
+        });
 
         function removeError(element){
           element.addClass('valid')
@@ -254,6 +241,7 @@
           event.preventDefault();
           $('#dates').append($('<p></p><div class="details"><div class= "row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Date</h4></label></div> <div class= "form-group col-md-4"><input class= "dt form-control" type="date" name="sDate[' + numberInc + ']"/> </div><div class="col-md-2"><button class="form-control btn btn-danger" id="rDate" name="rDate"> Remove Date</button></div></div></div><div class= "row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Time</h4></label></div> <div class= "form-inline col-md-4"><input type="time" name= "s1Time[' + numberInc + ']" id="startTime" class="form-control" style="width:129px" /> - <input class= "etm form-control" type="time" name= "e1Time[' + numberInc + ']" class="form-control" style="width:130px"/></div></div></div><div class="row" id ="time"> </div></div>'));
               numberInc++;
+              
             $(".dt").each(function(){
              $(this).rules( "add",{
                 required:true,
@@ -263,15 +251,26 @@
              });
             });
 
-            $(".etm").each(function(){
+            $(".endtime").each(function(){
                 $(this).rules( "add", {
                 required:true,
+                endtime: true,
               messages: {
-                required: 'Enter time'
+                required: 'Enter time',
+                endtime: "End time must be after start time"
 
               }
              });
          });
+
+          $(".starttime").each(function(){
+                $(this).rules( "add", {
+                required:true,
+              messages: {
+                required: 'Enter time'
+              }
+             });
+            });;
 
 
 
@@ -282,16 +281,38 @@
           $('#dates').append($('<p></p><div class="details"><div class= "row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Date</h4></label></div> <div class= "form-inline col-md-4"><input type="date" name= "drsDate[' + numberIncr + ']" id="startDate" class="form-control" style="width:129px" /> - <input class="eda form-control" type="date" name= "dreDate[' + numberIncr + ']"  style="width:130px"/></div><div class="col-md-2"><button class="form-control btn btn-danger" id="rDate" name="rDate"> Remove Date</button></div></div></div> <div class="row" id ="time"> </div><div class= "row"><div class="col-md-10"> <div class="col-md-4"> <label class= "col-md-2"> <h4>Time</h4></label></div> <div class= "form-inline col-md-4"><input type="time" name= "s2Time[' + numberIncr + ']" id="startTime" class="form-control" style="width:129px" /> - <input class="eti form-control" type="time" name= "e2Time[' + numberIncr + ']"  style="width:130px"/></div></div>'));
 
              numberIncr++;
-            $(".eda").each(function(){
+            $(".enddate").each(function(){
                 $(this).rules( "add", {
                 required:true,
+                enddate: true, 
               messages: {
-                required: 'Enter date'
+                required: 'Enter date',
+                enddate: "End date must be after start date"
               }
              });
             });
 
-            $(".eti").each(function(){
+            $(".startdate").each(function(){
+                $(this).rules( "add", {
+                required:true,
+              messages: {
+                required: 'Enter date',
+              }
+             });
+            });
+
+            $(".endtime").each(function(){
+                $(this).rules( "add", {
+                required:true,
+                endtime: true,
+              messages: {
+                required: 'Enter time',
+                endtime: "End time must be after start time"
+              }
+             });
+            });
+
+            $(".starttime").each(function(){
                 $(this).rules( "add", {
                 required:true,
               messages: {
@@ -308,10 +329,9 @@
 
     aform2.validate({
     rules: {
-		'sDate[0]': "required",
-		'eDate[0]': "required",
-		'eTime[0]': "required",
-		'eTim[0]': "required",
+    'Date[0]': "required",
+    'sTime[0]': "required",
+    'eTime[0]': "required",
       enmp: {
         required:true,
         maxlength: 6
@@ -335,13 +355,10 @@
     'Date[0]':{
       required: 'Enter date'
     },
-    'eDate[0]':{
-      required: 'Enter date'
-    },
     'eTime[0]':{
       required: 'Enter time'
     },
-    'eTim[0]':{
+    'eTime[0]':{
       required: 'Enter time'
     },
       enmp: {
@@ -361,7 +378,16 @@
     }
     });
 
+    
+    $('#nextaform2').click(function() {
+      if (aform2.valid()){
+          window.location.href = "";
+        }
+        return false;
+      });
+
    });
 
   </script>
+ 
 </html>

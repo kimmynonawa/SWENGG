@@ -115,9 +115,94 @@
                                     <th><div align="center">Filled Out Requirements</div></th>
                                 </thead>
                                 <tbody>
-                                    <tr> <td align="center"> Aform</td><tr>
-                                    <tr> <td align="center"> PPR</td><tr>
-                                    <tr> <td align="center"> Minor Pub</td><tr>
+                                     <?php
+								    if($aformexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/viewaform"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'A-Form';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($lopexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/viewLOP"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'List of Participants';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									
+                                    <?php
+								    if($contestexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/view_contest_mechanics"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Contest Mechanics';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+                                    <?php
+								    if($foodexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/view_food_permit"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Food Permit';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($trademarkexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/view_trademark_use"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Trademark Use';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($minorpubexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/ORGminorPubView"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Minor Publication Proposal';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($sasexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/ORGsasview"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Special Approval Slip';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($spcaexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/ORGspcaview"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Special Permit Campus Access';
+										echo '</td><tr>';
+                                    
+									}
+									?>
                                 </tbody>
                             </table>
                         </div>
@@ -130,56 +215,56 @@
                             </div>
                              <div class="item form-group">
                                 <label class="control-label col-md-3">Title of Activity:</label>
-                                <p> title </p>
+                                <p> <?php echo $activityDetails[0]['title']; ?> </p>
                             </div>
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Proposed Time of duration:</label>
-                                <p> time </p>
+                                <p> <?php echo $permitDetails[2]; ?> </p>
                             </div>
                             <br>
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Venue:</label>
-                                <p> venue </p>
+                                <p> <?php echo $permitDetails[5]; ?> </p>
                             </div>
 
-                            <span class="section">Information</span>
+                           <span class="section">Information</span>
                              <div class="item form-group">
                                 <label class="control-label col-md-3">Name:</label>
-                                <p> name</p>
+                                <p><?php echo $requestInfo[0]; ?></p>
                             </div>  
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Position/Section:</label>
-                                <p> position </p>
+                                <p> <?php echo $requestInfo[1]; ?> </p>
                             </div>  
                             <div class="item form-group">
                                 <label class="control-label col-md-3">ID Number:</label>
-                                <p> id no </p>
+                                <p> <?php echo $requestInfo[2]; ?> </p>
                             </div> 
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Email Address:</label>
-                                <p>email add </p>
+                                <p> <?php echo $requestInfo[3]; ?> </p>
                             </div> 
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Telephone Number:</label>
-                                <p> tel no </p>
+                                <p> <?php echo $requestInfo[4]; ?> </p>
                             </div> 
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Mobile Number:</label>
-                                <p> mobile no</p>
+                                <p> <?php echo $requestInfo[5]; ?> </p>
                             </div> 
                             <span class="section">Trademark details</span>
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Trademark to Use:</label>
-                                <p> tm</p>
+                                <p> <?php echo $permitDetails[0]; ?> </p>
                             </div> 
                              <div class="item form-group">
-                                <label class="control-label col-md-3">Type of Item/Material to produce:</label>
-                                <p> tm</p>
+                                <label class="control-label col-md-3">Type of Item/Material to Produce:</label>
+                                <p> HELLO </p>
                             </div>
                             <br>
                             <div class="item form-group">
-                                <label class="control-label col-md-3">Purpose of use:</label>
-                                <p> mat </p>
+                                <label class="control-label col-md-3">Purpose of Use:</label>
+                                <p> <?php echo $permitDetails[1]; ?> </p>
                             </div> 
                              
                         </div>

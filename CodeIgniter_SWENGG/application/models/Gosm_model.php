@@ -4,26 +4,15 @@
 			$this->load->database();
 		}
 		
-		public function getnew(){
-			$this->db->where(array("status" => 1));
-			$this->db->from('GOSM');
-			$res = $this->db->get();
-			return $res->result_array();
+		public function updateTerm($term, $sy, $sdate, $edate){
+			$this->db->where(array("termid" => 1));
+			$this->db->update('ref_term', array("term" => $term, "schoolyear" => $sy, "startdate" => $sdate, "enddate" => $edate));
 		}
 		
-		public function getall(){
-			$this->db->from('GOSM');
-			$res = $this->db->get();
-			return $res->result_array();
-		}
-		
-		public function setseen(){
-			$this->db->update('GOSM', array("status" => 2));
-			$this->db->where(array("status" => 1));
-		}
-		
+		// This function gets the detais of a proposed activity
+		// @param $actno is an INT that is the ID of the porposed activity
+		// @return an array containing the details of a proposed activity
 		public function getGosmDetails($actno){
-			
 			$this->db->where(array("gosmID" => $actno));
 			$this->db->from('gosm');
 			$this->db->join('ref_activitynature', 'gosm.activitynatureID = ref_activitynature.activitynatureID');
@@ -32,6 +21,10 @@
 			return $res->result_array();
 		}
 		
+		// This function inserts a proposed activity in the GOSM 
+		// @param $data an array that contains the information needed to insert an activity in the GOSM
+		// @param $org is an INT that is the ID of the organization creating the activity
+		// @param $reto
 		public function insertActivity($data, $org, $reto){
 			$this->db->insert('GOSM', 
 			array(
@@ -55,8 +48,10 @@
 			
 			);
 		}
-
-		// START CATHY
+		
+		// This function gets the ID and the title of an activity proposed in the GOSM
+		// @param $org is an INT that is the ID of the organizationa
+		// @return an array that contains the gosm ID and the activity title
 		public function getAct($org){
 			$this->db->select('gosmID,title');
 			$this->db->where("organizationID", $org);
@@ -65,8 +60,9 @@
 			return $res->result_array();
 		}
 
-		// public function getGosmID()
-		
+		// This function gets the title of an activity that is proposed in the GOSM
+		// @param $actid is an INT that is the ID of the activity in the GOSM
+		// @return the title of the given activity
 		public function getActTitle($actid){
 			$this->db->where(array("gosmID" => $actid ));
 			$this->db->from('GOSM');
@@ -74,5 +70,10 @@
 			return $res->result_array();
 		}
 		
+		public function getTerm(){
+			$this->db->from('ref_term');
+			$res = $this->db->get();
+			return $res->result_array();
+		}
 	}
 ?>

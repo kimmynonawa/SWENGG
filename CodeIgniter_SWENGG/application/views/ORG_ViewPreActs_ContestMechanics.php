@@ -115,82 +115,188 @@
                                     <th><div align="center">Filled Out Requirements</div></th>
                                 </thead>
                                 <tbody>
-                                    <tr> <td align="center"> Aform</td><tr>
-                                    <tr> <td align="center"> PPR</td><tr>
-                                    <tr> <td align="center"> Minor Pub</td><tr>
+                                   <?php
+								    if($aformexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/viewaform"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'A-Form';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($lopexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/viewLOP"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'List of Participants';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									
+                                    <?php
+								    if($contestexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/view_contest_mechanics"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Contest Mechanics';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+                                    <?php
+								    if($foodexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/view_food_permit"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Food Permit';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($trademarkexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/view_trademark_use"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Trademark Use';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($minorpubexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/ORGminorPubView"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Minor Publication Proposal';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($sasexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/ORGsasview"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Special Approval Slip';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($spcaexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/ORGspcaview"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Special Permit Campus Access';
+										echo '</td><tr>';
+                                    
+									}
+									?>
                                 </tbody>
                             </table>
                         </div>
                         <div class="col-md-8">
-                            <span class="section">Activity Details</span>
-                             <div class="item form-group">
+                             <span class="section">Activity Details</span>
+                            <!--  <div class="item form-group">
                                 <label class="control-label col-md-3">Date Created:</label>
                                 <p> date</p>
-                            </div>  
+                            </div>   -->
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Activity Title:</label>
-                                <p> ORG General Assembly </p>
+                                <p> <?php echo $activityDetails[0]['title']; ?> </p>
                             </div>  
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Nature of Activity:</label>
-                                <p> nature </p>
+                                <p> <?php echo $activityDetails[0]['activitynature']; ?> </p>
                             </div> 
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Date:</label>
-                                <p> March 20, 2016 </p>
+                                <p> 
+                                    <?php 
+                                        $startDate = new DateTime($activityDetails[0]['startdate']); 
+                                        $startDate = date_format($startDate, 'F j, Y');
+
+                                        $endDate = new DateTime($activityDetails[0]['enddate']); 
+                                        $endDate = date_format($endDate, 'F j, Y');
+
+                                        echo $startDate." - ".$endDate;
+                                    ?> 
+                                </p>
                             </div> 
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Time:</label>
-                                <p> time</p>
+                                <p> <?php echo $activityDetails[0]['starttime']." - ".$activityDetails[0]['endtime'] ; ?> </p>
                             </div> 
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Venue:</label>
-                                <p> venue</p>
+                                <p> <?php echo $activityDetails[0]['venue']; ?> </p>
                             </div> 
                             <div class="item form-group">
                                 <label class="control-label col-md-3">ENP:</label>
-                                <p> enp </p>
+                                <p> <?php echo $activityDetails[0]['ENP']; ?> </p>
                             </div> 
                             <span class="section"> Project Head</span>
                             <div class="item form-group">
-                                <label class="control-label col-md-3">Name:</label>
-                                <p> name </p>
-                            </div> 
-                            <div class="item form-group">
-                                <label class="control-label col-md-3">Contact Number:</label>
-                                <p> no </p>
-                            </div> 
+                                <?php
+                                    foreach($projectheads as $head) { ?>
+                                        <label class="control-label col-md-3">Name:</label>
+                                        <p class="col-md-3"> <?php echo $head['name']; ?> </p>
+
+                                        <label class="control-label col-md-2">Contact Number:</label>
+                                        <p> <?php echo $head['contactnumber']; ?> </p>
+                                <?php }
+                                ?>
+                            </div>  
+
                             <span class="section"> General Guidelines</span>
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Guidelines:</label>
-                                <p> g</p>
+                                <?php   
+                                    foreach($guidelines as $guidelines) {
+                                        echo "<p> {$guidelines['guidelines']} </p>";
+                                    }
+                                ?>
                             </div> 
                             <span class="section"> Mechanics</span>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3">Mechanics 1:</label>
-                                <p> m </p>
-                            </div> 
-                            <div class="item form-group">
-                                <label class="control-label col-md-3">Mechanics 2:</label>
-                                <p> m </p>
-                            </div> 
-                            <div class="item form-group">
-                                <label class="control-label col-md-3">Mechanics 3:</label>
-                                <p> m </p>
-                            </div> 
-                            <span class="section">Criteria for Judgin</span>
+                            <?php
+                                $counter = 1;
+                                foreach($mechanics as $mechanics) { ?>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3">Mechanics <?php echo $counter; ?>:</label>
+                                        <p> <?php echo $mechanics['mechanics']; ?> </p>
+                                    </div> 
+                            <?php 
+                                $counter++;
+                                } //END FOREACH LOOP
+                            ?>
+                            <span class="section">Criteria for Judging</span>
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Criteria:</label>
-                                <p> g</p>
+                            <?php                                
+                                foreach($criteria as $criteria) { ?>
+                                <p class="col-md-offset-3"> <?php echo $criteria['criteria']; ?></p>
+                            <?php }
+                            ?>
                             </div> 
                             <span class="section"> List of Judges</span>
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Name:</label>
-                                <p> g</p>
-                            </div> 
-                             <div class="item form-group">
-                                <label class="control-label col-md-3">Affiliation:</label>
-                                <p> g</p>
+                            <?php
+                                foreach($judges as $judges) { ?>
+                                    <p class="col-md-offset-3"> <?php echo $judges['name']; ?></p>
+                            <?php }
+                            ?>
                             </div> 
                         </div>
                     </div>

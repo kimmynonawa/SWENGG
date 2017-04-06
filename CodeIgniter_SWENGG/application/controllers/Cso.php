@@ -6,6 +6,12 @@
 			$this->load->library('form_validation');
 		}
 
-	
+		public function viewPreacts(){
+			$this->load->view("CSO_ViewPreActs");
+		}
+
+		public function viewCSOHome(){
+			$this->load->view("CSO_Home");
+		}
 	}
 ?>

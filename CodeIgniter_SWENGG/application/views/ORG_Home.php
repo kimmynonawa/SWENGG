@@ -286,42 +286,32 @@
                     <div class="x_content">
                       <div class="">
                         <ul class="to_do">
-                                     <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Team Building </p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat">  General Assembly</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Recollection</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Contest</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Officer Training</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Feeding Program</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Food Fest</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Sports Fest</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Medical Mission</p>
-                          </li>
+							<?php
+								
+								//with preacts
+								foreach($groups as $row)
+								{
+									echo '<li><p>';
+									echo '<input type="checkbox" checked="checked" class="flat">';
+									echo '&nbsp;&nbsp;&nbsp;';
+									echo $row->title;
+									echo '</li></p>';
+								}
+								
+								//without preacts
+								foreach($groups2 as $row)
+								{
+									echo '<li><p>';
+									echo '<input type="checkbox" class="flat">';
+									echo '<font color="red">';
+									echo '&nbsp;&nbsp;&nbsp;';
+									echo '<a href="http://localhost/index.php/p_forms_controller/other">';
+									echo $row->title;
+									echo '</a>';
+									echo '</font>';
+									echo '</li></p>';
+								}
+							?>
                         </ul>
                       </div>
                     </div>

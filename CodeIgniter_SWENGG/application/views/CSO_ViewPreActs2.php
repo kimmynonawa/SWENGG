@@ -7,11 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>LSCS</title>
-
-    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
-    <script src= "<?php echo base_url();?>js/validation.js"></script>
+    <title><?php echo ($this->session->userdata('org')[0]['acronym']);?></title>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
+	
+	<script src= "<?php echo base_url();?>js/jquery.js"> </script>
+	<script src= "<?php echo base_url();?>js/jquery.min.js"></script>
+	<script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
+	
     <!-- Bootstrap -->
     <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -30,113 +33,58 @@
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
+	
+	
+	
   </head>
 
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="clearfix"></div>
-
-          
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="<?php echo base_url();?>images/cso2.png" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h2> <?php echo ($this->session->userdata('org')[0]['acronym']);?></h2>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <ul class="nav side-menu">
-          <li><a href="http://localhost/index.php/account/cso"><i class="fa fa-home"></i> Home <span ></span></a></li>
-                  <li><a href="http://localhost/index.php/org/add"><i class="fa fa-table"></i> Add New Organization <span ></span></a></li>
-          <li><a href="#"><i class="fa fa-calendar"></i> Calendar <span ></span></a></li>
-          <li><a href="http://localhost/index.php/gosm/viewCSOGosm1"><i class="fa fa-list-alt"></i> GOSM <span ></span></a></li>
-            <li><a href="#"><i class="fa fa-list-alt"></i> PreActs <span ></span></a></li>  
-        </ul>
-              </div>
-            </div>
-            <!-- /sidebar menu -->
+        <div class="col-md-3 left_col ">
+          <div class="clearfix"></div>
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section nav side-menu"> 
+            <br>      
+            <li><a href="http://localhost/index.php/org/add"><i class="fa fa-edit side-menu"></i>Add New Organization</a></li>
+            <li><a href="http://localhost/index.php/org/edit"><i class="fa fa-edit side-menu"></i>Edit Organization Details</a></li>
+            <li><a href="http://localhost/index.php/gosm/accept"><i class="fa fa-edit side-menu"></i>Accept GOSM</a></li>
+            <li><a href="http://localhost/index.php/gosm/viewCSOGosm1"><i class="fa fa-edit side-menu"></i>View GOSM</a></li>
+            <li><a href="http://localhost/index.php/ViewPreacts/ViewPreacts"><i class="fa fa-edit side-menu"></i>View Pre-Acts</a></li>
           </div>
         </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
-    
-          <div class="nav_menu">
-            <nav>
-
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   <?php echo ($this->session->userdata('org')[0]['name']);?>
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="http://localhost/index.php/account/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+      </div>
+    </div>
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="userIcon">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['name']);?>
+                  <span class="fa fa-caret-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                </ul>
+              </li>
+			  
+             <li role="presentation" class="dropdown">
+                <a id="but" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                  <i class="fa fa-envelope fa-fw"></i>
+                  <i class="fa fa-caret-down"></i>
+                  <div id="num"> </div>
+                </a>
+                  <ul name="notif" id="menu1" class="dropdown-menu dropdown-usermenu pull-right" role="menu" style="width: 300px; height: 200px; overflow: auto">
+					<!--NOTIFICATION HERE-->
+					<li><a href="http://localhost/index.php/account/logout">insert notifs here</a></li>
                   </ul>
-                </li>
-        <!--NOTIF-->
-                <li role="presentation" class="dropdown">
-                  <a id="but" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <div id="num">
-            
-          </div>
-                  </a>
-                  <ul name="notif" id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu" style="width: 300px; height: 200px; overflow: auto">
-          <!--NOTIFICATION HERE-->
-          
-                  </ul>
-          <!--NOTIF-->
-                </li>
-              </ul>
-            </nav>
-          </div>
+                <li><a href="http://localhost/index.php/account/cso"><i class="fa fa-home"></i> Home</a></li>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <!-- /top navigation -->
-        
-     <!-- page content -->
-      <div class="right_col" role="main">
-        <div class="">
-          <div class="page-title">
-            <div class="title_left">
-              <h3>View Pre-Acts </h3>
-            </div>
-            </div>
-        </div>
-        <div class="clearfix"></div>
-          <div class="x_panel">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="col-md-4">
-                                <br><br>   
-                                <table id="table" class="table table-striped table-bordered table-hover" style="width:300px">
-                                    <thead>
-                                        <th><div align="center">Filled Out Requirements</div></th>
-                                    </thead>
-                                    <tbody>
-                                        <tr> <td align="center"> Aform</td><tr>
-                                        <tr> <td align="center"> PPR</td><tr>
-                                        <tr> <td align="center"> Minor Pub</td><tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
+      </div>
 
         <!-- /page content -->
 

@@ -121,16 +121,14 @@
                             </div>        
                         </div>
                       </div>
-
-                      
-             
+      
                       
                       <div class="ln_solid"></div> 
   
                       <div class="form-group">
                         <div class="col-md-12 col-md-offset-10">
-                          <input type="submit" class="btn btn-danger" value="Cancel" id="returnHome">
-                          <input type="submit" class="btn btn-success align: right" value="Next" id="nextPreAct">
+                          <input type="submit" class="btn btn-danger" value="Cancel" id="returnHome" style="width: 80px">
+                          <input type="submit" class="btn btn-success" value="Next" id="nextPreAct" style="width: 80px">
                         </div>
                       </div>
                     </form>                     

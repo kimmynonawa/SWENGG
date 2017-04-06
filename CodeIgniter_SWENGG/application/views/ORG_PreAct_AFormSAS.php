@@ -37,98 +37,66 @@
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <!--<div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Yo!</span></a>
-            </div> -->
-
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="<?php echo base_url();?>images/user.png" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h2> <?php echo ($this->session->userdata('org')[0]['acronym']);?></h2>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-           <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a href="#"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
-                  <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu"> 
-                      <li><a href="#">Add New GOSM</li>
-                      <li><a href="#">Fill out Pre-Activity Requirements</a></li>
-                      <li><a href="#">Fill out Additional Requirements</a></li>
-                      <li><a href="#">Fill out Special Approval Slip</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#"><i class="fa fa-folder-open"></i> View Pre-Acts <span class="fa fa-chevron-down"></span></a>
-                  <li><a href="#"><i class="fa fa-table"></i> Calendar <span class="fa fa-chevron-down"></span></a>
-                  <li><a href="#"><i class="fa fa-list-alt"></i> GOSM <span class="fa fa-chevron-down"></span></a>
-                  </li>
+        <div class="col-md-3 left_col ">
+          <div class="clearfix"></div>
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section nav side-menu"> 
+            <br>      
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Create New GOSM</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Pre-Activity Requirements</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Additional Requirements</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Special Approval Slip</a></li>
+            <li><a href="#"><i class="fa fa-folder-open"></i> View Pre-Acts</a></li>
+            <li><a href="#"><i class="fa fa-list-alt"></i> View GOSM</a></li>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="userIcon">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['name']);?>La Salle Computer Society
+                  <span class="fa fa-caret-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
                 </ul>
-              </div>
-            </div>
-            <!-- /sidebar menu -->
-          </div>
+              </li>
+              <li role="presentation" class="dropdown">
+                <a id="but" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                  <i class="fa fa-envelope fa-fw"></i>
+                  <i class="fa fa-caret-down"></i>
+                  <div id="num"> </div>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="http://localhost/index.php/account/logout">insert notifs here</a></li>
+                </ul>
+                <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+              </li>
+            </ul>
+          </nav>
         </div>
-
-        <div class="top_nav">
-    
-          <div class="nav_menu">
-            <nav>
-
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   <?php echo ($this->session->userdata('org')[0]['name']);?>
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
-                  </ul>
-                </li>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-        <!-- /top navigation -->
-
-      <!-- page content -->
+      </div>
+      
+    <!-- page content -->
         <div class="right_col" role="main">
-          <div class="">
-            <div class= "x_panel">
-              <div class= "row">
-                <div class="title col-md-5">
-                  <h3>Special Approval Slip</h3>
+          <div class= "infoPanel">
+            <div class="infoHead" data-toggle="collapse" href="#info">
+              <h3> SPECIAL APPROVAL SLIP
+                <div class="icon">
+                  <span class="glyphicon glyphicon-menu-down"></span> 
                 </div>
-                <div align="right">
-                  <ul class="nav navbar-right panel_toolbox"> 
-                    <li>
-                      <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li> 
-                  </ul>
-                </div>
-              </div>
-              <div class= "x_content bg-success">
-                <h4><p class="text-success"> Lorem ipsum dolor sit amet, vel pretium architecto, semper semper eu elit sed, lacus cras quis, pede velit. Pretium convallis suscipit, vestibulum rutrum, eu integer montes erat ut tincidunt, facilisis dolor. Et fermentum nulla, litora leo in, nunc aliquam aperiam, rutrum elementum, dictum malesuada morbi amet nisl. sociis odio laoreet dolor mauris. </p></h4>
-              </div>
+              </h3>
             </div>
+            <div class="infoBody" id="info">
+              <h4> <p>The SAS is used whenever there are different concerns that need to be addressed such as change of activity details and cancellation.</p></h4>
+            </div>
+          </div>
                 
             <div class="clearfix"></div>
-
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
@@ -176,8 +144,8 @@
 
                       <div class="ln_solid"></div> 
                       <div class="form-group">
-                        <div class="col-md-12 col-md-offset-11">
-                          <input id="nextSas" type="submit" class="btn btn-success align: right" Value="Next">
+                        <div align="right">
+                          <input id="nextSas" type="submit" class="btn btn-success" Value="Next" style="width: 80px">
                         </div>
                       </div>    
                     </form>

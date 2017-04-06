@@ -9,8 +9,40 @@
 			$this->load->library('form_validation');
 			$this->load->library('session');
 			$this->load->model("p_forms_model");
+			$this->load->model("PreActivityView_model");
 		}
 
+		/*
+		* +---------------------------------+
+		* +            HOMEPAGES            +
+		* +---------------------------------+
+		*/
+		
+		public function orgHome()
+		{
+			//$org = $this->session->userdata('org')[0]['userID'];
+			
+			$org=1;
+			
+			$data['groups'] = $this->p_forms_model->getWeekActsOrgWithPreActs($org);
+			$data['groups2'] = $this->p_forms_model->getWeekActsOrgNoPreActs($org);
+			$this->load->view('ORG_Home',$data);
+		}
+		
+		public function csoHome()
+		{
+			$data['groups'] = $this->p_forms_model->getWeekActsWithPreActs();
+			$data['groups2'] = $this->p_forms_model->getWeekActsNoPreActs();
+			$data['groups3'] = $this->p_forms_model->getRecentActs();
+
+			$this->load->view('CSO_Home', $data);
+		}
+		
+		/*
+		* +---------------------------------+
+		* +     OTHER REQUIREMENTS FORM     +
+		* +---------------------------------+
+		*/
 		
 		public function loadOtherReq()
 		{
@@ -19,11 +51,11 @@
 		
 		public function other()
 		{
-			//$org=1;
 			$org = $this->session->userdata('org')[0]['userID'];
 			
 			$data['groups'] = $this->p_forms_model->getActs($org);
 			$this->load->view('ORG_FillOutOtherReq',$data);
+			
 			$this->form_validation->set_rules('act', 'act', 'required');
 			$this->form_validation->set_rules('req', 'req', 'required');
 
@@ -46,9 +78,9 @@
 					redirect('PreActivity/listOfParticipants');
 				}
 				
-				else if($req==2) //Sas
+				else if($req==2) //Change of Act Details
 				{
-					redirect('PreActivity/sas');
+					//redirect('controller/function');
 				}
 				
 				else if($req==3) //SPCA
@@ -77,6 +109,14 @@
 				}
 			}
 		}
+		
+		
+		
+		/*
+		* +---------------------------------+
+		* +      MINOR PUBLICATION FORM     +
+		* +---------------------------------+
+		*/
 		
 		public function loadMinorPub()
 		{
@@ -181,6 +221,22 @@
 			}
 		}
 		
+		
+		
+		/*
+		* +---------------------------------+
+		* +    SPECIAL APPROVAL SLIP FORM   +
+		* +---------------------------------+
+		*/
+		
+		public function SASpdf()
+		{
+			$actno='1'; //CHANGE THIS TO A SESSION VARIABLE
+			
+			$data['groups'] = $this->p_forms_model->getSASdetails($actno);
+			$this->load->view('SAS',$data);
+		}
+		
 		public function loadSASform()
 		{
 			$this->load->view('ORG_PreAct_SpecialApprovalSlip');
@@ -210,6 +266,59 @@
 			}
 		}
 		
+		
+		/*
+		* +---------------------------------+
+		* +            SPCA FORM            +
+		* +---------------------------------+
+		*/
+		
+		public function SPCApdf()
+		{
+			$actno='1'; //CHANGE THIS TO A SESSION VARIABLE
+			
+			$data['groups'] = $this->p_forms_model->getSPCAdetails($actno);
+			$data['groups2'] = $this->p_forms_model->getSPCAactivitydetails($actno);
+			$data['groups3'] = $this->p_forms_model->getSPCApersonsdetails($actno);
+			$this->load->view('SPCA',$data);
+		}
+		
+		public function ORGSPCAView()
+		{
+			$actno=$this->session->userdata("actno");
+			
+			$data['groups'] = $this->p_forms_model->getSPCAdetails($actno);
+			$data['groups2'] = $this->p_forms_model->getSPCAactivitydetails($actno);
+			$data['groups3'] = $this->p_forms_model->getSPCApersonsdetails($actno);
+			$data['aformexists'] = $this->PreActivityView_model->aformExists($actno);
+			$data['lopexists'] = $this->PreActivityView_model->lopExists($actno);
+			$data['contestexists'] = $this->PreActivityView_model->contestExists($actno);
+			$data['foodexists'] = $this->PreActivityView_model->foodExists($actno);
+			$data['trademarkexists'] = $this->PreActivityView_model->trademarkExists($actno);
+			$data['minorpubexists'] = $this->PreActivityView_model->minorpubExists($actno);
+			$data['sasexists'] = $this->PreActivityView_model->sasExists($actno);
+			$data['spcaexists'] = $this->PreActivityView_model->spcaExists($actno);
+			$this->load->view('ORG_ViewPreActs_SPCA',$data);
+		}
+		
+		public function CSOSPCAView()
+		{
+			$actno=$this->session->userdata("actno");
+			
+			$data['groups'] = $this->p_forms_model->getSPCAdetails($actno);
+			$data['groups2'] = $this->p_forms_model->getSPCAactivitydetails($actno);
+			$data['groups3'] = $this->p_forms_model->getSPCApersonsdetails($actno);
+			$data['aformexists'] = $this->PreActivityView_model->aformExists($actno);
+			$data['lopexists'] = $this->PreActivityView_model->lopExists($actno);
+			$data['contestexists'] = $this->PreActivityView_model->contestExists($actno);
+			$data['foodexists'] = $this->PreActivityView_model->foodExists($actno);
+			$data['trademarkexists'] = $this->PreActivityView_model->trademarkExists($actno);
+			$data['minorpubexists'] = $this->PreActivityView_model->minorpubExists($actno);
+			$data['sasexists'] = $this->PreActivityView_model->sasExists($actno);
+			$data['spcaexists'] = $this->PreActivityView_model->spcaExists($actno);
+			$this->load->view('CSO_ViewPreActs_SPCA',$data);
+		}
+		
 		public function loadSPCA1()
 		{
 			$this->load->view('ORG_PreAct_SpecialPermitCampusAccess');
@@ -217,7 +326,6 @@
 		
 		public function spca1()
 		{
-			$this->form_validation->set_rules('actTitle', 'actTitle', 'required');
 			$this->form_validation->set_rules('numPersons', 'numPersons', 'required');
 			$this->form_validation->set_rules('outsidersOption', 'outsidersOption', 'required');
 			$this->form_validation->set_rules('Faculty', 'Faculty', 'required');
@@ -229,12 +337,12 @@
 			$this->form_validation->set_rules('TelNo', 'TelNo', 'required');
 			$this->form_validation->set_rules('Email', 'Email', 'required');
 			
-			if ($this->form_validation->run() == FALSE){
+			if ($this->form_validation->run() == FALSE)
+			{
 				$this->load->view('ORG_PreAct_SpecialPermitCampusAccess');
 			}
-			else  {
-				
-				$actTitle = $this->input->post('actTitle');
+			else  
+			{	
 				$numPersons	= $this->input->post('numPersons');
 				$outsidersOption	= $this->input->post('outsidersOption');
 				$Faculty	= $this->input->post('Faculty');
@@ -248,7 +356,7 @@
 				
 				$actno = $this->session->userdata("actno");
 
-				if ($this->p_forms_model->spca1($actno, $actTitle, $numPersons, $Faculty, $Name, $IDNum, $officeLoc, $CPNo, $TelNo, $Email)) redirect('p_forms_controller/spca2');
+				if ($this->p_forms_model->spca1($actno, $numPersons, $Faculty, $Name, $IDNum, $officeLoc, $CPNo, $TelNo, $Email)) redirect('p_forms_controller/spca2');
 				else echo "Error";
 			}
 		}

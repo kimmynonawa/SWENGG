@@ -29,173 +29,81 @@
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
-    <!-- Custom Theme Style -->
+   <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h2>ORG NAME</h2>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-             <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a href="ORG_Home.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
-                  <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu"> 
-                      <li><a href="ORG_AddGOSM.html">Add New GOSM</li>
-                      <li><a href="ORG_PreAct.html">Pre-Activity Form</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="ORG_Calendar.html"><i class="fa fa-table"></i> Calendar <span class="fa fa-chevron-down"></span></a>
-                  <li><a href="ORG_GOSM.html"><i class="fa fa-list-alt"></i> GOSM <span class="fa fa-chevron-down"></span></a>
-                  </li>
+        <div class="col-md-3 left_col ">
+          <div class="clearfix"></div>
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section nav side-menu"> 
+            <br>      
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Create New GOSM</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Pre-Activity Requirements</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Additional Requirements</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Special Approval Slip</a></li>
+            <li><a href="#"><i class="fa fa-folder-open"></i> View Pre-Acts</a></li>
+            <li><a href="#"><i class="fa fa-list-alt"></i> View GOSM</a></li>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="userIcon">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['name']);?>La Salle Computer Society
+                  <span class="fa fa-caret-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
                 </ul>
-              </div>
-            </div>
-            <!-- /sidebar menu -->
-          </div>
+              </li>
+              <li role="presentation" class="dropdown">
+                <a id="but" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                  <i class="fa fa-envelope fa-fw"></i>
+                  <i class="fa fa-caret-down"></i>
+                  <div id="num"> </div>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="http://localhost/index.php/account/logout">insert notifs here</a></li>
+                </ul>
+                <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+              </li>
+            </ul>
+          </nav>
         </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
-
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   La Sallian Computer Society
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
-                    <li>
-                      <a href="javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
-                      </a>
-                    </li>
-                    <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-                  </ul>
-                </li>
-
-                <li role="presentation" class="dropdown">
-                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
-                  </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
-                        <a>
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-        <!-- /top navigation -->
-  <!-- page content -->
-        
-          
+      </div>
+      
+    <!-- page content -->
         <div class="right_col" role="main">
-          <div class="">
-            <div class= "x_panel">
-              <div class= "row">
-                <div class="title col-md-5">
-                  <h3>Special Permit For Campus Access</h3>
+          <div class= "infoPanel">
+            <div class="infoHead" data-toggle="collapse" href="#info">
+              <h3>Special Permit for Campus Access
+                <div class="icon">
+                  <span class="glyphicon glyphicon-menu-down"></span> 
                 </div>
-                <div align="right">
-                  <ul class="nav navbar-right panel_toolbox"> 
-                    <li>
-                      <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li> 
-                  </ul>
-                </div>
-              </div>
-              <div class= "x_content bg-success">
-                <h4><p class="text-success"><b> Important Reminders: </b></p> <p class="text-success"> 1. This form is used ONLY for requesting permission for ACCESS OF PERSONS into the campus.</p> <p class="text-success"> 2. This form will be accepted only within office hours (Mon to Fri: 8:00am to 12:00pm and 1:30pm to 5:00pm). </p> <p class="text-success"> 3. This form must be submitted at the Security Office (J108) no later than two (2) working days before the requested date of campus access (Saturday is not counted as a working day for this purpose). </p><p class="text-success"> 4. This form is considered an application only unless a final decision is made and indicated on this form. </p> <p class="text-success">5. Clinics in campus are open only from 06:00am to 10:00pm, Mondays to Saturdays. </p></h4>
-              </div>
+              </h3>
             </div>
+            <div class="infoBody" id="info">
+                <h4> <b> Important Reminders: </b>
+                <ol>
+                  <li> This form is used ONLY for requesting permission for ACCESS OF PERSONS into the campus.</li>
+                  <li> This form will be accepted only within office hours (Mon to Fri: 8:00am to 12:00pm and 1:30pm to 5:00pm). </li>
+                  <li> This form must be submitted at the Security Office (J108) no later than two (2) working days before the requested date of campus access (Saturday is not counted as a working day for this purpose).</li>
+                  <li> This form is considered an application only unless a final decision is made and indicated on this form.</li>
+                  <li>Clinics in campus are open only from 06:00am to 10:00pm, Mondays to Saturdays. </li>
+                </ol>
+                </h4>
+            </div>
+          </div>
                 
-            <div class="clearfix"></div>
+          <div class="clearfix"></div>
 
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
@@ -213,18 +121,9 @@
 					  
                       <div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-4"> <h4>Title Of Activity</h4> </label>
-                          <div class= "form-group col-md-6">
-                              <input type="text" name= "actTitle" class="form-control" placeholder="ex: General Assembly" required/>
-                          </div>        
-                        </div>
-                      </div>
-
-                      <div class= "row">
-                        <div class="col-md-8">   
                           <label class= "col-md-4"> <h4>Total Number of Persons</h4> </label>
                           <div class= "form-group col-md-6">
-                            <input type="number" min="1" id="numPerons" name= "numPersons" class="form-control" required/> 
+                            <input type="number" min="1" id="numPerons" name= "numPersons" class="form-control" /> 
                             
                           </div>        
                         </div>
@@ -244,7 +143,7 @@
                         <div class="col-md-8">   
                           <label class= "col-md-4"> <h4>Faculty In-Charge:</h4> </label>
                           <div class= "form-group col-md-6">
-                            <input type="text" name= "Faculty" class="form-control" placeholder="ex: Mr. Juan Dela Cruz" required/>
+                            <input type="text" name= "Faculty" class="form-control" placeholder="ex: Mr. Juan Dela Cruz" />
                           </div>        
                         </div>
                       </div>
@@ -256,7 +155,7 @@
                         <div class="col-md-8">   
                           <label class= "col-md-4"> <h4>Name:</h4> </label>
                             <div class= "form-group col-md-6">
-                              <input type="text" name= "Name" class="form-control" placeholder="ex: Juan Dela Cruz" required/>
+                              <input type="text" name= "Name" class="form-control" placeholder="ex: Juan Dela Cruz" />
                             </div>        
                         </div>
                       </div> 
@@ -265,7 +164,7 @@
                         <div class="col-md-8">   
                           <label class= "col-md-4"> <h4>ID Number</h4> </label>
                             <div class= "form-group col-md-6">
-                              <input type="text" name= "IDNum" class="form-control" placeholder="ex: 11344444" required/>
+                              <input type="text" name= "IDNum" class="form-control" placeholder="ex: 11344444" />
                             </div>        
                         </div>
                       </div>  
@@ -274,7 +173,7 @@
                         <div class="col-md-8">   
                           <label class= "col-md-4"> <h4>Office Location:</h4> </label>
                             <div class= "form-group col-md-6">
-                              <input type="text" name= "officeLoc" class="form-control" placeholder="ex: Ayala Avenue Makati City" required/>
+                              <input type="text" name= "officeLoc" class="form-control" placeholder="ex: Ayala Avenue Makati City" />
                             </div>        
                         </div>
                       </div>
@@ -283,7 +182,7 @@
                         <div class="col-md-8">   
                           <label class= "col-md-4"> <h4>Cellphone Number</h4> </label>
                             <div class= "form-group col-md-6">
-                              <input type="text" name= "CPNo" class="form-control" placeholder="ex: 09179999999" required/>
+                              <input type="text" name= "CPNo" class="form-control" placeholder="ex: 09179999999" />
                             </div>        
                         </div>
                       </div>  
@@ -292,7 +191,7 @@
                         <div class="col-md-8">   
                           <label class= "col-md-4"> <h4>Telephone Number</h4> </label>
                             <div class= "form-group col-md-6">
-                              <input type="text" name= "TelNo" class="form-control" placeholder="ex: 6341111" required/>
+                              <input type="text" name= "TelNo" class="form-control" placeholder="ex: 6341111" />
                             </div>        
                         </div>
                       </div> 
@@ -301,7 +200,7 @@
                         <div class="col-md-8">   
                           <label class= "col-md-4"> <h4>Email Address</h4> </label>
                             <div class= "form-group col-md-6">
-                              <input type="text" name= "Email" class="form-control" placeholder="ex: juan_delacruz@dlsu.edu.ph" required/>
+                              <input type="text" name= "Email" class="form-control" placeholder="ex: juan_delacruz@dlsu.edu.ph" />
                             </div>        
                         </div>
                       </div> 
@@ -333,7 +232,6 @@
 	var spca1= $('#specialPermit1');
 	spca1.validate({
 		rules: {
-			actTitle: {required: true},
 			sdate[]:    {required: true},
 			stime[]:    {required: true},
 			edate[]:    {required: true},
@@ -348,7 +246,6 @@
 		success: removeError,
 
 		messages:{
-		 actTitle: 	  {required: 'Enter activity title'},
 			sdate[]:    {required: 'Enter date'},
 			stime[]:    {required: 'Enter time'},
 			edate[]:    {required: 'Enter date'},

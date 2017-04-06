@@ -5,16 +5,21 @@
 			$this->load->helper("url");
 			$this->load->library('form_validation');
 			$this->load->model("Account_model");
+			$this->load->model("Org_model");
+			$this->load->model("p_forms_model");
 			$this->load->model("Gosm_model");
-			$this->load->model("Preacts_model");
 			$this->load->library('session');
 		}
 		
+		// This serves as a function to log the user out
 		public function logout(){
 			$this->session->sess_destroy();
 			$this->load->view('login');
 		}
 		
+		// This serves as a function to log the user in
+		// @return this function will load the page again if the form validation returns FALSE
+		// @return this function will redirect the user to the proper home page if validation returns TRUE
 		public function login() {
 			
 			$this->form_validation->set_rules(
@@ -62,14 +67,25 @@
 			
 		}
 		
+		// This serves as a function to load a CSO user's homepage
 		public function cso(){
-			$preacts = $this->Preacts_model->get();
-			$data = (array("preacts" => $preacts));
+			$preacts = $this->Org_model->getCSOChart();
+			
+			$groups = $this->p_forms_model->getWeekActsWithPreActs();
+			$groups2 = $this->p_forms_model->getWeekActsNoPreActs();
+			$groups3 = $this->p_forms_model->getRecentActs();
+			
+			$data = (array("preacts" => $preacts, 'groups' => $groups, 'groups2'=>$groups2, 'groups3' => $groups3));
 			$this->load->view('CSO_Home', $data);
 		}
 		
+		// This serves as a function to load an Organization's homepage
 		public function org(){
-			$this->load->view('ORG_Home');
+			$org=$this->session->userdata('org')[0]['userID'];
+			$data['chart'] = $this->Org_model->getORGChart($org);
+			$data['groups'] = $this->p_forms_model->getWeekActsOrgWithPreActs($org);
+			$data['groups2'] = $this->p_forms_model->getWeekActsOrgNoPreActs($org);
+			$this->load->view('ORG_Home',$data);
 		}
 		
 		

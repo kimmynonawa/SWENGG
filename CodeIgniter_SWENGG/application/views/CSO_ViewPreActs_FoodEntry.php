@@ -8,8 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title><?php echo ($this->session->userdata('org')[0]['acronym']);?></title>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
+	
+	<script src= "<?php echo base_url();?>js/jquery.js"> </script>
+	<script src= "<?php echo base_url();?>js/jquery.min.js"></script>
+	<script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
+	
     <!-- Bootstrap -->
     <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -28,85 +33,58 @@
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
+	
+	
+	
   </head>
 
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <!--<div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Yo!</span></a>
-            </div> -->
-
-           
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="<?php echo base_url();?>images/cso2.png" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h2> <?php echo ($this->session->userdata('org')[0]['acronym']);?></h2>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <ul class="nav side-menu">
-                  <li><a href="http://localhost/index.php/account/cso"><i class="fa fa-home"></i> Home <span ></span></a></li>
-                  <li><a href="http://localhost/index.php/org/add"><i class="fa fa-table"></i> Add New Organization <span ></span></a></li>
-                  <li><a href="#"><i class="fa fa-calendar"></i> Calendar <span ></span></a></li>
-                  <li><a href="http://localhost/index.php/gosm/viewCSOGosm1"><i class="fa fa-list-alt"></i> GOSM <span ></span></a></li>
-                  <li><a href="#"><i class="fa fa-list-alt"></i> PreActs <span ></span></a></li>    
+        <div class="col-md-3 left_col ">
+          <div class="clearfix"></div>
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section nav side-menu"> 
+            <br>      
+            <li><a href="http://localhost/index.php/org/add"><i class="fa fa-edit side-menu"></i>Add New Organization</a></li>
+            <li><a href="http://localhost/index.php/org/edit"><i class="fa fa-edit side-menu"></i>Edit Organization Details</a></li>
+            <li><a href="http://localhost/index.php/gosm/accept"><i class="fa fa-edit side-menu"></i>Accept GOSM</a></li>
+            <li><a href="http://localhost/index.php/gosm/viewCSOGosm1"><i class="fa fa-edit side-menu"></i>View GOSM</a></li>
+            <li><a href="http://localhost/index.php/ViewPreacts/ViewPreacts"><i class="fa fa-edit side-menu"></i>View Pre-Acts</a></li>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="userIcon">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['name']);?>
+                  <span class="fa fa-caret-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
                 </ul>
-              </div>
-            </div>
-            <!-- /sidebar menu -->
-          </div>
-        </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
-        
-          <div class="nav_menu">
-            <nav>
-
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   <?php echo ($this->session->userdata('org')[0]['name']);?>
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="http://localhost/index.php/account/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+              </li>
+			  
+             <li role="presentation" class="dropdown">
+                <a id="but" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                  <i class="fa fa-envelope fa-fw"></i>
+                  <i class="fa fa-caret-down"></i>
+                  <div id="num"> </div>
+                </a>
+                  <ul name="notif" id="menu1" class="dropdown-menu dropdown-usermenu pull-right" role="menu" style="width: 300px; height: 200px; overflow: auto">
+					<!--NOTIFICATION HERE-->
+					<li><a href="http://localhost/index.php/account/logout">insert notifs here</a></li>
                   </ul>
-                </li>
-                <!--NOTIF-->
-                <li role="presentation" class="dropdown">
-                  <a id="but" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <div id="num">
-                        
-                    </div>
-                  </a>
-                  <ul name="notif" id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu" style="width: 300px; height: 200px; overflow: auto">
-                    <!--NOTIFICATION HERE-->
-                    
-                  </ul>
-                  <!--NOTIF-->
-                </li>
-              </ul>
-            </nav>
-          </div>
+                <li><a href="http://localhost/index.php/account/cso"><i class="fa fa-home"></i> Home</a></li>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <!-- /top navigation -->
+      </div>
 
      <!-- page content -->
         <div class="right_col" role="main">
@@ -130,50 +108,149 @@
                                     <th><div align="center">Filled Out Requirements</div></th>
                                 </thead>
                                 <tbody>
-                                    <tr> <td align="center"> Aform</td><tr>
-                                    <tr> <td align="center"> PPR</td><tr>
-                                    <tr> <td align="center"> Minor Pub</td><tr>
+                                   <?php
+								    if($aformexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/viewaform"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'A-Form';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($lopexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/viewLOP"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'List of Participants';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									
+                                    <?php
+								    if($contestexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/view_contest_mechanics"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Contest Mechanics';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+                                    <?php
+								    if($foodexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/view_food_permit"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Food Permit';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($trademarkexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/view_trademark_use"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Trademark Use';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($minorpubexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/CSOminorPubView"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Minor Publication Proposal';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($sasexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/CSOsasview"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Special Approval Slip';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($spcaexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/CSOspcaview"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Special Permit Campus Access';
+										echo '</td><tr>';
+                                    
+									}
+									?>
                                 </tbody>
                             </table>
                         </div>
                         <div class="col-md-8">
                             <span class="section">Request Details</span>
-                             <div class="item form-group">
+                             <!-- <div class="item form-group">
                                 <label class="control-label col-md-3">Date Created:</label>
-                                <p> date</p>
-                            </div>  
-                            <div class="item form-group">
-                                <label class="control-label col-md-3">Name:</label>
-                                <p>name</p>
-                            </div>
-                            <div class="item form-group">
-                                <label class="control-label col-md-3">ID Number:</label>
-                                <p> id no</p>
-                            </div>
-                              <div class="item form-group">
-                                <label class="control-label col-md-3">Mobile Number:</label>
-                                <p> no</p>
-                            </div>
-                              <div class="item form-group">
-                                <label class="control-label col-md-3">Local Number:</label>
-                                <p> no</p>
-                            </div>
-                              <div class="item form-group">
-                                <label class="control-label col-md-3">Position:</label>
-                                <p> position</p>
-                            </div>
-                            <div class="item form-group">
+                                <p>hi</p>
+                            </div>  --> 
+
+                             <div class="item form-group">
                                 <label class="control-label col-md-3">Activity Title:</label>
-                                <p> ORG General Assembly </p>
+                                <p> <?php echo $activityDetails[0]['title'] ?> </p>
                             </div>  
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Date:</label>
-                                <p> March 20, 2016 </p>
+                                <p> 
+                                    <?php 
+                                        $startDate = new DateTime($activityDetails[0]['startdate']); 
+                                        $startDate = date_format($startDate, 'F j, Y');
+
+                                        $endDate = new DateTime($activityDetails[0]['enddate']); 
+                                        $endDate = date_format($endDate, 'F j, Y');
+
+                                        echo $startDate." - ".$endDate;
+                                    ?> 
+                                </p>
                             </div> 
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Time:</label>
-                                <p> time</p>
+                                <p> <?php echo $activityDetails[0]['starttime']." - ".$activityDetails[0]['endtime'] ; ?> </p>
+                               
                             </div> 
+
+                            <div class="item form-group">
+                                <label class="control-label col-md-3">Name:</label>
+                                <p><?php echo $requestInfo[0]; ?></p>
+                            </div>
+                            <div class="item form-group">
+                                <label class="control-label col-md-3">ID Number:</label>
+                                <p><?php echo $requestInfo[1]; ?></p>
+                            </div>
+                              <div class="item form-group">
+                                <label class="control-label col-md-3">Mobile Number:</label>
+                                <p><?php echo $requestInfo[4]; ?></p>
+                            </div>
+                              <div class="item form-group">
+                                <label class="control-label col-md-3">Local Number:</label>
+                                <p><?php echo $requestInfo[5]; ?></p>
+                            </div>
+                              <div class="item form-group">
+                                <label class="control-label col-md-3">Position:</label>
+                                <p><?php echo $requestInfo[2]; ?></p>
+                            </div>
+                           
                             <span class="section"> Food Items Allowed Entry </span>
                             <table class="table table-hover">
                             <thead>
@@ -183,12 +260,17 @@
                                 <th><div align="center">Estimated Cost</div></th>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td width="20%" align="center">yo</td>
-                                    <td width="20%" align="center">sup</td>
-                                    <td width="20%" align="center">fuck</td>
-                                    <td width="20%" align="center">fuck</td>
-                                </tr>
+                                <?php
+                                    foreach($permitDetails as $details) { ?>
+                                        <tr>
+                                            <td width="20%" align="center"><?php echo $details['quantity'] ?></td>
+                                            <td width="20%" align="center"><?php echo $details['unit'] ?></td>
+                                            <td width="20%" align="center"><?php echo $details['description'] ?></td>
+                                            <td width="20%" align="center"><?php echo $details['cost'] ?></td>
+                                        </tr>
+                                <?php 
+                                    } //END FOREACH LOOP
+                                ?>
                             </tbody>
                             </table>
                         </div>

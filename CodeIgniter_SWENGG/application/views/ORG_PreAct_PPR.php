@@ -35,78 +35,69 @@
 
   </head>
 
-  <body class="nav-md">
+ 
+      <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <!--<div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Yo!</span></a>
-            </div> -->
-
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="<?php echo base_url();?>images/user.png" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h2> LSCS</h2>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <ul class="nav side-menu">
-				  <li><a href="http://localhost/index.php/account/org"><i class="fa fa-home"></i> Home <span ></span></a></li>
-                  <li><a href="http://localhost/index.php/gosm/add"><i class="fa fa-table"></i> Add New GOSM <span ></span></a></li>
-                  <li><a href="http://localhost/index.php/PreActivity/preacts"><i class="fa fa-edit"></i> Add Pre-Activity <span ></span></a></li>				  
-				  <li><a href="#"><i class="fa fa-calendar"></i> Calendar <span ></span></a></li>
-				  <li><a href="http://localhost/index.php/gosm/viewORGGosm1"><i class="fa fa-list-alt"></i> GOSM <span ></span></a></li>
-				</ul>
-              </div>
-            </div>
-            <!-- /sidebar menu -->
+        <div class="col-md-3 left_col ">
+          <div class="clearfix"></div>
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section nav side-menu"> 
+            <br>      
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Create New GOSM</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Pre-Activity Requirements</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Additional Requirements</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Special Approval Slip</a></li>
+            <li><a href="#"><i class="fa fa-folder-open"></i> View Pre-Acts</a></li>
+            <li><a href="#"><i class="fa fa-list-alt"></i> View GOSM</a></li>
           </div>
         </div>
-
-        <div class="top_nav">
-		
-          <div class="nav_menu">
-            <nav>
-
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   La Salle Computer Society
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
-                  </ul>
-                </li>
-                </li>
-              </ul>
-            </nav>
-          </div>
+      </div>
+    </div>
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="userIcon">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['name']);?>La Salle Computer Society
+                  <span class="fa fa-caret-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                </ul>
+              </li>
+              <li role="presentation" class="dropdown">
+                <a id="but" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                  <i class="fa fa-envelope fa-fw"></i>
+                  <i class="fa fa-caret-down"></i>
+                  <div id="num"> </div>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="http://localhost/index.php/account/logout">insert notifs here</a></li>
+                </ul>
+                <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <!-- /top navigation -->
-
-		<!-- Main content -->
+      </div>
+      
+    <!-- page content -->
         <div class="right_col" role="main">
-          
-          <div class="page-title">
-              <div class="title_left">
-                  <h3>Project Proposal</h3>
-              </div>
+          <div class= "infoPanel">
+            <div class="infoHead" data-toggle="collapse" href="#info">
+              <h3> Project Proposal
+                <div class="icon">
+                  <span class="glyphicon glyphicon-menu-down"></span> 
+                </div>
+              </h3>
+            </div>
+            <div class="infoBody" id="info">
+                <h4>The Project Proposal contains the more comprehensive and detailed description of event that the organization is planning to have. </h4>
+            </div>
           </div>
-          
+                
           <div class="clearfix"></div>
 
             <div class="row">
@@ -120,11 +111,10 @@
                             </div>
 
                             <div class= "row">
-                               <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                                 <button id="addc" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
-                                 <button id="remc" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group"></div>
+                               <div class="col-md-3 col-sm-3 col-xs-12 form-group"></div>
+                                <button id="addc" type ="button" class ="btn btn-default" style="width:80px">Add</button>
                                </div>
-                            </div>
 
                             <div class="row">
                              <p><label> <h3> Objectives</h3> </label></p>
@@ -140,21 +130,21 @@
                             <div class= "row">
                              <p><label> <h3> Brief Description of Activity </h3> </label></p>
                               <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                <p class="text-success">/*Guidelines per paragraph are shown here.*/</p>
-                                 <textarea name="desc1" class="form-control"></textarea> 
-
-                                <p class="text-success">/*Guidelines per paragraph are shown here.*/</p>
-                                 <textarea  name="desc2" class="form-control"></textarea>
-
-                                <p class="text-success">/*Guidelines per paragraph are shown here.*/</p>
-                                 <textarea  name="desc3" class="form-control"></textarea>
+                               <ul><li>What situation do you see (observation/s) in your organization, university, society, or our world? </li><li>What certain experiences, problems, or questions do you have in relation to what you see? (May be supported with data or research if there is any or if needed)</li></ul>
+                                 <textarea rows="3" name="desc1" class="form-control"></textarea> 
+                                <br>
+                               <ul><li>Why is there a problem? </li><li>What could be the cause and effect?</li><li>How did you feel about the experience, situation, or problem? And why did you feel that way?</li><li>What can we discover or realize?</li></ul>
+                                 <textarea  rows="3" name="desc2" class="form-control"></textarea>
+                                <br>
+                                <ul><li> Out of all the possible projects, activities, and solutions, Why this?</li><li>As an organization, what will you commit as a response to what you have stated in Part 2?</li></ul>
+                                 <textarea rows="3" name="desc3" class="form-control"></textarea>
                               </div>
                             </div>  
 
                             <div class="ln_solid"></div> 
                             <div class="form-group">
-                              <div class="col-md-12 col-md-offset-11">
-                                <input id="nextbppr" type="submit" class="btn btn-success align: right" value="Next">
+                              <div align="right">
+                                <input id="nextbppr" type="submit" style="width:80px" class="btn btn-success align: right" value="Next">
                               </div>
                             </div>
                           </form>  
@@ -167,7 +157,7 @@
         <!-- /page content -->
 
     <!-- VALIDATION -->
-    <script type="text/javascript">
+  <script type="text/javascript">
     $(function() {
       jQuery.validator.addMethod("lettersonly", function(value, element) {
       return this.optional(element) || /^[a-z\s]+$/i.test(value);
@@ -178,7 +168,7 @@
           .closest('.form-group')
           .removeClass('has-error');
       }
-
+ 
       var numberIncr = 0;
 
       // append basic table data
@@ -187,7 +177,7 @@
 
       $("#addc").on('click', function () {
            numberIncr++;
-           var temp = $("#ph").append($('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input class="phname form-control has-feedback-left" name="phname[' + numberIncr + ']" placeholder="Name" /><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input class="phnum form-control has-feedback-right" name="phnum[' + numberIncr + ']" placeholder="Contact Number" /><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div></div></div>'));  
+           var temp = $("#ph").append($('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input class="phname form-control has-feedback-left" name="phname[' + numberIncr + ']" placeholder="Name" /><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input class="phnum form-control has-feedback-right" name="phnum[' + numberIncr + ']" placeholder="Contact Number" /><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div><button id="remc" type ="button" class ="btn btn-danger">Remove</button></div></div>'));  
            
           $(".phname").each(function(){
             $(this).rules( "add", {
@@ -214,6 +204,13 @@
           });
 
         });
+
+
+     $(document).on('click',"#remc", function () {
+            var v= document.getElementById("new");
+            v.remove();
+      }); 
+
 
       $("#pprform1").validate({
       rules:{
@@ -269,18 +266,6 @@
 
       });
 
-
-        $("#remc").click(function(){
-            var v= document.getElementById("new");
-            v.remove();
-        });  
-
-      $('#nextbppr').click(function(){
-          if (pprform1.valid()){
-             window.location.href = "ORG_PreAct_PPR2.html";
-           }
-           return false;
-         });
   
     });
     </script>

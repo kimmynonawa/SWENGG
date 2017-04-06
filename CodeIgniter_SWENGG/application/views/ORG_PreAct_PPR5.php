@@ -31,178 +31,76 @@
     <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
 
   </head>
-
-  <body class="nav-md">
+      <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h2>ORG NAME</h2>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-             <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a href="ORG_Home.html"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
-                  <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu"> 
-                      <li><a href="ORG_AddGOSM.html">Add New GOSM</li>
-                      <li><a href="ORG_PreAct.html">Pre-Activity Form</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="ORG_Calendar.html"><i class="fa fa-table"></i> Calendar <span class="fa fa-chevron-down"></span></a>
-                  <li><a href="ORG_GOSM.html"><i class="fa fa-list-alt"></i> GOSM <span class="fa fa-chevron-down"></span></a>
-                  </li>
+        <div class="col-md-3 left_col ">
+          <div class="clearfix"></div>
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section nav side-menu"> 
+            <br>      
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Create New GOSM</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Pre-Activity Requirements</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Additional Requirements</a></li>
+            <li><a href="#"><i class="fa fa-edit side-menu"></i>Special Approval Slip</a></li>
+            <li><a href="#"><i class="fa fa-folder-open"></i> View Pre-Acts</a></li>
+            <li><a href="#"><i class="fa fa-list-alt"></i> View GOSM</a></li>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="userIcon">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['name']);?>La Salle Computer Society
+                  <span class="fa fa-caret-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
                 </ul>
-              </div>
-            </div>
-            <!-- /sidebar menu -->
-          </div>
+              </li>
+              <li role="presentation" class="dropdown">
+                <a id="but" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                  <i class="fa fa-envelope fa-fw"></i>
+                  <i class="fa fa-caret-down"></i>
+                  <div id="num"> </div>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="http://localhost/index.php/account/logout">insert notifs here</a></li>
+                </ul>
+                <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+              </li>
+            </ul>
+          </nav>
         </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
-
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   La Sallian Computer Society
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
-                    <li>
-                      <a href="javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
-                      </a>
-                    </li>
-                    <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-                  </ul>
-                </li>
-
-                <li role="presentation" class="dropdown">
-                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
-                  </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
-                        <a>
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-        <!-- /top navigation -->
-
-
-          
+      </div>
+      
+    <!-- page content -->
         <div class="right_col" role="main">
-          <div class="">
-            <div class= "x_panel">
-              <div class= "row">
-                <div class="title col-md-5">
-                  <h3>Project Proposal</h3>
+          <div class= "infoPanel">
+            <div class="infoHead" data-toggle="collapse" href="#info">
+              <h3> Project Proposal
+                <div class="icon">
+                  <span class="glyphicon glyphicon-menu-down"></span> 
                 </div>
-                <div align="right">
-                  <ul class="nav navbar-right panel_toolbox"> 
-                    <li>
-                      <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li> 
-                  </ul>
-                </div>
-              </div>
-              <div class= "x_content bg-success">
-                <h4><p class="text-success"> Lorem ipsum dolor sit amet, vel pretium architecto, semper semper eu elit sed, lacus cras quis, pede velit. Pretium convallis suscipit, vestibulum rutrum, eu integer montes erat ut tincidunt, facilisis dolor. Et fermentum nulla, litora leo in, nunc aliquam aperiam, rutrum elementum, dictum malesuada morbi amet nisl. sociis odio laoreet dolor mauris. </p></h4>
-              </div>
+              </h3>
             </div>
+            <div class="infoBody" id="info">
+                <h4>The Project Proposal contains the more comprehensive and detailed description of event that the organization is planning to have. </h4>
+            </div>
+          </div>
                 
-            <div class="clearfix"></div>
-
+          <div class="clearfix"></div>
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
 
-                    <form class="form-inline form-label-left" id="pprform5" method="post">
-                        <div class="table-responsive">
+                    <form class=" form-label-left" id="pprform5" method="post">
+                        <div class="table-responsive form-group">
                           <span class="section">Projected Income</span>
                           <table class="table table-striped">
                             <thead>
@@ -211,30 +109,31 @@
                                 <th>Quantity</th>
                                 <th>Selling Price</th>
                                 <th>Amount</th>
+                                <th></th>
                               </tr>
                             </thead>
                             <tbody id="income">
                               <tr id="incomeRow">
-                                <td align= "center"><input type="text" name= "incomeItem[]" class="form-control" id="incomeItem" placeholder="Item name"/></td>
-                                <td align= "center"><input type="number" name="incomeQty[]" class="form-control" id="incomeQty" placeholder="Quantity"/></td>
-                                <td align= "center"><input type="text" name= "incomeSellPrice[]" class="form-control" id="incomeSellPrice" placeholder="Selling Price"/></td>
-                                <td align="center" style= "background-color:#D3D3D3"><h4> P750.00</h4></td>
+                                <td><input type="text" name= "incomeItem[0]" class="form-control" id="incomeItem" placeholder="Item name"/></td>
+                                <td><input type="number" name="incomeQty[0]" class="form-control" id="incomeQty" placeholder="Quantity"/></td>
+                                <td><input type="text" name= "incomeSellPrice[0]" class="form-control" id="incomeSellPrice" placeholder="Selling Price"/></td>
+                                <td align="center"><h4>P750.00</b></td>
                               </tr>
                             </tbody>
+                               <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                 <td><button id="addNewIncomeRow" type ="button" class ="btn btn-default" style="width:80px"> Add</button></td>  
+                              </tr>
                           </table>
                         </div>
-                          <div class= "row">
-                            <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                               <button id="addNewIncomeRow" type ="button" class ="btn btn-default"> <span class="glyphicon glyphicon-plus-sign"></span></button>
-                                <button id="removeIncomeRow" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                            </div>
-                          </div>
-                          <br>
-                          <br>
                           <br>
                           
-                          <div class="table-responsive">
-                            <span class="section">Projected Expense</span>
+                          
+                          <div class="table-responsive form-group">
+                            <span class="section">Less: Projected Expense</span>
                             <table class="table table-striped">
                               <thead>
                                 <tr>
@@ -242,34 +141,36 @@
                                   <th>Quantity</th>
                                   <th>Selling Price</th>
                                   <th>Amount</th>
+                                  <th></th>
                                 </tr>
                               </thead>
                               <tbody id="expense">
                                 <tr id="expenseRow">
-                                  <td align= "center"><input type="text" name= "expenseItem[]" class="form-control" id="expenseItem" placeholder="Item name"/></td>
-                                  <td align= "center"><input type="number" name="expenseQty[]" class="form-control" id="expenseQty" placeholder="Quantity"/></td>
-                                  <td align= "center"><input type="text" name= "expenseSellPrice[]" class="form-control" id="expenseSellPrice" placeholder="Selling Price"/></td>
-                                  <td align="center" style= "background-color:#D3D3D3"><h4> P750.00</h4></td>
+                                  <td><input type="text" name= "expenseItem[0]" class="form-control" id="expenseItem" placeholder="Item name"/></td>
+                                  <td><input type="number" name="expenseQty[0]" class="form-control" id="expenseQty" placeholder="Quantity"/></td>
+                                  <td><input type="text" name= "expenseSellPrice[0]" class="form-control" id="expenseSellPrice" placeholder="Selling Price"/></td>
+                                  <td align="center"><h4>P750.00</h4></td>
+                                  <td></td>
                                 </tr>
                               </tbody>
+                              <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                 <td><button id="addNewExpenseRow" type ="button" class ="btn btn-default" style="width:80px">Add</button></td>  
+                              </tr>
                              </table>
                           </div>
-                          <div class= "row">
-                            <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                               <button id="addNewExpenseRow" type ="button" class ="btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span></button>
-                                <button id="removeExpenseRow" type ="button" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
-                            </div>
-                          </div>
-                          <br>
-                          <br>
-                          <br>
+
+                          
                           <div class="col-sm-offset-10">
                             <table>
                               <thead>
-                                <th align= "center"></th>
-                                <th align= "center"></th>
-                                <th align= "right"><h4>Total:</h4></th>   
-                                <th align= "center"></th>                           
+                                <th></th>
+                                <th></th>
+                                <th align= "center"><h4><b>Total:</b></h4></th>   
+                                <th></th>                           
                               </thead>
                             </table>
                           </div>
@@ -278,12 +179,9 @@
 
                        <div class="ln_solid"></div>
                         <div class="form-group col-md-offset-11">
-                            <input id="submitPPR5" type="submit" class="btn btn-success"  value="Next">
-                          <br>
-                          <br>
+                            <input id="submitPPR5" type="submit" class="btn btn-success"  value="Next" style="width:80px"><br><br>
                         </div>
                       </form>
-
                   </div>
                 </div>
               </div>
@@ -293,45 +191,115 @@
         <!-- /page content -->
 
     <!-- SCRIPT FOR VALIDATION AND ROW ADDING -->
-    <script type="text/javascript">
+      <script type="text/javascript">
       $(function(){
-        function removeError(element){
-          element.addClass('valid').closest('.form-group').removeClass('has-error');
-        }
+
+          var  numberIncr=1;
+          function removeError(element){
+          element.addClass('valid')
+              .closest('.form-group')
+              .removeClass('has-error');
+          }
+
         $('#pprform5').validate({
           rules: {
-            'incomeItem[]':"required",
-            'incomeQty[]': "required",
-            'incomeSellPrice[]':"required",
-            'expenseItem[]':"required",
-            'expenseQty[]': "required",
-            'expenseSellPrice[]':"required",
+            'incomeItem[0]':"required",
+            'incomeQty[0]': "required",
+            'incomeSellPrice[0]':"required",
+            'expenseItem[0]':"required",
+            'expenseQty[0]': "required",
+            'expenseSellPrice[0]':"required",
           },
           highlight:function(element){
             $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
           },
           success: removeError,
+              highlight: function(element){ $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); 
+          },
+          success: removeError,
+
           messages: {
-            'incomeItem[]':   { required : 'Enter item name'},
-            'incomeQty[]':   { required : 'Enter quantity'},
-            'incomeSellPrice[]':   { required : 'Enter price'},
-            'expenseItem[]':  { required : 'Enter name'},
-            'expenseQty[]':  { required : 'Enter quantity'},
-            'expenseSellPrice[]':  { required : 'Enter price'},
+            'incomeItem[0]':   { required : 'Enter name'},
+            'incomeQty[0]':   { required : 'Enter quantity'},
+            'incomeSellPrice[0]':   { required : 'Enter price'},
+            'expenseItem[0]':  { required : 'Enter name'},
+            'expenseQty[0]':  { required : 'Enter quantity'},
+            'expenseSellPrice[0]':  { required : 'Enter price'},
           }
         });
+
         $("#addNewIncomeRow").click(function() {
-          $("#income").append('<tr id="newIncomeRow"><td align= "center"><input type="text" name= "incomeItem[]" class="form-control" id="incomeItem" placeholder="Item name"/></td><td align= "center"><input type="number" name="incomeQty[]" class="form-control" id="incomeQty" placeholder="Quantity"/></td><td align= "center"><input type="text" name= "incomeSellPrice[]" class="form-control" id="incomeSellPrice" placeholder="Selling Price"/></td><td align="center" style= "background-color:#D3D3D3"><h4> P750.00</h4></td></tr>');
+           numberIncr++;
+          $("#income").append('<tr id="newIncomeRow"><td><input type="text" name= "incomeItem[' + numberIncr + ']" class="inci form-control" placeholder="Item name"/></td><td><input type="number" name="incomeQty[' + numberIncr + ']" class="incq form-control" placeholder="Quantity"/></td><td><input type="text" name= "incomeSellPrice[' + numberIncr + ']" class="isp form-control"  placeholder="Selling Price"/></td><td align="center"><h4> P750.00</h4></td>&nbsp;&nbsp;<td><button id="removeIncomeRow" type ="button" class="btn btn-danger">Remove</button></td></tr>');
+
+
+            $(".inci").each(function(){
+            $(this).rules( "add", {
+            required:true,
+          messages: {
+            required: 'Enter name'
+          }
         });
-        $("#removeIncomeRow").click(function() {
+          });
+
+           $(".incq").each(function(){
+            $(this).rules( "add", {
+            required:true,
+          messages: {
+            required: 'Enter quantity'
+          }
+        });
+          });
+
+          $(".isp").each(function(){
+            $(this).rules( "add", {
+            required:true,
+          messages: {
+            required: 'Enter price'
+          }
+        });
+          });
+        });
+
+          $(document).on('click',"#removeIncomeRow", function () {
           var v = document.getElementById("newIncomeRow");
           v.remove();
         });  
 
+          var numberIncr1=1;
         $('#addNewExpenseRow').click(function() {
-          $("#expense").append('<tr id="newExpenseRow"><td align= "center"><input type="text" name= "expenseItem[]" class="form-control" id="expenseItem" placeholder="Item name"/></td><td align= "center"><input type="number" name="expenseQty[]" class="form-control" id="expenseQty" placeholder="Quantity"/></td><td align= "center"><input type="text" name= "expenseSellPrice[]" class="form-control" id="expenseSellPrice" placeholder="Selling Price"/></td><td align="center" style= "background-color:#D3D3D3"><h4> P750.00</h4></td></tr>');
+          numberIncr1++;
+          $("#expense").append('<tr id="newExpenseRow"><td><input type="text" name= "expenseItem[' + numberIncr1 + ']" class="ince form-control" placeholder="Item name"/></td><td><input type="number" name="expenseQty[' + numberIncr1 + ']" class="incqe form-control"  placeholder="Quantity"/></td><td><input type="text" name= "expenseSellPrice[' + numberIncr1 + ']" class="ispe form-control" placeholder="Selling Price"/></td><td align="center"><h4> P750.00</h4></td><td><button id="removeExpenseRow" type ="button" class="btn btn-danger">Remove</button></td></tr>');
+
+          $(".ince").each(function(){
+            $(this).rules( "add", {
+            required:true,
+          messages: {
+            required: 'Enter name'
+          }
         });
-        $('#removeExpenseRow').click(function() {
+          });
+
+           $(".incqe").each(function(){
+            $(this).rules( "add", {
+            required:true,
+          messages: {
+            required: 'Enter quantity'
+          }
+        });
+          });
+
+          $(".ispe").each(function(){
+            $(this).rules( "add", {
+            required:true,
+          messages: {
+            required: 'Enter price'
+          }
+        });
+          });
+        });
+
+        $(document).on('click',"#removeExpenseRow", function () {
           var v = document.getElementById("newExpenseRow");
           v.remove();
         })
