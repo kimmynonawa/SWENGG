@@ -28,5 +28,78 @@
 			return $res->result_array();
 		}
 		
+		public function getWeekActsOrgWithPreActs($org)
+		{
+			$sql="SELECT * 
+					FROM gosm 
+					WHERE organizationID=? 
+					AND YEARWEEK(fromdate) = YEARWEEK(NOW()) 
+					AND gosmID IN(SELECT gosmID 
+									FROM aform 
+									WHERE gosmID IS NOT NULL)";
+			$query=$this->db->query($sql, array($org));
+			return $query->result();
+		}
+		
+		public function getWeekActsOrgNoPreActs($org)
+		{
+			$sql="SELECT * 
+					FROM gosm
+					WHERE organizationID=? 
+					AND YEARWEEK(fromdate) = YEARWEEK(NOW()) 
+					AND gosmID NOT IN(SELECT gosmID 
+										FROM aform 
+										WHERE gosmID IS NOT NULL)";
+			$query=$this->db->query($sql, array($org));
+			return $query->result();
+		}
+		
+		public function getWeekActsWithPreActs()
+		{
+			$sql="SELECT *
+					FROM gosm a JOIN ref_users b ON a.organizationID=b.userID
+					WHERE YEARWEEK(fromdate) = YEARWEEK(NOW())
+					AND gosmID IN(SELECT gosmID 
+									FROM aform 
+									WHERE gosmID IS NOT NULL)";
+			$query=$this->db->query($sql);
+			return $query->result();
+		}
+		
+		public function getWeekActsNoPreActs()
+		{
+			$sql="SELECT * 
+					FROM gosm a JOIN ref_users b ON a.organizationID=b.userID
+					WHERE YEARWEEK(fromdate) = YEARWEEK(NOW()) 
+					AND gosmID NOT IN(SELECT gosmID 
+										FROM aform 
+										WHERE gosmID IS NOT NULL)";
+			$query=$this->db->query($sql);
+			return $query->result();
+		}
+		
+		public function getRecentActs()
+		{
+			$sql="SELECT * 
+					FROM aform a JOIN preacts b ON a.preactsID=b.preactsID
+					JOIN ref_users c ON b.organizationID=c.userID
+					ORDER BY a.datecreated DESC
+					LIMIT 20";
+			$query=$this->db->query($sql);
+			return $query->result();
+		}
+		
+		public function getRecentActsOrg($org)
+		{
+			$sql="SELECT * 
+					FROM aform a JOIN preacts b ON a.preactsID=b.preactsID
+					JOIN ref_users c ON b.organizationID=c.userID
+					WHERE organizationID=? 
+					ORDER BY a.datecreated DESC
+					LIMIT 20";
+			$query=$this->db->query($sql, array($org));
+			return $query->result();
+		}
+		
 	}
 ?>

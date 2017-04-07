@@ -61,7 +61,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="userIcon">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['name']);?>
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['acronym']);?>
                   <span class="fa fa-caret-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -114,6 +114,28 @@
 										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
 										echo '<a href="http://localhost/index.php/ViewPreActs/viewaform"><button style="background-color:#e9e4e4;border:none;color:black;">';
 										echo 'A-Form';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($pprexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/view_ppr"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'PPR';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($changeexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/viewCAD"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Activity Details Changes';
 										echo '</td><tr>';
                                     
 									}

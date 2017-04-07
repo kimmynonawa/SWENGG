@@ -42,12 +42,11 @@
           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
           <div class="menu_section nav side-menu"> 
             <br>      
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Create New GOSM</a></li>
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Pre-Activity Requirements</a></li>
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Additional Requirements</a></li>
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Special Approval Slip</a></li>
-            <li><a href="#"><i class="fa fa-folder-open"></i> View Pre-Acts</a></li>
-            <li><a href="#"><i class="fa fa-list-alt"></i> View GOSM</a></li>
+            <li><a href="http://localhost/index.php/gosm/add"><i class="fa fa-edit side-menu"></i>Create New GOSM</a></li>
+            <li><a href="http://localhost/index.php/Preactivity/preacts"><i class="fa fa-edit side-menu"></i>Pre-Activity Requirements</a></li>
+            <li><a href="http://localhost/index.php/Preactivity/other_requirements"><i class="fa fa-edit side-menu"></i>Additional Requirements</a></li>
+            <li><a href="http://localhost/index.php/viewpreacts/viewpreacts"><i class="fa fa-folder-open"></i> View Pre-Acts</a></li>
+            <li><a href="http://localhost/index.php/gosm/viewORGGosm1"><i class="fa fa-list-alt"></i> View GOSM</a></li>
           </div>
         </div>
       </div>
@@ -58,7 +57,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="userIcon">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['name']);?>La Salle Computer Society
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['acronym']);?>
                   <span class="fa fa-caret-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -66,26 +65,20 @@
                 </ul>
               </li>
               <li role="presentation" class="dropdown">
-                <a id="but" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                  <i class="fa fa-envelope fa-fw"></i>
-                  <i class="fa fa-caret-down"></i>
-                  <div id="num"> </div>
-                </a>
-                <ul class="dropdown-menu dropdown-usermenu pull-right">
-                  <li><a href="http://localhost/index.php/account/logout">insert notifs here</a></li>
-                </ul>
-                <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                
+                <li><a href="http://localhost/index.php/account/org"><i class="fa fa-home"></i> Home</a></li>
               </li>
             </ul>
           </nav>
         </div>
       </div>
+	  
       
     <!-- page content -->
         <div class="right_col" role="main">
           <div class= "infoPanel">
             <div class="infoHead" data-toggle="collapse" href="#info">
-              <h3> ACTIVITY APPROVAL FORM
+              <h3> Activity Approval Form
                 <div class="icon">
                   <span class="glyphicon glyphicon-menu-down"></span> 
                 </div>
@@ -95,7 +88,6 @@
               <h4> <p>The Activity Approval Form is filled out in order to determine the different details about the activity that the organization is planning to have. This must be downloaded for approval along with the PPR after filling out the necessary fields.</p></h4>
             </div>
           </div>
-                
             <div class="clearfix"></div>
 
             <div class="row">
@@ -113,24 +105,28 @@
                           </div>        
                         </div>
                     </div> 
-
+			
                     <p> </p>
                     <span class="section">Nature of Activity</span>
                     <div class= "row">
                       <div class="col-md-8">
-					   <label class= "col-md-5"> <h4>Select Activity Office</h4> </label>
+					        <label class= "col-md-5"> <h4>Select Activity Office</h4> </label>
                           <div class= "form-group col-md-6">
                             <select id="activityoffice" class="form-control col-md-7 col-xs-12" name="actoff">
                               <option disabled selected>Select Activity Office</option>
-							  <option value="1">CSO and Special Groups</option>
-							  <option value="2">USG</option>
+              							  <option value="1">CSO and Special Groups</option>
+              							  <option value="2">USG</option>
                             </select>
                           </div>
                         <label class= "col-md-5"> <h4>Nature of Activity</h4> </label>
                           <div class= "form-group col-md-6">
                             <select id="natact" class="form-control col-md-7 col-xs-12" name="natact">
                               <option disabled selected>Select Nature of Activity</option>
-								
+								 <?php
+                					for ($i = 0; $i < count($actnat); $i++){
+                						echo"<option value={$actnat[$i]['activitynatureID']}>{$actnat[$i]['activitynature']}</option>";
+                					}
+                				?> 
                             </select>
                           </div>
                                   
@@ -141,20 +137,23 @@
                       <span class="section">Type of Activity</span>
                       <div class= "row">
                         <div class="col-md-8">   
-                          <label class= "col-md-5"> <h4>Type of Activity</h4> </label>
+                          <label class= "col-md-5"> <h4>Processing Office</h4> </label>
                           <div class= "form-group col-md-6">
                             <select id="processingoffice" class="form-control col-md-7 col-xs-12" name="prooff">
                               <option disabled selected>Processing Office</option>
-								<option value="1">CSO or DAAM</option>
-								<option value="2">SLIFE</option>
-                                          
+              					<option value="1">CSO or DAAM</option>
+              					<option value="2">SLIFE</option>                  
                             </select>
                           </div>
                           <label class= "col-md-5"> <h4>Type of Activity</h4> </label>
                           <div class= "form-group col-md-6">  
                             <select id="typeact"  class="form-control col-md-7 col-xs-12" name="typeact">
                               <option disabled selected>Select Type of Activity</option>
-                                       
+                                 <?php
+                					for ($i = 0; $i < count($acttype); $i++){
+                						echo"<option value={$acttype[$i]['activitytypeID']}>{$acttype[$i]['activitytype']}</option>";
+                					}
+                				?> 
                             </select>
                           </div>                
                         </div>
@@ -191,46 +190,7 @@
           </div>
         </div>
 
-    
-	<script>
-		$('#activityoffice').on('change',function(){
-			var actoff = $('#activityoffice').val();
-			$.ajax({
-			url: "getActivityNature",
-			method: "POST",
-			data:{
-				'actoff':actoff
-			},
-			success: function(data){
-				console.log(1)
-				$('#natact').empty ();
-				$('#natact').append('<option disabled selected>Select Nature of Activity</option>');
-				for (i = 0; i < data.length; i++){
-					$('#natact').append('<option value="'+ data[i].activitynatureID +'">'+ data[i].activitynature +'</option>');
-				}
-				}
-			});
-		});
-		
-		$('#processingoffice').on('change',function(){
-			var prooff = $('#processingoffice').val();
-			$.ajax({
-			url: "getActivityType",
-			method: "POST",
-			data:{
-				'prooff':prooff
-			},
-			success: function(data){
-				console.log(1)
-				$('#typeact').empty ();
-				$('#typeact').append('<option disabled selected>Select Type of Activity</option>');
-				for (i = 0; i < data.length; i++){
-					$('#typeact').append('<option value="'+ data[i].activitytypeID +'">'+ data[i].activitytype+'</option>');
-				}
-				}
-			});
-		});
-	</script>
+   
 	<script>
 		var aform1= $('#aform1');
 		function removeError(element){

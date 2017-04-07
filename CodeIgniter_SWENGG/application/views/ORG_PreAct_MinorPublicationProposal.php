@@ -7,15 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>LSCS</title>
-
-    <script src= "<?php echo base_url();?>js/jquery.js"> </script>
-	<script src="<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src= "<?php echo base_url();?>js/jquery.validate.min.js"> </script>
+    <title><?php echo ($this->session->userdata('org')[0]['acronym']);?></title>
 	
+	<script src= "<?php echo base_url();?>js/jquery.js"> </script>
+	<script src= "<?php echo base_url();?>js/jquery.min.js"></script>
+	<script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <!-- Bootstrap -->
-     <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="<?php echo base_url();?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
@@ -30,11 +30,11 @@
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
-     <!-- Custom Theme Style -->
+    <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
   </head>
 
-      <body class="nav-md">
+  <body class="nav-md">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col ">
@@ -42,12 +42,11 @@
           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
           <div class="menu_section nav side-menu"> 
             <br>      
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Create New GOSM</a></li>
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Pre-Activity Requirements</a></li>
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Additional Requirements</a></li>
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Special Approval Slip</a></li>
-            <li><a href="#"><i class="fa fa-folder-open"></i> View Pre-Acts</a></li>
-            <li><a href="#"><i class="fa fa-list-alt"></i> View GOSM</a></li>
+            <li><a href="http://localhost/index.php/gosm/add"><i class="fa fa-edit side-menu"></i>Create New GOSM</a></li>
+            <li><a href="http://localhost/index.php/Preactivity/preacts"><i class="fa fa-edit side-menu"></i>Pre-Activity Requirements</a></li>
+            <li><a href="http://localhost/index.php/Preactivity/other_requirements"><i class="fa fa-edit side-menu"></i>Additional Requirements</a></li>
+            <li><a href="http://localhost/index.php/viewpreacts/viewpreacts"><i class="fa fa-folder-open"></i> View Pre-Acts</a></li>
+            <li><a href="http://localhost/index.php/gosm/viewORGGosm1"><i class="fa fa-list-alt"></i> View GOSM</a></li>
           </div>
         </div>
       </div>
@@ -58,7 +57,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="userIcon">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['name']);?>La Salle Computer Society
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['acronym']);?>
                   <span class="fa fa-caret-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -66,15 +65,8 @@
                 </ul>
               </li>
               <li role="presentation" class="dropdown">
-                <a id="but" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                  <i class="fa fa-envelope fa-fw"></i>
-                  <i class="fa fa-caret-down"></i>
-                  <div id="num"> </div>
-                </a>
-                <ul class="dropdown-menu dropdown-usermenu pull-right">
-                  <li><a href="http://localhost/index.php/account/logout">insert notifs here</a></li>
-                </ul>
-                <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                
+                <li><a href="http://localhost/index.php/account/org"><i class="fa fa-home"></i> Home</a></li>
               </li>
             </ul>
           </nav>
@@ -104,115 +96,142 @@
                   <div class="x_content">
 
                     <form class="form-horizontal form-label-left" id="p_forms_controller" action="minorpub_form" method="Post">
-						<span class="section">General Information</span>
+						        <span class="section">General Information</span>
 						
-						<?php if (isset($success)): ?>
-							<h4>Successfully Added!</h4>
-						<?php endif; ?>
-						
-						<?php echo validation_errors(); ?>
+        						<?php if (isset($success)): ?>
+        							<h4>Successfully Added!</h4>
+        						<?php endif; ?>
+        						<?php //echo validation_errors(); ?>
 
                       <div class= "row">
-                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                <label class= "col-md-3"> <h4>Publication Name:</h4> </label>
-                                <div class= "form-group col-md-9">            
-                                   <input type="text" class="form-control has-feedback-left" id="pubname" name="pubname" placeholder="  Name of Publication" required/>
-                                  <span class="fa fa-file form-control-feedback left" aria-hidden="true"></span>
-                                </div>   
+                        <div class="form-group col-md-8">
+                          <label class= "col-md-3"> <h4>Publication Name:</h4> </label>
+                          <div class= "form-group col-md-6">            
+                            <input type="text" class="form-control" id="pubname" name="pubname" placeholder="ex: Juan's Academic Life" />
+                          </div>   
                         </div>    
                       </div>
                       
                       <div class="row">
-                         <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                              <label class= "col-md-3"> <h4>Publication Type:</h4> </label>
-                                <div class= "form-group col-md-9">            
-                                  <input type="text" class="form-control has-feedback-left" id="pubname" name="pubtype" placeholder="  Type of Publication" required/>
-                                </div>      
-                            </div>
-                         </div>  
+                        <div class="form-group col-md-8">
+                          <label class= "col-md-3"> <h4>Publication Type:</h4> </label>
+                          <div class= "form-group col-md-6">            
+                            <input type="text" class="form-control" id="pubname" name="pubtype" placeholder=" ex: Magazine" />
+                          </div>      
+                        </div>
+                      </div>  
 						 
-						  <div class="row">
-                         <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                              <label class= "col-md-3"> <h4>Publication Frequency:</h4> </label>
-                                 <div class= "form-group col-md-9">            
-                                    <input type="Number" class="form-control" id="pubfreq" name="pubfreq" placeholder="Frequency of Publication (Days)" required/> 
-                                </div>  
-                            </div>
-                         </div>  
+						          <div class="row">
+                        <div class="form-group col-md-8">
+                          <label class= "col-md-3"> <h4>Publication Frequency:</h4> </label>
+                          <div class= "form-group col-md-6">            
+                            <input type="Number" class="form-control" id="pubfreq" name="pubfreq" placeholder="ex: 15 days" /> 
+                          </div>  
+                      </div>
+                    </div>  
 						 
-						  <div class="row">
-                         <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                              <label class= "col-md-3"> <h4>Estimated Cost:</h4> </label>
-                                 <div class= "form-group col-md-9">            
-                                    <input type="Number" class="form-control" id="pubcost" name="pubcost" placeholder="Estimated Cost" required/>
-                                </div>  
-                            </div>
-                         </div> 
+						        <div class="row">
+                      <div class="form-group col-md-8">
+                        <label class= "col-md-3"> <h4>Estimated Cost:</h4> </label>
+                        <div class= "form-group col-md-6">            
+                          <input type="Number" class="form-control" id="pubcost" name="pubcost" min="1" step="0.5" placeholder="ex: 100.00" />
+                        </div>  
+                      </div>
+                    </div> 
 
+                    <div class="row">
+                      <div class="col-md-8">   
+                        <label class= "col-md-3"> <h4>Target Date:</h4> </label>
+                        <div class= "form-group col-md-6">
+                          <input type="date" name= "tdate" class="form-control" id="tdate" />
+                        </div>        
+                      </div>
+                    </div> <!-- row -->
+                      
+                     <span class="section">Objectives</span>
+                      
+                       <div class="row">
+                        <div class="col-md-8">                                     
+                          <label class= "col-md-3"> <h4> Objective 1</h4> </label>
+                            <div class="form-group col-md-6">
+                              <textarea class="form-control" id="obj1" name="obj1" row="3" placeholder="ex: To provide opportunity to readers for self-expression in written form." /></textarea> <!--Revision by yani-->
+                              <p></p>
+                            </div>   
+                        </div>
+                        <div class="col-md-8">                                     
+                          <label class= "col-md-3"> <h4> Objective 2</h4> </label>
+                            <div class="form-group col-md-6">
+                               <textarea class="form-control" id="obj1" name="obj2" row="3" placeholder="ex:  To develop in readers the literary taste and study habits." /></textarea> 
+                              <p></p> <!--Revision by yani-->
+                            </div>   
+                        </div>
+                        <div class="col-md-8">                                     
+                          <label class= "col-md-3"> <h4> Objective 3</h4> </label>
+                            <div class="form-group col-md-6">
+                               <textarea class="form-control" id="obj1" name="obj3" row="3" placeholder="ex: To provide encouragement for and to stimulate worth-while activities." /></textarea> 
+                              <p></p> <!--Revision by yani-->
+                            </div>   
+                        </div>
+                      </div> <!-- row -->
+
+                      <span class="section">Proposed Content</span> 
+                      
                       <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-12">   
-                                <label class= "col-md-3"> <h4>Target Date:</h4> </label>
-                                <div class= "form-group col-md-9">
-                                    <input type="date" name= "tdate" class="form-control" id="tdate" required/>
-                                </div>        
+                        <div class="col-md-8">        
+                            <label class= "col-md-3"> <h4> Proposed Content 1</h4> </label>
+                            <div class="form-group col-md-6">
+                              <textarea class="form-control" id="cont1" name="cont1" placeholder="ex: Table Contents"></textarea>
+                              <p></p> <!--Revision by yani-->
+                            </div>      
+                        </div>
+                        <div class="col-md-8">        
+                            <label class= "col-md-3"> <h4> Proposed Content 2</h4> </label>
+                            <div class="form-group col-md-6">
+                              <textarea class="form-control" id="cont2" name="cont2" placeholder="ex: Articles on Academic Struggles of various DLSU students" /></textarea>
+                              <p></p> <!--Revision by yani-->
+                            </div>      
+                        </div>
+                        <div class="col-md-8">        
+                            <label class= "col-md-3"> <h4> Proposed Content 3</h4> </label>
+                            <div class="form-group col-md-6">
+                              <textarea type="text" class="form-control" id="cont3" name="cont3" placeholder="ex: Articles on Academic Excellences of various DLSU students"> </textarea>
+                              <p></p> <!--Revision by yani-->
+                            </div>      
                         </div>
                       </div> <!-- row -->
-                      
-                      <div class="ln_solid"></div> 
-                      
-                       <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-12">      
-                               
-                                <label class= "col-md-3"> <h4> Objectives</h4> </label>
-                                <div class="form-group col-md-9 col-sm-9 col-xs-9">
-                                  <input type="text" class="form-control" id="obj1" name="obj1" placeholder="1st Objective" required/>
-                                  <p></p>
-                                  <input type="text" class="form-control" id="obj2" name="obj2" placeholder="2nd Objective" required/>
-                                  <p></p>
-                                  <input type="text" class="form-control" id="obj3" name="obj3" placeholder="3rd Objective" required/>
-                                </div>      
-                        </div>
-                      </div> <!-- row -->
 
-                      <div class="ln_solid"></div> 
-                      
-                       <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-12">        
-                           <label class= "col-md-3"> <h4> Proposed Content</h4> </label>
-                                <div class="form-group col-md-9 col-sm-9 col-xs-9">
-                                  <input type="text" class="form-control" id="cont1" name="cont1" placeholder="Publication Content" required/>
-                                  <p></p>
-                                  <input type="text" class="form-control" id="cont2" name="cont2" placeholder="Publication Content" required/>
-                                  <p></p>
-                                  <input type="text" class="form-control" id="cont3" name="cont3" placeholder="Publication Content" required/>
-                                </div>      
-                          </div>
-                        </div> <!-- row -->
-
-                        <div class="ln_solid"></div> 
-
-                        <div class="row">
-                          <div class="col-md-6 col-sm-6 col-xs-12">                           
-                                <label class= "col-md-3"> <h4> Target Readers</h4> </label>
-                                <div class="form-group col-md-9 col-sm-9 col-xs-9">
-                                  <input type="text" class="form-control" id="tread1" name="tread1" placeholder="Target Audience" required/>
-                                  <p></p>
-                                  <input type="text" class="form-control" id="tread2" name="tread2" placeholder="Target Audience" required/>
-                                  <p></p>
-                                  <input type="text" class="form-control" id="tread3" name="tread3" placeholder="Target Audience" required/>
-                                </div>      
-                         </div>
-
-                        <div class="form-group">
-                          <div class="col-md-12 col-md-offset-11">
-                            <input type="submit" class="btn btn-success align: right" value ="Next">
-                          </div>
-                        </div>
-
-                       </form>            
-                         
+                      <span class="section">Target Readers</span> 
+                      <div class="row">
+                        <div class="col-md-8">                           
+                          <label class= "col-md-3"> <h4> Target Reader 1</h4> </label>
+                          <div class="form-group col-md-6">
+                            <input type="text" class="form-control" id="tread1" name="tread1" placeholder="ex: DLSU community" />
+                            <p></p> <!--Revision by yani-->
+                          </div>      
+                        </div> 
+                        <div class="col-md-8">                           
+                          <label class= "col-md-3"> <h4> Target Reader 2</h4> </label>
+                          <div class="form-group col-md-6">
+                            <input type="text" class="form-control" id="tread2" name="tread2" placeholder="ex: Youth" />
+                            <p></p> <!--Revision by yani-->
+                          </div>      
+                        </div> 
+                        <div class="col-md-8">                           
+                          <label class= "col-md-3"> <h4> Target Reader 3</h4> </label>
+                          <div class="form-group col-md-6">
+                            <input type="text" class="form-control" id="tread3" name="tread3" placeholder="ex: Students" />
+                            <p></p> <!--Revision by yani-->
+                          </div>      
+                        </div>       
                       </div> <!-- row -->
                         </div> 
+						          <div class="form-group">
+                          <div align="right">
+                            <input type="submit" class="btn btn-success" value ="Next" style="width:80px">
+                          </div>
+                        </div>
+
+                       </form>      
                       </div>
                   </div>
                 </div> 
@@ -224,13 +243,6 @@
         <!-- /page content -->
 
 	<script>
-	
-	function removeError(element)
-	{
-		element.addClass('valid')
-						.closest('.form-group')
-						.removeClass('has-error');
-	}
 	
 	var pubform= $('#pubform');
 	pubform.validate({
@@ -341,7 +353,11 @@
 		}
 
 		});
-	
+	$('#nextpub').click(function(){
+      if (pubform.valid()){
+         window.location.href = "ORG_PreAct_MinorPublicationProposal2.html";
+       }
+       return false;
      });
 	 </script>
     <!-- Bootstrap -->

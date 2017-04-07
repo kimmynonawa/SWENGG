@@ -61,7 +61,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="userIcon">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['name']);?>
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['acronym']);?>
                   <span class="fa fa-caret-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -119,6 +119,11 @@
 								<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Activity Name: </label>
 									<p> <?php echo $activity[0]['title'];?></p>
+								</div>
+								
+								<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Term: </label>
+									<p> <?php echo $activity[0]['term']; echo" "; echo $activity[0]['schoolyear']?></p>
 								</div>
 
 								<div class="item form-group">

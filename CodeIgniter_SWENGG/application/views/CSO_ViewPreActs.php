@@ -61,7 +61,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="userIcon">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['name']);?>
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['acronym']);?>
                   <span class="fa fa-caret-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -145,7 +145,7 @@
 								
                             </div>  
 							</div>
-					<div class="col-md-8">   
+							<div class="col-md-8">   
                           <label class= "col-md-3"> <h4>Activity Name</h4> </label>
                              <div class= "form-group col-md-7">
                               <select id="act" class="form-control col-md-7 col-xs-12" name="act" >
@@ -154,7 +154,7 @@
                               </select>
 							  
                             </div>			
-					</div>							
+						</div>							
                         </div>
                       </div>
                       <div class= "row">
@@ -186,14 +186,14 @@
 	 var hi= $('#ViewPreActs');
 	hi.validate({
 		rules: {
-			gosmcsoorg: {
+			act: {
 				required:true
 			},
 
 		},
 
 		messages:{
-			gosmcsoorg: 'Please pick an organization',
+			act: 'Please pick an organization',
 		}
 		});
 	</script>

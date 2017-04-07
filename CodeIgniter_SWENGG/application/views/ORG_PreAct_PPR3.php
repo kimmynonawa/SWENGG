@@ -7,7 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>LSCS</title>
+    <title><?php echo ($this->session->userdata('org')[0]['acronym']);?></title>
+	
+	<script src= "<?php echo base_url();?>js/jquery.js"> </script>
+	<script src= "<?php echo base_url();?>js/jquery.min.js"></script>
+	<script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <!-- Bootstrap -->
@@ -18,20 +22,19 @@
     <link href="<?php echo base_url();?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="<?php echo base_url();?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+	
     <!-- bootstrap-progressbar -->
     <link href="<?php echo base_url();?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
     <link href="<?php echo base_url();?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
-    <!-- jQuery -->
-    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src="<?php echo base_url();?>js/jquery.validate.min.js"> </script>
-
   </head>
-      <body class="nav-md">
+
+  <body class="nav-md">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col ">
@@ -39,12 +42,11 @@
           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
           <div class="menu_section nav side-menu"> 
             <br>      
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Create New GOSM</a></li>
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Pre-Activity Requirements</a></li>
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Additional Requirements</a></li>
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Special Approval Slip</a></li>
-            <li><a href="#"><i class="fa fa-folder-open"></i> View Pre-Acts</a></li>
-            <li><a href="#"><i class="fa fa-list-alt"></i> View GOSM</a></li>
+            <li><a href="http://localhost/index.php/gosm/add"><i class="fa fa-edit side-menu"></i>Create New GOSM</a></li>
+            <li><a href="http://localhost/index.php/Preactivity/preacts"><i class="fa fa-edit side-menu"></i>Pre-Activity Requirements</a></li>
+            <li><a href="http://localhost/index.php/Preactivity/other_requirements"><i class="fa fa-edit side-menu"></i>Additional Requirements</a></li>
+            <li><a href="http://localhost/index.php/viewpreacts/viewpreacts"><i class="fa fa-folder-open"></i> View Pre-Acts</a></li>
+            <li><a href="http://localhost/index.php/gosm/viewORGGosm1"><i class="fa fa-list-alt"></i> View GOSM</a></li>
           </div>
         </div>
       </div>
@@ -55,7 +57,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="userIcon">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['name']);?>La Salle Computer Society
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['acronym']);?>
                   <span class="fa fa-caret-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -63,15 +65,8 @@
                 </ul>
               </li>
               <li role="presentation" class="dropdown">
-                <a id="but" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                  <i class="fa fa-envelope fa-fw"></i>
-                  <i class="fa fa-caret-down"></i>
-                  <div id="num"> </div>
-                </a>
-                <ul class="dropdown-menu dropdown-usermenu pull-right">
-                  <li><a href="http://localhost/index.php/account/logout">insert notifs here</a></li>
-                </ul>
-                <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                
+                <li><a href="http://localhost/index.php/account/org"><i class="fa fa-home"></i> Home</a></li>
               </li>
             </ul>
           </nav>
@@ -89,7 +84,7 @@
               </h3>
             </div>
             <div class="infoBody" id="info">
-                <h4>The Project Proposal contains the more comprehensive and detailed description of event that the organization is planning to have. </h4>
+                <h4>The Project Proposal contains the more comprehensive and detailed description of event that the organization is planning to have. <b> REMINDER: </b> Enter <b> N/A </b>as the unit cost if there are no expenses incurred. </h4>
             </div>
           </div>
                 
@@ -130,7 +125,7 @@
                                 <td align= "center"></td>
                                 <td align= "center"></td>
                                 <td align= "center"></td>
-                                <td align= "right"><h4>Total:</h4></td>  
+                                <td align= "right"><h4><b>Total: ₱<span id="total"><span></b></h4></td> 
                                 <td align= "center"></td>
                             
                               </tr>
@@ -157,11 +152,52 @@
         <!-- /page content -->
 
     <!-- SCRIPT FOR VALIDATION -->
-    <script type="text/javascript">
-      $(function() {
-jQuery.validator.addMethod("lettersonly", function(value, element) {
-  return this.optional(element) || /^[a-z\s]+$/i.test(value);
-  })
+  <script type="text/javascript">
+
+  function updateQuan(num){
+    var qty=document.getElementsByClassName("quan")[num].value;
+    var cost=document.getElementsByClassName("cost")[num].value;
+    var costValue=cost,temp=0, grandTotal;
+    if(cost === "na" || cost ==="NA"){
+      costValue=0;
+    }
+    if(cost.length > 0){
+      var total =  costValue *qty;
+      document.getElementsByClassName("subTotal").item(num).innerHTML = total.toFixed(2);
+       if(num>0){
+        temp =document.getElementById("total").innerText;
+      }
+
+      var grandTotal =parseInt(temp) + total;
+      document.getElementById("total").innerHTML=grandTotal.toFixed(2);
+    }
+  }
+  function updateCost(num){
+    var cost=document.getElementsByClassName("cost")[num].value;
+    var qty=document.getElementsByClassName("quan")[num].value;
+    var costValue=cost,temp=0, grandTotal;
+
+    if(qty.length > 0){
+      if(cost === "na" || cost ==="NA"){
+        costValue=0;
+      }
+    
+      var total =  costValue *qty;
+      document.getElementsByClassName("subTotal").item(num).innerHTML = total.toFixed(2);
+      if(num>0){
+        temp =document.getElementById("total").innerText;
+      }
+
+      var grandTotal =parseInt(temp) + total;
+      document.getElementById("total").innerHTML=grandTotal.toFixed(2);
+    }
+  }
+
+
+  $(function() {
+    jQuery.validator.addMethod("lettersonly", function(value, element) {
+      return this.optional(element) || /^[a-z\s]+$/i.test(value);
+    })
 
   function removeError(element){
   element.addClass('valid')
@@ -170,7 +206,7 @@ jQuery.validator.addMethod("lettersonly", function(value, element) {
   }
 
   var numberIncr = 0;
-  $("#trr").append('<tr><td><input type="text" class="mnm form-control" name="matname[' + numberIncr + ']" placeholder="Material name"/></td> <td><input class="mqt form-control"  name="matqty[' + numberIncr + ']" placeholder="Quantity"/></td><td><input class="mcs form-control"name="matcost[' + numberIncr + ']" placeholder="Unit Cost"/></td> <td align="center"><h4> P750.00</h4></td><td></td></tr>');   
+  $("#trr").append('<tr><td><input type="text" class="mnm form-control" name="matname[' + numberIncr + ']" placeholder="ex: Tarpaulin"/></td> <td><input class="mqt form-control quan"  name="matqty[' + numberIncr + ']" placeholder="ex: 10" onchange="updateQuan(' + numberIncr + ')"/></td><td><input class="mcs form-control cost"name="matcost[' + numberIncr + ']" placeholder="ex: 100.00" onchange ="updateCost(' + numberIncr + ')"/></td> <td align="center"><h4> ₱ <span class="subTotal"> 00.00</span></h4></td><td></td></tr>');   
 
   var pprform3= $('#pprform3');
   pprform3.validate({
@@ -204,7 +240,7 @@ jQuery.validator.addMethod("lettersonly", function(value, element) {
 
   $("#addc3").click(function() {
     numberIncr++;
-      $("#trr").append($('<tr id="newtr"><td><input type="text" class="mnm form-control" name="matname[' + numberIncr + ']" placeholder="Material name"/></td> <td><input class="mqt form-control"  name="matqty[' + numberIncr + ']" placeholder="Quantity"/></td><td><input class="mcs form-control"name="matcost[' + numberIncr + ']" placeholder="Unit Cost"/></td> <td align="center"><h4> P750.00</h4></td><td>                                <button id="remc3" type ="button" class="btn btn-danger">Remove</button></td></tr>'));   
+      $("#trr").append($('<tr><td><input type="text" class="mnm form-control" name="matname[' + numberIncr + ']" placeholder="ex: Tarpaulin"/></td> <td><input class="mqt form-control quan"  name="matqty[' + numberIncr + ']" placeholder="ex: 10" onchange="updateQuan(' + numberIncr + ')"/></td><td><input class="mcs form-control cost"name="matcost[' + numberIncr + ']" placeholder="ex: 100.00" onchange ="updateCost(' + numberIncr + ')"/></td> <td align="center"><h4> ₱ <span class="subTotal"> 00.00</span></h4></td><td><button id="remc3" type ="button" class="btn btn-danger">Remove</button></td></tr>'));   
     
         $(".mnm").each(function(){
         $(this).rules( "add", {

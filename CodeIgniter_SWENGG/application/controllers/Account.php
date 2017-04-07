@@ -69,22 +69,19 @@
 		
 		// This serves as a function to load a CSO user's homepage
 		public function cso(){
-			$preacts = $this->Org_model->getCSOChart();
-			
-			$groups = $this->p_forms_model->getWeekActsWithPreActs();
-			$groups2 = $this->p_forms_model->getWeekActsNoPreActs();
-			$groups3 = $this->p_forms_model->getRecentActs();
-			
-			$data = (array("preacts" => $preacts, 'groups' => $groups, 'groups2'=>$groups2, 'groups3' => $groups3));
+			$data['groups'] = $this->Account_model->getWeekActsWithPreActs();
+			$data['groups2'] = $this->Account_model->getWeekActsNoPreActs();
+			$data['groups3'] = $this->Account_model->getRecentActs();
+
 			$this->load->view('CSO_Home', $data);
 		}
 		
 		// This serves as a function to load an Organization's homepage
 		public function org(){
 			$org=$this->session->userdata('org')[0]['userID'];
-			$data['chart'] = $this->Org_model->getORGChart($org);
-			$data['groups'] = $this->p_forms_model->getWeekActsOrgWithPreActs($org);
-			$data['groups2'] = $this->p_forms_model->getWeekActsOrgNoPreActs($org);
+			$data['groups'] = $this->Account_model->getWeekActsOrgWithPreActs($org);
+			$data['groups2'] = $this->Account_model->getWeekActsOrgNoPreActs($org);
+			$data['groups3'] = $this->Account_model->getRecentActsOrg($org);
 			$this->load->view('ORG_Home',$data);
 		}
 		

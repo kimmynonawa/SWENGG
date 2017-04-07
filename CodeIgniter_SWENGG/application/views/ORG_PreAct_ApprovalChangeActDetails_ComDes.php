@@ -33,7 +33,8 @@
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
   </head>
-    <body class="nav-md">
+
+  <body class="nav-md">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col ">
@@ -41,12 +42,11 @@
           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
           <div class="menu_section nav side-menu"> 
             <br>      
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Create New GOSM</a></li>
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Pre-Activity Requirements</a></li>
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Additional Requirements</a></li>
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Special Approval Slip</a></li>
-            <li><a href="#"><i class="fa fa-folder-open"></i> View Pre-Acts</a></li>
-            <li><a href="#"><i class="fa fa-list-alt"></i> View GOSM</a></li>
+            <li><a href="http://localhost/index.php/gosm/add"><i class="fa fa-edit side-menu"></i>Create New GOSM</a></li>
+            <li><a href="http://localhost/index.php/Preactivity/preacts"><i class="fa fa-edit side-menu"></i>Pre-Activity Requirements</a></li>
+            <li><a href="http://localhost/index.php/Preactivity/other_requirements"><i class="fa fa-edit side-menu"></i>Additional Requirements</a></li>
+            <li><a href="http://localhost/index.php/viewpreacts/viewpreacts"><i class="fa fa-folder-open"></i> View Pre-Acts</a></li>
+            <li><a href="http://localhost/index.php/gosm/viewORGGosm1"><i class="fa fa-list-alt"></i> View GOSM</a></li>
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="userIcon">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['name']);?>La Salle Computer Society
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['acronym']);?>
                   <span class="fa fa-caret-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -65,15 +65,8 @@
                 </ul>
               </li>
               <li role="presentation" class="dropdown">
-                <a id="but" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                  <i class="fa fa-envelope fa-fw"></i>
-                  <i class="fa fa-caret-down"></i>
-                  <div id="num"> </div>
-                </a>
-                <ul class="dropdown-menu dropdown-usermenu pull-right">
-                  <li><a href="http://localhost/index.php/account/logout">insert notifs here</a></li>
-                </ul>
-                <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                
+                <li><a href="http://localhost/index.php/account/org"><i class="fa fa-home"></i> Home</a></li>
               </li>
             </ul>
           </nav>
@@ -100,7 +93,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-                      <form class="form-inline form-label-left" id="changecom" action="ComDes" method="post">
+                      <form class="form-inline form-label-left" id="changecom" action="change_program_design" method="post">
                       <span class="section"></span>
                     
 

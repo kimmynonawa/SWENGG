@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	<title>Fill Out Other Requirements</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -31,11 +30,11 @@
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
-<!-- Custom Theme Style -->
+    <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
   </head>
 
- <body class="nav-md">
+  <body class="nav-md">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col ">
@@ -43,12 +42,11 @@
           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
           <div class="menu_section nav side-menu"> 
             <br>      
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Create New GOSM</a></li>
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Pre-Activity Requirements</a></li>
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Additional Requirements</a></li>
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Special Approval Slip</a></li>
-            <li><a href="#"><i class="fa fa-folder-open"></i> View Pre-Acts</a></li>
-            <li><a href="#"><i class="fa fa-list-alt"></i> View GOSM</a></li>
+            <li><a href="http://localhost/index.php/gosm/add"><i class="fa fa-edit side-menu"></i>Create New GOSM</a></li>
+            <li><a href="http://localhost/index.php/Preactivity/preacts"><i class="fa fa-edit side-menu"></i>Pre-Activity Requirements</a></li>
+            <li><a href="http://localhost/index.php/Preactivity/other_requirements"><i class="fa fa-edit side-menu"></i>Additional Requirements</a></li>
+            <li><a href="http://localhost/index.php/viewpreacts/viewpreacts"><i class="fa fa-folder-open"></i> View Pre-Acts</a></li>
+            <li><a href="http://localhost/index.php/gosm/viewORGGosm1"><i class="fa fa-list-alt"></i> View GOSM</a></li>
           </div>
         </div>
       </div>
@@ -59,7 +57,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="userIcon">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['name']);?>La Salle Computer Society
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['acronym']);?>
                   <span class="fa fa-caret-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -67,15 +65,8 @@
                 </ul>
               </li>
               <li role="presentation" class="dropdown">
-                <a id="but" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                  <i class="fa fa-envelope fa-fw"></i>
-                  <i class="fa fa-caret-down"></i>
-                  <div id="num"> </div>
-                </a>
-                <ul class="dropdown-menu dropdown-usermenu pull-right">
-                  <li><a href="http://localhost/index.php/account/logout">insert notifs here</a></li>
-                </ul>
-                <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                
+                <li><a href="http://localhost/index.php/account/org"><i class="fa fa-home"></i> Home</a></li>
               </li>
             </ul>
           </nav>
@@ -99,13 +90,12 @@
                   <div class="x_content">
                     <form id="p_forms_controller" class="form-horizontal form-label-left" autocomplete="off" action="other_requirements" method="post">
                       <span class="section"> Select the Necessary Fields</span>
-						
-						<?php if (isset($success)): ?>
-							<h4>Successfully Added!</h4>
+						 <?php if (isset($success)): ?>
+							<script>
+								alert('Hi pota nakaadd ka na ng other forms pota galing hahaha!');
+							</script>
 						<?php endif; ?>
-						
-						<?php echo validation_errors(); ?>
-						
+					
                       <div class= "row">
                         <div class="col-md-8">   
                           <label class= "col-md-3"> <h4>Activity Title</h4> </label>
@@ -126,7 +116,7 @@
 								<select id="req" class="form-control col-md-7 col-xs-12" name="req" required>
 									<option value="">Select Requirement</option>
 									<option value="1">List of Participants</option>
-									<option value="2">Change Activity Details</option>
+									<option value="2">Special Approval SLip</option>
 									<option value="3">Special Permit Campus Access</option>
 									<option value="4">Trademark Use</option>
 									<option value="5">Contest Mechanics</option>

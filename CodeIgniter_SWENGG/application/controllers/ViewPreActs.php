@@ -9,35 +9,45 @@
 			$this->load->model('ViewPreActs_model');
 			$this->load->model('Gosm_model');
 			$this->load->model('Org_model');
-			$this->load->model('PPR_model');
 		}
 		
 		public function getPreacts(){
 			header("Content-type: application/json");
-			$res = $this->ViewPreActs_model->getPreacts(2);
+			$res = $this->ViewPreActs_model->getPreacts($this->input->post('org'));
 			echo json_encode($res);
 		}
 		
-		//PAAYOS NITO PLSSSSSSSS HUHU idk how :<
 		public function viewPreacts(){
 			
 			
-			$this->form_validation->set_rules('org', 'Organizations', 'required');
+			$this->form_validation->set_rules('act', 'Activity', 'required');
 			
 			if ($this->form_validation->run() == FALSE)
 			{
-				$res = $this->Org_model->getOrg();
-				$data = (array("orgs" => $res));
-				$this->load->view('CSO_ViewPreActs', $data);
+				if($this->session->userdata('org')[0]['userID']=='1'){
+					$res = $this->Org_model->getOrg();
+					$data = (array("orgs" => $res));
+					$this->load->view('CSO_ViewPreActs', $data);
+				}	
+				else{
+					$res = $this->ViewPreActs_model->getPreacts($this->session->userdata('org')[0]['userID']);
+					$data = array('act' => $res);
+					$this->load->view('ORG_ViewPreActs', $data);
+				}
 			}
 			
 			else
 			{
-				$actno = $this->input->post('act');
-				echo $actno;
-				$this->session->set_userdata("actno", $actno);
-				echo $this->session->userdata("actno");
-				redirect('ViewPreActs/viewAform');
+				if($this->session->userdata('org')[0]['userID']=='1'){
+					$actno = $this->input->post('act');
+					$this->session->set_userdata("actno", $actno);
+					redirect('ViewPreActs/viewAform');
+				}
+				else{
+					$actno = $this->input->post('act');
+					$this->session->set_userdata("actno", $actno);
+					redirect('ViewPreActs/viewAform');
+				}
 			}
 		}
 		
@@ -51,6 +61,8 @@
 			
 			if ($this->session->userdata('org')[0]['userID']=='1'){
 				$data['aformexists'] = $this->ViewPreActs_model->aformExists($preacts);
+				$data['pprexists'] = $this->ViewPreActs_model->pprExists($preacts);
+				$data['changeexists'] = $this->ViewPreActs_model->changeExists($preacts);
 				$data['lopexists'] = $this->ViewPreActs_model->lopExists($preacts);
 				$data['contestexists'] = $this->ViewPreActs_model->contestExists($preacts);
 				$data['foodexists'] = $this->ViewPreActs_model->foodExists($preacts);
@@ -62,6 +74,8 @@
 			}
 			else{
 				$data['aformexists'] = $this->ViewPreActs_model->aformExists($preacts);
+				$data['pprexists'] = $this->ViewPreActs_model->pprExists($preacts);
+				$data['changeexists'] = $this->ViewPreActs_model->changeExists($preacts);
 				$data['lopexists'] = $this->ViewPreActs_model->lopExists($preacts);
 				$data['contestexists'] = $this->ViewPreActs_model->contestExists($preacts);
 				$data['foodexists'] = $this->ViewPreActs_model->foodExists($preacts);
@@ -74,17 +88,21 @@
 		}
 		
 		public function viewLOP(){
-			$preacts = $this->session->userdata("actno");;
+			$preacts = $this->session->userdata("actno");
 			$aform = $this->ViewPreActs_model->viewAform($preacts);
 			$data['aform'] = $aform;
 			$aformdate = $this->ViewPreActs_model->getAformDate($aform[0]['aformID']);
 			$data['aformdate'] = $aformdate;
 			$lop = $this->ViewPreActs_model->viewLOP($preacts);
 			$data['lop'] = $lop;
-			$lopdetails = $this->ViewPreActs_model->viewLOPDetails($lop[0]['listofparticipantsID']);
-			$data['lopdetails'] = $lopdetails;
+			$lopdetails1 = $this->ViewPreActs_model->viewLOPDetails1($lop[0]['listofparticipantsID']);//yeswaiver
+			$lopdetails2 = $this->ViewPreActs_model->viewLOPDetails2($lop[0]['listofparticipantsID']);//nowaiver
+			$data['lopdetails1'] = $lopdetails1;
+			$data['lopdetails2'] = $lopdetails2;
 			if ($this->session->userdata('org')[0]['userID']=='1'){
 				$data['aformexists'] = $this->ViewPreActs_model->aformExists($preacts);
+				$data['pprexists'] = $this->ViewPreActs_model->pprExists($preacts);
+				$data['changeexists'] = $this->ViewPreActs_model->changeExists($preacts);
 				$data['lopexists'] = $this->ViewPreActs_model->lopExists($preacts);
 				$data['contestexists'] = $this->ViewPreActs_model->contestExists($preacts);
 				$data['foodexists'] = $this->ViewPreActs_model->foodExists($preacts);
@@ -96,6 +114,8 @@
 			}
 			else{
 				$data['aformexists'] = $this->ViewPreActs_model->aformExists($preacts);
+				$data['pprexists'] = $this->ViewPreActs_model->pprExists($preacts);
+				$data['changeexists'] = $this->ViewPreActs_model->changeExists($preacts);
 				$data['lopexists'] = $this->ViewPreActs_model->lopExists($preacts);
 				$data['contestexists'] = $this->ViewPreActs_model->contestExists($preacts);
 				$data['foodexists'] = $this->ViewPreActs_model->foodExists($preacts);
@@ -138,6 +158,8 @@
 			}
 			if ($this->session->userdata('org')[0]['userID']=='1'){
 				$data['aformexists'] = $this->ViewPreActs_model->aformExists($preacts);
+				$data['pprexists'] = $this->ViewPreActs_model->pprExists($preacts);
+				$data['changeexists'] = $this->ViewPreActs_model->changeExists($preacts);
 				$data['lopexists'] = $this->ViewPreActs_model->lopExists($preacts);
 				$data['contestexists'] = $this->ViewPreActs_model->contestExists($preacts);
 				$data['foodexists'] = $this->ViewPreActs_model->foodExists($preacts);
@@ -149,6 +171,8 @@
 			}
 			else{
 				$data['aformexists'] = $this->ViewPreActs_model->aformExists($preacts);
+				$data['pprexists'] = $this->ViewPreActs_model->pprExists($preacts);
+				$data['changeexists'] = $this->ViewPreActs_model->changeExists($preacts);
 				$data['lopexists'] = $this->ViewPreActs_model->lopExists($preacts);
 				$data['contestexists'] = $this->ViewPreActs_model->contestExists($preacts);
 				$data['foodexists'] = $this->ViewPreActs_model->foodExists($preacts);
@@ -167,6 +191,8 @@
 			
 			$data['groups'] = $this->ViewPreActs_model->getMinorPubDetails($actno);
 			$data['aformexists'] = $this->ViewPreActs_model->aformExists($actno);
+			$data['pprexists'] = $this->ViewPreActs_model->pprExists($actno);
+			$data['changeexists'] = $this->ViewPreActs_model->changeExists($actno);
 			$data['lopexists'] = $this->ViewPreActs_model->lopExists($actno);
 			$data['contestexists'] = $this->ViewPreActs_model->contestExists($actno);
 			$data['foodexists'] = $this->ViewPreActs_model->foodExists($actno);
@@ -183,6 +209,8 @@
 			
 			$data['groups'] = $this->ViewPreActs_model->getMinorPubDetails($actno);
 			$data['aformexists'] = $this->ViewPreActs_model->aformExists($actno);
+			$data['pprexists'] = $this->ViewPreActs_model->pprExists($actno);
+			$data['changeexists'] = $this->ViewPreActs_model->changeExists($actno);
 			$data['lopexists'] = $this->ViewPreActs_model->lopExists($actno);
 			$data['contestexists'] = $this->ViewPreActs_model->contestExists($actno);
 			$data['foodexists'] = $this->ViewPreActs_model->foodExists($actno);
@@ -199,6 +227,8 @@
 			
 			$data['groups'] = $this->ViewPreActs_model->getSASdetails($actno);
 			$data['aformexists'] = $this->ViewPreActs_model->aformExists($actno);
+			$data['pprexists'] = $this->ViewPreActs_model->pprExists($actno);
+			$data['changeexists'] = $this->ViewPreActs_model->changeExists($actno);
 			$data['lopexists'] = $this->ViewPreActs_model->lopExists($actno);
 			$data['contestexists'] = $this->ViewPreActs_model->contestExists($actno);
 			$data['foodexists'] = $this->ViewPreActs_model->foodExists($actno);
@@ -215,6 +245,8 @@
 			
 			$data['groups'] = $this->ViewPreActs_model->getSASdetails($actno);
 			$data['aformexists'] = $this->ViewPreActs_model->aformExists($actno);
+			$data['pprexists'] = $this->ViewPreActs_model->pprExists($actno);
+			$data['changeexists'] = $this->ViewPreActs_model->changeExists($actno);
 			$data['lopexists'] = $this->ViewPreActs_model->lopExists($actno);
 			$data['contestexists'] = $this->ViewPreActs_model->contestExists($actno);
 			$data['foodexists'] = $this->ViewPreActs_model->foodExists($actno);
@@ -233,6 +265,8 @@
 			$data['groups2'] = $this->ViewPreActs_model->getSPCAactivitydetails($actno);
 			$data['groups3'] = $this->ViewPreActs_model->getSPCApersonsdetails($actno);
 			$data['aformexists'] = $this->ViewPreActs_model->aformExists($actno);
+			$data['pprexists'] = $this->ViewPreActs_model->pprExists($actno);
+			$data['changeexists'] = $this->ViewPreActs_model->changeExists($actno);
 			$data['lopexists'] = $this->ViewPreActs_model->lopExists($actno);
 			$data['contestexists'] = $this->ViewPreActs_model->contestExists($actno);
 			$data['foodexists'] = $this->ViewPreActs_model->foodExists($actno);
@@ -246,11 +280,13 @@
 		public function CSOSPCAView()
 		{
 			$actno=$this->session->userdata("actno");
-			
+
 			$data['groups'] = $this->ViewPreActs_model->getSPCAdetails($actno);
 			$data['groups2'] = $this->ViewPreActs_model->getSPCAactivitydetails($actno);
 			$data['groups3'] = $this->ViewPreActs_model->getSPCApersonsdetails($actno);
 			$data['aformexists'] = $this->ViewPreActs_model->aformExists($actno);
+			$data['pprexists'] = $this->ViewPreActs_model->pprExists($actno);
+			$data['changeexists'] = $this->ViewPreActs_model->changeExists($actno);
 			$data['lopexists'] = $this->ViewPreActs_model->lopExists($actno);
 			$data['contestexists'] = $this->ViewPreActs_model->contestExists($actno);
 			$data['foodexists'] = $this->ViewPreActs_model->foodExists($actno);
@@ -264,34 +300,15 @@
 		public function view_food_permit() {
 			// GET ACTIVITY DETAILS
 			$preacts=$this->session->userdata("actno");
+
+			$data['activityDetails'] = $this->PreActivity_model->getActivityDetails($preacts);
+			$data['permitDetails'] = $this->ViewPreActs_model->getFoodPermitDetails($preacts);
+			$data['requestInfo'] = $this->ViewPreActs_model->getFoodPermitRequestInfo($preacts);
 			
-			$getActivityDetails = $this->PPR_model->getActivityDetails($preacts);
-			foreach($getActivityDetails as $activityDetail) {
-				$activityDetails[] = $activityDetail;
-			}
-
-			// GET FOODPERMIT DETAILS
-			$getFoodPermit 		= $this->ViewPreActs_model->getFoodPermit($preacts);
-			foreach($getFoodPermit as $foodPermit) {
-				$getDetails 	= $this->ViewPreActs_model->getFoodPermitDetails($foodPermit);
-				$getRequestInfo = $this->ViewPreActs_model->getFoodPermitRequestInfo($foodPermit);
-				foreach($getDetails as $permitDetails) {
-					$details[] = $permitDetails;
-				}
-
-				foreach($getRequestInfo as $requestInfo) {
-					$request[] = $requestInfo;
-				}
-			}
-
-			// ARRAY ASSIGNMENT
-			$list['activityDetails'] = $activityDetails;
-			$list['permitDetails']   = $details;
-			$list['requestInfo']     = $request;
-
-			
-			if ($this->session->userdata('org')['userID']=='1'){
+			if ($this->session->userdata('org')[0]['userID']=='1'){
 				$data['aformexists'] = $this->ViewPreActs_model->aformExists($preacts);
+				$data['pprexists'] = $this->ViewPreActs_model->pprExists($preacts);
+				$data['changeexists'] = $this->ViewPreActs_model->changeExists($preacts);
 				$data['lopexists'] = $this->ViewPreActs_model->lopExists($preacts);
 				$data['contestexists'] = $this->ViewPreActs_model->contestExists($preacts);
 				$data['foodexists'] = $this->ViewPreActs_model->foodExists($preacts);
@@ -299,10 +316,12 @@
 				$data['minorpubexists'] = $this->ViewPreActs_model->minorpubExists($preacts);
 				$data['sasexists'] = $this->ViewPreActs_model->sasExists($preacts);
 				$data['spcaexists'] = $this->ViewPreActs_model->spcaExists($preacts);
-				$this->load->view('CSO_ViewPreacts_FoodEntry', $list, $data);
+				$this->load->view('CSO_ViewPreacts_FoodEntry', $data);
 			}
 			else{
 				$data['aformexists'] = $this->ViewPreActs_model->aformExists($preacts);
+				$data['pprexists'] = $this->ViewPreActs_model->pprExists($preacts);
+				$data['changeexists'] = $this->ViewPreActs_model->changeExists($preacts);
 				$data['lopexists'] = $this->ViewPreActs_model->lopExists($preacts);
 				$data['contestexists'] = $this->ViewPreActs_model->contestExists($preacts);
 				$data['foodexists'] = $this->ViewPreActs_model->foodExists($preacts);
@@ -310,7 +329,7 @@
 				$data['minorpubexists'] = $this->ViewPreActs_model->minorpubExists($preacts);
 				$data['sasexists'] = $this->ViewPreActs_model->sasExists($preacts);
 				$data['spcaexists'] = $this->ViewPreActs_model->spcaExists($preacts);
-				$this->load->view('ORG_ViewPreacts_FoodEntry', $list, $data);
+				$this->load->view('ORG_ViewPreacts_FoodEntry', $data);
 			}
 
 		}
@@ -318,32 +337,16 @@
 		public function view_trademark_use() {	
 			// GET ACTIVITY DETAILS
 			$preacts=$this->session->userdata("actno");
-			$getActivityDetails = $this->PPR_model->getActivityDetails($preacts);
-			foreach($getActivityDetails as $activityDetail) {
-				$activityDetails[] = $activityDetail;
-			}
+			$preacts=62;
 
-			// GET TRADEMARK USE DETAILS
-			$getTrademarkPermit 		= $this->ViewPreActs_model->getTrademarkUseApproval($preacts);
-			foreach($getTrademarkPermit as $trademarkPermit) {
-				$getDetails 	= $this->ViewPreActs_model->getTrademarkUseDetails($trademarkPermit);
-				$getRequestInfo = $this->ViewPreActs_model->getTrademarkUseRequestInfo($trademarkPermit);
-				foreach($getDetails as $permitDetails) {
-					$details[] = $permitDetails;
-				}
+			$data['activityDetails'] = $this->PreActivity_model->getActivityDetails($preacts);
+			$data['permitDetails'] = $this->ViewPreActs_model->getTrademarkUseDetails($preacts);
+			$data['requestInfo'] = $this->ViewPreActs_model->getTrademarkUseRequestInfo($preacts);
 
-				foreach($getRequestInfo as $requestInfo) {
-					$request[] = $requestInfo;
-				}
-			}
-
-			// ARRAY ASSIGNMENT
-			$list['activityDetails'] = $activityDetails;
-			$list['permitDetails']   = $details;
-			$list['requestInfo']     = $request;
-
-			if ($this->session->userdata('org')['userID']=='1'){
+			if ($this->session->userdata('org')[0]['userID']=='1'){
 				$data['aformexists'] = $this->ViewPreActs_model->aformExists($preacts);
+				$data['pprexists'] = $this->ViewPreActs_model->pprExists($preacts);
+				$data['changeexists'] = $this->ViewPreActs_model->changeExists($preacts);
 				$data['lopexists'] = $this->ViewPreActs_model->lopExists($preacts);
 				$data['contestexists'] = $this->ViewPreActs_model->contestExists($preacts);
 				$data['foodexists'] = $this->ViewPreActs_model->foodExists($preacts);
@@ -351,10 +354,12 @@
 				$data['minorpubexists'] = $this->ViewPreActs_model->minorpubExists($preacts);
 				$data['sasexists'] = $this->ViewPreActs_model->sasExists($preacts);
 				$data['spcaexists'] = $this->ViewPreActs_model->spcaExists($preacts);
-				$this->load->view('CSO_ViewPreacts_Trademark', $list, $data);
+				$this->load->view('CSO_ViewPreacts_Trademark', $data);
 			}
 			else{
 				$data['aformexists'] = $this->ViewPreActs_model->aformExists($preacts);
+				$data['pprexists'] = $this->ViewPreActs_model->pprExists($preacts);
+				$data['changeexists'] = $this->ViewPreActs_model->changeExists($preacts);
 				$data['lopexists'] = $this->ViewPreActs_model->lopExists($preacts);
 				$data['contestexists'] = $this->ViewPreActs_model->contestExists($preacts);
 				$data['foodexists'] = $this->ViewPreActs_model->foodExists($preacts);
@@ -362,7 +367,7 @@
 				$data['minorpubexists'] = $this->ViewPreActs_model->minorpubExists($preacts);
 				$data['sasexists'] = $this->ViewPreActs_model->sasExists($preacts);
 				$data['spcaexists'] = $this->ViewPreActs_model->spcaExists($preacts);
-				$this->load->view('ORG_ViewPreacts_Trademark', $list, $data);
+				$this->load->view('ORG_ViewPreacts_Trademark', $data);
 			}
 
 		}
@@ -370,74 +375,99 @@
 		public function view_contest_mechanics() {
 			// GET ACTIVITY DETAILS
 			$preacts=$this->session->userdata("actno");
-			$getActivityDetails = $this->PPR_model->getActivityDetails($preacts);
-			foreach($getActivityDetails as $activityDetail) {
-				$activityDetails[] = $activityDetail;
-			}
+			$preacts = 62;
+			$data['activityDetails'] = $this->PreActivity_model->getActivityDetails($preacts);
+			$data['projectHeads'] = $this->PreActivity_model->getProjectHeads($preacts);
+			$data['guidelines'] = $this->ViewPreActs_model->getContestMechanicsGuidelines($preacts);
+			$data['mechanics'] 	= $this->ViewPreActs_model->getContestMechanicsDetails($preacts);
+			$data['criteria'] 	= $this->ViewPreActs_model->getContestCriteria($preacts);
+			$data['judges']		= $this->ViewPreActs_model->getContestJudges($preacts);
 
-			// GET ACTIVITY PROJECT HEADS
-			$getProjectHeads = $this->PPR_model->getProjectHeads($preacts);
-			foreach($getProjectHeads as $projectHead) {
-				$projectHeads[] = $projectHead;
-			}
-
-			// GET CONTEST MECHANICS DETAILS
-			$getContestMechanicsNumber = $this->ViewPreActs_model->getContestMechanicsNumber($preacts);
-			foreach($getContestMechanicsNumber as $contestMechanicsID) {
-				$getContestMechanicsGuidelines 	= $this->ViewPreActs_model->getContestMechanicsGuidelines($contestMechanicsID);
-				$getContestMechanicsDetails 	= $this->ViewPreActs_model->getContestMechanicsDetails($contestMechanicsID);
-				$getContestCriteria 			= $this->ViewPreActs_model->getContestCriteria($contestMechanicsID);
-				$getContestJudges				= $this->ViewPreActs_model->getContestJudges($contestMechanicsID);
-
-				foreach($getContestMechanicsDetails as $contestMechanics) {
-					$mechanics[] = $contestMechanics;
-				}
-
-				foreach($getContestCriteria as $contestCriteria) {
-					$criteria[] = $contestCriteria;
-				}
-
-				foreach($getContestJudges as $contestJudges) {
-					$judges[] = $contestJudges;
-				}
-
-				foreach($getContestMechanicsGuidelines as $contestGuidelines) {
-					$guidelines[] = $contestGuidelines;
-					if ($contestGuidelines['academiccontest'] == 1) {
-						$getContestQuestions = $this->ViewPreActs_model->getContestQuestions($contestMechanicsID);
-						foreach($getContestQuestions as $contestQuestions) {
-							$questions[] = $contestQuestions; 
-						}
-					}
-				}
-			}
-
-			// ARRAY ASSIGNMENT
-			$list['activityDetails'] = $activityDetails;
-			$list['projectheads']	 = $projectHeads;
-			$list['mechanics']  	 = $mechanics;
-			$list['criteria']    	 = $criteria;
-			$list['judges']     	 = $judges;
-			$list['guidelines'] 	 = $guidelines;
-
+			$guidelines = $data['guidelines'];
 			if ($guidelines[0]['academiccontest'] == 1) {
-				$list['questions'] = $questions;
+				$data['questions'] = $this->ViewPreActs_model->getContestquestions($preacts);
 			}
 
-			/** removed for testing purposes.. paayos nalang later!
 			if ($guidelines[0]['academiccontest'] == 0) {
-				// $this->load->view('CSO_ViewPreacts_ContestMechanics', $list);
-				$this->load->view('ORG_ViewPreacts_ContestMechanics', $list);
+				if ($this->session->userdata('org')['userID']=='1'){
+					$data['aformexists'] = $this->ViewPreActs_model->aformExists($preacts);
+					$data['pprexists'] = $this->ViewPreActs_model->pprExists($preacts);
+					$data['changeexists'] = $this->ViewPreActs_model->changeExists($preacts);
+					$data['lopexists'] = $this->ViewPreActs_model->lopExists($preacts);
+					$data['contestexists'] = $this->ViewPreActs_model->contestExists($preacts);
+					$data['foodexists'] = $this->ViewPreActs_model->foodExists($preacts);
+					$data['trademarkexists'] = $this->ViewPreActs_model->trademarkExists($preacts);
+					$data['minorpubexists'] = $this->ViewPreActs_model->minorpubExists($preacts);
+					$data['sasexists'] = $this->ViewPreActs_model->sasExists($preacts);
+					$data['spcaexists'] = $this->ViewPreActs_model->spcaExists($preacts);
+					$this->load->view('CSO_ViewPreacts_ContestMechanics', $data);
+				}
+				
+				else{
+					$data['aformexists'] = $this->ViewPreActs_model->aformExists($preacts);
+					$data['pprexists'] = $this->ViewPreActs_model->pprExists($preacts);
+					$data['changeexists'] = $this->ViewPreActs_model->changeExists($preacts);
+					$data['lopexists'] = $this->ViewPreActs_model->lopExists($preacts);
+					$data['contestexists'] = $this->ViewPreActs_model->contestExists($preacts);
+					$data['foodexists'] = $this->ViewPreActs_model->foodExists($preacts);
+					$data['trademarkexists'] = $this->ViewPreActs_model->trademarkExists($preacts);
+					$data['minorpubexists'] = $this->ViewPreActs_model->minorpubExists($preacts);
+					$data['sasexists'] = $this->ViewPreActs_model->sasExists($preacts);
+					$data['spcaexists'] = $this->ViewPreActs_model->spcaExists($preacts);
+					$this->load->view('ORG_ViewPreacts_ContestMechanics', $data);
+				}
 
 			}
 			else {
-				// $this->load->view('CSO_ViewPreacts_ContestMechanics_Academic', $list);
-				$this->load->view('ORG_ViewPreacts_ContestMechanics_Academic', $list);
+				if ($this->session->userdata('org')[0]['userID']=='1'){
+					$data['aformexists'] = $this->ViewPreActs_model->aformExists($preacts);
+					$data['pprexists'] = $this->ViewPreActs_model->pprExists($preacts);
+					$data['changeexists'] = $this->ViewPreActs_model->changeExists($preacts);
+					$data['lopexists'] = $this->ViewPreActs_model->lopExists($preacts);
+					$data['contestexists'] = $this->ViewPreActs_model->contestExists($preacts);
+					$data['foodexists'] = $this->ViewPreActs_model->foodExists($preacts);
+					$data['trademarkexists'] = $this->ViewPreActs_model->trademarkExists($preacts);
+					$data['minorpubexists'] = $this->ViewPreActs_model->minorpubExists($preacts);
+					$data['sasexists'] = $this->ViewPreActs_model->sasExists($preacts);
+					$data['spcaexists'] = $this->ViewPreActs_model->spcaExists($preacts);
+					$this->load->view('CSO_ViewPreacts_ContestMechanics_Academic', $data);
+				}
+				
+				else{
+					$data['aformexists'] = $this->ViewPreActs_model->aformExists($preacts);
+					$data['pprexists'] = $this->ViewPreActs_model->pprExists($preacts);
+					$data['changeexists'] = $this->ViewPreActs_model->changeExists($preacts);
+					$data['lopexists'] = $this->ViewPreActs_model->lopExists($preacts);
+					$data['contestexists'] = $this->ViewPreActs_model->contestExists($preacts);
+					$data['foodexists'] = $this->ViewPreActs_model->foodExists($preacts);
+					$data['trademarkexists'] = $this->ViewPreActs_model->trademarkExists($preacts);
+					$data['minorpubexists'] = $this->ViewPreActs_model->minorpubExists($preacts);
+					$data['sasexists'] = $this->ViewPreActs_model->sasExists($preacts);
+					$data['spcaexists'] = $this->ViewPreActs_model->spcaExists($preacts);
+					$this->load->view('ORG_ViewPreacts_ContestMechanics_Academic', $data);
+				}
 			}
-			**/
-			
-			if ($this->session->userdata('org')['userID']=='1'){
+		}
+		
+		public function view_ppr() {
+			// GET ACTIVITY DETAILS
+			$preacts=$this->session->userdata("actno");
+			$data['activityDetails'] = $this->ViewPreActs_model->getActivityDetails($preacts);
+			$data['pprDetails'] = $this->ViewPreActs_model->getPPRDetails($preacts);
+			$data['projectHeads'] = $this->ViewPreActs_model->getProjectHeads($preacts);
+			$data['programDesign'] = $this->ViewPreActs_model->getProgramDesign($preacts);
+			$data['expenseBreakdown'] = $this->ViewPreActs_model->getExpenses($preacts);
+			$data['orgFunds'] = $this->ViewPreActs_model->getOrgFunds($preacts);
+			$data['sourceFunds'] = $this->ViewPreActs_model->getSourceFunds($preacts);
+			$data['otherFnds'] = $this->ViewPreActs_model->getOtherSourceFunds($preacts);
+			$data['projectedIncome'] = $this->ViewPreActs_model->getProjectedIncome($preacts);
+				
+
+
+			if ($this->session->userdata('org')[0]['userID']=='1'){
 				$data['aformexists'] = $this->ViewPreActs_model->aformExists($preacts);
+				$data['pprexists'] = $this->ViewPreActs_model->pprExists($preacts);
+				$data['changeexists'] = $this->ViewPreActs_model->changeExists($preacts);
 				$data['lopexists'] = $this->ViewPreActs_model->lopExists($preacts);
 				$data['contestexists'] = $this->ViewPreActs_model->contestExists($preacts);
 				$data['foodexists'] = $this->ViewPreActs_model->foodExists($preacts);
@@ -445,10 +475,12 @@
 				$data['minorpubexists'] = $this->ViewPreActs_model->minorpubExists($preacts);
 				$data['sasexists'] = $this->ViewPreActs_model->sasExists($preacts);
 				$data['spcaexists'] = $this->ViewPreActs_model->spcaExists($preacts);
-				$this->load->view('CSO_ViewPreacts_ContestMechanics', $list, $data);
+				$this->load->view('CSO_ViewPreacts_PPR', $data);
 			}
 			else{
 				$data['aformexists'] = $this->ViewPreActs_model->aformExists($preacts);
+				$data['pprexists'] = $this->ViewPreActs_model->pprExists($preacts);
+				$data['changeexists'] = $this->ViewPreActs_model->changeExists($preacts);
 				$data['lopexists'] = $this->ViewPreActs_model->lopExists($preacts);
 				$data['contestexists'] = $this->ViewPreActs_model->contestExists($preacts);
 				$data['foodexists'] = $this->ViewPreActs_model->foodExists($preacts);
@@ -456,9 +488,8 @@
 				$data['minorpubexists'] = $this->ViewPreActs_model->minorpubExists($preacts);
 				$data['sasexists'] = $this->ViewPreActs_model->sasExists($preacts);
 				$data['spcaexists'] = $this->ViewPreActs_model->spcaExists($preacts);
-				$this->load->view('ORG_ViewPreacts_ContestMechanics', $list, $data);
+				$this->load->view('ORG_ViewPreacts_PPR', $data);
 			}
-
 		}
 	}
 ?>

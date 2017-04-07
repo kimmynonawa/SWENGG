@@ -1,7 +1,7 @@
 <html>
 <head></head>
 <body>
-    <img src="SASHeader.png" id="afHeader"> <br>
+    <img src="<?php echo base_url();?>headers/SASHeader.png" id="afHeader"> <br>
     <br>
 	<b> Requesting Organization: </b><?php foreach($groups as $row){ echo $row->name;}?>&nbsp;&nbsp;&nbsp;&nbsp;
 	<b> Title of Activity: </b><?php foreach($groups as $row){ echo $row->title;}?> <br>
@@ -29,7 +29,7 @@
 	</fieldset>
 	<br>
 	<hr>
-	<img src="SASHeader.png" id="afHeader"> <br>
+	<img src="<?php echo base_url();?>headers/SASHeader.png" id="afHeader"> <br>
     <br>
 	<b> Requesting Organization: </b><?php foreach($groups as $row){ echo $row->name;}?>&nbsp;&nbsp;&nbsp;&nbsp;
 	<b> Title of Activity: </b><?php foreach($groups as $row){ echo $row->title;}?> <br>

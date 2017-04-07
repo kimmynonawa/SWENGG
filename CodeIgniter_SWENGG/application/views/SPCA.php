@@ -7,7 +7,7 @@ fieldset {
 <html>
 <head></head>
 <body>
-    <img src="SPCAHeader.png" id="afHeader"> <br>
+    <img src="<?php echo base_url();?>headers/SPCAHeader.png" id="afHeader"> <br>
     <br>
 
     <fieldset style="width:570px">

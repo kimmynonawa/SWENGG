@@ -125,10 +125,21 @@
 			
 			//If Error
 			if ($this->form_validation->run() == FALSE){
-				$res4 = $this->PreActivity_model->getActivityType();
-				$res3 = $this->PreActivity_model->getActivityNature();
-				$data = array('actnat' => $res3, 'acttype' => $res4);
-				$this->load->view('ORG_AddGosm', $data);
+				$term = $this->Gosm_model->getTerm();
+				$todate = $term[0]['enddate'];
+				$todatenew = strtotime($todate);
+				$formatted_todate = date('Y/m/d', $todatenew);
+				if ($formatted_todate < date("Y/m/d") ){
+					redirect('gosm/bawal');
+				}
+				else{
+					$term = $this->Gosm_model->getTerm();
+					$activityNature = $this->PreActivity_model->getActivityNatureList();
+					$activityType = $this->PreActivity_model->getActivityTypeList();
+					$data = array('actnat' => $activityNature, 'acttype' => $activityType, 'term' => $term);
+					$this->load->view('ORG_AddGosm', $data);
+				}
+				
 			}
 			//If success
 			else{
@@ -159,9 +170,12 @@
 				}
 				
 				//Insert new Activity
-				$this->Gosm_model->insertActivity($data, $org, $reto);
-				$data = array ("success" => "true");
-				
+				$term = $this->Gosm_model->getTerm();
+				$this->Gosm_model->insertActivity($data, $org, $reto, $term[0]['term'], $term[0]['schoolyear']);
+				$term = $this->Gosm_model->getTerm();
+				$activityNature = $this->PreActivity_model->getActivityNatureList();
+				$activityType = $this->PreActivity_model->getActivityTypeList();
+				$data = array('actnat' => $activityNature, 'acttype' => $activityType, 'term' => $term, "success" => "true");
 				$this->load->view('ORG_AddGosm', $data);
 			}
 			
@@ -227,6 +241,10 @@
 				$data = array('term' => $term);
 				$this->load->view('CSO_AcceptGosm', $data);
 			}
+		}
+		
+		public function bawal(){
+			$this->load->view('ORG_AddGosm2');
 		}
 		
 		

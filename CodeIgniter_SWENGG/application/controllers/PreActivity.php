@@ -5,17 +5,11 @@
 			$this->load->helper("url");
 			$this->load->library('form_validation');
 			$this->load->library('session');
+
 			$this->load->model('Org_model');
 			$this->load->model('PreActivity_model');
-			$this->load->model('PPR_model');
 			$this->load->model('Gosm_model');
 
-		}
-		
-		public function getPreacts(){
-			header("Content-type: application/json");
-			$res = $this->ViewPreActs_model->getPreacts(2);
-			echo json_encode($res);
 		}
 		
 		//GET ACT NATURE
@@ -85,12 +79,13 @@
 				$this->session->set_userdata('sasinfo', $sasinfo);
 				$this->session->set_userdata('actName', $this->input->post('actName'));
 
+				$activityNature = $this->PreActivity_model->getActivityNatureList();
+				$activityType = $this->PreActivity_model->getActivityTypeList();
+
 				$res2 = $this->PreActivity_model->getActivityReach();
 				$org  = $this->session->userdata('org')[0]['userID'];
-				$res  = $this->Gosm_model->getAct($org);
-				
-				$data = array("activity" => $res, "reach" => $res2);
-
+				$res  = $this->Gosm_model->getAct($org);//$org);
+				$data = array("activity" => $res, "reach" => $res2,"actnat" => $activityNature,"acttype" => $activityType);
 				$this->load->view('ORG_PreAct_AFormNotInGOSM', $data);
 			}
 		}
@@ -115,11 +110,13 @@
 			
 			//If error
 			if ($this->form_validation->run() == FALSE){
+				$activityNature = $this->PreActivity_model->getActivityNatureList();
+				$activityType = $this->PreActivity_model->getActivityTypeList();
+
 				$res2 = $this->PreActivity_model->getActivityReach();
 				$org  = $this->session->userdata('org')[0]['userID'];
-				$res  = $this->Gosm_model->getAct($org);
-				
-				$data = array("activity" => $res, "reach" => $res2);
+				$res  = $this->Gosm_model->getAct($org);//$org);
+				$data = array("activity" => $res, "reach" => $res2,"actnat" => $activityNature,"acttype" => $activityType);
 				$this->load->view('ORG_PreAct_AFormNotInGOSM', $data);
 			}
 			//If success
@@ -129,6 +126,7 @@
 								 'typeact'   => $this->input->post('typeact'),
 								 'reachType' => $this->input->post('reachType'));
 				$this->session->set_userdata('aform1', $aform1);
+				$this->session->set_userdata('activityType', $this->input->post('typeact'));
 				$this->load->view('ORG_PreAct_AForm2');
 			}
 		}
@@ -158,12 +156,13 @@
 			
 			//If error
 			if ($this->form_validation->run() == FALSE){
-				$res4 = $this->PreActivity_model->getActivityType();
-				$res3 = $this->PreActivity_model->getActivityNature();
+				$activityNature = $this->PreActivity_model->getActivityNatureList();
+				$activityType = $this->PreActivity_model->getActivityTypeList();
+
 				$res2 = $this->PreActivity_model->getActivityReach();
 				$org  = $this->session->userdata('org')[0]['userID'];
 				$res  = $this->Gosm_model->getAct($org);//$org);
-				$data = array("activity" => $res, "reach" => $res2, 'actnat' => $res3, 'acttype' => $res4);
+				$data = array("activity" => $res, "reach" => $res2,"actnat" => $activityNature,"acttype" => $activityType);
 				
 				$this->load->view('ORG_PreAct_AFormGOSM', $data);
 			}
@@ -258,10 +257,10 @@
 				$this->session->set_userdata('pprProjectHeads', $projectHeadInfo);
 
 				// FOR TESTING PURPOSES
-				// $this->PPR_model->createNewPPR($this->session->userdata('pprGeneralInfo'));
-				// $PPRNum = $this->PPR_model->getPPR($this->session->userdata('preactsID'));
+				// $this->PreActivity_model->createNewPPR($this->session->userdata('pprGeneralInfo'));
+				// $PPRNum = $this->PreActivity_model->getPPR($this->session->userdata('preactsID'));
 				// foreach ($PPRNum as $ppr) {
-				// 	$this->PPR_model->addProjectHeads($ppr, $this->session->userdata['pprProjectHeads']);
+				// 	$this->PreActivity_model->addProjectHeads($ppr, $this->session->userdata['pprProjectHeads']);
 				// }
 
 				redirect('preActivity/new_ppr_program_design');
@@ -295,10 +294,10 @@
 				$this->session->set_userdata('pprProgramDesign', $data);
 
 				//FOR TESTING PURPOSES
-				// $this->PPR_model->createNewPPR($this->session->userdata('pprGeneralInfo'));
-				// $PPRNum = $this->PPR_model->getPPR(1);
+				// $this->PreActivity_model->createNewPPR($this->session->userdata('pprGeneralInfo'));
+				// $PPRNum = $this->PreActivity_model->getPPR(1);
 				// foreach ($PPRNum as $ppr) {
-				// 	$this->PPR_model->createProgramDesign($ppr, $this->session->userdata['pprProgramDesign']);
+				// 	$this->PreActivity_model->createProgramDesign($ppr, $this->session->userdata['pprProgramDesign']);
 				// }
 
 				redirect('preActivity/new_ppr_expense_breakdown');
@@ -328,10 +327,10 @@
 				$this->session->set_userdata('pprExpenseBreakdown', $data);
 
 				// FOR TESTING PURPOSES
-				// $this->PPR_model->createNewPPR($this->session->userdata('pprGeneralInfo'));
-				// $PPRNum = $this->PPR_model->getPPR(1);
+				// $this->PreActivity_model->createNewPPR($this->session->userdata('pprGeneralInfo'));
+				// $PPRNum = $this->PreActivity_model->getPPR(1);
 				// foreach ($PPRNum as $ppr) {
-				// 	$this->PPR_model->addExpenses($ppr, $this->session->userdata['pprExpenseBreakdown']);
+				// 	$this->PreActivity_model->addExpenses($ppr, $this->session->userdata['pprExpenseBreakdown']);
 				// }
 				redirect('preActivity/new_ppr_funding_details');
 			}
@@ -355,8 +354,8 @@
 			}
 			else {
 				$totalOthersFund = 0;
-				if ($this->input->post('sourceName[0]') != "") {
-					$sourceAmount = $this->input->post('sourceAmount[]');
+				if ($this->input->post('sourcename[0]') != "") {
+					$sourceAmount = $this->input->post('sourceamount[]');
 					for ($i = 0; $i < sizeof($sourceAmount); $i++) {
 						$totalOthersFund += $sourceAmount[$i];
 					}
@@ -384,15 +383,34 @@
 				$this->session->set_userdata('pprOtherSource', $pprOtherSourceData);
 
 				// FOR TESTING PURPOSES
-				// $this->PPR_model->createNewPPR($this->session->userdata('pprGeneralInfo'));
-				// $PPRNum = $this->PPR_model->getPPR(1);
+				// $this->PreActivity_model->createNewPPR($this->session->userdata('pprGeneralInfo'));
+				// $PPRNum = $this->PreActivity_model->getPPR(1);
 				// foreach ($PPRNum as $ppr) {
-				// 	$this->PPR_model->addFunds($ppr, $this->session->userdata['pprFunds']);
-				// 	$this->PPR_model->addOtherFunds($ppr, $this->session->userdata['pprOtherSource']);
-				// 	$this->PPR_model->addOrgFunds($ppr, $this->session->userdata['pprOrgFunds']);
+				// 	$this->PreActivity_model->addFunds($ppr, $this->session->userdata['pprFunds']);
+				// 	$this->PreActivity_model->addOtherFunds($ppr, $this->session->userdata['pprOtherSource']);
+				// 	$this->PreActivity_model->addOrgFunds($ppr, $this->session->userdata['pprOrgFunds']);
 
 				// }
-				redirect('preActivity/new_ppr_projected_income');
+				redirect('preActivity/new_ppr_income');
+				
+			}
+		}	
+
+		public function new_ppr_income() {
+			$this->form_validation->set_rules('yesno', 'yesno', 'required');
+			
+			if ($this->form_validation->run() == FALSE){
+				$this->load->view('ORG_PreAct_PPR5Confirm');
+			}
+			else {
+				if ($this->input->post('yesno') == "yes") {
+					$this->session->set_userdata('withIncome', TRUE);
+					redirect('PreActivity/new_ppr_projected_income');
+				}
+				else {
+					$this->session->set_userdata('withIncome', FALSE);
+					redirect('PreActivity/new_ppr_provisions');
+				}
 			}
 		}	
 
@@ -404,7 +422,6 @@
 		// @return this function will load a page that will inform the user that the 
 		// 		   creation of the AForm, PPR, and/or SAS was successful if the form validation returns TRUE
 		public function new_ppr_projected_income() {
-			$filePreacts = FALSE;
 			$this->form_validation->set_rules('incomeItem[]', 'Item Name', 'required');
 			$this->form_validation->set_rules('incomeQty[]', 'Quantity', 'required');
 			$this->form_validation->set_rules('incomeSellPrice[]', 'Selling Price','required');
@@ -429,15 +446,45 @@
 
 				$this->session->set_userdata('pprProjectedIncome', $incomeData);
 				$this->session->set_userdata('pprProjectedExpenses', $expenseData);
-				$filePreacts = TRUE;
+				redirect('PreActivity/new_ppr_provisions');
 				// FOR TESTING PURPOSES
-				// $this->PPR_model->createNewPPR($this->session->userdata('pprGeneralInfo'));
-				// $PPRNum = $this->PPR_model->getPPR(1);
+				// $this->PreActivity_model->createNewPPR($this->session->userdata('pprGeneralInfo'));
+				// $PPRNum = $this->PreActivity_model->getPPR(1);
 				// foreach ($PPRNum as $ppr) {
-				// 	$this->PPR_model->addProjectedIncome($ppr, $this->session->userdata['pprProjectedIncome']);
-				// 	$this->PPR_model->addProjectedExpenses($ppr, $this->session->userdata['pprProjectedExpenses']);
+				// 	$this->PreActivity_model->addProjectedIncome($ppr, $this->session->userdata['pprProjectedIncome']);
+				// 	$this->PreActivity_model->addProjectedExpenses($ppr, $this->session->userdata['pprProjectedExpenses']);
 
 				// }
+			}
+		}
+
+		public function new_ppr_provisions() {
+			$filePreacts = FALSE;
+			$this->form_validation->set_rules('treasurer', 'treasurer', 'required');
+			$this->form_validation->set_rules('preparedby', 'Prepared By', 'required');
+			$this->form_validation->set_rules('provname1', 'Provisions for Profit and Loss', 'required');
+			$this->form_validation->set_rules('provname2', 'Provisions for Profit and Loss', 'required');
+			$this->form_validation->set_rules('provpos1', 'Provisions for Profit and Loss', 'required');
+			$this->form_validation->set_rules('provpos2', 'Provisions for Profit and Loss', 'required');
+			$this->form_validation->set_rules('president', 'Noted By', 'required');
+			$this->form_validation->set_rules('facin', 'Noted By', 'required');
+
+			if ($this->form_validation->run() == FALSE){
+				$this->load->view('ORG_PreAct_PPR6');
+			}
+			else {
+				$data = array(
+							'treasurer' => $this->input->post('treasurer'),
+							'preparedby' => $this->input->post('preparedby'),
+							'provname1' => $this->input->post('provname1'),
+							'provpos1' => $this->input->post('provpos1'),
+							'provname2' => $this->input->post('provname2'),
+							'provpos2' => $this->input->post('provpos2'),
+							'president' => $this->input->post('president'),
+							'facin' => $this->input->post('facin'),
+						);
+				$this->session->set_userdata('pprProvisions', $data);
+				$filePreacts = TRUE;
 			}
 
 			if ($filePreacts) {
@@ -452,31 +499,41 @@
 					$sas = $this->PreActivity_model->getSASID()['sasID'];
 					var_dump($this->session->userdata('sasinfo'));
 					
-					$this->PreActivity_model->insertAformNotInGOSM($preacts, $sas,$this->session->userdata('sasinfo')['actName'],  $this->session->userdata('aform1'), $this->session->userdata('aform2'));
+					$this->PreActivity_model->insertAformNotInGOSM($preacts, $sas, $this->session->userdata('sasinfo')['actName'],  $this->session->userdata('aform1'), $this->session->userdata('aform2'));
 
-					$this->PPR_model->createNewPPR($preacts, $this->session->userdata('pprGeneralInfo'));
-					$ppr = $this->PPR_model->getPPR($preacts)['pprID'];
-					
-					
-					$this->PPR_model->addProjectHeads($ppr, $this->session->userdata['pprProjectHeads']);
-					//PPR 2
-					$this->PPR_model->createProgramDesign($ppr, $this->session->userdata['pprProgramDesign']);
+						$this->PreActivity_model->createNewPPR($preacts, $this->session->userdata('pprGeneralInfo'));
+						$PPRNum = $this->PreActivity_model->getPPR($preacts);
+						foreach ($PPRNum as $ppr) {
+							//PPR 1
+							$this->PreActivity_model->addProjectHeads($ppr, $this->session->userdata('pprProjectHeads'));
 
-					//PPR 3
-					$this->PPR_model->addExpenses($ppr, $this->session->userdata['pprExpenseBreakdown']);
+							//PPR 2
+							$this->PreActivity_model->createProgramDesign($ppr, $this->session->userdata('pprProgramDesign'));
 
-					//PPR 4
-					$this->PPR_model->addFunds($ppr, $this->session->userdata['pprFunds']);
-					$getFundsNum = $this->PPR_model->getFundsNum($ppr)['ppr_fundsID'];
-					$this->PPR_model->addOtherFunds($getFundsNum, $this->session->userdata['pprOtherSource']);
+							//PPR 3
+							$this->PreActivity_model->addExpenses($ppr, $this->session->userdata('pprExpenseBreakdown'));
+
+							//PPR 4
+							$this->PreActivity_model->addFunds($ppr, $this->session->userdata('pprFunds'));
+							$getFundsNum = $this->PreActivity_model->getFundsNum($ppr);
+							foreach ($getFundsNum as $fundsNum) {
+								$this->PreActivity_model->addOtherFunds($fundsNum, $this->session->userdata('pprOtherSource'));
+							}
+							$this->PreActivity_model->addOrgFunds($ppr, $this->session->userdata('pprOrgFunds'));
 							
-					$this->PPR_model->addOrgFunds($ppr, $this->session->userdata['pprOrgFunds']);
-							
-					//PPR 5
-					$this->PPR_model->addProjectedIncome($ppr, $this->session->userdata['pprProjectedIncome']);
-					$this->PPR_model->addProjectedExpenses($ppr, $this->session->userdata['pprProjectedExpenses']);
-							
-							
+							//PPR 5
+							if ($this->session->userdata('withIncome') == TRUE) {
+								$this->PreActivity_model->addProjectedIncome($ppr, $this->session->userdata('pprProjectedIncome'));
+								$this->PreActivity_model->addProjectedExpenses($ppr, $this->session->userdata('pprProjectedExpenses'));
+							}
+
+							// PPR 6 
+							$this->PreActivity_model->addProvisions($ppr, $this->session->userdata('pprProvisions'));
+							$data = array('success' => 'true');
+							$this->load->view('ORG_PreAct', $data);
+						}
+						
+						
 					
 				}
 
@@ -491,95 +548,67 @@
 					
 					$this->PreActivity_model->insertAFormGOSM($preacts, $title[0]['title'], $this->session->userdata('aform1'), $this->session->userdata('aform2'));
 					
-					$this->PPR_model->createNewPPR($preacts, $this->session->userdata('pprGeneralInfo'));
-					$ppr = $this->PPR_model->getPPR($preacts)['pprID'];
-					
-					
-					$this->PPR_model->addProjectHeads($ppr, $this->session->userdata['pprProjectHeads']);
-					//PPR 2
-					$this->PPR_model->createProgramDesign($ppr, $this->session->userdata['pprProgramDesign']);
+						// TESTED AND ADDING
+						$this->PreActivity_model->createNewPPR($preacts, $this->session->userdata('pprGeneralInfo'));
+						$PPRNum = $this->PreActivity_model->getPPR($preacts);
+						foreach ($PPRNum as $ppr) {
+							//PPR 1
+							$this->PreActivity_model->addProjectHeads($ppr, $this->session->userdata('pprProjectHeads'));
 
-					//PPR 3
-					$this->PPR_model->addExpenses($ppr, $this->session->userdata['pprExpenseBreakdown']);
+							//PPR 2
+							$this->PreActivity_model->createProgramDesign($ppr, $this->session->userdata('pprProgramDesign'));
 
-					//PPR 4
-					$this->PPR_model->addFunds($ppr, $this->session->userdata['pprFunds']);
-					$getFundsNum = $this->PPR_model->getFundsNum($ppr)['ppr_fundsID'];
-					$this->PPR_model->addOtherFunds($getFundsNum, $this->session->userdata['pprOtherSource']);
+							//PPR 3
+							$this->PreActivity_model->addExpenses($ppr, $this->session->userdata('pprExpenseBreakdown'));
+
+							//PPR 4
+							$this->PreActivity_model->addFunds($ppr, $this->session->userdata('pprFunds'));
+							$getFundsNum = $this->PreActivity_model->getFundsNum($ppr);
+							foreach ($getFundsNum as $fundsNum) {
+								$this->PreActivity_model->addOtherFunds($fundsNum, $this->session->userdata('pprOtherSource'));
+							}
+							$this->PreActivity_model->addOrgFunds($ppr, $this->session->userdata('pprOrgFunds'));
 							
-					$this->PPR_model->addOrgFunds($ppr, $this->session->userdata['pprOrgFunds']);
+							//PPR 5
+							if ($this->session->userdata('withIncome') == TRUE) {
+								$this->PreActivity_model->addProjectedIncome($ppr, $this->session->userdata('pprProjectedIncome'));
+								$this->PreActivity_model->addProjectedExpenses($ppr, $this->session->userdata('pprProjectedExpenses'));
+							}
+
+							// PPR 6 
+							$this->PreActivity_model->addProvisions($ppr, $this->session->userdata('pprProvisions'));
 							
-					//PPR 5
-					$this->PPR_model->addProjectedIncome($ppr, $this->session->userdata['pprProjectedIncome']);
-					$this->PPR_model->addProjectedExpenses($ppr, $this->session->userdata['pprProjectedExpenses']);
+							$data = array('success' => 'true');
+							$this->load->view('ORG_PreAct', $data);
+						}
+					
 				}
 				
-				
 				$aformID = $this->PreActivity_model->getAformLatest();
-				var_dump($aformID);
-				var_dump($this->session->userdata('sDate'));
-				var_dump($this->session->userdata('drsDate'));
-				
+						
 				for ($i = 0; $i < count($this->session->userdata('sDate')); $i++){
-					$this->PreActivity_model->insertAformDateTimeSingle(
-						$aformID['aformID'], $this->session->userdata('sDate')[$i], 
-						$this->session->userdata('s1Time')[$i],$this->session->userdata('e1Time')[$i]
-					);
+					if ($this->session->userdata('sDate')[$i] != null){
+						$this->PreActivity_model->insertAformDateTimeSingle(
+							$aformID['aformID'], $this->session->userdata('sDate')[$i], 
+							$this->session->userdata('s1Time')[$i],$this->session->userdata('e1Time')[$i]
+						);
+					}
 				}
 						
 				for ($i = 0; $i < count($this->session->userdata('drsDate')); $i++){
-					$this->PreActivity_model->insertAformDateTimeRange(
-						$aformID['aformID'], $this->session->userdata('drsDate')[$i], 
-						$this->session->userdata('dreDate')[$i],
-						$this->session->userdata('s2Time')[$i], $this->session->userdata('e2Time')[$i]
-					);
+					if ($this->session->userdata('drsDate')[$i] != null){
+						$this->PreActivity_model->insertAformDateTimeRange(
+							$aformID['aformID'], $this->session->userdata('drsDate')[$i], 
+							$this->session->userdata('dreDate')[$i],
+							$this->session->userdata('s2Time')[$i], $this->session->userdata('e2Time')[$i]
+						);
+					}
 				}
 				
 			}
+
 		}
 
-		
-		// SPECIAL APPROVAL SLIP FOR ACTIVITY DETAILS CHANGE
-		// This serves as a function for loading and validating the special approval slip for the change of activity details
-		// @return this function will load the page again if the form validation returns FALSE
-		// @return this function will load the page that contains the form to cancel an activity if the form validation returns TRUE
-		// @return this function will load the page that contains the form to change an activity's details if the form validation returns TRUE
-		public function special_approval_slip(){
-			$this->form_validation->set_rules('submissionType', 'submissionType', 'required');
-			$this->form_validation->set_rules('reason', 'reason', 'required');
-			$this->form_validation->set_rules('name', 'name', 'required');
-			
-			if ($this->form_validation->run() == FALSE){
-				$preacts = $this->session->userdata("actno");
-				$preactinfo = $this->PreActivity_model->getPreactDetails($preacts);
-				$data = array('preactinfo' => $preactinfo);
-				$this->load->view('ORG_PreAct_SpecialApprovalSlip', $data);
-				echo 'error';
-			}
-			else {
-				$preacts = $this->session->userdata("actno");
-				$sas = array(
-					'submissionType' => $this->input->post('submissionType'),
-					'submittedby' => $this->input->post('name'),
-					'reason' => $this->input->post('reason')
-				);
-				
-				$this->session->set_userdata('sas', $sas);
-				
-				if ($this->input->post('submissionType') == 3){
-					redirect('PreActivity/cancel_activity');
-				}
-				if ($this->input->post('submissionType') == 2){
-					redirect('PreActivity/change_act_details');
-				}
-				if ($this->input->post('submissionType') == 6){
-					$this->PreActivity_model->createSASForm($preacts, 6, $this->session->userdata('sas'));
-
-						//$getSASID = $this->PreActivity_model->getSASID();
-					echo 'Success lost a form';
-				}
-			}
-		}
 		
 		// SPECIAL APPROVAL SLIP -- ACTIVITY CANCELLATION
 		// This serves as a function for loading and validating the special approval slip for the cancellation of an activity
@@ -598,7 +627,6 @@
 				
 			}
 			else{
-				echo 'success cad cancel';
 				$preacts = $this->session->userdata("actno");
 				$this->PreActivity_model->createSASForm($preacts, 3, $this->session->userdata('sas'));
 				$getSASID = $this->PreActivity_model->getSASID();
@@ -607,12 +635,11 @@
 				$this->PreActivity_model->insertChangeAct($cancellation, $this->input->post('reason'), $this->input->post('requestName'), $getSASID['sasID']);
 				
 				
-				$preacts = $this->session->userdata("actno");
-				$preactinfo = $this->PreActivity_model->getPreactDetails($preacts);
-				$aformID = $this->PreActivity_model->getAformID($preacts);
-				$datetime = $this->PreActivity_model->getAformDate($aformID[0]['aformID']);
-				$data = array('preactinfo' => $preactinfo, 'datetime' => $datetime);
-				$this->load->view('ORG_PreAct_ApprovalChangeActDetails_Cancel', $data);
+				//success redirect
+				$org = $this->session->userdata('org')[0]['userID'];
+				$groups = $this->PreActivity_model->getPreacts($org);
+				$data = array('groups' => $groups);
+				$this->load->view('ORG_FillOutOtherReq',$data);
 			}
 		}
 		
@@ -623,7 +650,6 @@
 		public function change_act_details(){
 			$this->form_validation->set_rules('reason', 'Reason', 'required');
 			if ($this->form_validation->run() == FALSE){
-				echo 'error';
 				$preacts = $this->session->userdata("actno");
 				$preactinfo = $this->PreActivity_model->getPreactDetails($preacts);
 				$aformID = $this->PreActivity_model->getAformID($preacts);
@@ -640,7 +666,6 @@
 					redirect('Preactivity/change_program_design');
 				}
 				else{
-					echo 'success cad';
 					$preacts = $this->session->userdata("actno");
 					$this->PreActivity_model->createSASForm($preacts, 2, $this->session->userdata('sas'));
 					$getSASID = $this->PreActivity_model->getSASID();
@@ -653,31 +678,35 @@
 					
 					
 					for ($i = 0; $i < count($this->input->post('sDate')); $i++){
-						$this->PreActivity_model->insertAformDateTimeSingleCAD(
-							$cadID[0]['activitydetailschangesID'], $this->input->post('sDate')[$i], 
-							$this->input->post('s1Time')[$i],$this->input->post('e1Time')[$i]
-						);
+						if ($this->input->post('sDate')[$i] != null){
+							$this->PreActivity_model->insertAformDateTimeSingleCAD(
+								$cadID[0]['activitydetailschangesID'], $this->input->post('sDate')[$i], 
+								$this->input->post('s1Time')[$i],$this->input->post('e1Time')[$i]
+							);
+						}
 					}
 							
 					for ($i = 0; $i < count($this->input->post('drsDate')); $i++){
-						$this->PreActivity_model->insertAformDateTimeRangeCAD(
-							$cadID[0]['activitydetailschangesID'], $this->input->post('drsDate')[$i], 
-							$this->input->post('dreDate')[$i],
-							$this->input->post('s2Time')[$i], $this->input->post('e2Time')[$i]
-						);
+						if ($this->input->post('drsDate')[$i] != null){
+							$this->PreActivity_model->insertAformDateTimeRangeCAD(
+								$cadID[0]['activitydetailschangesID'], $this->input->post('drsDate')[$i], 
+								$this->input->post('dreDate')[$i],
+								$this->input->post('s2Time')[$i], $this->input->post('e2Time')[$i]
+							);
+						}
 					}
 					
 					if ($this->input->post('newvenue')){
 						$this->PreActivity_model->insertVenueCAD($this->input->post('newvenue'),$cadID[0]['activitydetailschangesID']);
-						echo $this->input->post('newvenue');
+						
 					}
 					
-					$preacts = $this->session->userdata("actno");
-					$preactinfo = $this->PreActivity_model->getPreactDetails($preacts);
-					$aformID = $this->PreActivity_model->getAformID($preacts);
-					$datetime = $this->PreActivity_model->getAformDate($aformID[0]['aformID']);
-					$data = array('preactinfo' => $preactinfo, 'datetime' => $datetime);
-					$this->load->view('ORG_PreAct_ApprovalChangeActDetails', $data);
+					
+					//success redirect
+					$org = $this->session->userdata('org')[0]['userID'];
+					$groups = $this->PreActivity_model->getPreacts($org);
+					$data = array('groups' => $groups);
+					$this->load->view('ORG_FillOutOtherReq',$data);
 				}
 			}
 		}
@@ -689,26 +718,37 @@
 		public function change_program_design(){
 			$this->form_validation->set_rules('time[]', 'time', 'required');
 			if ($this->form_validation->run() == FALSE){
-				echo('error');
-				$this->load->view('ORG_PreAct_ApprovalChangeActDetails.php');
+				$preacts = $this->session->userdata("actno");
+				$preactinfo = $this->PreActivity_model->getPreactDetails($preacts);
+				$aformID = $this->PreActivity_model->getAformID($preacts);
+				$datetime = $this->PreActivity_model->getAformDate($aformID[0]['aformID']);
+				$data = array('preactinfo' => $preactinfo, 'datetime' => $datetime);
+				$this->load->view('ORG_PreAct_ApprovalChangeActDetails_ComDes.php', $data);
 			}
 			else{
-				echo 'success cad change_program_design';
 				$preacts = $this->session->userdata("actno");
 				$this->PreActivity_model->createSASForm($preacts, 2, $this->session->userdata('sas'));
 				$getSASID = $this->PreActivity_model->getSASID();
 				
 				$cancellation = 0;
+
 				$this->PreActivity_model->insertChangeAct($cancellation, $this->session->userdata('caddtls')['reason'], $this->session->userdata('caddtls')['requestName'], $getSASID['sasID']);
 				
 				$cadID = $this->PreActivity_model->getCAD();
 
 				for ($i = 0; $i < count($this->input->post('time')); $i++){
-					$this->PreActivity_model->insertchange_program_designCAD($cadID[0]['activitydetailschangesID'],$this->input->post('time')[$i], 
-					$this->input->post('stime')[$i], $this->input->post('aname')[$i], 
-					$this->input->post('ades')[$i], $this->input->post('apic')[$i]);
+					if ($this->input->post('time') != null){
+						$this->PreActivity_model->insertComDesCAD($cadID[0]['activitydetailschangesID'],$this->input->post('time')[$i], 
+						$this->input->post('stime')[$i], $this->input->post('aname')[$i], 
+						$this->input->post('ades')[$i], $this->input->post('apic')[$i]);
+					}
 				}
 				
+				//success redirect
+				$org = $this->session->userdata('org')[0]['userID'];
+				$groups = $this->PreActivity_model->getPreacts($org);
+				$data = array('groups' => $groups);
+				$this->load->view('ORG_FillOutOtherReq',$data);
 			}
 		}
 
@@ -728,6 +768,8 @@
 			
 			if ($this->form_validation->run() == FALSE)
 			{
+				//redirect success
+				$org = $this->session->userdata('org')[0]['userID'];
 				$groups = $this->PreActivity_model->getPreacts($org);
 				$data = array('groups' => $groups);
 				$this->load->view('ORG_FillOutOtherReq',$data);
@@ -753,7 +795,7 @@
 				
 				else if($req==3) //SPCA
 				{
-					redirect('PreActivity_controller/spca1');
+					redirect('PreActivity/spca1');
 				}
 				
 				else if($req==4) //Trademark Use
@@ -773,7 +815,7 @@
 				
 				else if($req==7) //Minor Publication Proposal
 				{
-					redirect('PreActivity_controller/minorpub_form');
+					redirect('PreActivity/minorpub_form');
 				}
 			}
 		}
@@ -783,13 +825,11 @@
 		// @return this function will load the page again if the form validation returns FALSE
 		// @return this function will load a page that will inform the user of the success in the creation of the list of participants form if the form validation returns TRUE
 		public function list_of_participants(){
-			
 			$this->form_validation->set_rules('id[]', 'Expected Number of Participants', 'required',
 				array('required' => 'You have not provided %s.')
 			);
 			
 			if ($this->form_validation->run() == FALSE){
-				var_dump ($this->session->userdata('actno'));
 				$this->load->view('ORG_PreAct_ListOfParticipants');
 			}
 			
@@ -799,8 +839,6 @@
 				$this->PreActivity_model->loppk($actno);
 				
 				$lopid = $this->PreActivity_model->lopid()[0]['listofparticipantsID'];
-				
-				echo $this->input->post('choice')[0];
 				
 				for ($i = 0; $i < count($this->input->post('id')); $i++){
 					if ($this->input->post('choice')[$i] == NULL){
@@ -816,10 +854,11 @@
 						$this->input->post('age')[$i],$lopid, $waiver
 					);
 				}
-				
-				
-				$data = array ("success" => "true");
-				$this->load->view('ORG_PreAct_ListOfParticipants', $data);
+				//redirect success
+				$org = $this->session->userdata('org')[0]['userID'];
+				$groups = $this->PreActivity_model->getPreacts($org);
+				$data = array('groups' => $groups);
+				$this->load->view('ORG_FillOutOtherReq',$data);
 			}
 		}
 
@@ -840,7 +879,7 @@
 			}
 			else  {
 				$data = array(
-					'preactsID' 	=> $this->session->userdata('preactsID'),
+					'preactsID' 	=> $this->session->userdata('actno'),
 					'name' 			=> $this->input->post('Name'),
 					'IDnum' 		=> $this->input->post('IDNum'),
 					'email' 		=> $this->input->post('Email'),
@@ -884,6 +923,11 @@
 					$this->PreActivity_model->createFoodPermitDetails($permit,$data);
 				}
 			}
+			//success redirect
+			$org = $this->session->userdata('org')[0]['userID'];
+				$groups = $this->PreActivity_model->getPreacts($org);
+				$data = array('groups' => $groups);
+				$this->load->view('ORG_FillOutOtherReq',$data);
 		}
 
 		// CONTEST MECHANICS
@@ -901,7 +945,7 @@
 				$this->load->view('ORG_PreAct_ContestMechanics');
 			}
 			else  {
-				$generalInfo = array('preactsID'   => $this->session->userdata('preactsID'), 
+				$generalInfo = array('preactsID'   => $this->session->userdata('actno'), 
 									 'guidelines'  => $this->input->post('guidelines'));
 				$mechanics   = array('mechanics[]' => $this->input->post('mechanics[]'));
 				$criteria    = array('criteria[]'  => $this->input->post('cri[]'));
@@ -928,8 +972,12 @@
 					if ($this->session->userdata('contestMechanicsQuestions')) {
 						$this->PreActivity_model->addContestMechanicsQuestions($contestMechanics,$this->session->userdata('contestMechanicsQuestions'));
 					}
-				}	
-
+				}
+				//success redirect
+				$org = $this->session->userdata('org')[0]['userID'];
+				$groups = $this->PreActivity_model->getPreacts($org);
+				$data = array('groups' => $groups);
+				$this->load->view('ORG_FillOutOtherReq',$data);
 			}
 		}
 
@@ -991,7 +1039,7 @@
 				$duration->format('%H hour(s) and %i minute(s)');
 
 				$data = array(
-					'preactsID'		=> $this->session->userdata('preactsID'),
+					'preactsID'		=> $this->session->userdata('actno'),
 					'material' 		=> $this->input->post('matToProduce'),
 					'purposeOfUse' 	=> $this->input->post('trademarkUse'),
 					'startDate'		=> $this->input->post('startDate'),
@@ -1011,7 +1059,13 @@
 					$this->PreActivity_model->createTrademarkUseRequestInfo($trademarkUseNum,$this->session->userdata('trademarkRequestInfo'));
 					$this->PreActivity_model->addTrademarkToUse($trademarkUseNum, $this->session->userdata('trademarksToUse'));
 				}
-			} 
+				
+				//success redirect
+				$org = $this->session->userdata('org')[0]['userID'];
+				$groups = $this->PreActivity_model->getPreacts($org);
+				$data = array('groups' => $groups);
+				$this->load->view('ORG_FillOutOtherReq',$data);
+			}
 		}
 
 		// MINOR PUBLICATION PAGE 1
@@ -1060,7 +1114,7 @@
 
 				$actno = $this->session->userdata("actno");
 
-				if ($this->PreActivity_model->minorpub($actno, $pubname, $pubtype, $pubfreq, $pubcost, $pubdate, $obj1, $obj2, $obj3, $cont1, $cont2, $cont3, $tread1, $tread2, $tread3)) redirect('p_forms_controller/minorpub_form2');
+				if ($this->PreActivity_model->minorpub($actno, $pubname, $pubtype, $pubfreq, $pubcost, $pubdate, $obj1, $obj2, $obj3, $cont1, $cont2, $cont3, $tread1, $tread2, $tread3)) redirect('PreActivity/minorpub_form2');
 				else echo "Error";
 			}
 		}
@@ -1118,7 +1172,6 @@
 		// @return this function will load the page again if the form validation returns FALSE
 		// @return this function will redirect the user to the second page of the campus form if validation returns TRUE
 		public function spca1(){
-			$this->form_validation->set_rules('actTitle', 'actTitle', 'required');
 			$this->form_validation->set_rules('numPersons', 'numPersons', 'required');
 			$this->form_validation->set_rules('outsidersOption', 'outsidersOption', 'required');
 			$this->form_validation->set_rules('Faculty', 'Faculty', 'required');
@@ -1134,8 +1187,6 @@
 				$this->load->view('ORG_PreAct_SpecialPermitCampusAccess');
 			}
 			else  {
-				
-				$actTitle = $this->input->post('actTitle');
 				$numPersons	= $this->input->post('numPersons');
 				$outsidersOption	= $this->input->post('outsidersOption');
 				$Faculty	= $this->input->post('Faculty');
@@ -1149,8 +1200,9 @@
 				
 				$actno = $this->session->userdata("actno");
 
-				if ($this->PreActivity_model->spca1($actno, $actTitle, $numPersons, $Faculty, $Name, $IDNum, $officeLoc, $CPNo, $TelNo, $Email)) redirect('p_forms_controller/spca2');
+				if ($this->PreActivity_model->spca1($actno, $numPersons, $Faculty, $Name, $IDNum, $officeLoc, $CPNo, $TelNo, $Email)) redirect('PreActivity/spca2');
 				else echo "Error";
+				
 			}
 		}
 
@@ -1204,7 +1256,7 @@
 						}
 					}
 					
-					redirect('p_forms_controller/spca3');
+					redirect('PreActivity/spca3');
 				}
 				else echo "no";
 			}
@@ -1260,6 +1312,12 @@
 			}
 		}
 		
+		
+		// SPECIAL APPROVAL SLIP FOR ACTIVITY DETAILS CHANGE
+		// This serves as a function for loading and validating the special approval slip for the change of activity details
+		// @return this function will load the page again if the form validation returns FALSE
+		// @return this function will load the page that contains the form to cancel an activity if the form validation returns TRUE
+		// @return this function will load the page that contains the form to change an activity's details if the form validation returns TRUE
 		public function sas(){
 			$this->form_validation->set_rules('submissionType', 'submissionType', 'required');
 			$this->form_validation->set_rules('reason', 'reason', 'required');
@@ -1288,14 +1346,25 @@
 				if ($this->input->post('submissionType') == 2){
 					redirect('PreActivity/change_act_details');
 				}
+				if ($this->input->post('submissionType') == 5){
+					$this->PreActivity_model->createSASForm($preacts, 5, $this->session->userdata('sas'));
+					//success redirect
+					$org = $this->session->userdata('org')[0]['userID'];
+					$groups = $this->PreActivity_model->getPreacts($org);
+					$data = array('groups' => $groups);
+					$this->load->view('ORG_FillOutOtherReq',$data);
+				}
 				if ($this->input->post('submissionType') == 6){
 					$this->PreActivity_model->createSASForm($preacts, 6, $this->session->userdata('sas'));
-
-						//$getSASID = $this->PreActivity_model->getSASID();
-					echo 'Success lost a form';
+					//success redirect
+					$org = $this->session->userdata('org')[0]['userID'];
+					$groups = $this->PreActivity_model->getPreacts($org);
+					$data = array('groups' => $groups);
+					$this->load->view('ORG_FillOutOtherReq',$data);		
 				}
 			}
 		}
+		
+		
 	}
-	
 ?>

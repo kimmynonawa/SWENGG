@@ -12,7 +12,6 @@
 	<script src= "<?php echo base_url();?>js/jquery.js"> </script>
 	<script src= "<?php echo base_url();?>js/jquery.min.js"></script>
 	<script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
-    <script src = "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"> </script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <!-- Bootstrap -->
@@ -38,88 +37,56 @@
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <!--<div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Yo!</span></a>
-            </div> -->
-
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="<?php echo base_url();?>images/user.png" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h2> <?php echo ($this->session->userdata('org')[0]['acronym']);?></h2>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <ul class="nav side-menu">
-				  <li><a href="http://localhost/index.php/account/org"><i class="fa fa-home"></i> Home <span ></span></a></li>
-                  <li><a href="http://localhost/index.php/gosm/add"><i class="fa fa-table"></i> Add New GOSM <span ></span></a></li>
-                  <li><a href="http://localhost/index.php/PreActivity/preacts"><i class="fa fa-edit"></i> Add Pre-Activity <span ></span></a></li>				  
-				  <li><a href="#"><i class="fa fa-calendar"></i> Calendar <span ></span></a></li>
-				  <li><a href="http://localhost/index.php/gosm/viewORGGosm1"><i class="fa fa-list-alt"></i> GOSM <span ></span></a></li>
-				</ul>
-              </div>
-            </div>
-            <!-- /sidebar menu -->
+        <div class="col-md-3 left_col ">
+          <div class="clearfix"></div>
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section nav side-menu"> 
+            <br>      
+            <li><a href="http://localhost/index.php/gosm/add"><i class="fa fa-edit side-menu"></i>Create New GOSM</a></li>
+            <li><a href="http://localhost/index.php/Preactivity/preacts"><i class="fa fa-edit side-menu"></i>Pre-Activity Requirements</a></li>
+            <li><a href="http://localhost/index.php/Preactivity/other_requirements"><i class="fa fa-edit side-menu"></i>Additional Requirements</a></li>
+            <li><a href="http://localhost/index.php/viewpreacts/viewpreacts"><i class="fa fa-folder-open"></i> View Pre-Acts</a></li>
+            <li><a href="http://localhost/index.php/gosm/viewORGGosm1"><i class="fa fa-list-alt"></i> View GOSM</a></li>
           </div>
         </div>
-
-        <div class="top_nav">
-		
-          <div class="nav_menu">
-            <nav>
-
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   <?php echo ($this->session->userdata('org')[0]['name']);?>
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
-                  </ul>
-                </li>
-                </li>
-              </ul>
-            </nav>
-          </div>
+      </div>
+    </div>
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="userIcon">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['acronym']);?>
+                  <span class="fa fa-caret-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="http://localhost/index.php/account/login"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                </ul>
+              </li>
+              <li role="presentation" class="dropdown">
+                
+                <li><a href="http://localhost/index.php/account/org"><i class="fa fa-home"></i> Home</a></li>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <!-- /top navigation -->
-
-<!-- page content -->
+      </div>
+      
+    <!-- page content -->
         <div class="right_col" role="main">
-          <div class="">
-            <div class= "x_panel">
-              <div class= "row">
-                <div class="title col-md-5">
-                  <h3>Approval in Changes of Activity Details</h3>
+          <div class= "infoPanel">
+            <div class="infoHead" data-toggle="collapse" href="#info">
+              <h3> Approval in Changes of Activity Details
+                <div class="icon">
+                  <span class="glyphicon glyphicon-menu-down"></span> 
                 </div>
-                <div align="right">
-                    <ul class="nav navbar-right panel_toolbox"> 
-                      <li>
-                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li> 
-                    </ul>
-                </div>
-              </div>
-              <div class= "x_content bg-success">
-                <h4><p class="text-success"> Lorem ipsum dolor sit amet, vel pretium architecto, semper semper eu elit sed, lacus cras quis, pede velit. Pretium convallis suscipit, vestibulum rutrum, eu integer montes erat ut tincidunt, facilisis dolor. Et fermentum nulla, litora leo in, nunc aliquam aperiam, rutrum elementum, dictum malesuada morbi amet nisl. sociis odio laoreet dolor mauris. </p></h4>
-              </div>
+              </h3>
             </div>
-            
-            <div class="clearfix"></div>
+            <div class="infoBody" id="info">
+              <h4> <p>The Approval in Changes of Activity Details should be completed only if the Pre-Activity requirements are already approved.</p></h4>
+            </div>
+          </div>
 
           <div class="clearfix"></div>
             <div class="row">
@@ -197,10 +164,10 @@
                       </div>  
                       
                       <div class= "row">
-                        <div class="col-md-10">   
-                          <label class= "col-md-4"> <h4>Changes</h4></label>
-                            <div class= "form-group col-md-4">
-                              <select name="changes" id="changes" class="form-control col-md-7 col-xs-12">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Changes</h4></label>
+                            <div class= "form-group col-md-3">
+                              <select name="changes" id="changes" class="form-control col-md-5">
                                 <option disabled selected>Select Changes</option>
                                 <option value="1"> Venue</option>
                                 <option value="2"> Date and Time</option>
@@ -208,7 +175,7 @@
                                 <option value="4"> Cancellation</option>             
                               </select>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                               <button class="form-control" id="select">Select Change</button>
                             </div>        
                           </div> 
@@ -217,18 +184,18 @@
                       <div id="dateDetails"></div>
 
                       <div class= "row">
-                        <div class="col-md-10">   
-                          <label class= "col-md-4"> <h4>Justification/Reason </h4> </label>
-                            <div class= "form-group col-md-4">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Justification/Reason </h4> </label>
+                            <div class= "form-group col-md-6">
                               <textarea name= "reason" rows="4" class="form-control" placeholder="The facilitator of the recollection is not available."></textarea> 
                             </div>        
                         </div>
                       </div>  
 
                       <div class= "row">
-                        <div class="col-md-10">   
-                          <label class= "col-md-4"> <h4>Requested By:</h4> </label>
-                            <div class= "form-group col-md-4">
+                        <div class="col-md-8">   
+                          <label class= "col-md-5"> <h4>Requested By:</h4> </label>
+                            <div class= "form-group col-md-6">
                               <input type="text" name= "requestName" class="form-control" placeholder="Juan Dela Cruz" />
                             </div>        
                         </div>
@@ -236,8 +203,8 @@
 
                       <div class="ln_solid"></div> 
                       <div class="form-group">
-                        <div class="col-md-12 col-md-offset-11">
-                          <input id="nextApproveChanges" type="submit" class="btn btn-success align: right" value ="Next">
+                        <div class="right">
+                          <input id="nextApproveChanges" type="submit" class="btn btn-success" value ="Next" atyle="width:80px">
                           
                         </div>
                       </div>
@@ -258,7 +225,7 @@
         var choice = document.getElementById("changes").value;
         console.log("choice" + choice);
         if(choice==1){
-          var toAppend='<div class="details"> <div class= "row"><div class="col-md-10"> <label class= "col-md-4"> <h4>Venue</h4> </label><div class= "form-group col-md-4"><input type="text" name= "newvenue" class="form-control" placeholder="ex: Henry Sy Grounds"></div> <div class="col-md-2"><button class="form-control btn btn-danger" id="rVenue" name="rVenue"> Remove Venue</button></div></div></div></div>';
+          var toAppend='<div class="details"> <div class= "row"><div class="col-md-8"> <label class= "col-md-5"> <h4>Venue</h4> </label><div class= "form-group col-md-3"><input type="text" name= "newvenue" class="form-control" placeholder="ex: Henry Sy Grounds"></div> <div class="col-md-3"><button class="form-control btn btn-danger" id="rVenue" name="rVenue"> Remove Venue</button></div></div></div></div>';
            event.preventDefault();
           $('#changeDetails').append(toAppend);
 
@@ -268,7 +235,7 @@
         }
         else if(choice==2){
           //date and time
-          var toAppend='<div class= "row"> <div class="col-md-10">   <label class= "col-md-4"> <h4></h4></label><div class= "form-group col-md-4"><select name ="selectDate" id ="selectDate" class="form-control"> <option disabled selected> Select Kind Of Date </option><option value = "11"> Single Date</option><option value = "22"> Date Range with the same time slot</option></select></div><div class="col-md-2"><button class="form-control" id="dateOption" > Add Date</button></div></div></div>';
+          var toAppend='<div class= "row"> <div class="col-md-8">   <label class= "col-md-5"> <h4></h4></label><div class= "form-group col-md-3"><select name ="selectDate" id ="selectDate" class="form-control"> <option disabled selected> Select Kind Of Date </option><option value = "11"> Single Date</option><option value = "22"> Date Range with the same time slot</option></select></div><div class="col-md-3"><button class="form-control" id="dateOption" > Add Date</button></div></div></div>';
            event.preventDefault();
           $('#changeDetails').append(toAppend);
 

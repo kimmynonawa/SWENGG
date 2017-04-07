@@ -25,7 +25,7 @@
 		// @param $data an array that contains the information needed to insert an activity in the GOSM
 		// @param $org is an INT that is the ID of the organization creating the activity
 		// @param $reto
-		public function insertActivity($data, $org, $reto){
+		public function insertActivity($data, $org, $reto, $term, $sy){
 			$this->db->insert('GOSM', 
 			array(
 				"organizationID" => $org,
@@ -43,7 +43,9 @@
 				"activitytypeID" => $data['gosmtype'],
 				"reto" => $reto,
 				"status" =>1,
-				"datecreated" => date('Y-m-d H:i:s')
+				"datecreated" => date('Y-m-d H:i:s'),
+				"term" => $term,
+				"schoolyear" => $sy
 			)
 			
 			);

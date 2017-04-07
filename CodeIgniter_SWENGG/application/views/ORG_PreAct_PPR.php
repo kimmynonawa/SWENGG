@@ -7,7 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>LSCS</title>
+    <title><?php echo ($this->session->userdata('org')[0]['acronym']);?></title>
+	
+	<script src= "<?php echo base_url();?>js/jquery.js"> </script>
+	<script src= "<?php echo base_url();?>js/jquery.min.js"></script>
+	<script src= "<?php echo base_url();?>js/jquery.validate.min.js"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <!-- Bootstrap -->
@@ -28,15 +32,9 @@
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url();?>build/css/custom.min.css" rel="stylesheet">
-
-    <!-- jQuery -->
-    <script src="<?php echo base_url();?>js/jquery.min.js"></script>
-    <script src="<?php echo base_url();?>js/jquery.validate.min.js"></script>
-
   </head>
 
- 
-      <body class="nav-md">
+  <body class="nav-md">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col ">
@@ -44,12 +42,11 @@
           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
           <div class="menu_section nav side-menu"> 
             <br>      
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Create New GOSM</a></li>
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Pre-Activity Requirements</a></li>
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Additional Requirements</a></li>
-            <li><a href="#"><i class="fa fa-edit side-menu"></i>Special Approval Slip</a></li>
-            <li><a href="#"><i class="fa fa-folder-open"></i> View Pre-Acts</a></li>
-            <li><a href="#"><i class="fa fa-list-alt"></i> View GOSM</a></li>
+            <li><a href="http://localhost/index.php/gosm/add"><i class="fa fa-edit side-menu"></i>Create New GOSM</a></li>
+            <li><a href="http://localhost/index.php/Preactivity/preacts"><i class="fa fa-edit side-menu"></i>Pre-Activity Requirements</a></li>
+            <li><a href="http://localhost/index.php/Preactivity/other_requirements"><i class="fa fa-edit side-menu"></i>Additional Requirements</a></li>
+            <li><a href="http://localhost/index.php/viewpreacts/viewpreacts"><i class="fa fa-folder-open"></i> View Pre-Acts</a></li>
+            <li><a href="http://localhost/index.php/gosm/viewORGGosm1"><i class="fa fa-list-alt"></i> View GOSM</a></li>
           </div>
         </div>
       </div>
@@ -60,7 +57,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="userIcon">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['name']);?>La Salle Computer Society
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['acronym']);?>
                   <span class="fa fa-caret-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -68,15 +65,8 @@
                 </ul>
               </li>
               <li role="presentation" class="dropdown">
-                <a id="but" href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                  <i class="fa fa-envelope fa-fw"></i>
-                  <i class="fa fa-caret-down"></i>
-                  <div id="num"> </div>
-                </a>
-                <ul class="dropdown-menu dropdown-usermenu pull-right">
-                  <li><a href="http://localhost/index.php/account/logout">insert notifs here</a></li>
-                </ul>
-                <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                
+                <li><a href="http://localhost/index.php/account/org"><i class="fa fa-home"></i> Home</a></li>
               </li>
             </ul>
           </nav>
@@ -105,41 +95,87 @@
                     <div class="x_panel">
                         <div class="x_content">
                           <form class="form-horizontal form-label-left" id= "pprform1" method="post">
-                            <div class="row" id="ph">
-                              <span class="section">General Information</span>
-                              <label> <h3> Project Head </h3> </label>
-                            </div>
 
-                            <div class= "row">
+                            <span class="section">Project Heads</span>
+                            <div class="row" id="ph">
+                   
+                            </div>
+                        
+                           <!-- <div class= "row">
                                <div class="col-md-3 col-sm-3 col-xs-12 form-group"></div>
                                <div class="col-md-3 col-sm-3 col-xs-12 form-group"></div>
                                 <button id="addc" type ="button" class ="btn btn-default" style="width:80px">Add</button>
-                               </div>
-
-                            <div class="row">
-                             <p><label> <h3> Objectives</h3> </label></p>
-                                <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                  <input type="text" name="obje1" class="form-control" id="obj1" placeholder="1st Objective">
-                                  <p></p>
-                                  <input type="text" name="obje2" class="form-control" id="obj2" placeholder="2nd Objective">
-                                  <p></p>
-                                  <input type="text" name="obje3" class="form-control" id="obj3" placeholder="3rd Objective">
+                            </div>-->
+                            <div class="col-md-12 col-sm-12 col-xs-12" id="new">
+                              <div class="row"><div class="col-md-10"> 
+                                <div class="col-md-4"></div> 
+                                <div class="col-md-5"></div>
+                                <div class="col-md-2">
+                                  <button id="addc" type ="button" class ="btn btn-default" style="width:80px">Add</button>
                                 </div>
-                            </div>
-                
-                            <div class= "row">
-                             <p><label> <h3> Brief Description of Activity </h3> </label></p>
-                              <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                               <ul><li>What situation do you see (observation/s) in your organization, university, society, or our world? </li><li>What certain experiences, problems, or questions do you have in relation to what you see? (May be supported with data or research if there is any or if needed)</li></ul>
-                                 <textarea rows="3" name="desc1" class="form-control"></textarea> 
-                                <br>
-                               <ul><li>Why is there a problem? </li><li>What could be the cause and effect?</li><li>How did you feel about the experience, situation, or problem? And why did you feel that way?</li><li>What can we discover or realize?</li></ul>
-                                 <textarea  rows="3" name="desc2" class="form-control"></textarea>
-                                <br>
-                                <ul><li> Out of all the possible projects, activities, and solutions, Why this?</li><li>As an organization, what will you commit as a response to what you have stated in Part 2?</li></ul>
-                                 <textarea rows="3" name="desc3" class="form-control"></textarea>
                               </div>
-                            </div>  
+                            </div>
+                          </div>
+                            
+                            <span class="section">Objectives</span>
+                            <div class= "row">
+                              <div class="col-md-9">
+                              <h4><b>Objective 1</b></h4> 
+                              </div>
+                                <div class="col-md-8">
+                                  <textarea name="obje1" class="form-control" id="obj1" style="width:615px" placeholder="Enter 1st Objective"></textarea>    
+                              </div>
+                            </div>
+                            <p></p>
+                            <div class= "row">
+                              <div class="col-md-9">
+                              <h4><b>Objective 2</b></h4> 
+                              </div>
+                                <div class="col-md-8">
+                                  <textarea name="obje2" class="form-control" id="obj2" style="width:615px" placeholder="Enter 2nd Objective"></textarea>    
+                              </div>
+                            </div>
+                            <p></p>
+                            <div class= "row">
+                              <div class="col-md-9">
+                              <h4><b>Objective 3</b></h4> 
+                              </div>
+                                <div class="col-md-8">
+                                  <textarea name="obje3" class="form-control" id="obj3" style="width:615px" placeholder="Enter 3rd Objective"></textarea>    
+                              </div>
+                            </div>
+                            <p></p>
+                            <span class="section">Brief Description of Activity</span>
+                            <div class= "row">
+                              <div class="col-md-9">
+                              <h4><b>Guide Questions For Paragraph 1</b></h4> 
+                                <label> <h4> 1. What situation do you see (observation/s) in your organization, university, society, or our world? <br> 2. What certain experiences, problems, or questions do you have in relation to what you see?<br> This may be supported with data or research if there is any or if needed.</h4> </label>      
+                              </div>
+                                <div class="col-md-8">
+                                 <textarea rows="3" name="desc1" class="form-control" style="width:615px"></textarea>    
+                              </div>
+                            </div>
+                            <p></p>
+                            <div class= "row">
+                              <div class="col-md-9">
+                              <h4><b>Guide Questions For Paragraph 2</b></h4> 
+                                <label> <h4> 1. Why is there a problem? <br> 2. What could be the cause and effect? <br> 3. How did you feel about the experience, situation, or problem? And why did you feel that way? <br> 4. What can we discover or realize?</h4> </label>      
+                              </div>
+                                <div class="col-md-8">
+                                  <textarea rows="3" name="desc2" class="form-control" style="width:615px"></textarea>    
+                              </div>
+                            </div>
+
+                               <div class= "row">
+                              <div class="col-md-9">
+                              <h4><b>Guide Questions For Paragraph 3</b></h4> 
+                                <label> <h4> 1.Out of all the possible projects, activities, and solutions, Why this?<br> 2. As an organization, what will you commit as a response to what you have stated in Paragraph 2?</h4></label>      
+                              </div>
+                              <div class="col-md-8">
+                                <textarea rows="3" name="desc3" class="form-control" style="width:615px"></textarea>    
+                              </div>
+                            </div>
+              
 
                             <div class="ln_solid"></div> 
                             <div class="form-group">
@@ -173,11 +209,11 @@
 
       // append basic table data
 
-      $("#ph").append($('<div class="col-md-12 col-sm-12 col-xs-12" id="ne"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input class="phname form-control has-feedback-left" name="phname[' + numberIncr + ']" placeholder="Name" type="text"/><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input class="phnum form-control has-feedback-right" name="phnum[' + numberIncr + ']" placeholder="Contact Number" /><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div></div></div>'));
+      $("#ph").append($('<div class="col-md-12 col-sm-12 col-xs-12" id="ne"><div class="row"><div class="col-md-8"> <div class="col-md-5"><input class="phname form-control" name="phname[' + numberIncr + ']" placeholder="ex: Juan Dela Cruz" type="text"/></div> <div class="col-md-6 form-group"><input class="phnum form-control" style="width:315px" name="phnum[' + numberIncr + ']" placeholder="ex: 09778619281" /></div></div></div></div>'));
 
       $("#addc").on('click', function () {
            numberIncr++;
-           var temp = $("#ph").append($('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-3 col-sm-3 col-xs-12 form-group"> <input class="phname form-control has-feedback-left" name="phname[' + numberIncr + ']" placeholder="Name" /><span class="fa fa-user form-control-feedback left" aria-hidden="true"></span></div> <div class="col-md-3 col-sm-3 col-xs-12 form-group"><input class="phnum form-control has-feedback-right" name="phnum[' + numberIncr + ']" placeholder="Contact Number" /><span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span></div><button id="remc" type ="button" class ="btn btn-danger">Remove</button></div></div>'));  
+           var temp = $("#ph").append($('<div class="col-md-12 col-sm-12 col-xs-12" id="new"><div class="row"><div class="col-md-10"><div class="col-md-4"> <input class="phname form-control" name="phname[' + numberIncr + ']" placeholder="ex: Juan Dela Cruz" type="text"/></div> <div class="col-md-5 form-group"><input class="phnum form-control" name="phnum[' + numberIncr + ']" placeholder="ex: 09778619281" style="width:315px" /></div><div class="col-md-2"><button id="remc" type ="button" class ="btn btn-danger">Remove</button></div></div></div></div>'));  
            
           $(".phname").each(function(){
             $(this).rules( "add", {
@@ -266,6 +302,12 @@
 
       });
 
+      $('#nextbppr').click(function(){
+          if (pprform1.valid()){
+             window.location.href = "ORG_PreAct_PPR2.html";
+           }
+           return false;
+         });
   
     });
     </script>
@@ -304,7 +346,7 @@
     <script src="<?php echo base_url();?>vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <!-- bootstrap-daterangepicker -->
     <script src="<?php echo base_url();?>vendors/moment/min/moment.min.js"></script>
-    <script src="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.js"></script>x
+    <script src="<?php echo base_url();?>vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url();?>build/js/custom.min.js"></script>

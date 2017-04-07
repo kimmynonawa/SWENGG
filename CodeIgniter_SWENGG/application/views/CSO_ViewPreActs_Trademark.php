@@ -61,7 +61,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="userIcon">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['name']);?>
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['acronym']);?>
                   <span class="fa fa-caret-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -114,6 +114,28 @@
 										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
 										echo '<a href="http://localhost/index.php/ViewPreActs/viewaform"><button style="background-color:#e9e4e4;border:none;color:black;">';
 										echo 'A-Form';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($pprexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/view_ppr"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'PPR';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($changeexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/viewCAD"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Activity Details Changes';
 										echo '</td><tr>';
                                     
 									}
@@ -202,53 +224,53 @@
                         <div class="col-md-8">
 
                             <span class="section">Activity Details</span>
-                            <!-- <div class="item form-group">
+                            <div class="item form-group">
                                 <label class="control-label col-md-3">Date Created:</label>
                                 <p> date </p>
-                            </div> -->
+                            </div>
                              <div class="item form-group">
                                 <label class="control-label col-md-3">Title of Activity:</label>
                                 <p> <?php echo $activityDetails[0]['title']; ?> </p>
                             </div>
                             <div class="item form-group">
-                                <label class="control-label col-md-3">Proposed Time of Duration:</label>
-                                <p> <?php echo $permitDetails[2]; ?> </p>
+                                <label class="control-label col-md-3">Proposed Time of duration:</label>
+                                <p> <?php echo $permitDetails['duration']; ?> </p>
                             </div>
-                            <!-- <br> -->
+                            <br>
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Venue:</label>
-                                <p> <?php echo $permitDetails[5]; ?> </p>
+                                <p> <?php echo $permitDetails['venue']; ?> </p>
                             </div>
 
-                            <span class="section">Information</span>
+                           <span class="section">Information</span>
                              <div class="item form-group">
                                 <label class="control-label col-md-3">Name:</label>
-                                <p> <?php echo $requestInfo[0]; ?> </p>
+                                <p><?php echo $requestInfo['requestedby']; ?></p>
                             </div>  
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Position/Section:</label>
-                                <p> <?php echo $requestInfo[1]; ?> </p>
+                                <p> <?php echo $requestInfo['requestedby_position']; ?> </p>
                             </div>  
                             <div class="item form-group">
                                 <label class="control-label col-md-3">ID Number:</label>
-                                <p> <?php echo $requestInfo[2]; ?> </p>
+                                <p> <?php echo $requestInfo['IDno']; ?> </p>
                             </div> 
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Email Address:</label>
-                                <p> <?php echo $requestInfo[3]; ?> </p>
+                                <p> <?php echo $requestInfo['email']; ?> </p>
                             </div> 
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Telephone Number:</label>
-                                <p> <?php echo $requestInfo[4]; ?> </p>
+                                <p> <?php echo $requestInfo['telephone']; ?> </p>
                             </div> 
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Mobile Number:</label>
-                                <p> <?php echo $requestInfo[5]; ?> </p>
+                                <p> <?php echo $requestInfo['mobile']; ?> </p>
                             </div> 
                             <span class="section">Trademark details</span>
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Trademark to Use:</label>
-                                <p> <?php echo $permitDetails[0]; ?> </p>
+                                <p> <?php echo $permitDetails['name']; ?> </p>
                             </div> 
                              <div class="item form-group">
                                 <label class="control-label col-md-3">Type of Item/Material to Produce:</label>
@@ -257,7 +279,7 @@
                             <br>
                             <div class="item form-group">
                                 <label class="control-label col-md-3">Purpose of Use:</label>
-                                <p> <?php echo $permitDetails[1]; ?> </p>
+                                <p> <?php echo $permitDetails['purpose']; ?> </p>
                             </div> 
                              
                         </div>

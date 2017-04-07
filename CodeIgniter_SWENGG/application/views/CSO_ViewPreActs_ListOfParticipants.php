@@ -61,7 +61,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="userIcon">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['name']);?>
+                  <span class="fa fa-user fa-fw"></span> <?php echo ($this->session->userdata('org')[0]['acronym']);?>
                   <span class="fa fa-caret-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -115,6 +115,28 @@
 										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
 										echo '<a href="http://localhost/index.php/ViewPreActs/viewaform"><button style="background-color:#e9e4e4;border:none;color:black;">';
 										echo 'A-Form';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($pprexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/view_ppr"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'PPR';
+										echo '</td><tr>';
+                                    
+									}
+									?>
+									
+									<?php
+								    if($changeexists>0)
+									{
+										echo '<tr style="background-color:#e9e4e4;"><td align="center">';
+										echo '<a href="http://localhost/index.php/ViewPreActs/viewCAD"><button style="background-color:#e9e4e4;border:none;color:black;">';
+										echo 'Activity Details Changes';
 										echo '</td><tr>';
                                     
 									}
@@ -248,7 +270,7 @@
                                 <p> <?php echo $aform[0]['ENMP']?> </p>
                             </div> 
 							
-                            <span class="section">Participants</span>
+                            <span class="section">Participants with Waiver</span>
                             <table class="table table-hover">
                             <thead>
                                 <th><div align="center"> ID Number </div></th>
@@ -259,14 +281,38 @@
                                 <th><div align="center">With Waiver</div></th>
                             </thead>
                             <tbody>
-							<?php for ($i =0; $i<count($lopdetails); $i++):?>
+							<?php for ($i =0; $i<count($lopdetails1); $i++):?>
                                 <tr>
-                                    <td width="20%" align="center"><?php echo $lopdetails[$i]['IDno']?></td>
-                                    <td width="20%" align="center"><?php echo $lopdetails[$i]['lastname']?></td>
-                                    <td width="20%" align="center"><?php echo $lopdetails[$i]['firstname']?></td>
-                                    <td width="20%" align="center"><?php echo $lopdetails[$i]['middleinitial']?></td>
-                                    <td width="20%" align="center"><?php echo $lopdetails[$i]['age']?></td>
-                                    <td width="20%" align="center"><?php if($lopdetails[$i]['waiver'] == 1) {echo 'yes';} else echo 'no'; ?></td>
+                                    <td width="20%" align="center"><?php echo $lopdetails1[$i]['IDno']?></td>
+                                    <td width="20%" align="center"><?php echo $lopdetails1[$i]['lastname']?></td>
+                                    <td width="20%" align="center"><?php echo $lopdetails1[$i]['firstname']?></td>
+                                    <td width="20%" align="center"><?php echo $lopdetails1[$i]['middleinitial']?></td>
+                                    <td width="20%" align="center"><?php echo $lopdetails1[$i]['age']?></td>
+                                    <td width="20%" align="center"><?php if($lopdetails1[$i]['waiver'] == 1) {echo 'yes';} else echo 'no'; ?></td>
+                                </tr>
+							<?php endfor;?>
+                            </tbody>
+                            </table>
+							
+							 <span class="section">Participants without Waiver</span>
+                            <table class="table table-hover">
+                            <thead>
+                                <th><div align="center"> ID Number </div></th>
+                                <th><div align="center">Last Name</div></th>
+                                <th><div align="center">First Name</div></th>
+                                <th><div align="center">Middle Initial</div></th>
+                                <th><div align="center">Age</div></th>
+                                <th><div align="center">With Waiver</div></th>
+                            </thead>
+                            <tbody>
+							<?php for ($i =0; $i<count($lopdetails2); $i++):?>
+                                <tr>
+                                    <td width="20%" align="center"><?php echo $lopdetails2[$i]['IDno']?></td>
+                                    <td width="20%" align="center"><?php echo $lopdetails2[$i]['lastname']?></td>
+                                    <td width="20%" align="center"><?php echo $lopdetails2[$i]['firstname']?></td>
+                                    <td width="20%" align="center"><?php echo $lopdetails2[$i]['middleinitial']?></td>
+                                    <td width="20%" align="center"><?php echo $lopdetails2[$i]['age']?></td>
+                                    <td width="20%" align="center"><?php if($lopdetails2[$i]['waiver'] == 1) {echo 'yes';} else echo 'no'; ?></td>
                                 </tr>
 							<?php endfor;?>
                             </tbody>

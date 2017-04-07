@@ -4,8 +4,6 @@
 			$this->load->database();
 		}
 		
-		
-		
 		// This function gets the details of a given activity
 		// @param $preactsID is the ID which identifies a specific activity
 		// @return an array that contains the details of the activity
@@ -21,7 +19,8 @@
 		// This function gets the list of activity nature types of a corresponding office stored in the database for dropdown population
 		// @param $actoff is an INT that is the ID of the type of office of which the user has chosen
 		// @return an array that contains a list of activity nature types under the specified office
-		public function getActivityNature(){
+		public function getActivityNature($actoff){
+			$this->db->where(array("activityofficeID" => $actoff));
 			$this->db->from('ref_activitynature');
 			$res = $this->db->get();
 			return $res->result_array();
@@ -30,7 +29,8 @@
 		// This function gets the list of activity nature types of a corresponding office stored in the database for dropdown population
 		// @param $prooff is an INT that is the ID of the type of processing office of which the user has chosen
 		// @return an array that contains a list of activity nature types under the specified office
-		public function getActivityType(){
+		public function getActivityType($prooff){
+			$this->db->where(array("processingofficeID" => $prooff));
 			$this->db->from('ref_activitytype');
 			$res = $this->db->get();
 			return $res->result_array();
@@ -40,6 +40,23 @@
 		// @return an array that contains a list of activity reach types
 		public function getActivityReach(){
 			$this->db->from('ref_activityreach');
+			$res = $this->db->get();
+			return $res->result_array();
+		}
+
+		// This function gets the list of activity nature types stored in the database for dropdown population
+		// @return an array that contains a list of activity reach types
+		public function getActivityNatureList(){
+			$this->db->from('ref_activitynature');
+			$res = $this->db->get();
+			return $res->result_array();
+		}
+
+
+		// This function gets the list of activity types stored in the database for dropdown population
+		// @return an array that contains a list of activity reach types
+		public function getActivityTypeList(){
+			$this->db->from('ref_activitytype');
 			$res = $this->db->get();
 			return $res->result_array();
 		}
@@ -75,7 +92,6 @@
 		// @param $aform2 is an array that contains information from the second page of the AForm
 		public function insertAFormGOSM($preactsID, $title, $aform1, $aform2){
 			date_default_timezone_set('Asia/Manila');
-			echo $aform1['natact'];
 			
 			$this->db->insert('aform', array( 'preactsID'		 => $preactsID, 
 											  'gosmID'			 => $aform1['actName'],
@@ -94,12 +110,11 @@
 		// @param $sas is and INT that is the special approval slip ID 
 		// @param $aform1 is an array that contains information from the first page of the AForm
 		// @param $aform2 is an array that contains information from the second page of the AForm
-		public function insertAformNotInGOSM($preactsID, $sas, $title, $aform1, $aform2){
+		public function insertAformNotInGOSM($preactsID, $sas, $aform1, $aform2){
 			date_default_timezone_set('Asia/Manila');
-			echo $aform1['natact'];
 
 			$this->db->insert('aform', array('preactsID'		=> $preactsID,
-											 'title' 		  	=> $title,  
+											 'title' 		  	=> $aform1['actName'],  
 											 'activityreachID'  => $aform1['reachType'],
 											 'activitytypeID'   => $aform1['typeact'], 
 											 'activitynatureID' => $aform1['natact'],
@@ -365,6 +380,22 @@
 			}
 		}
 
+		// This function adds the provisions to a newly filed PPR for an activity
+		// @param $PPRnum is an INT that is the newly filed PPR
+		// @param $data is an array that contains the necessary information to add the provisions for the PPR
+		public function addProvisions($PPRnum, $data) {
+			$this->db->insert('ppr_provisions', array("pprID" 		=> $PPRnum, 
+													  "person1" 	=> $data['provname1'], 
+													  "position1" 	=> $data['provpos1'], 
+													  "person2" 	=> $data['provname2'], 
+													  "position2" 	=> $data['provpos2'],
+													  "preparedby" 	=> $data['preparedby'],
+													  "treasurer" 	=> $data['treasurer'],
+													  "faculty" 	=> $data['facin'],
+													  "president" 	=> $data['president']));
+			
+		}
+
 		// This function gets the PPR of an activity
 		// @preactsID is an INT that is the ID of an activity
 		// @return the ID of the PPR of an activity
@@ -375,6 +406,24 @@
 	        $query = $this->db->get();
 
 	        return $query->row_array();
+		}
+
+		public function getPPRDetails($PPRnum) {
+			$this->db->select('objective1, objective2, objective3');
+			$this->db->from('ppr');
+			$this->db->where('pprID', $PPRnum);
+			$query = $this->db->get();
+
+	        return $query->result_array();
+		}
+
+		public function getProgramDesign($PPRnum) {
+			$this->db->select('starttime,endtime,duration,name,description,personincharge');
+			$this->db->from('ppr_programdesign');
+			$this->db->where('pprID', $PPRnum);
+			$query = $this->db->get();
+
+	        return $query->result_array();
 		}
 
 		// This function gets the funds of an activity
@@ -427,7 +476,7 @@
 		// @param $PPRnum is an INT that is the newly filed PPR
 		// @return an array containing the list of organizational funds for an activity
 		public function getOrgFunds($PPRnum) {
-			$this->db->select('operationalfunds, depositoryfunds, otherfunds, totaldisbursement, balance');
+			$this->db->select('operationalfunds, depositoryfunds, otherfunds, totaldisbursement, lessexpenses, balance');
 			$this->db->from('ppr_orgfunds');
 			$this->db->where('pprID', $PPRnum);
 			$query = $this->db->get();
@@ -474,7 +523,7 @@
 		// @return an array containing the list of projected expenses for an activity
 		public function getProjectedExpenses($PPRnum) {
 			$this->db->select('item, quantity, sellingprice');
-			$this->db->from('ppr_projectedincome');
+			$this->db->from('ppr_projectedexpenses');
 			$this->db->where('pprID', $PPRnum);
 			$query = $this->db->get();
 
@@ -484,11 +533,10 @@
 		// This function gets the list of project heads of an activity
 		// @param $activityID is an INT that is the ID of the activity
 		// @return an array containing the list of project heads
-		public function getProjectHeads($activityID) {
+		public function getProjectHeads($PPRnum) {
 			$this->db->select('name,contactnumber');
-			$this->db->from('ppr_projectheads ph');
-			$this->db->join('ppr p', 'ph.pprID = p.pprID');
-			$this->db->where('p.preactsID', $activityID);
+			$this->db->from('ppr_projectheads');
+			$this->db->where('pprID', $PPRnum);
 			$query = $this->db->get();
 
 	        return $query->result_array();
@@ -498,9 +546,11 @@
 		// @param $actid is an INT that is the ID of the activity
 		// @return an array that contains the details of an activity
 		public function getActivityDetails($actid) {
-			$this->db->select('title,startdate,enddate,starttime,endtime,venue,activitynature, ENP');
+			$this->db->select('title,startdate,enddate,starttime,endtime,venue,activitynature,activitytype,activityreach,ENP,ENMP,a.activitytypeID');
 			$this->db->from('aform a');
 			$this->db->join('ref_activitynature an', 'a.activitynatureID = an.activitynatureID');
+			$this->db->join('ref_activitytype at', 'a.activitytypeID = at.activitytypeID');
+			$this->db->join('ref_activityreach ar', 'a.activityreachID = ar.activityreachID');
 			$this->db->join('aform_date ad', 'a.aformID = ad.aformID');
 
 
@@ -1028,7 +1078,7 @@
 		// @param $TelNo is a String that is the telephone number of the requesting student
 		// @param $Email is a String that is the email address of the requesting student
 		// @return TRUE if information was successfully added to the database and FALSE if otherwise
-		public function spca1($actno, $actTitle, $numPersons, $Faculty, $Name, $IDNum, $officeLoc, $CPNo, $TelNo, $Email){
+		public function spca1($actno, $numPersons, $Faculty, $Name, $IDNum, $officeLoc, $CPNo, $TelNo, $Email){
 			date_default_timezone_set('Asia/Manila');
 			$datecreated = date("Y-m-d g:i:s");
 
